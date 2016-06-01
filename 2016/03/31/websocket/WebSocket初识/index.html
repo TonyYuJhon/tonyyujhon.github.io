@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Victory Loves Preparation" />
+  <meta name="keywords" content="博客，知识," />
 
 
 
@@ -86,16 +86,19 @@
 
 
 
-<meta name="description" content="Walk steps step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://www.jiang-yu.cn/categories/index.html">
+<meta name="description" content="WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebSocket初识">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket初识/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="Walk steps step by step">
-<meta property="og:updated_time" content="2016-05-30T09:07:03.000Z">
+<meta property="og:description" content="WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】">
+<meta property="og:image" content="http://i.imgur.com/i9c4TkV.png">
+<meta property="og:image" content="http://i.imgur.com/eRT4Mc6.png">
+<meta property="og:updated_time" content="2016-03-31T05:38:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Walk steps step by step">
+<meta name="twitter:title" content="WebSocket初识">
+<meta name="twitter:description" content="WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】">
+<meta name="twitter:image" content="http://i.imgur.com/i9c4TkV.png">
 
 
 
@@ -113,13 +116,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    分类 | JhonYu's Blog
-  
-</title>
+  <title> WebSocket初识 | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,16 +277,182 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 1 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                WebSocket初识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-31T08:57:06+08:00" content="2016-03-31">
+              2016-03-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/31/websocket/WebSocket初识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/31/websocket/WebSocket初识/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">6</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】<br><a id="more"></a><br>  WebSocket是为解决客户端与服务端实时通信而产生的技术。其本质是先通过HTTP/HTTPS协议进行握手后创建一个用于交换数据的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。</p>
+<p>###一、WebSocket和Http协议的认识<br>首先Http协议是不支持长连接的，早期的HTTP1.0是没有所谓的keep-alive的，也就是只是一对一的通信，直到HTTP1.1才有keep-alive,就是把多个请求合并成一个，最终也只是几个请求对应几个响应，服务端不能主动的推送消息给客户端，而WebSocket其实是对HTTP协议的一种补充。</p>
+<p>###二、WebSocket和Http协议的区别<br>A.相对于Http协议来说，WebSocket是一个<strong>持久化</strong>的协议，如果还是不是很清楚，可以看一下图片对比：<br><img src="http://i.imgur.com/i9c4TkV.png" alt=""></p>
+<p>从上图可以看出来，HTTP的生命周期是通过Request决定的，在HTTP 1.0中，每次通信只是一个request对应一个response，为了弥补这个问题，在HTTP 1.1协议中，增加了一个头部keep-alive，这个是保证连接保持的功能，虽然keep-alive能够保证同时发送多个请求，但是这其中有一个不变的规则就是有多少个请求（request）就有多少个响应(response),并且response是不会主动的向客户端推送消息的，是一种被动的方式。另外HTTP协议是一种无状态的协议，就是一旦浏览器关闭所有的信息都没有了。</p>
+<p>B.WebSocket协议是一种基于Html5的新的协议，但同时它也是基于Http协议的。</p>
+<p> 在WebSocket出现之前，为了实现实时信息的传递都是通过HTTP长轮询（Long Poll）的方式，或者ajax轮询的方式，或者其他的特殊方式。这两种方式都是服务器端被动的等待客户端来询问是否有新的信息，如果有新的信息来就处理，但是也有一些区别：</p>
+<p> Long Poll:客户端发起请求，如果服务端没有信息返回，客户端就一直等待服务端的响应，是一种阻塞式的请求方式。</p>
+<p> Ajax Pool：每隔一段时间就去请求一些服务器端，看是否有新的消息要处理。</p>
+<p> 从这两种方式来看，实现实时信息通信都非常耗资源。而WebSocket可以很好的利用有限的资源来实现上面的效果，先看下webSocket的请求模式：</p>
+<p> <img src="http://i.imgur.com/eRT4Mc6.png" alt=""></p>
+<p> 从上面的webSocket协议传输数据方式来看，只要每次建立一个HTTP连接，就可以不断的进行信息传输，并且不会再次发送HTTP连接了，也就是实现了正真意义上的长连接。</p>
+<p>###总结<br> websocket约定了一个通信的规范，通过一个握手的机制，客户端和服务器之间能建立一个类似tcp的连接，从而方便它们之间的通信。在websocket出现之前，web交互一般是基于http协议的短连接或者长连接。websocket是一种全新的协议，不属于http无状态协议，协议名为”ws”，这意味着一个websocket连接地址会是这样的写法：ws://**。websocket协议本质上是一个基于tcp的协议。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客，知识/" rel="tag">#博客，知识</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/30/spring/mvc annotation-driven配置错误/" rel="next" title="mvc annotation-driven配置错误">
+                <i class="fa fa-chevron-left"></i> mvc annotation-driven配置错误
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/01/spring/classpath-你真的理解了么？/" rel="prev" title="classpath,你真的理解了么？">
+                classpath,你真的理解了么？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/31/websocket/WebSocket初识/"
+     data-title="WebSocket初识"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket初识/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -301,6 +464,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/31/websocket/WebSocket初识/"
+           data-title="WebSocket初识" data-url="http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket初识/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -320,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -398,6 +578,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -507,6 +698,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

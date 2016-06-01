@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Victory Loves Preparation" />
+  <meta name="keywords" content="博客，文章," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="Walk steps step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://www.jiang-yu.cn/categories/index.html">
+<meta name="description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring拦截器--HandlerInterceptorAdapter">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="Walk steps step by step">
-<meta property="og:updated_time" content="2016-05-30T09:07:03.000Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
+<meta property="og:updated_time" content="2016-04-17T04:29:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Walk steps step by step">
+<meta name="twitter:title" content="Spring拦截器--HandlerInterceptorAdapter">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
 
 
 
@@ -113,13 +113,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    分类 | JhonYu's Blog
-  
-</title>
+  <title> Spring拦截器--HandlerInterceptorAdapter | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,16 +274,329 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 1 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring拦截器--HandlerInterceptorAdapter
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-17T11:49:35+08:00" content="2016-04-17">
+              2016-04-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">6</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。</p>
+<a id="more"></a>
+<h1 id="一、认识HandlerInterceptorAdapter"><a href="#一、认识HandlerInterceptorAdapter" class="headerlink" title="一、认识HandlerInterceptorAdapter"></a>一、认识HandlerInterceptorAdapter</h1><p>&emsp;&emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】</p>
+<pre><code>/*
+  * Copyright 2002-2012 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.springframework.web.servlet.handler;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * Abstract adapter class for the HandlerInterceptor interface,
+ * for simplified implementation of pre-only/post-only interceptors.
+ *
+ * @author Juergen Hoeller
+ * @since 05.12.2003
+ */
+public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor {
+
+    /**
+     * This implementation always returns {@code true}.
+     */
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception {
+        return true;
+    }
+
+    /**
+     * This implementation is empty.
+     */
+    @Override
+    public void postHandle(
+            HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
+            throws Exception {
+    }
+
+    /**
+     * This implementation is empty.
+     */
+    @Override
+    public void afterCompletion(
+            HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+            throws Exception {
+    }
+
+    /**
+     * This implementation is empty.
+     */
+    @Override
+    public void afterConcurrentHandlingStarted(
+            HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
+    }
+
+}
+</code></pre><p>&emsp;&emsp;可以看出，这个抽象类提供的四个方法：</p>
+<ol>
+<li>preHandle  预处理–一般实现编码的控制和安全性控制</li>
+<li>postHandle 后处理–可以修改Spring中的ModelAndView,使得跳转到不同的View</li>
+<li>afterCompletion 返回处理–通过判断ex的值可以进行异常日志记录和处理</li>
+<li>afterConcurrentHandlingStarted</li>
+</ol>
+<h1 id="二、使用Spring-MVC-的拦截器"><a href="#二、使用Spring-MVC-的拦截器" class="headerlink" title="二、使用Spring MVC 的拦截器"></a>二、使用Spring MVC 的拦截器</h1><p>例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。<br>    package com.jifenn.ja.web.common.interceptor;</p>
+<pre><code>import java.util.Calendar;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+
+/**
+ * &lt;p&gt;功能描述&lt;/br&gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &lt;/p&gt;
+ * 
+ * @className Intf4OutCallTimeInterceptor
+ * @author jiangyu
+ * @date 2016年4月17日 下午12:18:25
+ * @version v1.0
+ */
+public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter
+{
+    /** 允许时间段 **/
+    private int allowTimeZone;
+
+    /** 禁止时间段 **/
+    private int forbidTimeZone;
+
+    /** 需要拦截的路径 **/
+    private String mappingRegexURL;
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception
+    {
+        String url = request.getRequestURL().toString();
+        if (mappingRegexURL == null || url.matches(mappingRegexURL))
+        {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            if (hour &lt; allowTimeZone || hour &gt; forbidTimeZone)
+            {
+                request.setAttribute(&quot;msg&quot;, &quot;接口开放时间：8：00-21：00&quot;);
+                request.getRequestDispatcher(&quot;/err.jsp&quot;).forward(request, response);
+                return false;
+            }
+            return true;
+        }
+        return true;
+    }
+
+    public void setAllowTimeZone(int allowTimeZone)
+    {
+        this.allowTimeZone = allowTimeZone;
+    }
+
+    public void setForbidTimeZone(int forbidTimeZone)
+    {
+        this.forbidTimeZone = forbidTimeZone;
+    }
+
+    public void setMappingRegexURL(String mappingRegexURL)
+    {
+        this.mappingRegexURL = mappingRegexURL;
+    }
+}
+</code></pre><p>spring的xml配置文件配置如下：</p>
+<pre><code>&lt;bean id=&quot;intf4OutAccessInterceptor&quot; class=&quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&quot;&gt;
+    &lt;property name=&quot;allowTimeZone&quot; value=&quot;8&quot; /&gt;
+    &lt;property name=&quot;forbidTimeZone&quot; value=&quot;21&quot; /&gt;
+    &lt;property name=&quot;mappingRegexURL&quot; value=&quot;.*/intf4out\.do\?name=*&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean
+    class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;&gt;
+    &lt;property name=&quot;interceptors&quot;&gt;
+        &lt;list&gt;
+            &lt;ref bean=&quot;intf4OutAccessInterceptor&quot; /&gt;
+        &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客，文章/" rel="tag">#博客，文章</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/" rel="next" title="git push error-- [rejected--non-fast-forward] 解决">
+                <i class="fa fa-chevron-left"></i> git push error-- [rejected--non-fast-forward] 解决
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/17/spring/Spring中Filter和Inteceptor的区别-转载/" rel="prev" title="Spring中Filter和Inteceptor的区别-转载">
+                Spring中Filter和Inteceptor的区别-转载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/"
+     data-title="Spring拦截器--HandlerInterceptorAdapter"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -301,6 +608,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/"
+           data-title="Spring拦截器--HandlerInterceptorAdapter" data-url="http://www.jiang-yu.cn/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -320,8 +635,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -398,6 +722,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、认识HandlerInterceptorAdapter"><span class="nav-number">1.</span> <span class="nav-text">一、认识HandlerInterceptorAdapter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、使用Spring-MVC-的拦截器"><span class="nav-number">2.</span> <span class="nav-text">二、使用Spring MVC 的拦截器</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -507,6 +842,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

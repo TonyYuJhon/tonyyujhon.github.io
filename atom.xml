@@ -17,9 +17,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://www.jiang-yu.cn/2016/05/31/hello-world/"/>
-    <id>http://www.jiang-yu.cn/2016/05/31/hello-world/</id>
-    <published>2016-05-31T02:50:00.759Z</published>
+    <link href="http://www.jiang-yu.cn/2016/06/01/hello-world/"/>
+    <id>http://www.jiang-yu.cn/2016/06/01/hello-world/</id>
+    <published>2016-06-01T09:08:41.449Z</published>
     <updated>2016-05-30T03:31:06.000Z</updated>
     
     <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
@@ -39,6 +39,447 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Spring中Filter和Inteceptor的区别-转载</title>
+    <link href="http://www.jiang-yu.cn/2016/04/17/spring/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/"/>
+    <id>http://www.jiang-yu.cn/2016/04/17/spring/Spring中Filter和Inteceptor的区别-转载/</id>
+    <published>2016-04-17T04:34:10.000Z</published>
+    <updated>2016-04-17T04:43:20.000Z</updated>
+    
+    <content type="html">&lt;pre&gt;&lt;code&gt;原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;spring mvc DispatcherServlet详解之interceptor和filter的区别&lt;/p&gt;
+&lt;p&gt;首先我们看一下spring mvc Interceptor的功能及实现：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://wenku.baidu.com/link?url=Mw3GaUhCRMhUFjU8iIDhObQpDcbmmRy_IPeumazg0ppnbmwqFUtLp9kSpuPPpeysf6EnHBLYFeWrbjqMq8BlWKQz_7MSDhGQTVl32fpxCMm&quot; title=&quot;Spring MVC Interceptor Introduce&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wenku.baidu.com/link?url=Mw3GaUhCRMhUFjU8iIDhObQpDcbmmRy_IPeumazg0ppnbmwqFUtLp9kSpuPPpeysf6EnHBLYFeWrbjqMq8BlWKQz_7MSDhGQTVl32fpxCMm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;SpringMVC 中的Interceptor 拦截器也是相当重要和相当有用的，它的主要作用是拦截用户的请求并进行相应的处理，其他的作用比如通过它来进行权限验证，或者是来判断用户是否登陆，日志记录，或者限制时间点访问。&lt;/p&gt;
+&lt;p&gt;SpringMVC 中的Interceptor 拦截请求是通过HandlerInterceptor 来实现的。在SpringMVC 中定义一个Interceptor 非常简单，主要有两种方式，第一种方式是要定义的Interceptor类要实现了Spring 的HandlerInterceptor 接口，或者是这个类继承实现了HandlerInterceptor 接口的类，比如Spring 已经提供的实现了HandlerInterceptor 接口的抽象类HandlerInterceptorAdapter ；第二种方式是实现Spring的WebRequestInterceptor接口，或者是继承实现了WebRequestInterceptor的类。&lt;/p&gt;
+&lt;p&gt;HandlerInterceptor 接口中定义了三个方法，我们就是通过这三个方法来对用户的请求进行拦截处理的。&lt;/p&gt;
+&lt;p&gt;   （1 ）preHandle (HttpServletRequest request, HttpServletResponse response, Object handle) 方法。该方法将在请求处理之前进行调用。SpringMVC 中的Interceptor 是链式的调用的，在一个应用中或者说是在一个请求中可以同时存在多个Interceptor 。每个Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是Interceptor 中的preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求的一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值Boolean 类型的，当它返回为false 时，表示请求结束，后续的Interceptor 和Controller 都不会再执行；当返回值为true 时就会继续调用下一个Interceptor 的preHandle 方法，如果已经是最后一个Interceptor 的时候就会是调用当前请求的Controller 方法。&lt;/p&gt;
+&lt;p&gt;   （2 ）postHandle (HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView) 方法，由preHandle 方法的解释我们知道这个方法包括后面要说到的afterCompletion 方法都只能是在当前所属的Interceptor 的preHandle 方法的返回值为true 时才能被调用。postHandle 方法，顾名思义就是在当前请求进行处理之后，也就是Controller 方法调用之后执行，但是它会在DispatcherServlet 进行视图返回渲染之前被调用，所以我们可以在这个方法中对Controller 处理之后的ModelAndView 对象进行操作。postHandle 方法被调用的方向跟preHandle 是相反的，也就是说先声明的Interceptor 的postHandle 方法反而会后执行，这和Struts2 里面的Interceptor 的执行过程有点类型。Struts2 里面的Interceptor 的执行过程也是链式的，只是在Struts2 里面需要手动调用ActionInvocation 的invoke 方法来触发对下一个Interceptor 或者是Action 的调用，然后每一个Interceptor 中在invoke 方法调用之前的内容都是按照声明顺序执行的，而invoke 方法之后的内容就是反向的。&lt;/p&gt;
+&lt;p&gt;   （3 ）afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex) 方法，该方法也是需要当前对应的Interceptor 的preHandle 方法的返回值为true 时才会执行。顾名思义，该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。这个方法的主要作用是用于进行资源清理工作的。 我们的系统日志的拦截在这个方法中，可以记录日志的相关的参数，检测方法的执行。&lt;/p&gt;
+&lt;p&gt;在这里，我们就有一个疑问了：拦截器和过滤器到底有什么不同呢？&lt;/p&gt;
+&lt;p&gt;首先，我们看一下官方是怎么解释的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public interface HandlerInterceptor
+Workflow interface that allows for customized handler execution chains.
+Applications can register any number of existing or custom interceptors for 
+certain groups of handlers, to add common preprocessing behavior without 
+needing to modify each handler implementation.
+A HandlerInterceptor gets called before the appropriate HandlerAdapter triggers 
+the execution of the handler itself. This mechanism can be used for a large field 
+of preprocessing aspects, e.g. for authorization checks, or common handler behavior
+like locale or theme changes. Its main purpose is to allow for factoring out repetitive 
+handler code.
+
+In an async processing scenario, the handler may be executed in a separate thread while 
+the main thread exits without rendering or invoking the postHandle and afterCompletion 
+callbacks. When concurrent handler execution completes, the request is dispatched 
+back in order to proceed with rendering the model and all methods of this contract 
+are invoked again. For further options and details 
+see org.springframework.web.servlet.AsyncHandlerInterceptor
+
+Typically an interceptor chain is defined per HandlerMapping bean, sharing its granularity. 
+To be able to apply a certain interceptor chain to a group of handlers, one needs to map 
+the desired handlers via one HandlerMapping bean. The interceptors themselves are defined 
+as beans in the application context, referenced by the mapping bean definition 
+via its &amp;quot;interceptors&amp;quot; property (in XML: a &amp;lt;list&amp;gt; of &amp;lt;ref&amp;gt;).
+
+HandlerInterceptor is basically similar to a Servlet 2.3 Filter, but in contrast to the 
+latter it just allows custom pre-processing with the option of prohibiting the execution 
+of the handler itself, and custom post-processing. Filters are more powerful, for example 
+they allow for exchanging the request and response objects that are handed down the chain. 
+Note that a filter gets configured in web.xml, a HandlerInterceptor in the application context.
+
+As a basic guideline, fine-grained handler-related preprocessing tasks are candidates for 
+HandlerInterceptor implementations, especially factored-out common handler code and authorization 
+checks. On the other hand, a Filter is well-suited for request content and view content handling, 
+like multipart forms and GZIP compression. This typically shows when one needs to map the filter 
+to certain content types (e.g. images), or to all requests.
+
+
+public interface Filter
+A filter is an object that performs filtering tasks on either the request to a resource (a servlet or static content),
+ or on the response from a resource, or both. 
+
+Filters perform filtering in the doFilter method. Every Filter has access to a FilterConfig object from which it can 
+obtain its initialization parameters, a reference to the ServletContext which it can use, for example, to load resources
+needed for filtering tasks.
+
+Filters are configured in the deployment descriptor of a web application
+
+Examples that have been identified for this design are
+1) Authentication Filters 
+2) Logging and Auditing Filters 
+3) Image conversion Filters 
+4) Data compression Filters 
+5) Encryption Filters 
+6) Tokenizing Filters 
+7) Filters that trigger resource access events 
+8) XSL/T filters 
+9) Mime-type chain Filter 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;interceptor 和filter的概念相似，但主要不同点有：&lt;/p&gt;
+&lt;p&gt;web应用的过滤请求，仅使用web应用；&lt;/p&gt;
+&lt;p&gt;interceptor应用于特定组别的handler，可以web应用也可以企业应用；&lt;/p&gt;
+&lt;p&gt;从google找到的资料：&lt;a href=&quot;http://www.linkedin.com/groups/what-is-difference-between-interceptor-3983267.S.5844715100472107010&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.linkedin.com/groups/what-is-difference-between-interceptor-3983267.S.5844715100472107010&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Filter is used only in web applications whereas interceptor can be used with web as well as enterprise applications. 
+Life cycle methods of both, also differs. The Interceptor stack fires on requests in a configured package while 
+filters only apply to their mapped URL&amp;apos;s. 
+
+Example: 
+
+A Servlet Filter is used in the web layer only, you can&amp;apos;t use it outside of a 
+web context. Interceptors can be used anywhere. 
+
+The interceptor stack fires on every request. 
+Filters only apply to the urls for which they are defined. 
+
+Filters can be used when you want to modify any request or response parameters like headers. For example you would 
+like to add a response header &amp;quot;Powered By Surya&amp;quot; to each generated response. Instead of adding this header in each 
+resource method you would use a response filter to add this header. 
+
+There are filters on the server side and the client side. 
+
+In Summary: 
+
+Filters: 
+
+(1)Based on Servlet Specification 
+(2)Executes on the pattern matches on the request. 
+(3) Not configurable method calls. 
+
+
+Interceptors: 
+(1)Based on Struts2. 
+(2)Executes for all the request qualifies for a front controller( A Servlet filter ).And can be configured to 
+execute additional interceptor for a particular action execution. 
+(3)Methods in the Interceptors can be configured whether to execute or not by means of excludemethods or includeMethods
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://www.jiang-yu.cn/categories/blog/"/>
+    
+    
+      <category term="博客，文章" scheme="http://www.jiang-yu.cn/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring拦截器--HandlerInterceptorAdapter</title>
+    <link href="http://www.jiang-yu.cn/2016/04/17/spring/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/"/>
+    <id>http://www.jiang-yu.cn/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/</id>
+    <published>2016-04-17T03:49:35.000Z</published>
+    <updated>2016-04-17T04:29:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;a href=&quot;#一、认识HandlerInterceptorAdapter&quot; class=&quot;headerlink&quot; title=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;/a&gt;一、认识HandlerInterceptorAdapter&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/*
+  * Copyright 2002-2012 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.springframework.web.servlet.handler;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * Abstract adapter class for the HandlerInterceptor interface,
+ * for simplified implementation of pre-only/post-only interceptors.
+ *
+ * @author Juergen Hoeller
+ * @since 05.12.2003
+ */
+public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor {
+
+    /**
+     * This implementation always returns {@code true}.
+     */
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception {
+        return true;
+    }
+
+    /**
+     * This implementation is empty.
+     */
+    @Override
+    public void postHandle(
+            HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
+            throws Exception {
+    }
+
+    /**
+     * This implementation is empty.
+     */
+    @Override
+    public void afterCompletion(
+            HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+            throws Exception {
+    }
+
+    /**
+     * This implementation is empty.
+     */
+    @Override
+    public void afterConcurrentHandlingStarted(
+            HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;emsp;&amp;emsp;可以看出，这个抽象类提供的四个方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;preHandle  预处理–一般实现编码的控制和安全性控制&lt;/li&gt;
+&lt;li&gt;postHandle 后处理–可以修改Spring中的ModelAndView,使得跳转到不同的View&lt;/li&gt;
+&lt;li&gt;afterCompletion 返回处理–通过判断ex的值可以进行异常日志记录和处理&lt;/li&gt;
+&lt;li&gt;afterConcurrentHandlingStarted&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;二、使用Spring-MVC-的拦截器&quot;&gt;&lt;a href=&quot;#二、使用Spring-MVC-的拦截器&quot; class=&quot;headerlink&quot; title=&quot;二、使用Spring MVC 的拦截器&quot;&gt;&lt;/a&gt;二、使用Spring MVC 的拦截器&lt;/h1&gt;&lt;p&gt;例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。&lt;br&gt;    package com.jifenn.ja.web.common.interceptor;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import java.util.Calendar;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+
+/**
+ * &amp;lt;p&amp;gt;功能描述&amp;lt;/br&amp;gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &amp;lt;/p&amp;gt;
+ * 
+ * @className Intf4OutCallTimeInterceptor
+ * @author jiangyu
+ * @date 2016年4月17日 下午12:18:25
+ * @version v1.0
+ */
+public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter
+{
+    /** 允许时间段 **/
+    private int allowTimeZone;
+
+    /** 禁止时间段 **/
+    private int forbidTimeZone;
+
+    /** 需要拦截的路径 **/
+    private String mappingRegexURL;
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception
+    {
+        String url = request.getRequestURL().toString();
+        if (mappingRegexURL == null || url.matches(mappingRegexURL))
+        {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            if (hour &amp;lt; allowTimeZone || hour &amp;gt; forbidTimeZone)
+            {
+                request.setAttribute(&amp;quot;msg&amp;quot;, &amp;quot;接口开放时间：8：00-21：00&amp;quot;);
+                request.getRequestDispatcher(&amp;quot;/err.jsp&amp;quot;).forward(request, response);
+                return false;
+            }
+            return true;
+        }
+        return true;
+    }
+
+    public void setAllowTimeZone(int allowTimeZone)
+    {
+        this.allowTimeZone = allowTimeZone;
+    }
+
+    public void setForbidTimeZone(int forbidTimeZone)
+    {
+        this.forbidTimeZone = forbidTimeZone;
+    }
+
+    public void setMappingRegexURL(String mappingRegexURL)
+    {
+        this.mappingRegexURL = mappingRegexURL;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;spring的xml配置文件配置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;bean id=&amp;quot;intf4OutAccessInterceptor&amp;quot; class=&amp;quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;allowTimeZone&amp;quot; value=&amp;quot;8&amp;quot; /&amp;gt;
+    &amp;lt;property name=&amp;quot;forbidTimeZone&amp;quot; value=&amp;quot;21&amp;quot; /&amp;gt;
+    &amp;lt;property name=&amp;quot;mappingRegexURL&amp;quot; value=&amp;quot;.*/intf4out\.do\?name=*&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&amp;lt;bean
+    class=&amp;quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;interceptors&amp;quot;&amp;gt;
+        &amp;lt;list&amp;gt;
+            &amp;lt;ref bean=&amp;quot;intf4OutAccessInterceptor&amp;quot; /&amp;gt;
+        &amp;lt;/list&amp;gt;
+    &amp;lt;/property&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://www.jiang-yu.cn/categories/blog/"/>
+    
+    
+      <category term="博客，文章" scheme="http://www.jiang-yu.cn/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git push error-- [rejected--non-fast-forward] 解决</title>
+    <link href="http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/"/>
+    <id>http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/</id>
+    <published>2016-04-03T05:47:51.000Z</published>
+    <updated>2016-04-03T06:17:11.000Z</updated>
+    
+    <content type="html">&lt;p&gt;在使用Eclipse插件egit将本地代码push到github时提示错误：&lt;br&gt;reject non - fast -forward&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;刚开始工作时，许多公司都还是喜欢用SVN来管理代码，但是作为一名“程序猿”，Git已经成为一项必备的技能，之前一直都对git有些冷落，最近由于有点想法–自己搞了点业余的项目练手，自己搭建SVN需要服务器（服务器~money,haha），所以就将代码搬到Git上。&lt;/p&gt;
+&lt;p&gt;废话了这么多，回到正轨吧！首先，遇到上面的问题也是比较常见的，这里给出一种解决方法步骤（附图如下）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setp 1 :fetch 远程github中的工程
+
+setp 2 :merge
+
+setp 3 :push
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/4BhMdAh.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用Eclipse插件egit将本地代码push到github时提示错误：&lt;br&gt;reject non - fast -forward&lt;br&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://www.jiang-yu.cn/categories/blog/"/>
+    
+    
+      <category term="博客，知识" scheme="http://www.jiang-yu.cn/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>classpath,你真的理解了么？</title>
+    <link href="http://www.jiang-yu.cn/2016/04/01/spring/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/"/>
+    <id>http://www.jiang-yu.cn/2016/04/01/spring/classpath-你真的理解了么？/</id>
+    <published>2016-04-01T10:08:58.000Z</published>
+    <updated>2016-04-01T10:35:43.000Z</updated>
+    
+    <content type="html">&lt;p&gt;CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###CLASSPATH是什么？&lt;br&gt;在Java环境中，设置classpath的目的就是在于告诉Java执行环境（JVM）在哪个地方可以找到需要执行的Java程序所需要的类或者包。&lt;/p&gt;
+&lt;p&gt;配置classpath其实就类似于c/c++中的#include&amp;lt;*.h&amp;gt;,就是将相应的要加载类引入。&lt;/p&gt;
+&lt;p&gt;在Java Web项目中，classpath是指WEB-INF文件夹下的classes目录，将web应用发布到服务器时，会将src下所有的.java文件编译成字节码文件（*.class）和静态资源文件放入到WEB-INF目录下classes文件夹下。&lt;/p&gt;
+&lt;p&gt;###classpath和classpath*的区别&lt;br&gt;classpath: 只会搜索当前项目中的class路径查找所需要的文件&lt;/p&gt;
+&lt;p&gt;classpath*:不仅会搜索当前项目中的class路基查找所需要的文件，同时还会扫描所有的jar文件，加载所需要的文件。&lt;/p&gt;
+&lt;p&gt;说明白点就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;classpath:会从第一个classpath中加载所需要的文件，而classpath*：会从所有的classpath中加载符合条件的文件；&lt;/li&gt;
+&lt;li&gt;如果需要加载的资源不再当前的classLoader的路径中，用classpath：是获取不到该文件的（比如说是jar包中的配置文件），这种情况下就要使用classpath*:来加载相应的资源文件了；&lt;/li&gt;
+&lt;li&gt;用classpath*:需要遍历所有的classpath,所以加载速度是很慢的，如果是在性能要求很高的系统中，还是不太建议这样去设计代码结构。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因为最近在搭建项目的时候，遇到了这个问题，情景是这样的：搭建的web工程分成了几个模块，根据maven来管理项目，模块的包都打成jar包，最终呈现出来的是通过一个maven web工程打出一个war包，war包中是由几个模块打成的jar包组成，在项目启动的时候发现找不到jar包中的配置文件，因为我的配置就是classpath,后面网上查了一下资料，发现可以使用classpath*来实现。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://www.jiang-yu.cn/categories/blog/"/>
+    
+    
+      <category term="博客，知识" scheme="http://www.jiang-yu.cn/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebSocket初识</title>
+    <link href="http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket%E5%88%9D%E8%AF%86/"/>
+    <id>http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket初识/</id>
+    <published>2016-03-31T00:57:06.000Z</published>
+    <updated>2016-03-31T05:38:31.000Z</updated>
+    
+    <content type="html">&lt;p&gt;  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;  WebSocket是为解决客户端与服务端实时通信而产生的技术。其本质是先通过HTTP/HTTPS协议进行握手后创建一个用于交换数据的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。&lt;/p&gt;
+&lt;p&gt;###一、WebSocket和Http协议的认识&lt;br&gt;首先Http协议是不支持长连接的，早期的HTTP1.0是没有所谓的keep-alive的，也就是只是一对一的通信，直到HTTP1.1才有keep-alive,就是把多个请求合并成一个，最终也只是几个请求对应几个响应，服务端不能主动的推送消息给客户端，而WebSocket其实是对HTTP协议的一种补充。&lt;/p&gt;
+&lt;p&gt;###二、WebSocket和Http协议的区别&lt;br&gt;A.相对于Http协议来说，WebSocket是一个&lt;strong&gt;持久化&lt;/strong&gt;的协议，如果还是不是很清楚，可以看一下图片对比：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/i9c4TkV.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;从上图可以看出来，HTTP的生命周期是通过Request决定的，在HTTP 1.0中，每次通信只是一个request对应一个response，为了弥补这个问题，在HTTP 1.1协议中，增加了一个头部keep-alive，这个是保证连接保持的功能，虽然keep-alive能够保证同时发送多个请求，但是这其中有一个不变的规则就是有多少个请求（request）就有多少个响应(response),并且response是不会主动的向客户端推送消息的，是一种被动的方式。另外HTTP协议是一种无状态的协议，就是一旦浏览器关闭所有的信息都没有了。&lt;/p&gt;
+&lt;p&gt;B.WebSocket协议是一种基于Html5的新的协议，但同时它也是基于Http协议的。&lt;/p&gt;
+&lt;p&gt; 在WebSocket出现之前，为了实现实时信息的传递都是通过HTTP长轮询（Long Poll）的方式，或者ajax轮询的方式，或者其他的特殊方式。这两种方式都是服务器端被动的等待客户端来询问是否有新的信息，如果有新的信息来就处理，但是也有一些区别：&lt;/p&gt;
+&lt;p&gt; Long Poll:客户端发起请求，如果服务端没有信息返回，客户端就一直等待服务端的响应，是一种阻塞式的请求方式。&lt;/p&gt;
+&lt;p&gt; Ajax Pool：每隔一段时间就去请求一些服务器端，看是否有新的消息要处理。&lt;/p&gt;
+&lt;p&gt; 从这两种方式来看，实现实时信息通信都非常耗资源。而WebSocket可以很好的利用有限的资源来实现上面的效果，先看下webSocket的请求模式：&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/eRT4Mc6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 从上面的webSocket协议传输数据方式来看，只要每次建立一个HTTP连接，就可以不断的进行信息传输，并且不会再次发送HTTP连接了，也就是实现了正真意义上的长连接。&lt;/p&gt;
+&lt;p&gt;###总结&lt;br&gt; websocket约定了一个通信的规范，通过一个握手的机制，客户端和服务器之间能建立一个类似tcp的连接，从而方便它们之间的通信。在websocket出现之前，web交互一般是基于http协议的短连接或者长连接。websocket是一种全新的协议，不属于http无状态协议，协议名为”ws”，这意味着一个websocket连接地址会是这样的写法：ws://**。websocket协议本质上是一个基于tcp的协议。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】&lt;br&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://www.jiang-yu.cn/categories/blog/"/>
+    
+    
+      <category term="博客，知识" scheme="http://www.jiang-yu.cn/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mvc annotation-driven配置错误</title>
+    <link href="http://www.jiang-yu.cn/2016/03/30/spring/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/"/>
+    <id>http://www.jiang-yu.cn/2016/03/30/spring/mvc annotation-driven配置错误/</id>
+    <published>2016-03-30T03:43:22.000Z</published>
+    <updated>2016-03-30T03:51:56.000Z</updated>
+    
+    <content type="html">&lt;p&gt;代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;   今天用Spring MVC 做业余项目的时候，发现要自己手动的注册一个转换器（String字符串的乱码问题），发现在自定义StringHttpMessageConverter的时候（如下配置）&lt;/p&gt;
+&lt;p&gt;   &lt;img src=&quot;http://i.imgur.com/zPMWBEK.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;   发现项目启动的时候报错：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;org.xml.sax.SAXParseException; lineNumber: 28; columnNumber: 26; cvc-complex-type.2.1: 元素 &amp;apos;mvc:annotation-driven&amp;apos; 必须不含字符或元素信息项 [子级], 因为该类型的内容类型为空。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   根据错误提示信息可以定位到就是上面的配置项出现了问题，但是这种方式网上都有许多人说是可行的，自己感觉特别的疑惑，最后问度娘找到了一丝线索–spring 配置的xsd版本太低了，这个是老版本中规定的规则。&lt;/p&gt;
+&lt;p&gt;   带着这么一个提示，我看了一下我自己spring使用的是4.1版本，但是spring的配置文件中使用的mvc命名空间中xsd的版本竟然是3.0版本.&lt;/p&gt;
+&lt;p&gt;   果然，将3.0替换成4.0后项目能够正常启动了，String乱码问题也得到了解决。（如下图所示修改）&lt;br&gt;   &lt;img src=&quot;http://i.imgur.com/VtwCEbM.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;提醒&quot;&gt;&lt;a href=&quot;#提醒&quot; class=&quot;headerlink&quot; title=&quot;提醒&quot;&gt;&lt;/a&gt;提醒&lt;/h3&gt;&lt;p&gt;   其实这也源于我们都喜欢拷代码，导致有些细节的问题没有注意到，这里也是给自己一个提醒吧！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://www.jiang-yu.cn/categories/blog/"/>
+    
+    
+      <category term="博客，文章" scheme="http://www.jiang-yu.cn/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%87%E7%AB%A0/"/>
     
   </entry>
   

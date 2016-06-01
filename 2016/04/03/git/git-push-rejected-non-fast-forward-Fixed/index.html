@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Victory Loves Preparation" />
+  <meta name="keywords" content="博客，知识," />
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="Walk steps step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://www.jiang-yu.cn/categories/index.html">
+<meta name="description" content="在使用Eclipse插件egit将本地代码push到github时提示错误：reject non - fast -forward">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git push error-- [rejected--non-fast-forward] 解决">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="Walk steps step by step">
-<meta property="og:updated_time" content="2016-05-30T09:07:03.000Z">
+<meta property="og:description" content="在使用Eclipse插件egit将本地代码push到github时提示错误：reject non - fast -forward">
+<meta property="og:image" content="http://i.imgur.com/4BhMdAh.png">
+<meta property="og:updated_time" content="2016-04-03T06:17:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Walk steps step by step">
+<meta name="twitter:title" content="git push error-- [rejected--non-fast-forward] 解决">
+<meta name="twitter:description" content="在使用Eclipse插件egit将本地代码push到github时提示错误：reject non - fast -forward">
+<meta name="twitter:image" content="http://i.imgur.com/4BhMdAh.png">
 
 
 
@@ -113,13 +115,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    分类 | JhonYu's Blog
-  
-</title>
+  <title> git push error-- [rejected--non-fast-forward] 解决 | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +146,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,16 +276,179 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 1 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git push error-- [rejected--non-fast-forward] 解决
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T13:47:51+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">6</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在使用Eclipse插件egit将本地代码push到github时提示错误：<br>reject non - fast -forward<br><a id="more"></a><br>刚开始工作时，许多公司都还是喜欢用SVN来管理代码，但是作为一名“程序猿”，Git已经成为一项必备的技能，之前一直都对git有些冷落，最近由于有点想法–自己搞了点业余的项目练手，自己搭建SVN需要服务器（服务器~money,haha），所以就将代码搬到Git上。</p>
+<p>废话了这么多，回到正轨吧！首先，遇到上面的问题也是比较常见的，这里给出一种解决方法步骤（附图如下）：</p>
+<pre><code>setp 1 :fetch 远程github中的工程
+
+setp 2 :merge
+
+setp 3 :push
+</code></pre><p>如下图：</p>
+<p><img src="http://i.imgur.com/4BhMdAh.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客，知识/" rel="tag">#博客，知识</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/01/spring/classpath-你真的理解了么？/" rel="next" title="classpath,你真的理解了么？">
+                <i class="fa fa-chevron-left"></i> classpath,你真的理解了么？
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/" rel="prev" title="Spring拦截器--HandlerInterceptorAdapter">
+                Spring拦截器--HandlerInterceptorAdapter <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/"
+     data-title="git push error-- [rejected--non-fast-forward] 解决"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -301,6 +460,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/"
+           data-title="git push error-- [rejected--non-fast-forward] 解决" data-url="http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -320,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -398,6 +574,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -507,6 +694,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
