@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <url>http://www.jiang-yu.cn/2016/06/02/angular/%E5%88%9D%E8%AF%86AngularJS/</url>
+      <content type="html"><![CDATA[<h1 id="初识AngularJS"><a href="#初识AngularJS" class="headerlink" title="初识AngularJS"></a>初识AngularJS</h1><h3 id="一、AngularJS和传统JavaScript的区别："><a href="#一、AngularJS和传统JavaScript的区别：" class="headerlink" title="一、AngularJS和传统JavaScript的区别："></a>一、AngularJS和传统JavaScript的区别：</h3><ol>
+<li>传统的JavaScript要求开发者对整个DOM结构都有所了解，并强迫我们在JavaScript代码中加入复杂的控制逻辑，用以操作外部DOM，而AngularJS则通过原生的Model-View-Controller（MVC，模型-视图-控制器）功能增强了HTML;</li>
+<li>使用AngularJS，开发者可以将页面的一部分封装为一个应用，并不强迫整个页面都使用AngularJS进行开发;</li>
+<li>AngularJS团队非常重视框架文件压缩后的大小，这样使用它就不会付出太多的额外代价;<h3 id="二、使用AngularJS的第一个Web应用："><a href="#二、使用AngularJS的第一个Web应用：" class="headerlink" title="二、使用AngularJS的第一个Web应用："></a>二、使用AngularJS的第一个Web应用：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">        &lt;html ng-app&gt;</span><br><span class="line">        &lt;head&gt;</span><br><span class="line">            &lt;title&gt;Simple app &lt;/title&gt;</span><br><span class="line">            &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js&quot;  &lt;/script&gt; </span><br><span class="line">        &lt;/head&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">             &lt;input ng-model=&quot;name&quot; type=&quot;text&quot; placeholder=&quot;Your name&quot;&gt;</span><br><span class="line">            &lt;h1&gt;Hello &#123;&#123; name &#125;&#125;&lt;/h1&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">        &lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="三、AngularJS中的数据绑定："><a href="#三、AngularJS中的数据绑定：" class="headerlink" title="三、AngularJS中的数据绑定："></a>三、AngularJS中的数据绑定：</h3><p>　　AngularJS创建实时模板来代替视图，而不是将数据合并进模板之后更新DOM。任何一个独立的视图组件中的值都是动态替换的。这个功能可以说是AngularJS中最重要的功能之一，这也是可以只用10行代码并且没有任何JavaScript的情况下写出一个Hello World.<br>　　a.　DOM元素上要明确设置ng-app属性<br>ng-app属性声明所有被其包含的内容都属于这个AngularJS应用，也就是说可以在Web应用中嵌套AngularJS应用的原因。<br>注意：只用被具有ng-app属性的DOM元素包含的元素才会受到AngularJS的影响。<br>　　b.　ng-app相当于main方法  </p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Spring中Filter和Inteceptor的区别-转载]]></title>
       <url>http://www.jiang-yu.cn/2016/04/17/spring/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/</url>
       <content type="html"><![CDATA[<pre><code>原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
