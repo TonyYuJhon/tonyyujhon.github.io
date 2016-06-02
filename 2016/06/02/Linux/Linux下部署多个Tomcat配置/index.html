@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Victory Loves Preparation" />
+  <meta name="keywords" content="Linux，Tomcat," />
 
 
 
@@ -86,15 +86,16 @@
 
 
 
-<meta name="description" content="Walk steps step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JhonYu's Blog">
-<meta property="og:url" content="http://www.jiang-yu.cn/tags/博客，文章/index.html">
+<meta name="description" content="方式一：全局配置　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：12345678910111213CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/binexport JAVA_HOME CLASSPATHCAT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下部署多个Tomcat的配置">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/06/02/Linux/Linux下部署多个Tomcat配置/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="Walk steps step by step">
+<meta property="og:description" content="方式一：全局配置　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：12345678910111213CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/binexport JAVA_HOME CLASSPATHCAT">
+<meta property="og:updated_time" content="2016-06-02T14:30:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JhonYu's Blog">
-<meta name="twitter:description" content="Walk steps step by step">
+<meta name="twitter:title" content="Linux下部署多个Tomcat的配置">
+<meta name="twitter:description" content="方式一：全局配置　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：12345678910111213CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/binexport JAVA_HOME CLASSPATHCAT">
 
 
 
@@ -112,7 +113,7 @@
   };
 </script>
 
-  <title> 标签: 博客，文章 | JhonYu's Blog </title>
+  <title> Linux下部署多个Tomcat的配置 | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,102 +272,181 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        博客，文章
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/17/spring/Spring中Filter和Inteceptor的区别-转载/" itemprop="url">
-              
-                <span itemprop="name">Spring中Filter和Inteceptor的区别-转载</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-17T12:34:10+08:00"
-              content="2016-04-17" >
-          04-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/" itemprop="url">
-              
-                <span itemprop="name">Spring拦截器--HandlerInterceptorAdapter</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-17T11:49:35+08:00"
-              content="2016-04-17" >
-          04-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/30/spring/mvc annotation-driven配置错误/" itemprop="url">
-              
-                <span itemprop="name">mvc annotation-driven配置错误</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-30T11:43:22+08:00"
-              content="2016-03-30" >
-          03-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux下部署多个Tomcat的配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T21:58:51+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/Linux/Linux下部署多个Tomcat配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Linux/Linux下部署多个Tomcat配置/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="方式一：全局配置"><a href="#方式一：全局配置" class="headerlink" title="方式一：全局配置"></a>方式一：全局配置</h3><p>　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin</span><br><span class="line">export JAVA_HOME CLASSPATH</span><br><span class="line">CATALINA_BASE=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">CATALINA_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export CATALINA_BASE CATALINA_HOME</span><br><span class="line"></span><br><span class="line">CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai</span><br><span class="line">CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export CATALINA_2_BASE CATALINA_2_HOME</span><br><span class="line">TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export TOMCAT_HOME</span><br><span class="line">TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export TOMCAT_2_HOME</span><br></pre></td></tr></table></figure></p>
+<h3 id="方式二：临时配置方式"><a href="#方式二：临时配置方式" class="headerlink" title="方式二：临时配置方式"></a>方式二：临时配置方式</h3><p>　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：</p>
+<ul>
+<li><p>修改server.xml配置和第一个不同的启动、关闭监听端口。修改后示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Server port=&quot;8050&quot; shutdown=&quot;SHUTDOWN&quot;&gt;　 端口：8049-&gt;8050</span><br><span class="line">&lt;!-- Define a non-SSL HTTP/1.1 Connector on port 8080 --&gt;</span><br><span class="line">&lt;Connector port=&quot;9080&quot; maxHttpHeaderSize=&quot;8192&quot;　</span><br><span class="line">     maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; maxSpareThreads=&quot;75&quot;</span><br><span class="line">     enableLookups=&quot;false&quot; redirectPort=&quot;8443&quot; acceptCount=&quot;100&quot;</span><br><span class="line">     connectionTimeout=&quot;20000&quot; disableUploadTimeout=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改bin下的startup.sh和shutdown.sh。修改后的示例如下：（同样的修改）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib</span><br><span class="line">export CATALINA_HOME=$CATALINA_2_HOME 利用profile中第二组设置</span><br><span class="line">export CATALINA_BASE=$CATALINA_2_BASE 利用profile中第二组设置</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="步骤三、重新加载一下资源文件"><a href="#步骤三、重新加载一下资源文件" class="headerlink" title="步骤三、重新加载一下资源文件"></a>步骤三、重新加载一下资源文件</h3><p>　　修改完毕后，source /etc/profile。<br>　　可能是因为修改了profile文件的缘故</p>
+<p>　　注意：如果是每个用户的配置，就需要到用户的目录下：/home/用户/下 ，执行ls -a 找出.bash_profile 修改以上东西即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux，Tomcat/" rel="tag">#Linux，Tomcat</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/02/AngularJS/初识AngularJS/" rel="next" title="初识AngularJS">
+                <i class="fa fa-chevron-left"></i> 初识AngularJS
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/02/Linux/Linux下部署多个Tomcat配置/"
+     data-title="Linux下部署多个Tomcat的配置"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/06/02/Linux/Linux下部署多个Tomcat配置/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -374,6 +454,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/02/Linux/Linux下部署多个Tomcat配置/"
+           data-title="Linux下部署多个Tomcat的配置" data-url="http://www.jiang-yu.cn/2016/06/02/Linux/Linux下部署多个Tomcat配置/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -393,11 +481,20 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/uploads/avatar02.png"
                alt="Jiang Yu" />
           <p class="site-author-name" itemprop="name">Jiang Yu</p>
           <p class="site-description motion-element" itemprop="description">Walk steps step by step</p>
@@ -405,7 +502,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -413,7 +510,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -422,7 +519,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -471,6 +568,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一：全局配置"><span class="nav-number">1.</span> <span class="nav-text">方式一：全局配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二：临时配置方式"><span class="nav-number">2.</span> <span class="nav-text">方式二：临时配置方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤三、重新加载一下资源文件"><span class="nav-number">3.</span> <span class="nav-text">步骤三、重新加载一下资源文件</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -580,6 +688,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

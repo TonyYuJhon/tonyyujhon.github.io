@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-06-02T13:29:51.000Z</updated>
+  <updated>2016-06-02T14:30:27.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -16,9 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux下部署多个Tomcat的配置</title>
+    <link href="http://www.jiang-yu.cn/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/"/>
+    <id>http://www.jiang-yu.cn/2016/06/02/Linux/Linux下部署多个Tomcat配置/</id>
+    <published>2016-06-02T13:58:51.000Z</published>
+    <updated>2016-06-02T14:30:27.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;方式一：全局配置&quot;&gt;&lt;a href=&quot;#方式一：全局配置&quot; class=&quot;headerlink&quot; title=&quot;方式一：全局配置&quot;&gt;&lt;/a&gt;方式一：全局配置&lt;/h3&gt;&lt;p&gt;　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME CLASSPATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_BASE=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_BASE CATALINA_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_2_BASE CATALINA_2_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_2_HOME&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;方式二：临时配置方式&quot;&gt;&lt;a href=&quot;#方式二：临时配置方式&quot; class=&quot;headerlink&quot; title=&quot;方式二：临时配置方式&quot;&gt;&lt;/a&gt;方式二：临时配置方式&lt;/h3&gt;&lt;p&gt;　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;修改server.xml配置和第一个不同的启动、关闭监听端口。修改后示例如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;Server port=&amp;quot;8050&amp;quot; shutdown=&amp;quot;SHUTDOWN&amp;quot;&amp;gt;　 端口：8049-&amp;gt;8050&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- Define a non-SSL HTTP/1.1 Connector on port 8080 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;Connector port=&amp;quot;9080&amp;quot; maxHttpHeaderSize=&amp;quot;8192&amp;quot;　&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     maxThreads=&amp;quot;150&amp;quot; minSpareThreads=&amp;quot;25&amp;quot; maxSpareThreads=&amp;quot;75&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     enableLookups=&amp;quot;false&amp;quot; redirectPort=&amp;quot;8443&amp;quot; acceptCount=&amp;quot;100&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     connectionTimeout=&amp;quot;20000&amp;quot; disableUploadTimeout=&amp;quot;true&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改bin下的startup.sh和shutdown.sh。修改后的示例如下：（同样的修改）&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME=/usr/jdk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$PATH:$JAVA_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CLASSPATH=$JAVA_HOME/lib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_HOME=$CATALINA_2_HOME 利用profile中第二组设置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_BASE=$CATALINA_2_BASE 利用profile中第二组设置&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;步骤三、重新加载一下资源文件&quot;&gt;&lt;a href=&quot;#步骤三、重新加载一下资源文件&quot; class=&quot;headerlink&quot; title=&quot;步骤三、重新加载一下资源文件&quot;&gt;&lt;/a&gt;步骤三、重新加载一下资源文件&lt;/h3&gt;&lt;p&gt;　　修改完毕后，source /etc/profile。&lt;br&gt;　　可能是因为修改了profile文件的缘故&lt;/p&gt;
+&lt;p&gt;　　注意：如果是每个用户的配置，就需要到用户的目录下：/home/用户/下 ，执行ls -a 找出.bash_profile 修改以上东西即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;方式一：全局配置&quot;&gt;&lt;a href=&quot;#方式一：全局配置&quot; class=&quot;headerlink&quot; title=&quot;方式一：全局配置&quot;&gt;&lt;/a&gt;方式一：全局配置&lt;/h3&gt;&lt;p&gt;　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux，Tomcat" scheme="http://www.jiang-yu.cn/tags/Linux%EF%BC%8CTomcat/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初识AngularJS</title>
-    <link href="http://www.jiang-yu.cn/2016/06/02/angular/%E5%88%9D%E8%AF%86AngularJS/"/>
-    <id>http://www.jiang-yu.cn/2016/06/02/angular/初识AngularJS/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/02/AngularJS/%E5%88%9D%E8%AF%86AngularJS/"/>
+    <id>http://www.jiang-yu.cn/2016/06/02/AngularJS/初识AngularJS/</id>
     <published>2016-06-02T13:47:51.000Z</published>
     <updated>2016-06-02T13:29:51.000Z</updated>
     
@@ -47,8 +81,8 @@
   
   <entry>
     <title>Spring中Filter和Inteceptor的区别-转载</title>
-    <link href="http://www.jiang-yu.cn/2016/04/17/spring/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/"/>
-    <id>http://www.jiang-yu.cn/2016/04/17/spring/Spring中Filter和Inteceptor的区别-转载/</id>
+    <link href="http://www.jiang-yu.cn/2016/04/17/Spring/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/"/>
+    <id>http://www.jiang-yu.cn/2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/</id>
     <published>2016-04-17T04:34:10.000Z</published>
     <updated>2016-06-02T13:34:36.000Z</updated>
     
@@ -178,8 +212,8 @@ execute additional interceptor for a particular action execution.
   
   <entry>
     <title>Spring拦截器--HandlerInterceptorAdapter</title>
-    <link href="http://www.jiang-yu.cn/2016/04/17/spring/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/"/>
-    <id>http://www.jiang-yu.cn/2016/04/17/spring/Spring拦截器-HandlerInterceptorAdapter/</id>
+    <link href="http://www.jiang-yu.cn/2016/04/17/Spring/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/"/>
+    <id>http://www.jiang-yu.cn/2016/04/17/Spring/Spring拦截器-HandlerInterceptorAdapter/</id>
     <published>2016-04-17T03:49:35.000Z</published>
     <updated>2016-06-02T13:34:08.000Z</updated>
     
@@ -359,8 +393,8 @@ public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter
   
   <entry>
     <title>git push error-- [rejected--non-fast-forward] 解决</title>
-    <link href="http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/"/>
-    <id>http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/</id>
+    <link href="http://www.jiang-yu.cn/2016/04/03/Git/git-push-rejected-non-fast-forward-Fixed/"/>
+    <id>http://www.jiang-yu.cn/2016/04/03/Git/git-push-rejected-non-fast-forward-Fixed/</id>
     <published>2016-04-03T05:47:51.000Z</published>
     <updated>2016-06-02T13:32:23.000Z</updated>
     
@@ -390,8 +424,8 @@ setp 3 :push
   
   <entry>
     <title>classpath,你真的理解了么？</title>
-    <link href="http://www.jiang-yu.cn/2016/04/01/spring/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/"/>
-    <id>http://www.jiang-yu.cn/2016/04/01/spring/classpath-你真的理解了么？/</id>
+    <link href="http://www.jiang-yu.cn/2016/04/01/Spring/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/"/>
+    <id>http://www.jiang-yu.cn/2016/04/01/Spring/classpath-你真的理解了么？/</id>
     <published>2016-04-01T10:08:58.000Z</published>
     <updated>2016-06-02T13:32:55.000Z</updated>
     
@@ -425,8 +459,8 @@ setp 3 :push
   
   <entry>
     <title>WebSocket初识</title>
-    <link href="http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket%E5%88%9D%E8%AF%86/"/>
-    <id>http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket初识/</id>
+    <link href="http://www.jiang-yu.cn/2016/03/31/Websocket/WebSocket%E5%88%9D%E8%AF%86/"/>
+    <id>http://www.jiang-yu.cn/2016/03/31/Websocket/WebSocket初识/</id>
     <published>2016-03-31T00:57:06.000Z</published>
     <updated>2016-06-02T13:35:06.000Z</updated>
     
@@ -459,8 +493,8 @@ setp 3 :push
   
   <entry>
     <title>mvc annotation-driven配置错误</title>
-    <link href="http://www.jiang-yu.cn/2016/03/30/spring/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/"/>
-    <id>http://www.jiang-yu.cn/2016/03/30/spring/mvc annotation-driven配置错误/</id>
+    <link href="http://www.jiang-yu.cn/2016/03/30/Spring/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/"/>
+    <id>http://www.jiang-yu.cn/2016/03/30/Spring/mvc annotation-driven配置错误/</id>
     <published>2016-03-30T03:43:22.000Z</published>
     <updated>2016-06-02T13:33:39.000Z</updated>
     

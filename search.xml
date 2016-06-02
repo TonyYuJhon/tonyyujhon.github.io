@@ -4,8 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[Linux下部署多个Tomcat的配置]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<h3 id="方式一：全局配置"><a href="#方式一：全局配置" class="headerlink" title="方式一：全局配置"></a>方式一：全局配置</h3><p>　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin</span><br><span class="line">export JAVA_HOME CLASSPATH</span><br><span class="line">CATALINA_BASE=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">CATALINA_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export CATALINA_BASE CATALINA_HOME</span><br><span class="line"></span><br><span class="line">CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai</span><br><span class="line">CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export CATALINA_2_BASE CATALINA_2_HOME</span><br><span class="line">TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export TOMCAT_HOME</span><br><span class="line">TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export TOMCAT_2_HOME</span><br></pre></td></tr></table></figure></p>
+<h3 id="方式二：临时配置方式"><a href="#方式二：临时配置方式" class="headerlink" title="方式二：临时配置方式"></a>方式二：临时配置方式</h3><p>　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：</p>
+<ul>
+<li><p>修改server.xml配置和第一个不同的启动、关闭监听端口。修改后示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Server port=&quot;8050&quot; shutdown=&quot;SHUTDOWN&quot;&gt;　 端口：8049-&gt;8050</span><br><span class="line">&lt;!-- Define a non-SSL HTTP/1.1 Connector on port 8080 --&gt;</span><br><span class="line">&lt;Connector port=&quot;9080&quot; maxHttpHeaderSize=&quot;8192&quot;　</span><br><span class="line">     maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; maxSpareThreads=&quot;75&quot;</span><br><span class="line">     enableLookups=&quot;false&quot; redirectPort=&quot;8443&quot; acceptCount=&quot;100&quot;</span><br><span class="line">     connectionTimeout=&quot;20000&quot; disableUploadTimeout=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改bin下的startup.sh和shutdown.sh。修改后的示例如下：（同样的修改）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib</span><br><span class="line">export CATALINA_HOME=$CATALINA_2_HOME 利用profile中第二组设置</span><br><span class="line">export CATALINA_BASE=$CATALINA_2_BASE 利用profile中第二组设置</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="步骤三、重新加载一下资源文件"><a href="#步骤三、重新加载一下资源文件" class="headerlink" title="步骤三、重新加载一下资源文件"></a>步骤三、重新加载一下资源文件</h3><p>　　修改完毕后，source /etc/profile。<br>　　可能是因为修改了profile文件的缘故</p>
+<p>　　注意：如果是每个用户的配置，就需要到用户的目录下：/home/用户/下 ，执行ls -a 找出.bash_profile 修改以上东西即可。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[初识AngularJS]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/02/angular/%E5%88%9D%E8%AF%86AngularJS/</url>
+      <url>http://www.jiang-yu.cn/2016/06/02/AngularJS/%E5%88%9D%E8%AF%86AngularJS/</url>
       <content type="html"><![CDATA[<p>　　MVC只是手段，终极目标是模块化和复用<br><a id="more"></a></p>
 <h3 id="一、AngularJS和传统JavaScript的区别："><a href="#一、AngularJS和传统JavaScript的区别：" class="headerlink" title="一、AngularJS和传统JavaScript的区别："></a>一、AngularJS和传统JavaScript的区别：</h3><ol>
 <li>传统的JavaScript要求开发者对整个DOM结构都有所了解，并强迫我们在JavaScript代码中加入复杂的控制逻辑，用以操作外部DOM，而AngularJS则通过原生的Model-View-Controller（MVC，模型-视图-控制器）功能增强了HTML;</li>
@@ -19,7 +37,7 @@
     
     <entry>
       <title><![CDATA[Spring中Filter和Inteceptor的区别-转载]]></title>
-      <url>http://www.jiang-yu.cn/2016/04/17/spring/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/</url>
+      <url>http://www.jiang-yu.cn/2016/04/17/Spring/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/</url>
       <content type="html"><![CDATA[<pre><code>原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
 </code></pre><a id="more"></a>
 <p>spring mvc DispatcherServlet详解之interceptor和filter的区别</p>
@@ -131,7 +149,7 @@ execute additional interceptor for a particular action execution.
     
     <entry>
       <title><![CDATA[Spring拦截器--HandlerInterceptorAdapter]]></title>
-      <url>http://www.jiang-yu.cn/2016/04/17/spring/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/</url>
+      <url>http://www.jiang-yu.cn/2016/04/17/Spring/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。</p>
 <a id="more"></a>
 <h1 id="一、认识HandlerInterceptorAdapter"><a href="#一、认识HandlerInterceptorAdapter" class="headerlink" title="一、认识HandlerInterceptorAdapter"></a>一、认识HandlerInterceptorAdapter</h1><p>&emsp;&emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】</p>
@@ -296,7 +314,7 @@ public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter
     
     <entry>
       <title><![CDATA[git push error-- [rejected--non-fast-forward] 解决]]></title>
-      <url>http://www.jiang-yu.cn/2016/04/03/git/git-push-rejected-non-fast-forward-Fixed/</url>
+      <url>http://www.jiang-yu.cn/2016/04/03/Git/git-push-rejected-non-fast-forward-Fixed/</url>
       <content type="html"><![CDATA[<p>在使用Eclipse插件egit将本地代码push到github时提示错误：<br>reject non - fast -forward<br><a id="more"></a><br>刚开始工作时，许多公司都还是喜欢用SVN来管理代码，但是作为一名“程序猿”，Git已经成为一项必备的技能，之前一直都对git有些冷落，最近由于有点想法–自己搞了点业余的项目练手，自己搭建SVN需要服务器（服务器~money,haha），所以就将代码搬到Git上。</p>
 <p>废话了这么多，回到正轨吧！首先，遇到上面的问题也是比较常见的，这里给出一种解决方法步骤（附图如下）：</p>
 <pre><code>setp 1 :fetch 远程github中的工程
@@ -311,7 +329,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[classpath,你真的理解了么？]]></title>
-      <url>http://www.jiang-yu.cn/2016/04/01/spring/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/</url>
+      <url>http://www.jiang-yu.cn/2016/04/01/Spring/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/</url>
       <content type="html"><![CDATA[<p>CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。<br><a id="more"></a></p>
 <p>###CLASSPATH是什么？<br>在Java环境中，设置classpath的目的就是在于告诉Java执行环境（JVM）在哪个地方可以找到需要执行的Java程序所需要的类或者包。</p>
 <p>配置classpath其实就类似于c/c++中的#include&lt;*.h&gt;,就是将相应的要加载类引入。</p>
@@ -330,7 +348,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[WebSocket初识]]></title>
-      <url>http://www.jiang-yu.cn/2016/03/31/websocket/WebSocket%E5%88%9D%E8%AF%86/</url>
+      <url>http://www.jiang-yu.cn/2016/03/31/Websocket/WebSocket%E5%88%9D%E8%AF%86/</url>
       <content type="html"><![CDATA[<p>  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】<br><a id="more"></a><br>  WebSocket是为解决客户端与服务端实时通信而产生的技术。其本质是先通过HTTP/HTTPS协议进行握手后创建一个用于交换数据的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。</p>
 <p>###一、WebSocket和Http协议的认识<br>首先Http协议是不支持长连接的，早期的HTTP1.0是没有所谓的keep-alive的，也就是只是一对一的通信，直到HTTP1.1才有keep-alive,就是把多个请求合并成一个，最终也只是几个请求对应几个响应，服务端不能主动的推送消息给客户端，而WebSocket其实是对HTTP协议的一种补充。</p>
 <p>###二、WebSocket和Http协议的区别<br>A.相对于Http协议来说，WebSocket是一个<strong>持久化</strong>的协议，如果还是不是很清楚，可以看一下图片对比：<br><img src="http://i.imgur.com/i9c4TkV.png" alt=""></p>
@@ -348,7 +366,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[mvc annotation-driven配置错误]]></title>
-      <url>http://www.jiang-yu.cn/2016/03/30/spring/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/</url>
+      <url>http://www.jiang-yu.cn/2016/03/30/Spring/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/</url>
       <content type="html"><![CDATA[<p>代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。</p>
 <a id="more"></a>
 <p>   今天用Spring MVC 做业余项目的时候，发现要自己手动的注册一个转换器（String字符串的乱码问题），发现在自定义StringHttpMessageConverter的时候（如下配置）</p>
