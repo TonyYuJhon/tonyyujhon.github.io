@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-06-02T13:20:08.000Z</updated>
+  <updated>2016-06-02T13:29:51.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -16,13 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>初识AngularJS</title>
     <link href="http://www.jiang-yu.cn/2016/06/02/angular/%E5%88%9D%E8%AF%86AngularJS/"/>
     <id>http://www.jiang-yu.cn/2016/06/02/angular/初识AngularJS/</id>
-    <published>2016-06-02T13:24:44.560Z</published>
-    <updated>2016-06-02T13:20:08.000Z</updated>
+    <published>2016-06-02T13:47:51.000Z</published>
+    <updated>2016-06-02T13:29:51.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;初识AngularJS&quot;&gt;&lt;a href=&quot;#初识AngularJS&quot; class=&quot;headerlink&quot; title=&quot;初识AngularJS&quot;&gt;&lt;/a&gt;初识AngularJS&lt;/h1&gt;&lt;h3 id=&quot;一、AngularJS和传统JavaScript的区别：&quot;&gt;&lt;a href=&quot;#一、AngularJS和传统JavaScript的区别：&quot; class=&quot;headerlink&quot; title=&quot;一、AngularJS和传统JavaScript的区别：&quot;&gt;&lt;/a&gt;一、AngularJS和传统JavaScript的区别：&lt;/h3&gt;&lt;ol&gt;
+    <content type="html">&lt;p&gt;　　MVC只是手段，终极目标是模块化和复用&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一、AngularJS和传统JavaScript的区别：&quot;&gt;&lt;a href=&quot;#一、AngularJS和传统JavaScript的区别：&quot; class=&quot;headerlink&quot; title=&quot;一、AngularJS和传统JavaScript的区别：&quot;&gt;&lt;/a&gt;一、AngularJS和传统JavaScript的区别：&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;传统的JavaScript要求开发者对整个DOM结构都有所了解，并强迫我们在JavaScript代码中加入复杂的控制逻辑，用以操作外部DOM，而AngularJS则通过原生的Model-View-Controller（MVC，模型-视图-控制器）功能增强了HTML;&lt;/li&gt;
 &lt;li&gt;使用AngularJS，开发者可以将页面的一部分封装为一个应用，并不强迫整个页面都使用AngularJS进行开发;&lt;/li&gt;
 &lt;li&gt;AngularJS团队非常重视框架文件压缩后的大小，这样使用它就不会付出太多的额外代价;&lt;h3 id=&quot;二、使用AngularJS的第一个Web应用：&quot;&gt;&lt;a href=&quot;#二、使用AngularJS的第一个Web应用：&quot; class=&quot;headerlink&quot; title=&quot;二、使用AngularJS的第一个Web应用：&quot;&gt;&lt;/a&gt;二、使用AngularJS的第一个Web应用：&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;html ng-app&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;title&amp;gt;Simple app &amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js&amp;quot;  &amp;lt;/script&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &amp;lt;input ng-model=&amp;quot;name&amp;quot; type=&amp;quot;text&amp;quot; placeholder=&amp;quot;Your name&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;h1&amp;gt;Hello &amp;#123;&amp;#123; name &amp;#125;&amp;#125;&amp;lt;/h1&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -33,10 +34,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;初识AngularJS&quot;&gt;&lt;a href=&quot;#初识AngularJS&quot; class=&quot;headerlink&quot; title=&quot;初识AngularJS&quot;&gt;&lt;/a&gt;初识AngularJS&lt;/h1&gt;&lt;h3 id=&quot;一、AngularJS和传统JavaScript的区别：&quot;
+      &lt;p&gt;　　MVC只是手段，终极目标是模块化和复用&lt;br&gt;
     
     </summary>
     
+      <category term="AngularJS" scheme="http://www.jiang-yu.cn/categories/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://www.jiang-yu.cn/tags/AngularJS/"/>
     
   </entry>
   
