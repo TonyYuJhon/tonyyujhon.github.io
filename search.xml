@@ -4,9 +4,97 @@
   
     
     <entry>
+      <title><![CDATA[Markdown语法整理]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/03/Markdown/MarkDown%E8%AF%AD%E6%B3%95%E8%AE%A4%E8%AF%86/</url>
+      <content type="html"><![CDATA[<p>　　作为一名合格的程序猿，写文档是必需的，选择一款合适的编辑器就如同一个好的助手，Markdown就是一个好的选择，语法简洁，逼格高~~，如果你经常玩GitHub，就会知道我们用于编写说明文档，并且以“README.MD”的文件名保存在软件的目录下面就是基于Markdwon语法的。下面就来学习一下Markdown的基本语法吧！<br><a id="more"></a></p>
+<h1 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a>Markdown 语法</h1><p>[TOC]<br>　　下面将从三个层次来展开讲解，首先是常用层次，就是我们平时用的最多的并且要牢牢记住的（就如写代码的第一步：基本语法的熟悉），然后是对于一些不常用的，但是有可能会用到的标记我们必须要有印象，用到的时候能够快速的回想起来，最后就是了解层次了，这些标记基本上很少用到，只是在特定的情况下可能用到，并且能够通过查阅资料使用即可。</p>
+<h3 id="一、常用层次"><a href="#一、常用层次" class="headerlink" title="一、常用层次"></a>一、常用层次</h3><ul>
+<li><strong>标题</strong></li>
+</ul>
+<blockquote>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+--- 次阶标题
+=== 高阶标题
+</code></pre><p><strong>注意</strong>：</p>
+<ul>
+<li><h1 id="和标题之间最好加一个空格"><a href="#和标题之间最好加一个空格" class="headerlink" title="和标题之间最好加一个空格"></a>和标题之间最好加一个空格</h1></li>
+<li><h1 id="代表标题的层级，最多为六级"><a href="#代表标题的层级，最多为六级" class="headerlink" title="代表标题的层级，最多为六级"></a>代表标题的层级，最多为六级</h1></li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>目录</strong><blockquote>
+<p>　　在文档的标题都是按照Markdown语法来编写的，一般在一级标题下面使用 [TOC] 后会自动的生成层级目录。</p>
+</blockquote>
+</li>
+<li><p>标签</p>
+<blockquote>
+<p> 标签使用如下标记：<br> 　　标签:Markdown<br> 　　Tags:Markdown</p>
+</blockquote>
+</li>
+<li><p><strong>引用</strong></p>
+<blockquote>
+<p>使用 &gt; 表示引用， &gt;&gt; 表示引用里面再套一层引用，依次类推</p>
+</blockquote>
+</li>
+<li><p><strong>图片</strong></p>
+<blockquote>
+<p>语法：![Beautiful](<a href="http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;fm=21&amp;gp=0.jpg" target="_blank" rel="external">http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;fm=21&amp;gp=0.jpg</a> “测试图片”)<br>实例：<img src="http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;fm=21&amp;gp=0.jpg" alt="Beautiful" title="测试图片"></p>
+</blockquote>
+</li>
+<li><p><strong>代码</strong></p>
+<blockquote>
+<p>使用<code>code content</code>,英文状态下的键盘的左上角~键即可输出”`”,连接三个中间输入代码，最后还是三个结束,如果是显示的是行内代码就用”``”</p>
+</blockquote>
+</li>
+<li><p><strong>链接</strong></p>
+<blockquote>
+<p>语法：这就是我们常用的地址：[Baidu](www.baidu.com”百度一下，你就知道” )<br>实例：这就是我们常用的地址：<a href="www.baidu.com&quot;百度一下，你就知道&quot;">Baidu</a></p>
+</blockquote>
+</li>
+<li><p><strong>列表</strong></p>
+<blockquote>
+<p>语法：使用 1. 2. 3. 表示有序列表，使用 * 或 - 或 + 表示无序列表<br>实例：<br>1.第一<br>2.第二</p>
+</blockquote>
+</li>
+<li><p><strong>字体</strong></p>
+<blockquote>
+<p>语法：使用 <strong> 或者 _ 表示粗体；\</strong>字体<strong>  _字体_<br>实例：</strong>字体**  <em>字体</em></p>
+</blockquote>
+</li>
+<li><p><strong>转义</strong></p>
+<blockquote>
+<p>转义使用反斜杠 \</p>
+</blockquote>
+</li>
+<li><p><strong>空格</strong></p>
+<blockquote>
+<p>在输入法切换到全角模式，输入空格即可</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="二、印象层次"><a href="#二、印象层次" class="headerlink" title="二、印象层次"></a>二、印象层次</h3><ul>
+<li><p><strong>删除线</strong></p>
+<blockquote>
+<p>语法： ~~ 表示删除线; \<del>中划线</del><br>实例：<del>中划线</del></p>
+</blockquote>
+</li>
+<li><p><strong>标注</strong>（略）</p>
+</li>
+</ul>
+<h3 id="三、了解层次"><a href="#三、了解层次" class="headerlink" title="三、了解层次"></a>三、了解层次</h3><ul>
+<li><strong>流程图</strong>（略）</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux下部署多个Tomcat的配置]]></title>
       <url>http://www.jiang-yu.cn/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<h3 id="方式一：全局配置"><a href="#方式一：全局配置" class="headerlink" title="方式一：全局配置"></a>方式一：全局配置</h3><p>　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin</span><br><span class="line">export JAVA_HOME CLASSPATH</span><br><span class="line">CATALINA_BASE=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">CATALINA_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export CATALINA_BASE CATALINA_HOME</span><br><span class="line"></span><br><span class="line">CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai</span><br><span class="line">CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export CATALINA_2_BASE CATALINA_2_HOME</span><br><span class="line">TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export TOMCAT_HOME</span><br><span class="line">TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export TOMCAT_2_HOME</span><br></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<p>部署java项目时，经常需要配置多个Tomcat来运行多个应用，本文就简单的介绍一下如何来配置<br><a id="more"></a></p>
+<h3 id="方式一：全局配置"><a href="#方式一：全局配置" class="headerlink" title="方式一：全局配置"></a>方式一：全局配置</h3><p>　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin</span><br><span class="line">export JAVA_HOME CLASSPATH</span><br><span class="line">CATALINA_BASE=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">CATALINA_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export CATALINA_BASE CATALINA_HOME</span><br><span class="line"></span><br><span class="line">CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai</span><br><span class="line">CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export CATALINA_2_BASE CATALINA_2_HOME</span><br><span class="line">TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export TOMCAT_HOME</span><br><span class="line">TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export TOMCAT_2_HOME</span><br></pre></td></tr></table></figure></p>
 <h3 id="方式二：临时配置方式"><a href="#方式二：临时配置方式" class="headerlink" title="方式二：临时配置方式"></a>方式二：临时配置方式</h3><p>　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：</p>
 <ul>
 <li><p>修改server.xml配置和第一个不同的启动、关闭监听端口。修改后示例如下：</p>

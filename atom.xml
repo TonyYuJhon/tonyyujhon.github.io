@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-06-02T14:30:27.000Z</updated>
+  <updated>2016-06-03T16:34:13.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -16,13 +16,117 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Markdown语法整理</title>
+    <link href="http://www.jiang-yu.cn/2016/06/03/Markdown/MarkDown%E8%AF%AD%E6%B3%95%E8%AE%A4%E8%AF%86/"/>
+    <id>http://www.jiang-yu.cn/2016/06/03/Markdown/MarkDown语法认识/</id>
+    <published>2016-06-03T00:08:58.000Z</published>
+    <updated>2016-06-03T16:34:13.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　作为一名合格的程序猿，写文档是必需的，选择一款合适的编辑器就如同一个好的助手，Markdown就是一个好的选择，语法简洁，逼格高~~，如果你经常玩GitHub，就会知道我们用于编写说明文档，并且以“README.MD”的文件名保存在软件的目录下面就是基于Markdwon语法的。下面就来学习一下Markdown的基本语法吧！&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Markdown-语法&quot;&gt;&lt;a href=&quot;#Markdown-语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法&quot;&gt;&lt;/a&gt;Markdown 语法&lt;/h1&gt;&lt;p&gt;[TOC]&lt;br&gt;　　下面将从三个层次来展开讲解，首先是常用层次，就是我们平时用的最多的并且要牢牢记住的（就如写代码的第一步：基本语法的熟悉），然后是对于一些不常用的，但是有可能会用到的标记我们必须要有印象，用到的时候能够快速的回想起来，最后就是了解层次了，这些标记基本上很少用到，只是在特定的情况下可能用到，并且能够通过查阅资料使用即可。&lt;/p&gt;
+&lt;h3 id=&quot;一、常用层次&quot;&gt;&lt;a href=&quot;#一、常用层次&quot; class=&quot;headerlink&quot; title=&quot;一、常用层次&quot;&gt;&lt;/a&gt;一、常用层次&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;标题&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+--- 次阶标题
+=== 高阶标题
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h1 id=&quot;和标题之间最好加一个空格&quot;&gt;&lt;a href=&quot;#和标题之间最好加一个空格&quot; class=&quot;headerlink&quot; title=&quot;和标题之间最好加一个空格&quot;&gt;&lt;/a&gt;和标题之间最好加一个空格&lt;/h1&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h1 id=&quot;代表标题的层级，最多为六级&quot;&gt;&lt;a href=&quot;#代表标题的层级，最多为六级&quot; class=&quot;headerlink&quot; title=&quot;代表标题的层级，最多为六级&quot;&gt;&lt;/a&gt;代表标题的层级，最多为六级&lt;/h1&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;目录&lt;/strong&gt;&lt;blockquote&gt;
+&lt;p&gt;　　在文档的标题都是按照Markdown语法来编写的，一般在一级标题下面使用 [TOC] 后会自动的生成层级目录。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;标签&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; 标签使用如下标记：&lt;br&gt; 　　标签:Markdown&lt;br&gt; 　　Tags:Markdown&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;引用&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 &amp;gt; 表示引用， &amp;gt;&amp;gt; 表示引用里面再套一层引用，依次类推&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;图片&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法：![Beautiful](&lt;a href=&quot;http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;amp;fm=21&amp;amp;gp=0.jpg&lt;/a&gt; “测试图片”)&lt;br&gt;实例：&lt;img src=&quot;http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; alt=&quot;Beautiful&quot; title=&quot;测试图片&quot;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;代码&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用&lt;code&gt;code content&lt;/code&gt;,英文状态下的键盘的左上角~键即可输出”`”,连接三个中间输入代码，最后还是三个结束,如果是显示的是行内代码就用”``”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;链接&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法：这就是我们常用的地址：[Baidu](www.baidu.com”百度一下，你就知道” )&lt;br&gt;实例：这就是我们常用的地址：&lt;a href=&quot;www.baidu.com&amp;quot;百度一下，你就知道&amp;quot;&quot;&gt;Baidu&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;列表&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法：使用 1. 2. 3. 表示有序列表，使用 * 或 - 或 + 表示无序列表&lt;br&gt;实例：&lt;br&gt;1.第一&lt;br&gt;2.第二&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;字体&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法：使用 &lt;strong&gt; 或者 _ 表示粗体；\&lt;/strong&gt;字体&lt;strong&gt;  _字体_&lt;br&gt;实例：&lt;/strong&gt;字体**  &lt;em&gt;字体&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;转义&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;转义使用反斜杠 \&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;空格&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在输入法切换到全角模式，输入空格即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;二、印象层次&quot;&gt;&lt;a href=&quot;#二、印象层次&quot; class=&quot;headerlink&quot; title=&quot;二、印象层次&quot;&gt;&lt;/a&gt;二、印象层次&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;删除线&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语法： ~~ 表示删除线; \&lt;del&gt;中划线&lt;/del&gt;&lt;br&gt;实例：&lt;del&gt;中划线&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;标注&lt;/strong&gt;（略）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;三、了解层次&quot;&gt;&lt;a href=&quot;#三、了解层次&quot; class=&quot;headerlink&quot; title=&quot;三、了解层次&quot;&gt;&lt;/a&gt;三、了解层次&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;流程图&lt;/strong&gt;（略）&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　作为一名合格的程序猿，写文档是必需的，选择一款合适的编辑器就如同一个好的助手，Markdown就是一个好的选择，语法简洁，逼格高~~，如果你经常玩GitHub，就会知道我们用于编写说明文档，并且以“README.MD”的文件名保存在软件的目录下面就是基于Markdwon语法的。下面就来学习一下Markdown的基本语法吧！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://www.jiang-yu.cn/categories/Markdown/"/>
+    
+    
+      <category term="Markdown syntax" scheme="http://www.jiang-yu.cn/tags/Markdown-syntax/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux下部署多个Tomcat的配置</title>
     <link href="http://www.jiang-yu.cn/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/"/>
     <id>http://www.jiang-yu.cn/2016/06/02/Linux/Linux下部署多个Tomcat配置/</id>
     <published>2016-06-02T13:58:51.000Z</published>
-    <updated>2016-06-02T14:30:27.000Z</updated>
+    <updated>2016-06-03T16:36:42.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;方式一：全局配置&quot;&gt;&lt;a href=&quot;#方式一：全局配置&quot; class=&quot;headerlink&quot; title=&quot;方式一：全局配置&quot;&gt;&lt;/a&gt;方式一：全局配置&lt;/h3&gt;&lt;p&gt;　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME CLASSPATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_BASE=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_BASE CATALINA_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_2_BASE CATALINA_2_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_2_HOME&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;部署java项目时，经常需要配置多个Tomcat来运行多个应用，本文就简单的介绍一下如何来配置&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;方式一：全局配置&quot;&gt;&lt;a href=&quot;#方式一：全局配置&quot; class=&quot;headerlink&quot; title=&quot;方式一：全局配置&quot;&gt;&lt;/a&gt;方式一：全局配置&lt;/h3&gt;&lt;p&gt;　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME CLASSPATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_BASE=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_BASE CATALINA_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_2_BASE CATALINA_2_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_2_HOME&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;方式二：临时配置方式&quot;&gt;&lt;a href=&quot;#方式二：临时配置方式&quot; class=&quot;headerlink&quot; title=&quot;方式二：临时配置方式&quot;&gt;&lt;/a&gt;方式二：临时配置方式&lt;/h3&gt;&lt;p&gt;　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;修改server.xml配置和第一个不同的启动、关闭监听端口。修改后示例如下：&lt;/p&gt;
@@ -38,7 +142,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;方式一：全局配置&quot;&gt;&lt;a href=&quot;#方式一：全局配置&quot; class=&quot;headerlink&quot; title=&quot;方式一：全局配置&quot;&gt;&lt;/a&gt;方式一：全局配置&lt;/h3&gt;&lt;p&gt;　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变
+      &lt;p&gt;部署java项目时，经常需要配置多个Tomcat来运行多个应用，本文就简单的介绍一下如何来配置&lt;br&gt;
     
     </summary>
     
