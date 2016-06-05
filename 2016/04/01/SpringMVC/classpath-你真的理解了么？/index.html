@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Filter,Inteceptor," />
+  <meta name="keywords" content="classpath," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html">
+<meta name="description" content="CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring中Filter和Inteceptor的区别-转载">
-<meta property="og:url" content="http://www.jiang-yu.cn/2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/index.html">
+<meta property="og:title" content="classpath,你真的理解了么？">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/04/01/SpringMVC/classpath-你真的理解了么？/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html">
-<meta property="og:updated_time" content="2016-06-02T13:34:36.000Z">
+<meta property="og:description" content="CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。">
+<meta property="og:updated_time" content="2016-06-02T13:32:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring中Filter和Inteceptor的区别-转载">
-<meta name="twitter:description" content="原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html">
+<meta name="twitter:title" content="classpath,你真的理解了么？">
+<meta name="twitter:description" content="CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。">
 
 
 
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> Spring中Filter和Inteceptor的区别-转载 | JhonYu's Blog </title>
+  <title> classpath,你真的理解了么？ | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -293,7 +293,7 @@
             
             
               
-                Spring中Filter和Inteceptor的区别-转载
+                classpath,你真的理解了么？
               
             
           </h1>
@@ -305,8 +305,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T12:34:10+08:00" content="2016-04-17">
-              2016-04-17
+            <time itemprop="dateCreated" datetime="2016-04-01T18:08:58+08:00" content="2016-04-01">
+              2016-04-01
             </time>
           </span>
 
@@ -335,8 +335,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/" itemprop="commentsCount"></span>
+                <a href="/2016/04/01/SpringMVC/classpath-你真的理解了么？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/01/SpringMVC/classpath-你真的理解了么？/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -363,113 +363,20 @@
       
 
       
-        <pre><code>原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
-</code></pre><a id="more"></a>
-<p>spring mvc DispatcherServlet详解之interceptor和filter的区别</p>
-<p>首先我们看一下spring mvc Interceptor的功能及实现：</p>
-<p><a href="http://wenku.baidu.com/link?url=Mw3GaUhCRMhUFjU8iIDhObQpDcbmmRy_IPeumazg0ppnbmwqFUtLp9kSpuPPpeysf6EnHBLYFeWrbjqMq8BlWKQz_7MSDhGQTVl32fpxCMm" title="Spring MVC Interceptor Introduce" target="_blank" rel="external">http://wenku.baidu.com/link?url=Mw3GaUhCRMhUFjU8iIDhObQpDcbmmRy_IPeumazg0ppnbmwqFUtLp9kSpuPPpeysf6EnHBLYFeWrbjqMq8BlWKQz_7MSDhGQTVl32fpxCMm</a></p>
-<p>SpringMVC 中的Interceptor 拦截器也是相当重要和相当有用的，它的主要作用是拦截用户的请求并进行相应的处理，其他的作用比如通过它来进行权限验证，或者是来判断用户是否登陆，日志记录，或者限制时间点访问。</p>
-<p>SpringMVC 中的Interceptor 拦截请求是通过HandlerInterceptor 来实现的。在SpringMVC 中定义一个Interceptor 非常简单，主要有两种方式，第一种方式是要定义的Interceptor类要实现了Spring 的HandlerInterceptor 接口，或者是这个类继承实现了HandlerInterceptor 接口的类，比如Spring 已经提供的实现了HandlerInterceptor 接口的抽象类HandlerInterceptorAdapter ；第二种方式是实现Spring的WebRequestInterceptor接口，或者是继承实现了WebRequestInterceptor的类。</p>
-<p>HandlerInterceptor 接口中定义了三个方法，我们就是通过这三个方法来对用户的请求进行拦截处理的。</p>
-<p>   （1 ）preHandle (HttpServletRequest request, HttpServletResponse response, Object handle) 方法。该方法将在请求处理之前进行调用。SpringMVC 中的Interceptor 是链式的调用的，在一个应用中或者说是在一个请求中可以同时存在多个Interceptor 。每个Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是Interceptor 中的preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求的一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值Boolean 类型的，当它返回为false 时，表示请求结束，后续的Interceptor 和Controller 都不会再执行；当返回值为true 时就会继续调用下一个Interceptor 的preHandle 方法，如果已经是最后一个Interceptor 的时候就会是调用当前请求的Controller 方法。</p>
-<p>   （2 ）postHandle (HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView) 方法，由preHandle 方法的解释我们知道这个方法包括后面要说到的afterCompletion 方法都只能是在当前所属的Interceptor 的preHandle 方法的返回值为true 时才能被调用。postHandle 方法，顾名思义就是在当前请求进行处理之后，也就是Controller 方法调用之后执行，但是它会在DispatcherServlet 进行视图返回渲染之前被调用，所以我们可以在这个方法中对Controller 处理之后的ModelAndView 对象进行操作。postHandle 方法被调用的方向跟preHandle 是相反的，也就是说先声明的Interceptor 的postHandle 方法反而会后执行，这和Struts2 里面的Interceptor 的执行过程有点类型。Struts2 里面的Interceptor 的执行过程也是链式的，只是在Struts2 里面需要手动调用ActionInvocation 的invoke 方法来触发对下一个Interceptor 或者是Action 的调用，然后每一个Interceptor 中在invoke 方法调用之前的内容都是按照声明顺序执行的，而invoke 方法之后的内容就是反向的。</p>
-<p>   （3 ）afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex) 方法，该方法也是需要当前对应的Interceptor 的preHandle 方法的返回值为true 时才会执行。顾名思义，该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。这个方法的主要作用是用于进行资源清理工作的。 我们的系统日志的拦截在这个方法中，可以记录日志的相关的参数，检测方法的执行。</p>
-<p>在这里，我们就有一个疑问了：拦截器和过滤器到底有什么不同呢？</p>
-<p>首先，我们看一下官方是怎么解释的：</p>
-<pre><code>public interface HandlerInterceptor
-Workflow interface that allows for customized handler execution chains.
-Applications can register any number of existing or custom interceptors for 
-certain groups of handlers, to add common preprocessing behavior without 
-needing to modify each handler implementation.
-A HandlerInterceptor gets called before the appropriate HandlerAdapter triggers 
-the execution of the handler itself. This mechanism can be used for a large field 
-of preprocessing aspects, e.g. for authorization checks, or common handler behavior
-like locale or theme changes. Its main purpose is to allow for factoring out repetitive 
-handler code.
+        <p>CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。<br><a id="more"></a></p>
+<p>###CLASSPATH是什么？<br>在Java环境中，设置classpath的目的就是在于告诉Java执行环境（JVM）在哪个地方可以找到需要执行的Java程序所需要的类或者包。</p>
+<p>配置classpath其实就类似于c/c++中的#include&lt;*.h&gt;,就是将相应的要加载类引入。</p>
+<p>在Java Web项目中，classpath是指WEB-INF文件夹下的classes目录，将web应用发布到服务器时，会将src下所有的.java文件编译成字节码文件（*.class）和静态资源文件放入到WEB-INF目录下classes文件夹下。</p>
+<p>###classpath和classpath*的区别<br>classpath: 只会搜索当前项目中的class路径查找所需要的文件</p>
+<p>classpath*:不仅会搜索当前项目中的class路基查找所需要的文件，同时还会扫描所有的jar文件，加载所需要的文件。</p>
+<p>说明白点就是：</p>
+<ol>
+<li>classpath:会从第一个classpath中加载所需要的文件，而classpath*：会从所有的classpath中加载符合条件的文件；</li>
+<li>如果需要加载的资源不再当前的classLoader的路径中，用classpath：是获取不到该文件的（比如说是jar包中的配置文件），这种情况下就要使用classpath*:来加载相应的资源文件了；</li>
+<li>用classpath*:需要遍历所有的classpath,所以加载速度是很慢的，如果是在性能要求很高的系统中，还是不太建议这样去设计代码结构。</li>
+</ol>
+<p>因为最近在搭建项目的时候，遇到了这个问题，情景是这样的：搭建的web工程分成了几个模块，根据maven来管理项目，模块的包都打成jar包，最终呈现出来的是通过一个maven web工程打出一个war包，war包中是由几个模块打成的jar包组成，在项目启动的时候发现找不到jar包中的配置文件，因为我的配置就是classpath,后面网上查了一下资料，发现可以使用classpath*来实现。</p>
 
-In an async processing scenario, the handler may be executed in a separate thread while 
-the main thread exits without rendering or invoking the postHandle and afterCompletion 
-callbacks. When concurrent handler execution completes, the request is dispatched 
-back in order to proceed with rendering the model and all methods of this contract 
-are invoked again. For further options and details 
-see org.springframework.web.servlet.AsyncHandlerInterceptor
-
-Typically an interceptor chain is defined per HandlerMapping bean, sharing its granularity. 
-To be able to apply a certain interceptor chain to a group of handlers, one needs to map 
-the desired handlers via one HandlerMapping bean. The interceptors themselves are defined 
-as beans in the application context, referenced by the mapping bean definition 
-via its &quot;interceptors&quot; property (in XML: a &lt;list&gt; of &lt;ref&gt;).
-
-HandlerInterceptor is basically similar to a Servlet 2.3 Filter, but in contrast to the 
-latter it just allows custom pre-processing with the option of prohibiting the execution 
-of the handler itself, and custom post-processing. Filters are more powerful, for example 
-they allow for exchanging the request and response objects that are handed down the chain. 
-Note that a filter gets configured in web.xml, a HandlerInterceptor in the application context.
-
-As a basic guideline, fine-grained handler-related preprocessing tasks are candidates for 
-HandlerInterceptor implementations, especially factored-out common handler code and authorization 
-checks. On the other hand, a Filter is well-suited for request content and view content handling, 
-like multipart forms and GZIP compression. This typically shows when one needs to map the filter 
-to certain content types (e.g. images), or to all requests.
-
-
-public interface Filter
-A filter is an object that performs filtering tasks on either the request to a resource (a servlet or static content),
- or on the response from a resource, or both. 
-
-Filters perform filtering in the doFilter method. Every Filter has access to a FilterConfig object from which it can 
-obtain its initialization parameters, a reference to the ServletContext which it can use, for example, to load resources
-needed for filtering tasks.
-
-Filters are configured in the deployment descriptor of a web application
-
-Examples that have been identified for this design are
-1) Authentication Filters 
-2) Logging and Auditing Filters 
-3) Image conversion Filters 
-4) Data compression Filters 
-5) Encryption Filters 
-6) Tokenizing Filters 
-7) Filters that trigger resource access events 
-8) XSL/T filters 
-9) Mime-type chain Filter 
-</code></pre><p>interceptor 和filter的概念相似，但主要不同点有：</p>
-<p>web应用的过滤请求，仅使用web应用；</p>
-<p>interceptor应用于特定组别的handler，可以web应用也可以企业应用；</p>
-<p>从google找到的资料：<a href="http://www.linkedin.com/groups/what-is-difference-between-interceptor-3983267.S.5844715100472107010" target="_blank" rel="external">http://www.linkedin.com/groups/what-is-difference-between-interceptor-3983267.S.5844715100472107010</a></p>
-<pre><code>Filter is used only in web applications whereas interceptor can be used with web as well as enterprise applications. 
-Life cycle methods of both, also differs. The Interceptor stack fires on requests in a configured package while 
-filters only apply to their mapped URL&apos;s. 
-
-Example: 
-
-A Servlet Filter is used in the web layer only, you can&apos;t use it outside of a 
-web context. Interceptors can be used anywhere. 
-
-The interceptor stack fires on every request. 
-Filters only apply to the urls for which they are defined. 
-
-Filters can be used when you want to modify any request or response parameters like headers. For example you would 
-like to add a response header &quot;Powered By Surya&quot; to each generated response. Instead of adding this header in each 
-resource method you would use a response filter to add this header. 
-
-There are filters on the server side and the client side. 
-
-In Summary: 
-
-Filters: 
-
-(1)Based on Servlet Specification 
-(2)Executes on the pattern matches on the request. 
-(3) Not configurable method calls. 
-
-
-Interceptors: 
-(1)Based on Struts2. 
-(2)Executes for all the request qualifies for a front controller( A Servlet filter ).And can be configured to 
-execute additional interceptor for a particular action execution. 
-(3)Methods in the Interceptors can be configured whether to execute or not by means of excludemethods or includeMethods
-</code></pre>
       
     </div>
 
@@ -490,9 +397,7 @@ execute additional interceptor for a particular action execution.
       
         <div class="post-tags">
           
-            <a href="/tags/Filter/" rel="tag">#Filter</a>
-          
-            <a href="/tags/Inteceptor/" rel="tag">#Inteceptor</a>
+            <a href="/tags/classpath/" rel="tag">#classpath</a>
           
         </div>
       
@@ -501,16 +406,16 @@ execute additional interceptor for a particular action execution.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/17/Spring/Spring拦截器-HandlerInterceptorAdapter/" rel="next" title="Spring拦截器--HandlerInterceptorAdapter">
-                <i class="fa fa-chevron-left"></i> Spring拦截器--HandlerInterceptorAdapter
+              <a href="/2016/03/31/Socket/WebScoket和Http比较/" rel="next" title="WebSocket初识">
+                <i class="fa fa-chevron-left"></i> WebSocket初识
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/02/AngularJS/初识AngularJS/" rel="prev" title="初识AngularJS">
-                初识AngularJS <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/03/Git/git-push-rejected-non-fast-forward-Fixed/" rel="prev" title="git push error-- [rejected--non-fast-forward] 解决">
+                git push error-- [rejected--non-fast-forward] 解决 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -526,10 +431,10 @@ execute additional interceptor for a particular action execution.
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/"
-     data-title="Spring中Filter和Inteceptor的区别-转载"
+        <div class="ds-share flat" data-thread-key="2016/04/01/SpringMVC/classpath-你真的理解了么？/"
+     data-title="classpath,你真的理解了么？"
      data-content=""
-     data-url="http://www.jiang-yu.cn/2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/">
+     data-url="http://www.jiang-yu.cn/2016/04/01/SpringMVC/classpath-你真的理解了么？/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -556,8 +461,8 @@ execute additional interceptor for a particular action execution.
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/"
-           data-title="Spring中Filter和Inteceptor的区别-转载" data-url="http://www.jiang-yu.cn/2016/04/17/Spring/Spring中Filter和Inteceptor的区别-转载/">
+      <div class="ds-thread" data-thread-key="2016/04/01/SpringMVC/classpath-你真的理解了么？/"
+           data-title="classpath,你真的理解了么？" data-url="http://www.jiang-yu.cn/2016/04/01/SpringMVC/classpath-你真的理解了么？/">
       </div>
     
   </div>

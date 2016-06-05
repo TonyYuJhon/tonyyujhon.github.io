@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="classpath," />
+  <meta name="keywords" content="Interceptor," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。">
+<meta name="description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="classpath,你真的理解了么？">
-<meta property="og:url" content="http://www.jiang-yu.cn/2016/04/01/Spring/classpath-你真的理解了么？/index.html">
+<meta property="og:title" content="Spring拦截器--HandlerInterceptorAdapter">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。">
-<meta property="og:updated_time" content="2016-06-02T13:32:55.000Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
+<meta property="og:updated_time" content="2016-06-05T03:17:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="classpath,你真的理解了么？">
-<meta name="twitter:description" content="CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。">
+<meta name="twitter:title" content="Spring拦截器--HandlerInterceptorAdapter">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
 
 
 
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> classpath,你真的理解了么？ | JhonYu's Blog </title>
+  <title> Spring拦截器--HandlerInterceptorAdapter | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -293,7 +293,7 @@
             
             
               
-                classpath,你真的理解了么？
+                Spring拦截器--HandlerInterceptorAdapter
               
             
           </h1>
@@ -305,8 +305,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T18:08:58+08:00" content="2016-04-01">
-              2016-04-01
+            <time itemprop="dateCreated" datetime="2016-04-17T11:49:35+08:00" content="2016-04-17">
+              2016-04-17
             </time>
           </span>
 
@@ -335,8 +335,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/01/Spring/classpath-你真的理解了么？/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/01/Spring/classpath-你真的理解了么？/" itemprop="commentsCount"></span>
+                <a href="/2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -363,19 +363,18 @@
       
 
       
-        <p>CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。<br><a id="more"></a></p>
-<p>###CLASSPATH是什么？<br>在Java环境中，设置classpath的目的就是在于告诉Java执行环境（JVM）在哪个地方可以找到需要执行的Java程序所需要的类或者包。</p>
-<p>配置classpath其实就类似于c/c++中的#include&lt;*.h&gt;,就是将相应的要加载类引入。</p>
-<p>在Java Web项目中，classpath是指WEB-INF文件夹下的classes目录，将web应用发布到服务器时，会将src下所有的.java文件编译成字节码文件（*.class）和静态资源文件放入到WEB-INF目录下classes文件夹下。</p>
-<p>###classpath和classpath*的区别<br>classpath: 只会搜索当前项目中的class路径查找所需要的文件</p>
-<p>classpath*:不仅会搜索当前项目中的class路基查找所需要的文件，同时还会扫描所有的jar文件，加载所需要的文件。</p>
-<p>说明白点就是：</p>
+        <p>&emsp;&emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。</p>
+<a id="more"></a>
+<h1 id="一、认识HandlerInterceptorAdapter"><a href="#一、认识HandlerInterceptorAdapter" class="headerlink" title="一、认识HandlerInterceptorAdapter"></a>一、认识HandlerInterceptorAdapter</h1><p>&emsp;&emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">   /*</span><br><span class="line">	 * Copyright 2002-2012 the original author or authors.</span><br><span class="line"> *</span><br><span class="line"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line"> * you may not use this file except in compliance with the License.</span><br><span class="line"> * You may obtain a copy of the License at</span><br><span class="line"> *</span><br><span class="line"> *      http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"> *</span><br><span class="line"> * Unless required by applicable law or agreed to in writing, software</span><br><span class="line"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"> * See the License for the specific language governing permissions and</span><br><span class="line"> * limitations under the License.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">package org.springframework.web.servlet.handler;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.servlet.AsyncHandlerInterceptor;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Abstract adapter class for the HandlerInterceptor interface,</span><br><span class="line"> * for simplified implementation of pre-only/post-only interceptors.</span><br><span class="line"> *</span><br><span class="line"> * @author Juergen Hoeller</span><br><span class="line"> * @since 05.12.2003</span><br><span class="line"> */</span><br><span class="line">public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor &#123;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation always returns &#123;@code true&#125;.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">		throws Exception &#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void postHandle(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterCompletion(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterConcurrentHandlingStarted(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;可以看出，这个抽象类提供的四个方法：</p>
 <ol>
-<li>classpath:会从第一个classpath中加载所需要的文件，而classpath*：会从所有的classpath中加载符合条件的文件；</li>
-<li>如果需要加载的资源不再当前的classLoader的路径中，用classpath：是获取不到该文件的（比如说是jar包中的配置文件），这种情况下就要使用classpath*:来加载相应的资源文件了；</li>
-<li>用classpath*:需要遍历所有的classpath,所以加载速度是很慢的，如果是在性能要求很高的系统中，还是不太建议这样去设计代码结构。</li>
+<li>preHandle  预处理–一般实现编码的控制和安全性控制</li>
+<li>postHandle 后处理–可以修改Spring中的ModelAndView,使得跳转到不同的View</li>
+<li>afterCompletion 返回处理–通过判断ex的值可以进行异常日志记录和处理</li>
+<li>afterConcurrentHandlingStarted</li>
 </ol>
-<p>因为最近在搭建项目的时候，遇到了这个问题，情景是这样的：搭建的web工程分成了几个模块，根据maven来管理项目，模块的包都打成jar包，最终呈现出来的是通过一个maven web工程打出一个war包，war包中是由几个模块打成的jar包组成，在项目启动的时候发现找不到jar包中的配置文件，因为我的配置就是classpath,后面网上查了一下资料，发现可以使用classpath*来实现。</p>
+<h1 id="二、使用Spring-MVC-的拦截器"><a href="#二、使用Spring-MVC-的拦截器" class="headerlink" title="二、使用Spring MVC 的拦截器"></a>二、使用Spring MVC 的拦截器</h1><p>例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package com.jifenn.ja.web.common.interceptor;</span><br><span class="line"></span><br><span class="line">import java.util.Calendar;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;功能描述&lt;/br&gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &lt;/p&gt;</span><br><span class="line"> * </span><br><span class="line"> * @className Intf4OutCallTimeInterceptor</span><br><span class="line"> * @author jiangyu</span><br><span class="line"> * @date 2016年4月17日 下午12:18:25</span><br><span class="line"> * @version v1.0</span><br><span class="line"> */</span><br><span class="line">public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter</span><br><span class="line">&#123;</span><br><span class="line">    /** 允许时间段 **/</span><br><span class="line">    private int allowTimeZone;</span><br><span class="line"></span><br><span class="line">    /** 禁止时间段 **/</span><br><span class="line">    private int forbidTimeZone;</span><br><span class="line"></span><br><span class="line">    /** 需要拦截的路径 **/</span><br><span class="line">    private String mappingRegexURL;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">        throws Exception</span><br><span class="line">    &#123;</span><br><span class="line">        String url = request.getRequestURL().toString();</span><br><span class="line">        if (mappingRegexURL == null || url.matches(mappingRegexURL))</span><br><span class="line">        &#123;</span><br><span class="line">            Calendar calendar = Calendar.getInstance();</span><br><span class="line">            calendar.setTime(new Date());</span><br><span class="line">            int hour = calendar.get(Calendar.HOUR_OF_DAY);</span><br><span class="line">            if (hour &lt; allowTimeZone || hour &gt; forbidTimeZone)</span><br><span class="line">            &#123;</span><br><span class="line">                request.setAttribute(&quot;msg&quot;, &quot;接口开放时间：8：00-21：00&quot;);</span><br><span class="line">                request.getRequestDispatcher(&quot;/err.jsp&quot;).forward(request, response);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAllowTimeZone(int allowTimeZone)</span><br><span class="line">    &#123;</span><br><span class="line">        this.allowTimeZone = allowTimeZone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setForbidTimeZone(int forbidTimeZone)</span><br><span class="line">    &#123;</span><br><span class="line">        this.forbidTimeZone = forbidTimeZone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMappingRegexURL(String mappingRegexURL)</span><br><span class="line">    &#123;</span><br><span class="line">        this.mappingRegexURL = mappingRegexURL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>spring的xml配置文件配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;intf4OutAccessInterceptor&quot; class=&quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;allowTimeZone&quot; value=&quot;8&quot; /&gt;</span><br><span class="line">	&lt;property name=&quot;forbidTimeZone&quot; value=&quot;21&quot; /&gt;</span><br><span class="line">	&lt;property name=&quot;mappingRegexURL&quot; value=&quot;.*/intf4out\.do\?name=*&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;bean</span><br><span class="line">	class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;interceptors&quot;&gt;</span><br><span class="line">		&lt;list&gt;</span><br><span class="line">			&lt;ref bean=&quot;intf4OutAccessInterceptor&quot; /&gt;</span><br><span class="line">		&lt;/list&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -397,7 +396,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/classpath/" rel="tag">#classpath</a>
+            <a href="/tags/Interceptor/" rel="tag">#Interceptor</a>
           
         </div>
       
@@ -406,16 +405,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/31/Websocket/WebSocket初识/" rel="next" title="WebSocket初识">
-                <i class="fa fa-chevron-left"></i> WebSocket初识
+              <a href="/2016/04/03/Git/git-push-rejected-non-fast-forward-Fixed/" rel="next" title="git push error-- [rejected--non-fast-forward] 解决">
+                <i class="fa fa-chevron-left"></i> git push error-- [rejected--non-fast-forward] 解决
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/03/Git/git-push-rejected-non-fast-forward-Fixed/" rel="prev" title="git push error-- [rejected--non-fast-forward] 解决">
-                git push error-- [rejected--non-fast-forward] 解决 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/17/SpringMVC/Spring中Filter和Inteceptor的区别-转载/" rel="prev" title="Spring中Filter和Inteceptor的区别-转载">
+                Spring中Filter和Inteceptor的区别-转载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -431,10 +430,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/01/Spring/classpath-你真的理解了么？/"
-     data-title="classpath,你真的理解了么？"
+        <div class="ds-share flat" data-thread-key="2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/"
+     data-title="Spring拦截器--HandlerInterceptorAdapter"
      data-content=""
-     data-url="http://www.jiang-yu.cn/2016/04/01/Spring/classpath-你真的理解了么？/">
+     data-url="http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -461,8 +460,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/01/Spring/classpath-你真的理解了么？/"
-           data-title="classpath,你真的理解了么？" data-url="http://www.jiang-yu.cn/2016/04/01/Spring/classpath-你真的理解了么？/">
+      <div class="ds-thread" data-thread-key="2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/"
+           data-title="Spring拦截器--HandlerInterceptorAdapter" data-url="http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/">
       </div>
     
   </div>
@@ -580,7 +579,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、认识HandlerInterceptorAdapter"><span class="nav-number">1.</span> <span class="nav-text">一、认识HandlerInterceptorAdapter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、使用Spring-MVC-的拦截器"><span class="nav-number">2.</span> <span class="nav-text">二、使用Spring MVC 的拦截器</span></a></li></ol></div>
             
           </div>
         </section>
