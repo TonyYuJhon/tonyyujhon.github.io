@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="JhonYu's Blog">
 <meta property="og:description" content="在上一篇的Shared And Exclusive Locks中提及到InnoDB默认实现的是Row-Level Lock(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的Intention Locks（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。">
 <meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/MySQL/InnoDB Lock Compatible.png">
-<meta property="og:updated_time" content="2016-06-05T03:28:17.000Z">
+<meta property="og:updated_time" content="2016-06-05T03:32:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" MySql InnoDB Lock(二)--Intention Locks">
 <meta name="twitter:description" content="在上一篇的Shared And Exclusive Locks中提及到InnoDB默认实现的是Row-Level Lock(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的Intention Locks（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。">
@@ -365,7 +365,7 @@
       
 
       
-        <p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<br><code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
+        <p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
 <blockquote>
 <p>摘抄自：MySql Doc</p>
 <blockquote>
@@ -379,12 +379,11 @@
 <p><strong>注意</strong>：<br>　　1.在一个事务获得表中一条记录的 <em><strong>S</strong></em> Lock 前必须首先获得一个<em><strong>IS</strong></em> Lock 或者更强的锁在表上；<br>　　2.在一个事务获得表中一条记录的 <em><strong>X</strong></em> LocK 前必须先获得一个<em><strong>IX</strong></em> Lock.</p>
 </blockquote>
 </li>
-<li>InnoDB的锁类型相容性矩阵：<br> <img src="/uploads/blog/MySQL/InnoDB Lock Compatible.png" alt=""></li>
-</ul>
+<li><p>InnoDB的锁类型相容性矩阵：<br> <img src="/uploads/blog/MySQL/InnoDB Lock Compatible.png" alt=""></p>
 <blockquote>
 <p>如果一个事务请求的锁模式和当前的锁兼容，InnoDB就将请求的锁授予给后开启的事务，否则后开启的事务就必须等待当前的锁释放才能获得锁。如果一个锁和一个存在的锁冲突了的并且一段时间都没有获取到锁的话，就会出现死锁（后面再介绍）的现象。</p>
 </blockquote>
-<ul>
+</li>
 <li><p>死锁定义</p>
 <blockquote>
 <p>A situation where different transactions are unable to proceed, because each holds a lock that the other needs. Because both transactions are waiting for a resource to become available, neither will ever release the locks it holds.</p>
