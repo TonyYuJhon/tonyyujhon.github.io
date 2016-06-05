@@ -55,7 +55,7 @@
     <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB%20Intention%20Lock/"/>
     <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB Intention Lock/</id>
     <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T09:27:47.000Z</updated>
+    <updated>2016-06-05T03:28:17.000Z</updated>
     
     <content type="html">&lt;p&gt;　　在上一篇的&lt;code&gt;Shared And Exclusive Locks&lt;/code&gt;中提及到InnoDB默认实现的是&lt;br&gt;&lt;code&gt;Row-Level Lock&lt;/code&gt;(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的&lt;code&gt;Intention Locks&lt;/code&gt;（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：&lt;code&gt;where keyAttr(主键)=xxx&lt;/code&gt;)上执行Row Lock，否则将会执行&lt;br&gt;Table Lock.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -71,12 +71,12 @@
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;br&gt;　　1.在一个事务获得表中一条记录的 &lt;em&gt;&lt;strong&gt;S&lt;/strong&gt;&lt;/em&gt; Lock 前必须首先获得一个&lt;em&gt;&lt;strong&gt;IS&lt;/strong&gt;&lt;/em&gt; Lock 或者更强的锁在表上；&lt;br&gt;　　2.在一个事务获得表中一条记录的 &lt;em&gt;&lt;strong&gt;X&lt;/strong&gt;&lt;/em&gt; LocK 前必须先获得一个&lt;em&gt;&lt;strong&gt;IX&lt;/strong&gt;&lt;/em&gt; Lock.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;InnoDB的锁类型相容性矩阵：&lt;/p&gt;
-&lt;p&gt; | 　　|   X    | IX  |  S  |  IS |&lt;br&gt; |:—:|:——:|:—:|:—:|:—:|&lt;br&gt; | X   |Conflict| Conflict | Conflict | Conflict |&lt;br&gt; | IX  |Conflict|Compatible| Conflict |Compatible|&lt;br&gt; | S   |Conflict| Conflict |Compatible|Compatible|&lt;br&gt; | IS  |Conflict|Compatible|Compatible|Compatible|&lt;/p&gt;
+&lt;li&gt;InnoDB的锁类型相容性矩阵：&lt;br&gt; &lt;img src=&quot;/uploads/blog/MySQL/InnoDB Lock Compatible.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果一个事务请求的锁模式和当前的锁兼容，InnoDB就将请求的锁授予给后开启的事务，否则后开启的事务就必须等待当前的锁释放才能获得锁。如果一个锁和一个存在的锁冲突了的并且一段时间都没有获取到锁的话，就会出现死锁（后面再介绍）的现象。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/li&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;死锁定义&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A situation where different transactions are unable to proceed, because each holds a lock that the other needs. Because both transactions are waiting for a resource to become available, neither will ever release the locks it holds.&lt;/p&gt;
@@ -409,168 +409,21 @@ execute additional interceptor for a particular action execution.
     <link href="http://www.jiang-yu.cn/2016/04/17/Spring/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/"/>
     <id>http://www.jiang-yu.cn/2016/04/17/Spring/Spring拦截器-HandlerInterceptorAdapter/</id>
     <published>2016-04-17T03:49:35.000Z</published>
-    <updated>2016-06-02T13:34:08.000Z</updated>
+    <updated>2016-06-05T03:17:07.000Z</updated>
     
     <content type="html">&lt;p&gt;&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;a href=&quot;#一、认识HandlerInterceptorAdapter&quot; class=&quot;headerlink&quot; title=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;/a&gt;一、认识HandlerInterceptorAdapter&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/*
-  * Copyright 2002-2012 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;);
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package org.springframework.web.servlet.handler;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.AsyncHandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
-
-/**
- * Abstract adapter class for the HandlerInterceptor interface,
- * for simplified implementation of pre-only/post-only interceptors.
- *
- * @author Juergen Hoeller
- * @since 05.12.2003
- */
-public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor {
-
-    /**
-     * This implementation always returns {@code true}.
-     */
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-        throws Exception {
-        return true;
-    }
-
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void postHandle(
-            HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
-            throws Exception {
-    }
-
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void afterCompletion(
-            HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {
-    }
-
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void afterConcurrentHandlingStarted(
-            HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;emsp;&amp;emsp;可以看出，这个抽象类提供的四个方法：&lt;/p&gt;
+&lt;h1 id=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;a href=&quot;#一、认识HandlerInterceptorAdapter&quot; class=&quot;headerlink&quot; title=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;/a&gt;一、认识HandlerInterceptorAdapter&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】&lt;br&gt;    &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   /*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * Copyright 2002-2012 the original author or authors.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * you may not use this file except in compliance with the License.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * You may obtain a copy of the License at&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *      http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * See the License for the specific language governing permissions and&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * limitations under the License.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;package org.springframework.web.servlet.handler;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletRequest;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletResponse;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.springframework.web.servlet.AsyncHandlerInterceptor;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.springframework.web.servlet.ModelAndView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Abstract adapter class for the HandlerInterceptor interface,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * for simplified implementation of pre-only/post-only interceptors.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author Juergen Hoeller&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @since 05.12.2003&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation always returns &amp;#123;@code true&amp;#125;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation is empty.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void postHandle(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation is empty.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void afterCompletion(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation is empty.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void afterConcurrentHandlingStarted(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			HttpServletRequest request, HttpServletResponse response, Object handler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;可以看出，这个抽象类提供的四个方法：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;preHandle  预处理–一般实现编码的控制和安全性控制&lt;/li&gt;
 &lt;li&gt;postHandle 后处理–可以修改Spring中的ModelAndView,使得跳转到不同的View&lt;/li&gt;
 &lt;li&gt;afterCompletion 返回处理–通过判断ex的值可以进行异常日志记录和处理&lt;/li&gt;
 &lt;li&gt;afterConcurrentHandlingStarted&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&quot;二、使用Spring-MVC-的拦截器&quot;&gt;&lt;a href=&quot;#二、使用Spring-MVC-的拦截器&quot; class=&quot;headerlink&quot; title=&quot;二、使用Spring MVC 的拦截器&quot;&gt;&lt;/a&gt;二、使用Spring MVC 的拦截器&lt;/h1&gt;&lt;p&gt;例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。&lt;br&gt;    package com.jifenn.ja.web.common.interceptor;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import java.util.Calendar;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-
-/**
- * &amp;lt;p&amp;gt;功能描述&amp;lt;/br&amp;gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &amp;lt;/p&amp;gt;
- * 
- * @className Intf4OutCallTimeInterceptor
- * @author jiangyu
- * @date 2016年4月17日 下午12:18:25
- * @version v1.0
- */
-public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter
-{
-    /** 允许时间段 **/
-    private int allowTimeZone;
-
-    /** 禁止时间段 **/
-    private int forbidTimeZone;
-
-    /** 需要拦截的路径 **/
-    private String mappingRegexURL;
-
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-        throws Exception
-    {
-        String url = request.getRequestURL().toString();
-        if (mappingRegexURL == null || url.matches(mappingRegexURL))
-        {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-            if (hour &amp;lt; allowTimeZone || hour &amp;gt; forbidTimeZone)
-            {
-                request.setAttribute(&amp;quot;msg&amp;quot;, &amp;quot;接口开放时间：8：00-21：00&amp;quot;);
-                request.getRequestDispatcher(&amp;quot;/err.jsp&amp;quot;).forward(request, response);
-                return false;
-            }
-            return true;
-        }
-        return true;
-    }
-
-    public void setAllowTimeZone(int allowTimeZone)
-    {
-        this.allowTimeZone = allowTimeZone;
-    }
-
-    public void setForbidTimeZone(int forbidTimeZone)
-    {
-        this.forbidTimeZone = forbidTimeZone;
-    }
-
-    public void setMappingRegexURL(String mappingRegexURL)
-    {
-        this.mappingRegexURL = mappingRegexURL;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;spring的xml配置文件配置如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;bean id=&amp;quot;intf4OutAccessInterceptor&amp;quot; class=&amp;quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&amp;quot;&amp;gt;
-    &amp;lt;property name=&amp;quot;allowTimeZone&amp;quot; value=&amp;quot;8&amp;quot; /&amp;gt;
-    &amp;lt;property name=&amp;quot;forbidTimeZone&amp;quot; value=&amp;quot;21&amp;quot; /&amp;gt;
-    &amp;lt;property name=&amp;quot;mappingRegexURL&amp;quot; value=&amp;quot;.*/intf4out\.do\?name=*&amp;quot; /&amp;gt;
-&amp;lt;/bean&amp;gt;
-&amp;lt;bean
-    class=&amp;quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&amp;quot;&amp;gt;
-    &amp;lt;property name=&amp;quot;interceptors&amp;quot;&amp;gt;
-        &amp;lt;list&amp;gt;
-            &amp;lt;ref bean=&amp;quot;intf4OutAccessInterceptor&amp;quot; /&amp;gt;
-        &amp;lt;/list&amp;gt;
-    &amp;lt;/property&amp;gt;
-&amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;h1 id=&quot;二、使用Spring-MVC-的拦截器&quot;&gt;&lt;a href=&quot;#二、使用Spring-MVC-的拦截器&quot; class=&quot;headerlink&quot; title=&quot;二、使用Spring MVC 的拦截器&quot;&gt;&lt;/a&gt;二、使用Spring MVC 的拦截器&lt;/h1&gt;&lt;p&gt;例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。&lt;br&gt;    &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;package com.jifenn.ja.web.common.interceptor;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import java.util.Calendar;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import java.util.Date;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletRequest;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletResponse;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * &amp;lt;p&amp;gt;功能描述&amp;lt;/br&amp;gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @className Intf4OutCallTimeInterceptor&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author jiangyu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @date 2016年4月17日 下午12:18:25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @version v1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /** 允许时间段 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private int allowTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /** 禁止时间段 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private int forbidTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /** 需要拦截的路径 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private String mappingRegexURL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        throws Exception&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        String url = request.getRequestURL().toString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if (mappingRegexURL == null || url.matches(mappingRegexURL))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Calendar calendar = Calendar.getInstance();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            calendar.setTime(new Date());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            int hour = calendar.get(Calendar.HOUR_OF_DAY);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            if (hour &amp;lt; allowTimeZone || hour &amp;gt; forbidTimeZone)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                request.setAttribute(&amp;quot;msg&amp;quot;, &amp;quot;接口开放时间：8：00-21：00&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                request.getRequestDispatcher(&amp;quot;/err.jsp&amp;quot;).forward(request, response);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                return false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setAllowTimeZone(int allowTimeZone)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.allowTimeZone = allowTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setForbidTimeZone(int forbidTimeZone)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.forbidTimeZone = forbidTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setMappingRegexURL(String mappingRegexURL)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.mappingRegexURL = mappingRegexURL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;spring的xml配置文件配置如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;bean id=&amp;quot;intf4OutAccessInterceptor&amp;quot; class=&amp;quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;allowTimeZone&amp;quot; value=&amp;quot;8&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;forbidTimeZone&amp;quot; value=&amp;quot;21&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;mappingRegexURL&amp;quot; value=&amp;quot;.*/intf4out\.do\?name=*&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;bean&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	class=&amp;quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;interceptors&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;lt;ref bean=&amp;quot;intf4OutAccessInterceptor&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;/list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;/property&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
@@ -656,18 +509,18 @@ setp 3 :push
     <link href="http://www.jiang-yu.cn/2016/03/31/Websocket/WebSocket%E5%88%9D%E8%AF%86/"/>
     <id>http://www.jiang-yu.cn/2016/03/31/Websocket/WebSocket初识/</id>
     <published>2016-03-31T00:57:06.000Z</published>
-    <updated>2016-06-02T13:35:06.000Z</updated>
+    <updated>2016-06-05T03:23:30.000Z</updated>
     
     <content type="html">&lt;p&gt;  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;  WebSocket是为解决客户端与服务端实时通信而产生的技术。其本质是先通过HTTP/HTTPS协议进行握手后创建一个用于交换数据的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。&lt;/p&gt;
 &lt;p&gt;###一、WebSocket和Http协议的认识&lt;br&gt;首先Http协议是不支持长连接的，早期的HTTP1.0是没有所谓的keep-alive的，也就是只是一对一的通信，直到HTTP1.1才有keep-alive,就是把多个请求合并成一个，最终也只是几个请求对应几个响应，服务端不能主动的推送消息给客户端，而WebSocket其实是对HTTP协议的一种补充。&lt;/p&gt;
-&lt;p&gt;###二、WebSocket和Http协议的区别&lt;br&gt;A.相对于Http协议来说，WebSocket是一个&lt;strong&gt;持久化&lt;/strong&gt;的协议，如果还是不是很清楚，可以看一下图片对比：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/i9c4TkV.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;###二、WebSocket和Http协议的区别&lt;br&gt;A.相对于Http协议来说，WebSocket是一个&lt;strong&gt;持久化&lt;/strong&gt;的协议，如果还是不是很清楚，可以看一下图片对比：&lt;br&gt;&lt;img src=&quot;/uploads/blog/WebSocket/http protocal.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;从上图可以看出来，HTTP的生命周期是通过Request决定的，在HTTP 1.0中，每次通信只是一个request对应一个response，为了弥补这个问题，在HTTP 1.1协议中，增加了一个头部keep-alive，这个是保证连接保持的功能，虽然keep-alive能够保证同时发送多个请求，但是这其中有一个不变的规则就是有多少个请求（request）就有多少个响应(response),并且response是不会主动的向客户端推送消息的，是一种被动的方式。另外HTTP协议是一种无状态的协议，就是一旦浏览器关闭所有的信息都没有了。&lt;/p&gt;
 &lt;p&gt;B.WebSocket协议是一种基于Html5的新的协议，但同时它也是基于Http协议的。&lt;/p&gt;
 &lt;p&gt; 在WebSocket出现之前，为了实现实时信息的传递都是通过HTTP长轮询（Long Poll）的方式，或者ajax轮询的方式，或者其他的特殊方式。这两种方式都是服务器端被动的等待客户端来询问是否有新的信息，如果有新的信息来就处理，但是也有一些区别：&lt;/p&gt;
 &lt;p&gt; Long Poll:客户端发起请求，如果服务端没有信息返回，客户端就一直等待服务端的响应，是一种阻塞式的请求方式。&lt;/p&gt;
 &lt;p&gt; Ajax Pool：每隔一段时间就去请求一些服务器端，看是否有新的消息要处理。&lt;/p&gt;
 &lt;p&gt; 从这两种方式来看，实现实时信息通信都非常耗资源。而WebSocket可以很好的利用有限的资源来实现上面的效果，先看下webSocket的请求模式：&lt;/p&gt;
-&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/eRT4Mc6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;/uploads/blog/WebSocket/http and websocket.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt; 从上面的webSocket协议传输数据方式来看，只要每次建立一个HTTP连接，就可以不断的进行信息传输，并且不会再次发送HTTP连接了，也就是实现了正真意义上的长连接。&lt;/p&gt;
 &lt;p&gt;###总结&lt;br&gt; websocket约定了一个通信的规范，通过一个握手的机制，客户端和服务器之间能建立一个类似tcp的连接，从而方便它们之间的通信。在websocket出现之前，web交互一般是基于http协议的短连接或者长连接。websocket是一种全新的协议，不属于http无状态协议，协议名为”ws”，这意味着一个websocket连接地址会是这样的写法：ws://**。websocket协议本质上是一个基于tcp的协议。&lt;/p&gt;
 </content>
@@ -690,16 +543,16 @@ setp 3 :push
     <link href="http://www.jiang-yu.cn/2016/03/30/Spring/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/"/>
     <id>http://www.jiang-yu.cn/2016/03/30/Spring/mvc annotation-driven配置错误/</id>
     <published>2016-03-30T03:43:22.000Z</published>
-    <updated>2016-06-02T13:33:39.000Z</updated>
+    <updated>2016-06-05T03:24:24.000Z</updated>
     
     <content type="html">&lt;p&gt;代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;   今天用Spring MVC 做业余项目的时候，发现要自己手动的注册一个转换器（String字符串的乱码问题），发现在自定义StringHttpMessageConverter的时候（如下配置）&lt;/p&gt;
-&lt;p&gt;   &lt;img src=&quot;http://i.imgur.com/zPMWBEK.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;   发现项目启动的时候报错：&lt;/p&gt;
+&lt;p&gt;   &lt;img src=&quot;/uploads/blog/Spring/spring-httpmessageconverter self-setting.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;   发现项目启动的时候报错：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;org.xml.sax.SAXParseException; lineNumber: 28; columnNumber: 26; cvc-complex-type.2.1: 元素 &amp;apos;mvc:annotation-driven&amp;apos; 必须不含字符或元素信息项 [子级], 因为该类型的内容类型为空。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   根据错误提示信息可以定位到就是上面的配置项出现了问题，但是这种方式网上都有许多人说是可行的，自己感觉特别的疑惑，最后问度娘找到了一丝线索–spring 配置的xsd版本太低了，这个是老版本中规定的规则。&lt;/p&gt;
 &lt;p&gt;   带着这么一个提示，我看了一下我自己spring使用的是4.1版本，但是spring的配置文件中使用的mvc命名空间中xsd的版本竟然是3.0版本.&lt;/p&gt;
-&lt;p&gt;   果然，将3.0替换成4.0后项目能够正常启动了，String乱码问题也得到了解决。（如下图所示修改）&lt;br&gt;   &lt;img src=&quot;http://i.imgur.com/VtwCEbM.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;   果然，将3.0替换成4.0后项目能够正常启动了，String乱码问题也得到了解决。（如下图所示修改）&lt;br&gt;   &lt;img src=&quot;/uploads/blog/Spring/spring-xsd version low.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;提醒&quot;&gt;&lt;a href=&quot;#提醒&quot; class=&quot;headerlink&quot; title=&quot;提醒&quot;&gt;&lt;/a&gt;提醒&lt;/h3&gt;&lt;p&gt;   其实这也源于我们都喜欢拷代码，导致有些细节的问题没有注意到，这里也是给自己一个提醒吧！&lt;/p&gt;
 </content>
     

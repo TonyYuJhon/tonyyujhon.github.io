@@ -92,13 +92,13 @@
 <meta property="og:url" content="http://www.jiang-yu.cn/2016/03/30/Spring/mvc annotation-driven配置错误/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
 <meta property="og:description" content="代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。">
-<meta property="og:image" content="http://i.imgur.com/zPMWBEK.png">
-<meta property="og:image" content="http://i.imgur.com/VtwCEbM.png">
-<meta property="og:updated_time" content="2016-06-02T13:33:39.000Z">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Spring/spring-httpmessageconverter self-setting.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Spring/spring-xsd version low.png">
+<meta property="og:updated_time" content="2016-06-05T03:24:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mvc annotation-driven配置错误">
 <meta name="twitter:description" content="代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。">
-<meta name="twitter:image" content="http://i.imgur.com/zPMWBEK.png">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Spring/spring-httpmessageconverter self-setting.png">
 
 
 
@@ -369,11 +369,11 @@
         <p>代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。</p>
 <a id="more"></a>
 <p>   今天用Spring MVC 做业余项目的时候，发现要自己手动的注册一个转换器（String字符串的乱码问题），发现在自定义StringHttpMessageConverter的时候（如下配置）</p>
-<p>   <img src="http://i.imgur.com/zPMWBEK.png" alt=""><br>   发现项目启动的时候报错：</p>
+<p>   <img src="/uploads/blog/Spring/spring-httpmessageconverter self-setting.png" alt=""><br>   发现项目启动的时候报错：</p>
 <pre><code>org.xml.sax.SAXParseException; lineNumber: 28; columnNumber: 26; cvc-complex-type.2.1: 元素 &apos;mvc:annotation-driven&apos; 必须不含字符或元素信息项 [子级], 因为该类型的内容类型为空。
 </code></pre><p>   根据错误提示信息可以定位到就是上面的配置项出现了问题，但是这种方式网上都有许多人说是可行的，自己感觉特别的疑惑，最后问度娘找到了一丝线索–spring 配置的xsd版本太低了，这个是老版本中规定的规则。</p>
 <p>   带着这么一个提示，我看了一下我自己spring使用的是4.1版本，但是spring的配置文件中使用的mvc命名空间中xsd的版本竟然是3.0版本.</p>
-<p>   果然，将3.0替换成4.0后项目能够正常启动了，String乱码问题也得到了解决。（如下图所示修改）<br>   <img src="http://i.imgur.com/VtwCEbM.png" alt=""></p>
+<p>   果然，将3.0替换成4.0后项目能够正常启动了，String乱码问题也得到了解决。（如下图所示修改）<br>   <img src="/uploads/blog/Spring/spring-xsd version low.png" alt=""></p>
 <h3 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h3><p>   其实这也源于我们都喜欢拷代码，导致有些细节的问题没有注意到，这里也是给自己一个提醒吧！</p>
 
       

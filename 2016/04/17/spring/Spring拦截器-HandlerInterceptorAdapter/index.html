@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://www.jiang-yu.cn/2016/04/17/Spring/Spring拦截器-HandlerInterceptorAdapter/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
-<meta property="og:updated_time" content="2016-06-02T13:34:08.000Z">
+<meta property="og:updated_time" content="2016-06-05T03:17:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring拦截器--HandlerInterceptorAdapter">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。">
@@ -365,164 +365,17 @@
       
         <p>&emsp;&emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。</p>
 <a id="more"></a>
-<h1 id="一、认识HandlerInterceptorAdapter"><a href="#一、认识HandlerInterceptorAdapter" class="headerlink" title="一、认识HandlerInterceptorAdapter"></a>一、认识HandlerInterceptorAdapter</h1><p>&emsp;&emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】</p>
-<pre><code>/*
-  * Copyright 2002-2012 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package org.springframework.web.servlet.handler;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.AsyncHandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
-
-/**
- * Abstract adapter class for the HandlerInterceptor interface,
- * for simplified implementation of pre-only/post-only interceptors.
- *
- * @author Juergen Hoeller
- * @since 05.12.2003
- */
-public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor {
-
-    /**
-     * This implementation always returns {@code true}.
-     */
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-        throws Exception {
-        return true;
-    }
-
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void postHandle(
-            HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
-            throws Exception {
-    }
-
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void afterCompletion(
-            HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {
-    }
-
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void afterConcurrentHandlingStarted(
-            HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-    }
-
-}
-</code></pre><p>&emsp;&emsp;可以看出，这个抽象类提供的四个方法：</p>
+<h1 id="一、认识HandlerInterceptorAdapter"><a href="#一、认识HandlerInterceptorAdapter" class="headerlink" title="一、认识HandlerInterceptorAdapter"></a>一、认识HandlerInterceptorAdapter</h1><p>&emsp;&emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">   /*</span><br><span class="line">	 * Copyright 2002-2012 the original author or authors.</span><br><span class="line"> *</span><br><span class="line"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line"> * you may not use this file except in compliance with the License.</span><br><span class="line"> * You may obtain a copy of the License at</span><br><span class="line"> *</span><br><span class="line"> *      http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"> *</span><br><span class="line"> * Unless required by applicable law or agreed to in writing, software</span><br><span class="line"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"> * See the License for the specific language governing permissions and</span><br><span class="line"> * limitations under the License.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">package org.springframework.web.servlet.handler;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.servlet.AsyncHandlerInterceptor;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Abstract adapter class for the HandlerInterceptor interface,</span><br><span class="line"> * for simplified implementation of pre-only/post-only interceptors.</span><br><span class="line"> *</span><br><span class="line"> * @author Juergen Hoeller</span><br><span class="line"> * @since 05.12.2003</span><br><span class="line"> */</span><br><span class="line">public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor &#123;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation always returns &#123;@code true&#125;.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">		throws Exception &#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void postHandle(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterCompletion(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterConcurrentHandlingStarted(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;可以看出，这个抽象类提供的四个方法：</p>
 <ol>
 <li>preHandle  预处理–一般实现编码的控制和安全性控制</li>
 <li>postHandle 后处理–可以修改Spring中的ModelAndView,使得跳转到不同的View</li>
 <li>afterCompletion 返回处理–通过判断ex的值可以进行异常日志记录和处理</li>
 <li>afterConcurrentHandlingStarted</li>
 </ol>
-<h1 id="二、使用Spring-MVC-的拦截器"><a href="#二、使用Spring-MVC-的拦截器" class="headerlink" title="二、使用Spring MVC 的拦截器"></a>二、使用Spring MVC 的拦截器</h1><p>例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。<br>    package com.jifenn.ja.web.common.interceptor;</p>
-<pre><code>import java.util.Calendar;
-import java.util.Date;
+<h1 id="二、使用Spring-MVC-的拦截器"><a href="#二、使用Spring-MVC-的拦截器" class="headerlink" title="二、使用Spring MVC 的拦截器"></a>二、使用Spring MVC 的拦截器</h1><p>例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package com.jifenn.ja.web.common.interceptor;</span><br><span class="line"></span><br><span class="line">import java.util.Calendar;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;功能描述&lt;/br&gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &lt;/p&gt;</span><br><span class="line"> * </span><br><span class="line"> * @className Intf4OutCallTimeInterceptor</span><br><span class="line"> * @author jiangyu</span><br><span class="line"> * @date 2016年4月17日 下午12:18:25</span><br><span class="line"> * @version v1.0</span><br><span class="line"> */</span><br><span class="line">public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter</span><br><span class="line">&#123;</span><br><span class="line">    /** 允许时间段 **/</span><br><span class="line">    private int allowTimeZone;</span><br><span class="line"></span><br><span class="line">    /** 禁止时间段 **/</span><br><span class="line">    private int forbidTimeZone;</span><br><span class="line"></span><br><span class="line">    /** 需要拦截的路径 **/</span><br><span class="line">    private String mappingRegexURL;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">        throws Exception</span><br><span class="line">    &#123;</span><br><span class="line">        String url = request.getRequestURL().toString();</span><br><span class="line">        if (mappingRegexURL == null || url.matches(mappingRegexURL))</span><br><span class="line">        &#123;</span><br><span class="line">            Calendar calendar = Calendar.getInstance();</span><br><span class="line">            calendar.setTime(new Date());</span><br><span class="line">            int hour = calendar.get(Calendar.HOUR_OF_DAY);</span><br><span class="line">            if (hour &lt; allowTimeZone || hour &gt; forbidTimeZone)</span><br><span class="line">            &#123;</span><br><span class="line">                request.setAttribute(&quot;msg&quot;, &quot;接口开放时间：8：00-21：00&quot;);</span><br><span class="line">                request.getRequestDispatcher(&quot;/err.jsp&quot;).forward(request, response);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAllowTimeZone(int allowTimeZone)</span><br><span class="line">    &#123;</span><br><span class="line">        this.allowTimeZone = allowTimeZone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setForbidTimeZone(int forbidTimeZone)</span><br><span class="line">    &#123;</span><br><span class="line">        this.forbidTimeZone = forbidTimeZone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMappingRegexURL(String mappingRegexURL)</span><br><span class="line">    &#123;</span><br><span class="line">        this.mappingRegexURL = mappingRegexURL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>spring的xml配置文件配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;intf4OutAccessInterceptor&quot; class=&quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;allowTimeZone&quot; value=&quot;8&quot; /&gt;</span><br><span class="line">	&lt;property name=&quot;forbidTimeZone&quot; value=&quot;21&quot; /&gt;</span><br><span class="line">	&lt;property name=&quot;mappingRegexURL&quot; value=&quot;.*/intf4out\.do\?name=*&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;bean</span><br><span class="line">	class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;interceptors&quot;&gt;</span><br><span class="line">		&lt;list&gt;</span><br><span class="line">			&lt;ref bean=&quot;intf4OutAccessInterceptor&quot; /&gt;</span><br><span class="line">		&lt;/list&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-
-/**
- * &lt;p&gt;功能描述&lt;/br&gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &lt;/p&gt;
- * 
- * @className Intf4OutCallTimeInterceptor
- * @author jiangyu
- * @date 2016年4月17日 下午12:18:25
- * @version v1.0
- */
-public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter
-{
-    /** 允许时间段 **/
-    private int allowTimeZone;
-
-    /** 禁止时间段 **/
-    private int forbidTimeZone;
-
-    /** 需要拦截的路径 **/
-    private String mappingRegexURL;
-
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-        throws Exception
-    {
-        String url = request.getRequestURL().toString();
-        if (mappingRegexURL == null || url.matches(mappingRegexURL))
-        {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-            if (hour &lt; allowTimeZone || hour &gt; forbidTimeZone)
-            {
-                request.setAttribute(&quot;msg&quot;, &quot;接口开放时间：8：00-21：00&quot;);
-                request.getRequestDispatcher(&quot;/err.jsp&quot;).forward(request, response);
-                return false;
-            }
-            return true;
-        }
-        return true;
-    }
-
-    public void setAllowTimeZone(int allowTimeZone)
-    {
-        this.allowTimeZone = allowTimeZone;
-    }
-
-    public void setForbidTimeZone(int forbidTimeZone)
-    {
-        this.forbidTimeZone = forbidTimeZone;
-    }
-
-    public void setMappingRegexURL(String mappingRegexURL)
-    {
-        this.mappingRegexURL = mappingRegexURL;
-    }
-}
-</code></pre><p>spring的xml配置文件配置如下：</p>
-<pre><code>&lt;bean id=&quot;intf4OutAccessInterceptor&quot; class=&quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&quot;&gt;
-    &lt;property name=&quot;allowTimeZone&quot; value=&quot;8&quot; /&gt;
-    &lt;property name=&quot;forbidTimeZone&quot; value=&quot;21&quot; /&gt;
-    &lt;property name=&quot;mappingRegexURL&quot; value=&quot;.*/intf4out\.do\?name=*&quot; /&gt;
-&lt;/bean&gt;
-&lt;bean
-    class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;&gt;
-    &lt;property name=&quot;interceptors&quot;&gt;
-        &lt;list&gt;
-            &lt;ref bean=&quot;intf4OutAccessInterceptor&quot; /&gt;
-        &lt;/list&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre>
       
     </div>
 
