@@ -573,20 +573,21 @@ setp 3 :push
     <link href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/"/>
     <id>http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/</id>
     <published>2016-03-05T19:54:51.000Z</published>
-    <updated>2016-06-10T01:53:33.000Z</updated>
+    <updated>2016-06-10T02:09:58.000Z</updated>
     
     <content type="html">&lt;p&gt;　　亲自动手实践和整理 Tomcat + Ngnix + Memcached 负载均衡 Session共享的实现&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;目标：tomcat-ngnix-memcached-负载均衡-session共享&quot;&gt;&lt;a href=&quot;#目标：tomcat-ngnix-memcached-负载均衡-session共享&quot; class=&quot;headerlink&quot; title=&quot;目标：tomcat + ngnix + memcached 负载均衡 session共享&quot;&gt;&lt;/a&gt;目标：tomcat + ngnix + memcached 负载均衡 session共享&lt;/h2&gt;&lt;h3 id=&quot;准备软件&quot;&gt;&lt;a href=&quot;#准备软件&quot; class=&quot;headerlink&quot; title=&quot;准备软件&quot;&gt;&lt;/a&gt;准备软件&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/uploads/blog/Jdk/config_java_temp_dir.png&quot; alt=&quot;准备安装软件&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;目标：tomcat-ngnix-memcached-负载均衡-session共享&quot;&gt;&lt;a href=&quot;#目标：tomcat-ngnix-memcached-负载均衡-session共享&quot; class=&quot;headerlink&quot; title=&quot;目标：tomcat + ngnix + memcached 负载均衡 session共享&quot;&gt;&lt;/a&gt;目标：tomcat + ngnix + memcached 负载均衡 session共享&lt;/h2&gt;&lt;h3 id=&quot;准备软件&quot;&gt;&lt;a href=&quot;#准备软件&quot; class=&quot;headerlink&quot; title=&quot;准备软件&quot;&gt;&lt;/a&gt;准备软件&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/uploads/blog/Jdk/session_share_software_list.png&quot; alt=&quot;准备安装软件&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;安装jdk环境&quot;&gt;&lt;a href=&quot;#安装jdk环境&quot; class=&quot;headerlink&quot; title=&quot;安装jdk环境&quot;&gt;&lt;/a&gt;安装jdk环境&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;解压jdk 压缩文件&lt;br&gt;&lt;code&gt;tar -zxvf jdk-7u80-linux-x64.gz&lt;/code&gt;&lt;br&gt;建立Java目录 ，复制解压出来的jdk&lt;br&gt;&lt;img src=&quot;/uploads/blog/Jdk/config_java_temp_dir.png&quot; alt=&quot;建立Java安装目录&quot;&gt;&lt;/li&gt;
-&lt;li&gt;配置环境变量：&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;配置环境变量：&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;编辑全局的配置文件&lt;br&gt;&lt;code&gt;vim /etc/profile&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;在文件最后面加入如下配置&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#jdk configuration&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME=/home/jjyy/Public/java/jdk1.7/jdk1.7.0_80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JRE_HOME=$JAVA_HOME/jre&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CLASSPATH=$CLASSPATH:.:$JER_HOME/lib:$JAVA_HOME/lib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;　　　使得配置立即生效&lt;br&gt;　　　&lt;code&gt;source /etc/profile&lt;/code&gt;&lt;br&gt;　　　检验Jdk环境是否配置：&lt;br&gt;　　　&lt;code&gt;echo $JAVA_HOME&lt;/code&gt;&lt;br&gt;　　　&lt;img src=&quot;/uploads/blog/Jdk/check_jdk_config_success.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;　　　&lt;img src=&quot;/uploads/blog/Jdk/config_jdk.png&quot; alt=&quot;安装Jdk&quot;&gt;&lt;br&gt; 　　　使得配置立即生效&lt;br&gt;　　　&lt;code&gt;source /etc/profile&lt;/code&gt;&lt;br&gt; 　　　检验Jdk环境是否配置：&lt;br&gt;　　　&lt;code&gt;echo $JAVA_HOME&lt;/code&gt;&lt;br&gt;　　　&lt;img src=&quot;/uploads/blog/Jdk/check_jdk_config_success.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;安装tomcat-服务器&quot;&gt;&lt;a href=&quot;#安装tomcat-服务器&quot; class=&quot;headerlink&quot; title=&quot;安装tomcat 服务器&quot;&gt;&lt;/a&gt;安装tomcat 服务器&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;上传tomcat的压缩文件&lt;br&gt; &lt;img src=&quot;/uploads/blog/Tomcat/upload_tomcat_software.png&quot; alt=&quot;Upload_tomcat&quot;&gt;&lt;/li&gt;
 &lt;li&gt;解压文件：（这里配置三个tomcat ）&lt;br&gt;&lt;code&gt;tar -zxvf apache-tomcat-7.0.68.tar.gz&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/Tomcat/tar_three_tomcat.png&quot; alt=&quot;Upload_tomcat&quot;&gt;&lt;/li&gt;
