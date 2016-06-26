@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[Linux关机操作命令]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
+<blockquote>
+<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
@@ -14,16 +24,6 @@
 <li><p>永久生效：修改 /etc/inittab  将启动模式修改为3<br>其中的数字可以设置为（0~6）<br>0 - 表示关闭系统（不要把默认设置成0）<br>1 - 单用户模式<br>2 - 多用户模式，没有NFS服务<br>3 - 多用户文本模式，是标准的运行级<br>5 - 图形模式<br>6 - 系统重新启动</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
-<blockquote>
-<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
-</blockquote>
 ]]></content>
     </entry>
     
@@ -60,6 +60,23 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
       <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
@@ -92,23 +109,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
 <ul>
 <li>表级锁和行级锁的比较<br>&gt;<br>1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。<br>2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
 ]]></content>
     </entry>
     

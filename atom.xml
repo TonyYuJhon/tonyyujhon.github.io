@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-06-14T06:09:31.000Z</updated>
+  <updated>2016-06-14T07:47:13.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux关机操作命令</title>
+    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
+    <published>2016-06-14T06:58:51.000Z</published>
+    <updated>2016-06-14T07:47:13.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　每天学一点Linux命令&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;halt 立刻关机&lt;br&gt;poweroff 立刻关机&lt;br&gt;shutdown -h now 立刻关机(root用户使用)&lt;br&gt;shutdown -h 10 10分钟后自动关机&lt;br&gt;如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启&lt;br&gt;推荐使用shutdown命令&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　每天学一点Linux命令&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux修改系统默认启动模式</title>
@@ -35,32 +61,6 @@
     <summary type="html">
     
       &lt;p&gt;　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux关机操作命令</title>
-    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
-    <published>2016-06-14T06:58:51.000Z</published>
-    <updated>2016-06-14T07:47:13.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　每天学一点Linux命令&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;halt 立刻关机&lt;br&gt;poweroff 立刻关机&lt;br&gt;shutdown -h now 立刻关机(root用户使用)&lt;br&gt;shutdown -h 10 10分钟后自动关机&lt;br&gt;如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启&lt;br&gt;推荐使用shutdown命令&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　每天学一点Linux命令&lt;br&gt;
     
     </summary>
     
@@ -138,6 +138,41 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
   </entry>
   
   <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
+    
+  </entry>
+  
+  <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
     <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
     <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
@@ -188,41 +223,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
       <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
     
       <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   
