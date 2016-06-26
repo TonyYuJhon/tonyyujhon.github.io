@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="INNODB,LOCK," />
+  <meta name="keywords" content="JMeter,OutOfMemory," />
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。">
+<meta name="description" content="最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" MySql InnoDB Lock(一)-- Shared and Exclusive Locks">
-<meta property="og:url" content="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/index.html">
+<meta property="og:title" content=" JMeter内存溢出解决办法">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。">
-<meta property="og:updated_time" content="2016-06-04T05:49:59.000Z">
+<meta property="og:description" content="最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/JMeter/JMeter_OutOfMemory.png">
+<meta property="og:updated_time" content="2016-06-13T08:04:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" MySql InnoDB Lock(一)-- Shared and Exclusive Locks">
-<meta name="twitter:description" content="InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。">
+<meta name="twitter:title" content=" JMeter内存溢出解决办法">
+<meta name="twitter:description" content="最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/JMeter/JMeter_OutOfMemory.png">
 
 
 
@@ -113,7 +115,7 @@
   };
 </script>
 
-  <title>  MySql InnoDB Lock(一)-- Shared and Exclusive Locks | JhonYu's Blog </title>
+  <title>  JMeter内存溢出解决办法 | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -315,7 +317,7 @@
             
             
               
-                 MySql InnoDB Lock(一)-- Shared and Exclusive Locks
+                 JMeter内存溢出解决办法
               
             
           </h1>
@@ -327,8 +329,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-04T10:00:00+08:00" content="2016-06-04">
-              2016-06-04
+            <time itemprop="dateCreated" datetime="2016-06-13T15:30:00+08:00" content="2016-06-13">
+              2016-06-13
             </time>
           </span>
 
@@ -341,8 +343,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
+                  <a href="/categories/JMeter/" itemprop="url" rel="index">
+                    <span itemprop="name">JMeter</span>
                   </a>
                 </span>
 
@@ -357,8 +359,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/" itemprop="commentsCount"></span>
+                <a href="/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/JMeter/JMeter OutOfMemory 解决方法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -385,17 +387,17 @@
       
 
       
-        <p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
+        <p>　 最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！<br><a id="more"></a><br>　　为了应对618,要对我们的web应用进行压测，当然作为压测的工具首选是JMeter，因为它不大且不需要安装，配置也比较简单易懂。<br>　　在开始压测一段时间内是正常的，但是到运行到一定时间后就会出现，JMeter软件本身自己卡死，后台就一直报内存溢出的错误，如下图：<img src="/uploads/blog/JMeter/JMeter_OutOfMemory.png" alt="JMeter OutOfMemory"></p>
+<p>Google结果是：修改JMeter.bat/JMeter.sh文件中的配置即可</p>
+<ul>
+<li><p><strong>windows</strong>环境下，修改jmeter.bat：<br><code>set HEAP=-Xms256m -Xmx256m
+set NEW=-XX:NewSize=128m -XX:MaxNewSize=128m</code><br>改为：<br><code>set HEAP=-Xms256m -Xmx1024m
+set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
+</li>
+<li><p><strong>linux</strong>环境下，修改jmeter.sh：<br><code>java $JVM_ARGS -Xms1G -Xmx5G -XX:MaxPermSize=512m       -Dapple.laf.useScreenMenuBar=true -jar `dirname $0`/ApacheJMeter.jar &quot;$@&quot;</code></p>
+</li>
+</ul>
+<p>　　由于我是在windows下测试，按照上面的配置，果然可以了，<del>^</del>。</p>
 
       
     </div>
@@ -417,9 +419,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/INNODB/" rel="tag">#INNODB</a>
+            <a href="/tags/JMeter/" rel="tag">#JMeter</a>
           
-            <a href="/tags/LOCK/" rel="tag">#LOCK</a>
+            <a href="/tags/OutOfMemory/" rel="tag">#OutOfMemory</a>
           
         </div>
       
@@ -428,13 +430,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/04/MySQL/InnoDB/InnoDB Intention Lock/" rel="next" title=" MySql InnoDB Lock(二)--Intention Locks">
+              <a href="/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/" rel="next" title=" MySql InnoDB Lock(二)--Intention Locks">
                 <i class="fa fa-chevron-left"></i>  MySql InnoDB Lock(二)--Intention Locks
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/14/VIM/vim_command_01 /" rel="prev" title="VIM编辑器基础命令（一）">
+                VIM编辑器基础命令（一） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -449,10 +455,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/"
-     data-title=" MySql InnoDB Lock(一)-- Shared and Exclusive Locks"
+        <div class="ds-share flat" data-thread-key="2016/06/13/JMeter/JMeter OutOfMemory 解决方法/"
+     data-title=" JMeter内存溢出解决办法"
      data-content=""
-     data-url="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/">
+     data-url="http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -479,8 +485,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/"
-           data-title=" MySql InnoDB Lock(一)-- Shared and Exclusive Locks" data-url="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/">
+      <div class="ds-thread" data-thread-key="2016/06/13/JMeter/JMeter OutOfMemory 解决方法/"
+           data-title=" JMeter内存溢出解决办法" data-url="http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/">
       </div>
     
   </div>
@@ -525,7 +531,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -533,7 +539,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -542,7 +548,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

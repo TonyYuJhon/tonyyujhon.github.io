@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-06-04T05:49:59.000Z</updated>
+  <updated>2016-06-14T06:09:31.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -16,44 +16,131 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB%20S&X%20Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB S&X Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
+    <title>Linux修改系统默认启动模式</title>
+    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/Linux/修改Linux系统默认启动模式/</id>
+    <published>2016-06-14T06:58:51.000Z</published>
+    <updated>2016-06-14T06:09:31.000Z</updated>
     
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+    <content type="html">&lt;p&gt;　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;　　下面有两种方式来实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;临时生效：在图形化界面下可以打开Terminal终端，切换到root用户，输入init3即可切换到命令行模式，如果要再次回到图形化界面，可以使用startx就可以了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;永久生效：修改 /etc/inittab  将启动模式修改为3&lt;br&gt;其中的数字可以设置为（0~6）&lt;br&gt;0 - 表示关闭系统（不要把默认设置成0）&lt;br&gt;1 - 单用户模式&lt;br&gt;2 - 多用户模式，没有NFS服务&lt;br&gt;3 - 多用户文本模式，是标准的运行级&lt;br&gt;5 - 图形模式&lt;br&gt;6 - 系统重新启动&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+      &lt;p&gt;　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。&lt;br&gt;
     
     </summary>
     
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
     
     
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
-      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
+  </entry>
+  
+  <entry>
+    <title>Linux关机操作命令</title>
+    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
+    <published>2016-06-14T06:58:51.000Z</published>
+    <updated>2016-06-14T07:47:13.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　每天学一点Linux命令&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;halt 立刻关机&lt;br&gt;poweroff 立刻关机&lt;br&gt;shutdown -h now 立刻关机(root用户使用)&lt;br&gt;shutdown -h 10 10分钟后自动关机&lt;br&gt;如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启&lt;br&gt;推荐使用shutdown命令&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　每天学一点Linux命令&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VIM编辑器基础命令（一）</title>
+    <link href="http://www.jiang-yu.cn/2016/06/14/VIM/vim_command_01%20/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/VIM/vim_command_01 /</id>
+    <published>2016-06-14T03:58:51.000Z</published>
+    <updated>2016-06-14T05:37:34.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　在Linux下操作文件，不会VIM命令那就犹如战士上战场没带枪，所以作为一个合格的程序猿，必须要对基本的VI命令非常熟练的使用，本文开始将记录一系列VI命令的使用，方便快速查阅。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;vi编辑器三种常用的模式：&lt;br&gt;　1.命令模式：就是用&lt;code&gt;vi/vim 文件名&lt;/code&gt; 进入文件后的模式&lt;br&gt;　2.插入模式（i）：就是在命令模式下按下ｉ或者ａ即可进入&lt;br&gt;　3.ex（扩展）模式：就是使用’:xxxx’ 方式&lt;br&gt;　在任何一种模式下按Esc键都会回到命令模式&lt;/li&gt;
+&lt;li&gt;基础命令&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;命令模式&lt;/strong&gt;：&lt;br&gt;  a　在光标后插入文本&lt;br&gt;  i　在光标前插入文本&lt;br&gt;  o　在当前行的下面插入新行&lt;br&gt;  dd　删除整行&lt;br&gt;  u　撤销上一操作&lt;br&gt;  yy　复制当前行&lt;br&gt;  p　粘贴&lt;br&gt;  n+yy　复制n行&lt;br&gt;  r　替换当前字符&lt;br&gt;  /　查找关键字，按n键在关键字之间进行切换&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;扩展模式&lt;/strong&gt;：&lt;br&gt;  :w　保存当前修改&lt;br&gt;  :q　退出&lt;br&gt;  :q!　强制退出，不保存修改&lt;br&gt;  :x　保存并退出，相当于:wq&lt;br&gt;  :set number　显示行号，或setnum&lt;br&gt;  :set nonumber　关闭行号显示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　在Linux下操作文件，不会VIM命令那就犹如战士上战场没带枪，所以作为一个合格的程序猿，必须要对基本的VI命令非常熟练的使用，本文开始将记录一系列VI命令的使用，方便快速查阅。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="VIM" scheme="http://www.jiang-yu.cn/categories/VIM/"/>
+    
+    
+      <category term="Linux，VIM" scheme="http://www.jiang-yu.cn/tags/Linux%EF%BC%8CVIM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title> JMeter内存溢出解决办法</title>
+    <link href="http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter%20OutOfMemory%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/</id>
+    <published>2016-06-13T07:30:00.000Z</published>
+    <updated>2016-06-13T08:04:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　 最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;　　为了应对618,要对我们的web应用进行压测，当然作为压测的工具首选是JMeter，因为它不大且不需要安装，配置也比较简单易懂。&lt;br&gt;　　在开始压测一段时间内是正常的，但是到运行到一定时间后就会出现，JMeter软件本身自己卡死，后台就一直报内存溢出的错误，如下图：&lt;img src=&quot;/uploads/blog/JMeter/JMeter_OutOfMemory.png&quot; alt=&quot;JMeter OutOfMemory&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Google结果是：修改JMeter.bat/JMeter.sh文件中的配置即可&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;windows&lt;/strong&gt;环境下，修改jmeter.bat：&lt;br&gt;&lt;code&gt;set HEAP=-Xms256m -Xmx256m
+set NEW=-XX:NewSize=128m -XX:MaxNewSize=128m&lt;/code&gt;&lt;br&gt;改为：&lt;br&gt;&lt;code&gt;set HEAP=-Xms256m -Xmx1024m
+set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;linux&lt;/strong&gt;环境下，修改jmeter.sh：&lt;br&gt;&lt;code&gt;java $JVM_ARGS -Xms1G -Xmx5G -XX:MaxPermSize=512m       -Dapple.laf.useScreenMenuBar=true -jar `dirname $0`/ApacheJMeter.jar &amp;quot;$@&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;　　由于我是在windows下测试，按照上面的配置，果然可以了，&lt;del&gt;^&lt;/del&gt;。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　 最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JMeter" scheme="http://www.jiang-yu.cn/categories/JMeter/"/>
+    
+    
+      <category term="JMeter" scheme="http://www.jiang-yu.cn/tags/JMeter/"/>
+    
+      <category term="OutOfMemory" scheme="http://www.jiang-yu.cn/tags/OutOfMemory/"/>
     
   </entry>
   
   <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB%20Intention%20Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB Intention Lock/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
     <published>2016-06-04T02:00:00.000Z</published>
     <updated>2016-06-05T03:32:32.000Z</updated>
     
@@ -101,6 +188,41 @@
       <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
     
       <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   
