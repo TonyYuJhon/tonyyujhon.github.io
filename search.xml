@@ -4,6 +4,94 @@
   
     
     <entry>
+      <title><![CDATA[MySql修改默认的字符集]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Linux安装完MySql后，如果没有配置字符编码的话,默认的是latin1,而开发环境一般都是使用utf-8，所有如果不修改的话会出现乱码问题.<br><a id="more"></a></p>
+</blockquote>
+<p>　　由于linux下MySQL的默认安装目录分布在不同的文件下；不像windows一样放在同一目录下，只需修改其中的my.ini文件，重起后就生效了；所以先来看看linux下MySQL的数据库文件、配置文件和命令文件分别在不同的目录。</p>
+<ul>
+<li>修改之前的编码方式：<br>　　<img src="/uploads/blog/MySQL/mysql_security/security_16.png" alt="my.cnf"><br>　　如果在客户端使用<figure class="highlight plain"><figcaption><span>character_set_system=utf8```,只能是一种指标不治本的方法，如下图</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　![my.cnf](/uploads/blog/MySQL/mysql_security/security_17.png)</span><br><span class="line">- 查找linux下MySql的主配置文件：</span><br><span class="line">　　首先我们使用find命令查找一下mysql的配置文件位置：```find / -iname &apos;*.cnf&apos; -print```，如下图所示</span><br><span class="line">　　![my.cnf](/uploads/blog/MySQL/mysql_security/security_18.png)</span><br><span class="line">　　然后修改配置文件中的编码方式：</span><br><span class="line">   ```vim /etc/my.cnf</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>　　修改default_character_set=utf-8</p>
+<ul>
+<li>修改之后<br>　　<img src="/uploads/blog/MySQL/mysql_security/security_19.png" alt="my.cnf"></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux修改IP配置]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令–修改Linux系统的ip地址<br><a id="more"></a></p>
+<figure class="highlight plain"><figcaption><span>/etc/sysconfig/network-scripts/ifcfg-eth0``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;DEVICE=eth0 　　　　　网卡对应的设备别名</span><br><span class="line">TYPE=Ethernet　　　　　网络类型</span><br><span class="line">UUID=xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</span><br><span class="line">BOOTPROTO=static　　　网卡获得ip地址的方式（默认是dhcp）</span><br><span class="line">DNS1=192.168.1.1 　　　　　DNS</span><br><span class="line">IPV6INIT=no</span><br><span class="line">USERCTL=no</span><br><span class="line">IPADDR=192.168.1.132    　　　　ip地址</span><br><span class="line">NETMASK=255.255.255.0 　　　子网掩码</span><br><span class="line">GATEWAY=192.168.1.1 　　　　　　网关</span><br><span class="line">HWADDR=XX:XX:XX:XX:XX　　　　MAC地址</span><br><span class="line">ONBOOT=yes　系统启动时是否设置此网络接口，默认设置为yes</span><br><span class="line"></span><br><span class="line">修改完成之后，重启network服务</span><br><span class="line">```service network restart</span><br></pre></td></tr></table></figure>
+<p>ok，使用 <code>ifconfig eth0</code> 查看一下是否生效</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MySql授权]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Linux安装完MySql后，一般root用户是不配置给远程机器访问的，所以要重新创建一个和root权限相当的用户来管理.<br><a id="more"></a></p>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3></blockquote>
+<ul>
+<li>创建数据库<br> mysql&gt;create database jhonyu01DB;<br> <img src="/uploads/blog/MySQL/mysql_security/security_01.png" alt="创建数据库"></li>
+</ul>
+<h3 id="授权操作"><a href="#授权操作" class="headerlink" title="授权操作"></a>授权操作</h3><ul>
+<li>创建用户（jhonyu01|jhonyuread）<ul>
+<li>用户jhonyu01授权localhost可以访问<br>mysql&gt;grant all privileges on jhonyu01DB.* to jhonyu01@localhost identifiedby ‘jhonyu01’ WITH GRANT OPTION;<br>mysql&gt;flush privileges;<br><img src="/uploads/blog/MySQL/mysql_security/security_02.png" alt="jhonyu01"></li>
+<li>用户jhonyuread没有进行任何授权<br>mysql&gt;insert into mysql.user(Host,User,Password) values(‘localhost’,’jhonyuread’,password(‘jhonyuread’));<br>mysql&gt;flush privileges;<br>mysql&gt;exit<br>[root@localhost ~]# mysql -ujhonyuread -p<br><img src="/uploads/blog/MySQL/mysql_security/security_03.png" alt="jhonyuread"></li>
+</ul>
+</li>
+<li>授权用户jhonyu01所有ip可以访问<br><img src="/uploads/blog/MySQL/mysql_security/security_04.png" alt="jhonyu01"></li>
+<li><p>客户端测试</p>
+<ul>
+<li>使用jhonyu01登录<br><img src="/uploads/blog/MySQL/mysql_security/security_05.png" alt="jhonyu01"></li>
+<li>使用jhonyuread登录<br><img src="/uploads/blog/MySQL/mysql_security/security_06.png" alt="jhonyuread"></li>
+</ul>
+</li>
+<li><p>jhonyuread授予权限之后<br><img src="/uploads/blog/MySQL/mysql_security/security_07.png" alt="jhonyuread"><br><img src="/uploads/blog/MySQL/mysql_security/security_08.png" alt="jhonyuread"><br><img src="/uploads/blog/MySQL/mysql_security/security_09.png" alt="jhonyuread"></p>
+</li>
+<li>查看自己授权<br><img src="/uploads/blog/MySQL/mysql_security/security_10.png" alt="jhonyuread"><br><img src="/uploads/blog/MySQL/mysql_security/security_11.png" alt="jhonyuread"><br><img src="/uploads/blog/MySQL/mysql_security/security_12.png" alt="jhonyuread"></li>
+<li>创建topic表<br> （略）</li>
+<li>查询表结构<br><img src="/uploads/blog/MySQL/mysql_security/security_13.png" alt="jhonyuread"></li>
+<li>两个不同的用户操作数据库<br><img src="/uploads/blog/MySQL/mysql_security/security_14.png" alt="jhonyuread"><h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3> MySql的用户操作权限简单的介绍了下，有写描述不清楚的地方，希望大家多多指正，文中大部分都是用图片里代替，图片操作清晰而且直接明了，fighting…</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MySql连接阻塞解决办法]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Error Message:message from server: “Host ‘x.x.x.x’ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’”<br><a id="more"></a></p>
+</blockquote>
+<h3 id="场景："><a href="#场景：" class="headerlink" title="场景："></a>场景：</h3><p>　　前段时间公司开发环境出现服务器上部署的项目启动的时候出现上述错误提示，从上面的错误原因可以看出–<strong>同一个IP在短时间产生过多（超过mysql数据库max_connection_errors的最大值）中断的数据库连接而导致的阻塞.</strong>
+　　</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
+<li><p>修改Mysql配置文件的max_connection_errors数量</p>
+<ul>
+<li>查看max_connection_errors<figure class="highlight plain"><figcaption><span>variables like '%max_connection_errors%';```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 修改max_connection_errors的数量 </span><br><span class="line">```set global max_connect_errors = 500;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用mysqladmin flush-hosts命令清理一下hosts文件</p>
+<ul>
+<li>查找出mysqladmin位置<figure class="highlight plain"><figcaption><span>mysqladmin```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 进到相关目录下执行以下命令：</span><br><span class="line">```/usr/bin/mysqladmin flush-hosts -hx.x.x.x -P3306 -uroot -prootpwd;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>直接在数据库执行下面命令：</p>
+<ul>
+<li>必须要有root权限<br><code>flush hosts;</code></li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux关机操作命令]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>

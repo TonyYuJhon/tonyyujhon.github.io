@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-06-14T07:47:13.000Z</updated>
+  <updated>2016-06-26T08:44:54.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,161 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySql修改默认的字符集</title>
+    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL修改默认的字符编码/</id>
+    <published>2016-06-26T08:28:51.000Z</published>
+    <updated>2016-06-26T08:44:54.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Linux安装完MySql后，如果没有配置字符编码的话,默认的是latin1,而开发环境一般都是使用utf-8，所有如果不修改的话会出现乱码问题.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　由于linux下MySQL的默认安装目录分布在不同的文件下；不像windows一样放在同一目录下，只需修改其中的my.ini文件，重起后就生效了；所以先来看看linux下MySQL的数据库文件、配置文件和命令文件分别在不同的目录。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改之前的编码方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_16.png&quot; alt=&quot;my.cnf&quot;&gt;&lt;br&gt;　　如果在客户端使用&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;character_set_system=utf8```,只能是一种指标不治本的方法，如下图&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　![my.cnf](/uploads/blog/MySQL/mysql_security/security_17.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- 查找linux下MySql的主配置文件：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　首先我们使用find命令查找一下mysql的配置文件位置：```find / -iname &amp;apos;*.cnf&amp;apos; -print```，如下图所示&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　![my.cnf](/uploads/blog/MySQL/mysql_security/security_18.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　然后修改配置文件中的编码方式：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   ```vim /etc/my.cnf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;　　修改default_character_set=utf-8&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改之后&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_19.png&quot; alt=&quot;my.cnf&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Linux安装完MySql后，如果没有配置字符编码的话,默认的是latin1,而开发环境一般都是使用utf-8，所有如果不修改的话会出现乱码问题.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux修改IP配置</title>
+    <link href="http://www.jiang-yu.cn/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/Linux/Linux修改IP地址为静态地址/</id>
+    <published>2016-06-26T06:58:51.000Z</published>
+    <updated>2016-06-26T06:05:03.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　每天学一点Linux命令–修改Linux系统的ip地址&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;/etc/sysconfig/network-scripts/ifcfg-eth0``` &lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;DEVICE=eth0 　　　　　网卡对应的设备别名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TYPE=Ethernet　　　　　网络类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UUID=xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BOOTPROTO=static　　　网卡获得ip地址的方式（默认是dhcp）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DNS1=192.168.1.1 　　　　　DNS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;IPV6INIT=no&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;USERCTL=no&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;IPADDR=192.168.1.132    　　　　ip地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NETMASK=255.255.255.0 　　　子网掩码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GATEWAY=192.168.1.1 　　　　　　网关&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;HWADDR=XX:XX:XX:XX:XX　　　　MAC地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ONBOOT=yes　系统启动时是否设置此网络接口，默认设置为yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;修改完成之后，重启network服务&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```service network restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;ok，使用 &lt;code&gt;ifconfig eth0&lt;/code&gt; 查看一下是否生效&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　每天学一点Linux命令–修改Linux系统的ip地址&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySql授权</title>
+    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL授权简介/</id>
+    <published>2016-06-26T06:47:51.000Z</published>
+    <updated>2016-06-26T09:14:45.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Linux安装完MySql后，一般root用户是不配置给远程机器访问的，所以要重新创建一个和root权限相当的用户来管理.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;创建数据库&quot;&gt;&lt;a href=&quot;#创建数据库&quot; class=&quot;headerlink&quot; title=&quot;创建数据库&quot;&gt;&lt;/a&gt;创建数据库&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;创建数据库&lt;br&gt; mysql&amp;gt;create database jhonyu01DB;&lt;br&gt; &lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_01.png&quot; alt=&quot;创建数据库&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;授权操作&quot;&gt;&lt;a href=&quot;#授权操作&quot; class=&quot;headerlink&quot; title=&quot;授权操作&quot;&gt;&lt;/a&gt;授权操作&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;创建用户（jhonyu01|jhonyuread）&lt;ul&gt;
+&lt;li&gt;用户jhonyu01授权localhost可以访问&lt;br&gt;mysql&amp;gt;grant all privileges on jhonyu01DB.* to jhonyu01@localhost identifiedby ‘jhonyu01’ WITH GRANT OPTION;&lt;br&gt;mysql&amp;gt;flush privileges;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_02.png&quot; alt=&quot;jhonyu01&quot;&gt;&lt;/li&gt;
+&lt;li&gt;用户jhonyuread没有进行任何授权&lt;br&gt;mysql&amp;gt;insert into mysql.user(Host,User,Password) values(‘localhost’,’jhonyuread’,password(‘jhonyuread’));&lt;br&gt;mysql&amp;gt;flush privileges;&lt;br&gt;mysql&amp;gt;exit&lt;br&gt;[root@localhost ~]# mysql -ujhonyuread -p&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_03.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;授权用户jhonyu01所有ip可以访问&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_04.png&quot; alt=&quot;jhonyu01&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;客户端测试&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用jhonyu01登录&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_05.png&quot; alt=&quot;jhonyu01&quot;&gt;&lt;/li&gt;
+&lt;li&gt;使用jhonyuread登录&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_06.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;jhonyuread授予权限之后&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_07.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_08.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_09.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;查看自己授权&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_10.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_11.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_12.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
+&lt;li&gt;创建topic表&lt;br&gt; （略）&lt;/li&gt;
+&lt;li&gt;查询表结构&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_13.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
+&lt;li&gt;两个不同的用户操作数据库&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_14.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;h3 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h3&gt; MySql的用户操作权限简单的介绍了下，有写描述不清楚的地方，希望大家多多指正，文中大部分都是用图片里代替，图片操作清晰而且直接明了，fighting…&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Linux安装完MySql后，一般root用户是不配置给远程机器访问的，所以要重新创建一个和root权限相当的用户来管理.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySql连接阻塞解决办法</title>
+    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL连接阻塞解决办法/</id>
+    <published>2016-06-26T06:07:51.000Z</published>
+    <updated>2016-06-26T09:08:24.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Error Message:message from server: “Host ‘x.x.x.x’ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’”&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;场景：&quot;&gt;&lt;a href=&quot;#场景：&quot; class=&quot;headerlink&quot; title=&quot;场景：&quot;&gt;&lt;/a&gt;场景：&lt;/h3&gt;&lt;p&gt;　　前段时间公司开发环境出现服务器上部署的项目启动的时候出现上述错误提示，从上面的错误原因可以看出–&lt;strong&gt;同一个IP在短时间产生过多（超过mysql数据库max_connection_errors的最大值）中断的数据库连接而导致的阻塞.&lt;/strong&gt;
+　　&lt;/p&gt;
+&lt;h3 id=&quot;解决方法：&quot;&gt;&lt;a href=&quot;#解决方法：&quot; class=&quot;headerlink&quot; title=&quot;解决方法：&quot;&gt;&lt;/a&gt;解决方法：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;修改Mysql配置文件的max_connection_errors数量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看max_connection_errors&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;variables like &#39;%max_connection_errors%&#39;;```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- 修改max_connection_errors的数量 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```set global max_connect_errors = 500;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用mysqladmin flush-hosts命令清理一下hosts文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查找出mysqladmin位置&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;mysqladmin```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- 进到相关目录下执行以下命令：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```/usr/bin/mysqladmin flush-hosts -hx.x.x.x -P3306 -uroot -prootpwd;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;直接在数据库执行下面命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须要有root权限&lt;br&gt;&lt;code&gt;flush hosts;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Error Message:message from server: “Host ‘x.x.x.x’ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’”&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux关机操作命令</title>
