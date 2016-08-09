@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-08-08T14:02:05.000Z</updated>
+  <updated>2016-08-09T01:31:47.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java入门--IDE工具的选择（二）</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T01:31:47.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。&lt;br&gt;　　首先，下载Eclipse,Here &lt;a href=&quot;http://www.eclipse.org/downloads/&quot; title=&quot;Title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Click Me To DownLoad Page&lt;/a&gt;&lt;br&gt;　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：&lt;br&gt;　　&lt;strong&gt;New Version Eclipse Install Interface(jdk 1.8 + )&lt;/strong&gt;:&lt;br&gt;　　step01、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_install_interface.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step02、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_02.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;strong&gt;Customer Version Eclipse Directroy(jdk 1.7 or lower)&lt;/strong&gt;:&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　点击eclipse就可以开始撸代码之旅了，开始界面：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/start_intf.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/switch_workspace.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[Tips]所谓的工作空间，就是coding之后的代码存放的位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作&lt;br&gt;　　step one: 新建一个工程&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）&lt;br&gt;　　比如：公司——www.jiangyu.com  项目名称：enbrands&lt;br&gt;　　    包名：com.jiangyu.enbrands&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　新建完成之后，工程目录结构如下：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）&lt;br&gt;　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。&lt;br&gt;　　新建一个类：右键包名–New–Class&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　编写代码，输出“Hello World”&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_005.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！&lt;br&gt;　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
+　　
+　　
+　　
+　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://www.jiang-yu.cn/categories/JAVA/"/>
+    
+    
+      <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Java入门--环境的准备（一）</title>
@@ -203,6 +240,32 @@
   </entry>
   
   <entry>
+    <title>Linux关机操作命令</title>
+    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
+    <published>2016-06-14T06:58:51.000Z</published>
+    <updated>2016-06-14T07:47:13.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　每天学一点Linux命令&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;halt 立刻关机&lt;br&gt;poweroff 立刻关机&lt;br&gt;shutdown -h now 立刻关机(root用户使用)&lt;br&gt;shutdown -h 10 10分钟后自动关机&lt;br&gt;如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启&lt;br&gt;推荐使用shutdown命令&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　每天学一点Linux命令&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux修改系统默认启动模式</title>
     <link href="http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"/>
     <id>http://www.jiang-yu.cn/2016/06/14/Linux/修改Linux系统默认启动模式/</id>
@@ -222,32 +285,6 @@
     <summary type="html">
     
       &lt;p&gt;　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux关机操作命令</title>
-    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
-    <published>2016-06-14T06:58:51.000Z</published>
-    <updated>2016-06-14T07:47:13.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　每天学一点Linux命令&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;halt 立刻关机&lt;br&gt;poweroff 立刻关机&lt;br&gt;shutdown -h now 立刻关机(root用户使用)&lt;br&gt;shutdown -h 10 10分钟后自动关机&lt;br&gt;如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启&lt;br&gt;推荐使用shutdown命令&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　每天学一点Linux命令&lt;br&gt;
     
     </summary>
     
@@ -843,37 +880,6 @@ setp 3 :push
     
     
       <category term="WebSocket" scheme="http://www.jiang-yu.cn/tags/WebSocket/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mvc annotation-driven配置错误</title>
-    <link href="http://www.jiang-yu.cn/2016/03/30/SpringMVC/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/"/>
-    <id>http://www.jiang-yu.cn/2016/03/30/SpringMVC/mvc annotation-driven配置错误/</id>
-    <published>2016-03-30T03:43:22.000Z</published>
-    <updated>2016-06-05T03:24:24.000Z</updated>
-    
-    <content type="html">&lt;p&gt;代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;   今天用Spring MVC 做业余项目的时候，发现要自己手动的注册一个转换器（String字符串的乱码问题），发现在自定义StringHttpMessageConverter的时候（如下配置）&lt;/p&gt;
-&lt;p&gt;   &lt;img src=&quot;/uploads/blog/Spring/spring-httpmessageconverter self-setting.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;   发现项目启动的时候报错：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;org.xml.sax.SAXParseException; lineNumber: 28; columnNumber: 26; cvc-complex-type.2.1: 元素 &amp;apos;mvc:annotation-driven&amp;apos; 必须不含字符或元素信息项 [子级], 因为该类型的内容类型为空。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   根据错误提示信息可以定位到就是上面的配置项出现了问题，但是这种方式网上都有许多人说是可行的，自己感觉特别的疑惑，最后问度娘找到了一丝线索–spring 配置的xsd版本太低了，这个是老版本中规定的规则。&lt;/p&gt;
-&lt;p&gt;   带着这么一个提示，我看了一下我自己spring使用的是4.1版本，但是spring的配置文件中使用的mvc命名空间中xsd的版本竟然是3.0版本.&lt;/p&gt;
-&lt;p&gt;   果然，将3.0替换成4.0后项目能够正常启动了，String乱码问题也得到了解决。（如下图所示修改）&lt;br&gt;   &lt;img src=&quot;/uploads/blog/Spring/spring-xsd version low.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;提醒&quot;&gt;&lt;a href=&quot;#提醒&quot; class=&quot;headerlink&quot; title=&quot;提醒&quot;&gt;&lt;/a&gt;提醒&lt;/h3&gt;&lt;p&gt;   其实这也源于我们都喜欢拷代码，导致有些细节的问题没有注意到，这里也是给自己一个提醒吧！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Spring MVC" scheme="http://www.jiang-yu.cn/categories/Spring-MVC/"/>
-    
-    
-      <category term="Annotation-driven" scheme="http://www.jiang-yu.cn/tags/Annotation-driven/"/>
     
   </entry>
   
