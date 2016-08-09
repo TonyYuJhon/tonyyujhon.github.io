@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[Tomcat开启压缩功能]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
+</blockquote>
+<a id="more"></a>
+<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
+<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
       <url>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -19,6 +32,22 @@
 　　
 　　
 　　</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Tomcat内存配置以及项目发布配置]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p> 作为Java程序猿，我们不得不掌握Tomcat的基本配置，本文将简单讲述一下实际项目中tomcat的一般配置。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　作为Java开发中的一员，每天和打交道的服务器最频繁的必然是Tomcat了，貌似有一种“Tomcat坑我千百遍，我待Tomcat如初恋”的情愫哈，废话不多说了，下面首先介绍一下最常用的配置吧！</p>
+<ul>
+<li>配置Tomcat内存<br>每次发布项目之后，热部署的时候是否都会出现 memery leak 的提示日志，或者惨一点的，服务器直接崩了，这个<br>问题出现的频率一般都比较高，那么怎么摆脱这个错误的困扰呢？很简单，只需要简单的一个配置就可以搞定：<br>打开tomcat的位置，找到tomcat目录下的bin目录<br>　　<img src="/uploads/blog/Tomcat/vim_catalina.sh.png" alt="ls_file"><br>然后打开catalina.sh,在文件的顶部加上如下配置（具体参数需要根据实际服务器的配置而定）<br>　<figure class="highlight plain"><figcaption><span>-XX:MaxPermSize=256m -Xms1024m -Xmx1024m -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8" ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　![memory_config](/uploads/blog/Tomcat/tomcat_memory_config.png)</span><br><span class="line">然后保存文件，就可以了！</span><br><span class="line"> - 配置Tomcat虚拟目录</span><br><span class="line"> 项目上线之后，一般访问链接中一般是不会带项目名称的，那该怎么办了，首先你可能想到的是使用Apache或者是Nginx配置代理来实现，但是在实际开发中，我们就没有必要这样搞了，这里有一种简单的方式：</span><br><span class="line">打开tomcat目录下的conf目录，修改server.xml文件，在Host节点中添加一行配置：</span><br><span class="line"></span><br><span class="line">　```&lt;Context docBase=&quot;projectName&quot; path=&quot;/&quot; reloadable=&quot;true&quot; crossContext=&quot;true&quot; sessionCookieName=&quot;projectName&quot;/&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>如下图所示：<br>　　<img src="/uploads/blog/Tomcat/virtual_directory.png" alt="memory_config"></p>
+<p>　　好了，tomcat的基本配置，注意的是，第二条配置，一般在上传war包之后，启动tomcat就会自动解压出来，而且会出现一个ROOT文件夹，此时我们要停掉服务器，然后删除ROOT文件夹，重启服务器就可以了！<strong>记住哦，这一步非常重要</strong>！后续会继续更新Tomcat的高级配置！</p>
 ]]></content>
     </entry>
     

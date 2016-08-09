@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-08-09T01:31:47.000Z</updated>
+  <updated>2016-08-09T04:07:49.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tomcat开启压缩功能</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T04:07:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
+    
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
+    
+  </entry>
   
   <entry>
     <title>Java入门--IDE工具的选择（二）</title>
@@ -49,6 +80,40 @@
     
     
       <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat内存配置以及项目发布配置</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</id>
+    <published>2016-08-09T04:47:51.000Z</published>
+    <updated>2016-08-09T03:57:38.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt; 作为Java程序猿，我们不得不掌握Tomcat的基本配置，本文将简单讲述一下实际项目中tomcat的一般配置。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　作为Java开发中的一员，每天和打交道的服务器最频繁的必然是Tomcat了，貌似有一种“Tomcat坑我千百遍，我待Tomcat如初恋”的情愫哈，废话不多说了，下面首先介绍一下最常用的配置吧！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置Tomcat内存&lt;br&gt;每次发布项目之后，热部署的时候是否都会出现 memery leak 的提示日志，或者惨一点的，服务器直接崩了，这个&lt;br&gt;问题出现的频率一般都比较高，那么怎么摆脱这个错误的困扰呢？很简单，只需要简单的一个配置就可以搞定：&lt;br&gt;打开tomcat的位置，找到tomcat目录下的bin目录&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/vim_catalina.sh.png&quot; alt=&quot;ls_file&quot;&gt;&lt;br&gt;然后打开catalina.sh,在文件的顶部加上如下配置（具体参数需要根据实际服务器的配置而定）&lt;br&gt;　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;-XX:MaxPermSize=256m -Xms1024m -Xmx1024m -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8&quot; ```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　![memory_config](/uploads/blog/Tomcat/tomcat_memory_config.png)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;然后保存文件，就可以了！&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; - 配置Tomcat虚拟目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 项目上线之后，一般访问链接中一般是不会带项目名称的，那该怎么办了，首先你可能想到的是使用Apache或者是Nginx配置代理来实现，但是在实际开发中，我们就没有必要这样搞了，这里有一种简单的方式：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;打开tomcat目录下的conf目录，修改server.xml文件，在Host节点中添加一行配置：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　```&amp;lt;Context docBase=&amp;quot;projectName&amp;quot; path=&amp;quot;/&amp;quot; reloadable=&amp;quot;true&amp;quot; crossContext=&amp;quot;true&amp;quot; sessionCookieName=&amp;quot;projectName&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/virtual_directory.png&quot; alt=&quot;memory_config&quot;&gt;&lt;/p&gt;
+&lt;p&gt;　　好了，tomcat的基本配置，注意的是，第二条配置，一般在上传war包之后，启动tomcat就会自动解压出来，而且会出现一个ROOT文件夹，此时我们要停掉服务器，然后删除ROOT文件夹，重启服务器就可以了！&lt;strong&gt;记住哦，这一步非常重要&lt;/strong&gt;！后续会继续更新Tomcat的高级配置！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt; 作为Java程序猿，我们不得不掌握Tomcat的基本配置，本文将简单讲述一下实际项目中tomcat的一般配置。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
+    
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
     
   </entry>
   
@@ -811,75 +876,6 @@ setp 3 :push
     
     
       <category term="Git" scheme="http://www.jiang-yu.cn/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>classpath,你真的理解了么？</title>
-    <link href="http://www.jiang-yu.cn/2016/04/01/SpringMVC/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/"/>
-    <id>http://www.jiang-yu.cn/2016/04/01/SpringMVC/classpath-你真的理解了么？/</id>
-    <published>2016-04-01T10:08:58.000Z</published>
-    <updated>2016-06-02T13:32:55.000Z</updated>
-    
-    <content type="html">&lt;p&gt;CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###CLASSPATH是什么？&lt;br&gt;在Java环境中，设置classpath的目的就是在于告诉Java执行环境（JVM）在哪个地方可以找到需要执行的Java程序所需要的类或者包。&lt;/p&gt;
-&lt;p&gt;配置classpath其实就类似于c/c++中的#include&amp;lt;*.h&amp;gt;,就是将相应的要加载类引入。&lt;/p&gt;
-&lt;p&gt;在Java Web项目中，classpath是指WEB-INF文件夹下的classes目录，将web应用发布到服务器时，会将src下所有的.java文件编译成字节码文件（*.class）和静态资源文件放入到WEB-INF目录下classes文件夹下。&lt;/p&gt;
-&lt;p&gt;###classpath和classpath*的区别&lt;br&gt;classpath: 只会搜索当前项目中的class路径查找所需要的文件&lt;/p&gt;
-&lt;p&gt;classpath*:不仅会搜索当前项目中的class路基查找所需要的文件，同时还会扫描所有的jar文件，加载所需要的文件。&lt;/p&gt;
-&lt;p&gt;说明白点就是：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;classpath:会从第一个classpath中加载所需要的文件，而classpath*：会从所有的classpath中加载符合条件的文件；&lt;/li&gt;
-&lt;li&gt;如果需要加载的资源不再当前的classLoader的路径中，用classpath：是获取不到该文件的（比如说是jar包中的配置文件），这种情况下就要使用classpath*:来加载相应的资源文件了；&lt;/li&gt;
-&lt;li&gt;用classpath*:需要遍历所有的classpath,所以加载速度是很慢的，如果是在性能要求很高的系统中，还是不太建议这样去设计代码结构。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;因为最近在搭建项目的时候，遇到了这个问题，情景是这样的：搭建的web工程分成了几个模块，根据maven来管理项目，模块的包都打成jar包，最终呈现出来的是通过一个maven web工程打出一个war包，war包中是由几个模块打成的jar包组成，在项目启动的时候发现找不到jar包中的配置文件，因为我的配置就是classpath,后面网上查了一下资料，发现可以使用classpath*来实现。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Spring MVC" scheme="http://www.jiang-yu.cn/categories/Spring-MVC/"/>
-    
-    
-      <category term="classpath" scheme="http://www.jiang-yu.cn/tags/classpath/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WebSocket初识</title>
-    <link href="http://www.jiang-yu.cn/2016/03/31/Socket/WebScoket%E5%92%8CHttp%E6%AF%94%E8%BE%83/"/>
-    <id>http://www.jiang-yu.cn/2016/03/31/Socket/WebScoket和Http比较/</id>
-    <published>2016-03-31T00:57:06.000Z</published>
-    <updated>2016-06-05T04:36:36.000Z</updated>
-    
-    <content type="html">&lt;p&gt;  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;  WebSocket是为解决客户端与服务端实时通信而产生的技术。其本质是先通过HTTP/HTTPS协议进行握手后创建一个用于交换数据的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。&lt;/p&gt;
-&lt;p&gt;###一、WebSocket和Http协议的认识&lt;br&gt;首先Http协议是不支持长连接的，早期的HTTP1.0是没有所谓的keep-alive的，也就是只是一对一的通信，直到HTTP1.1才有keep-alive,就是把多个请求合并成一个，最终也只是几个请求对应几个响应，服务端不能主动的推送消息给客户端，而WebSocket其实是对HTTP协议的一种补充。&lt;/p&gt;
-&lt;p&gt;###二、WebSocket和Http协议的区别&lt;br&gt;A.相对于Http协议来说，WebSocket是一个&lt;strong&gt;持久化&lt;/strong&gt;的协议，如果还是不是很清楚，可以看一下图片对比：&lt;br&gt;&lt;img src=&quot;/uploads/blog/Socket/http_protocal.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;从上图可以看出来，HTTP的生命周期是通过Request决定的，在HTTP 1.0中，每次通信只是一个request对应一个response，为了弥补这个问题，在HTTP 1.1协议中，增加了一个头部keep-alive，这个是保证连接保持的功能，虽然keep-alive能够保证同时发送多个请求，但是这其中有一个不变的规则就是有多少个请求（request）就有多少个响应(response),并且response是不会主动的向客户端推送消息的，是一种被动的方式。另外HTTP协议是一种无状态的协议，就是一旦浏览器关闭所有的信息都没有了。&lt;/p&gt;
-&lt;p&gt;B.WebSocket协议是一种基于Html5的新的协议，但同时它也是基于Http协议的。&lt;/p&gt;
-&lt;p&gt; 在WebSocket出现之前，为了实现实时信息的传递都是通过HTTP长轮询（Long Poll）的方式，或者ajax轮询的方式，或者其他的特殊方式。这两种方式都是服务器端被动的等待客户端来询问是否有新的信息，如果有新的信息来就处理，但是也有一些区别：&lt;/p&gt;
-&lt;p&gt; Long Poll:客户端发起请求，如果服务端没有信息返回，客户端就一直等待服务端的响应，是一种阻塞式的请求方式。&lt;/p&gt;
-&lt;p&gt; Ajax Pool：每隔一段时间就去请求一些服务器端，看是否有新的消息要处理。&lt;/p&gt;
-&lt;p&gt; 从这两种方式来看，实现实时信息通信都非常耗资源。而WebSocket可以很好的利用有限的资源来实现上面的效果，先看下webSocket的请求模式：&lt;/p&gt;
-&lt;p&gt; &lt;img src=&quot;/uploads/blog/Socket/http_and_websocket.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt; 从上面的webSocket协议传输数据方式来看，只要每次建立一个HTTP连接，就可以不断的进行信息传输，并且不会再次发送HTTP连接了，也就是实现了正真意义上的长连接。&lt;/p&gt;
-&lt;p&gt;###总结&lt;br&gt; websocket约定了一个通信的规范，通过一个握手的机制，客户端和服务器之间能建立一个类似tcp的连接，从而方便它们之间的通信。在websocket出现之前，web交互一般是基于http协议的短连接或者长连接。websocket是一种全新的协议，不属于http无状态协议，协议名为”ws”，这意味着一个websocket连接地址会是这样的写法：ws://**。websocket协议本质上是一个基于tcp的协议。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】&lt;br&gt;
-    
-    </summary>
-    
-      <category term="WebSocket" scheme="http://www.jiang-yu.cn/categories/WebSocket/"/>
-    
-    
-      <category term="WebSocket" scheme="http://www.jiang-yu.cn/tags/WebSocket/"/>
     
   </entry>
   
