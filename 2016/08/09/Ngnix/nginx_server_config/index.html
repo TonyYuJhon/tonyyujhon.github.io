@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Victory Loves Preparation" />
+  <meta name="keywords" content="Nginx," />
 
 
 
@@ -86,15 +86,25 @@
 
 
 
-<meta name="description" content="Walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JhonYu's Blog">
-<meta property="og:url" content="http://www.jiang-yu.cn/tags/AngularJS/index.html">
+<meta name="description" content="使用nginx配置反向代理，80端口映射不同的内网web服务器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx配置代理--搭建线上和开发环境">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/index.html">
 <meta property="og:site_name" content="JhonYu's Blog">
-<meta property="og:description" content="Walk step by step">
+<meta property="og:description" content="使用nginx配置反向代理，80端口映射不同的内网web服务器。">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/check_nginx_is_install.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/ngnix_location.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/nginx_gzip_on.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/default_80_server.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/dev_80_server.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/test_com.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/nginx_default_error_config.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/nginx_connect_timeout.png">
+<meta property="og:updated_time" content="2016-08-09T10:28:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JhonYu's Blog">
-<meta name="twitter:description" content="Walk step by step">
+<meta name="twitter:title" content="Nginx配置代理--搭建线上和开发环境">
+<meta name="twitter:description" content="使用nginx配置反向代理，80端口映射不同的内网web服务器。">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/check_nginx_is_install.png">
 
 
 
@@ -112,7 +122,7 @@
   };
 </script>
 
-  <title> 标签: AngularJS | JhonYu's Blog </title>
+  <title> Nginx配置代理--搭建线上和开发环境 | JhonYu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +153,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,46 +303,193 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        AngularJS
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Nginx配置代理--搭建线上和开发环境
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-09T20:47:51+08:00" content="2016-08-09">
+              2016-08-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/09/Ngnix/nginx_server_config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/Ngnix/nginx_server_config/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <blockquote>
+<p>使用nginx配置反向代理，80端口映射不同的内网web服务器。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
+<ul>
+<li>开启压缩配置<br><img src="/uploads/blog/Ngnix/nginx_gzip_on.png" alt="nginx_install_dir"><br>如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。</li>
+<li><p>配置Server节点<br> 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)<br><strong>线上环境的配置</strong>：<br> 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">upstream myClusterServer&#123;</span><br><span class="line">              server 127.0.0.1:8081 ;</span><br><span class="line">              #server 127.0.0.1:8082 weight=5;</span><br><span class="line">              #server 127.0.0.1:8083 weight=5;</span><br><span class="line">        &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        charset utf-8;</span><br><span class="line">        location  / &#123;</span><br><span class="line">                root   html;</span><br><span class="line">                index  index.html index.htm;</span><br><span class="line">                proxy_pass http://myClusterServer;</span><br><span class="line">		proxy_connect_timeout 500s;</span><br><span class="line">  		proxy_read_timeout 500s;</span><br><span class="line">  		proxy_send_timeout 500s;</span><br><span class="line">                proxy_redirect default;</span><br><span class="line">                #proxy_connect_timeout 10;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="/uploads/blog/Ngnix/default_80_server.png" alt="nginx_install_dir"><br> <strong>开发环境配置：</strong><br> 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：<br> <strong>nginx.conf</strong>: <img src="/uploads/blog/Ngnix/dev_80_server.png" alt="nginx_install_dir"><br> <strong>/etc/hosts</strong>: <img src="/uploads/blog/Ngnix/test_com.png" alt="nginx_install_dir"></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  test.com;  </span><br><span class="line"></span><br><span class="line">    charset utf-8;</span><br><span class="line"></span><br><span class="line">    #access_log  logs/host.access.log  main;</span><br><span class="line">    location  / &#123;</span><br><span class="line">            root   html;</span><br><span class="line"> 	index  index.html index.htm;</span><br><span class="line">proxy_pass http://127.0.0.1:8082;</span><br><span class="line">proxy_set_header           Host $host;</span><br><span class="line">proxy_set_header  X-Real-IP  $remote_addr;</span><br><span class="line">proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">  	proxy_redirect default;</span><br><span class="line">proxy_connect_timeout 10;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>配置错误页面处理<br> <img src="/uploads/blog/Ngnix/nginx_default_error_config.png" alt="nginx_install_dir"></p>
+</li>
+<li><p>配置超时时间</p>
+<blockquote>
+<p>keepalive_timeout  200s;<br> fastcgi_connect_timeout 300s;<br> fastcgi_send_timeout 300s;<br> fastcgi_read_timeout 300s;<br> fastcgi_buffer_size 128k;<br> fastcgi_buffers 8 128k;<br> fastcgi_busy_buffers_size 256k;<br> fastcgi_temp_file_write_size 256k; </p>
+</blockquote>
+</li>
+</ul>
+<p>　　<img src="/uploads/blog/Ngnix/nginx_connect_timeout.png" alt="nginx_install_dir"></p>
+<p>　　到此，nginx的基本配置也就完成了.</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/06/02/AngularJS/初识AngularJS/" itemprop="url">
-              
-                <span itemprop="name">初识AngularJS</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-02T21:47:51+08:00"
-              content="2016-06-02" >
-          06-02
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Nginx/" rel="tag">#Nginx</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/" rel="next" title="Java入门--IDE工具的选择（二）">
+                <i class="fa fa-chevron-left"></i> Java入门--IDE工具的选择（二）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/08/09/Ngnix/nginx_server_config/"
+     data-title="Nginx配置代理--搭建线上和开发环境"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -340,6 +497,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/09/Ngnix/nginx_server_config/"
+           data-title="Nginx配置代理--搭建线上和开发环境" data-url="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -359,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar02.png"
@@ -446,6 +620,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 	  
 	   <div class="links-of-author motion-element">
@@ -576,6 +761,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
