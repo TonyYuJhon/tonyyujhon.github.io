@@ -4,13 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[SVN入门教程（三）--上传文件到SVN服务器]]></title>
+      <url>http://www.jiang-yu.cn/2016/09/02/SVN/SVN%20Learn%20Basic%2003/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　通过前面的<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/">SVN入门教程（二）–下载文件到本地计算机</a>,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。</p>
+<h2 id="第一步：确定你需要上传文件到服务器中的位置"><a href="#第一步：确定你需要上传文件到服务器中的位置" class="headerlink" title="第一步：确定你需要上传文件到服务器中的位置"></a>第一步：确定你需要上传文件到服务器中的位置</h2><p>　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0020.png" alt="JDK_CONFG_CHECK"><br>　　理解了上面的概念之后，确定了要存放文件的目录，比如：(<a href="https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。">https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。</a></p>
+<h2 id="第二步：添加文件操作"><a href="#第二步：添加文件操作" class="headerlink" title="第二步：添加文件操作"></a>第二步：添加文件操作</h2><p>　　首先，有了第一步中的链接，比如：【<a href="https://www.jiang-yu.cn/svn/document/新员工天地】">https://www.jiang-yu.cn/svn/document/新员工天地】</a> 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0021.png" alt="JDK_CONFG_CHECK"><br>　　然后，执行SVN的添加操作，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0022.png" alt="JDK_CONFG_CHECK"><br>　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，<br>　　【文件的变化】如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0023.png" alt="JDK_CONFG_CHECK"><br>　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0024.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="第三步：提交文件菜单操作"><a href="#第三步：提交文件菜单操作" class="headerlink" title="第三步：提交文件菜单操作"></a>第三步：提交文件菜单操作</h2><p>　　上面两步正确操作之后，在文件上右键点击出现菜单中选择SVN Commit，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0025.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="第四步：填写提交备注信息"><a href="#第四步：填写提交备注信息" class="headerlink" title="第四步：填写提交备注信息"></a>第四步：填写提交备注信息</h2><p>　　最后，出现一个填写备注的弹出框，这里需要说明一下，就是每次提交文件（也就是对文件有修改操作，新增操作，删除操作的话都需要填写操作的原因和影响的文件）都要填写操作备注，养成这样的好习惯，对后面操作是有帮助的，如下图所示，可以按照给出的模板操作：</p>
+<blockquote>
+<p>【提 交 人】：江xx<br>【文件说明】：新增了新员工入职指导文件<br>【修改说明】：<br>　　1.修改了xxx文件<br>　　2.删除了xxx文件<br>【影响范围】：</p>
+</blockquote>
+<p>　　<img src="/uploads/blog/SVN/svn_0026.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：<a href="https://www.jiang-yu.cn/svn/document/aaa.doc">https://www.jiang-yu.cn/svn/document/aaa.doc</a> 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SVN入门教程（二）--下载文件到本地计算机]]></title>
       <url>http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。</p>
 </blockquote>
 <a id="more"></a>
-<p>　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步<a href="http://localhost:4000/2016/09/01/SVN/SVN%20Learn%20Basic%2001/" target="_blank" rel="external">SVN入门教程（一）–软件的安装</a>。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。</p>
+<p>　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/">SVN入门教程（一）–软件的安装</a>。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。</p>
 <h2 id="第一步：创建文件夹"><a href="#第一步：创建文件夹" class="headerlink" title="第一步：创建文件夹"></a>第一步：创建文件夹</h2><p>　　首先，我们要在自己的电脑上创建一个文件夹（任意位置，任意名称），用来存放从SVN服务器中下载的文件，例如：我需要下载公司的人资部的一些文档资源，第一步，创建一个文件夹（HR_DOCUMENT）<br>下面的教程使用的是A_SVN_DEMO这个文件名，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0011.png" alt="create_des_folder"></p>
 <h2 id="第二步：检出资源文件，填写链接地址"><a href="#第二步：检出资源文件，填写链接地址" class="headerlink" title="第二步：检出资源文件，填写链接地址"></a>第二步：检出资源文件，填写链接地址</h2><p>　　文件夹创建好之后，在文件夹上右键–&gt;SVN Checkout–&gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：<a href="https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）">https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）</a> 填写到URL of repository下的输入框中，然后点击ok即可<br>　　<img src="/uploads/blog/SVN/svn_0012.png" alt="JDK_CONFG_CHECK"></p>
 <h2 id="第三步：等待文件资源下载，查看下载的进度和情况"><a href="#第三步：等待文件资源下载，查看下载的进度和情况" class="headerlink" title="第三步：等待文件资源下载，查看下载的进度和情况"></a>第三步：等待文件资源下载，查看下载的进度和情况</h2><p>　　<img src="/uploads/blog/SVN/svn_0013.png" alt="JDK_CONFG_CHECK"></p>
@@ -29,19 +49,6 @@
 <a id="more"></a>
 <p>　　博主有点懒哦，还没有开始写这篇文章，后续补上。。。</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Tomcat开启压缩功能]]></title>
-      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
-</blockquote>
-<a id="more"></a>
-<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
-<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -72,6 +79,19 @@
 <p>　　<img src="/uploads/blog/Ngnix/nginx_connect_timeout.png" alt="nginx_install_dir"></p>
 <p>　　到此，nginx的基本配置也就完成了.</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Tomcat开启压缩功能]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
+</blockquote>
+<a id="more"></a>
+<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
+<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -212,6 +232,16 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Linux关机操作命令]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
+<blockquote>
+<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
@@ -222,16 +252,6 @@
 <li><p>永久生效：修改 /etc/inittab  将启动模式修改为3<br>其中的数字可以设置为（0~6）<br>0 - 表示关闭系统（不要把默认设置成0）<br>1 - 单用户模式<br>2 - 多用户模式，没有NFS服务<br>3 - 多用户文本模式，是标准的运行级<br>5 - 图形模式<br>6 - 系统重新启动</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
-<blockquote>
-<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
-</blockquote>
 ]]></content>
     </entry>
     
@@ -268,6 +288,23 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
       <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
@@ -300,23 +337,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
 <ul>
 <li>表级锁和行级锁的比较<br>&gt;<br>1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。<br>2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
 ]]></content>
     </entry>
     
