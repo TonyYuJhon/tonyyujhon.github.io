@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-08-09T10:28:41.000Z</updated>
+  <updated>2016-09-02T00:44:26.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SVN入门教程（二）--下载文件到本地计算机</title>
+    <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/"/>
+    <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic02/</id>
+    <published>2016-09-01T14:47:51.000Z</published>
+    <updated>2016-09-02T00:44:26.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步&lt;a href=&quot;http://localhost:4000/2016/09/01/SVN/SVN%20Learn%20Basic%2001/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SVN入门教程（一）–软件的安装&lt;/a&gt;。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。&lt;/p&gt;
+&lt;h2 id=&quot;第一步：创建文件夹&quot;&gt;&lt;a href=&quot;#第一步：创建文件夹&quot; class=&quot;headerlink&quot; title=&quot;第一步：创建文件夹&quot;&gt;&lt;/a&gt;第一步：创建文件夹&lt;/h2&gt;&lt;p&gt;　　首先，我们要在自己的电脑上创建一个文件夹（任意位置，任意名称），用来存放从SVN服务器中下载的文件，例如：我需要下载公司的人资部的一些文档资源，第一步，创建一个文件夹（HR_DOCUMENT）&lt;br&gt;下面的教程使用的是A_SVN_DEMO这个文件名，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0011.png&quot; alt=&quot;create_des_folder&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;a href=&quot;#第二步：检出资源文件，填写链接地址&quot; class=&quot;headerlink&quot; title=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;/a&gt;第二步：检出资源文件，填写链接地址&lt;/h2&gt;&lt;p&gt;　　文件夹创建好之后，在文件夹上右键–&amp;gt;SVN Checkout–&amp;gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&quot;&gt;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&lt;/a&gt; 填写到URL of repository下的输入框中，然后点击ok即可&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0012.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第三步：等待文件资源下载，查看下载的进度和情况&quot;&gt;&lt;a href=&quot;#第三步：等待文件资源下载，查看下载的进度和情况&quot; class=&quot;headerlink&quot; title=&quot;第三步：等待文件资源下载，查看下载的进度和情况&quot;&gt;&lt;/a&gt;第三步：等待文件资源下载，查看下载的进度和情况&lt;/h2&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0013.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第四步：查看文件是否下载下来了&quot;&gt;&lt;a href=&quot;#第四步：查看文件是否下载下来了&quot; class=&quot;headerlink&quot; title=&quot;第四步：查看文件是否下载下来了&quot;&gt;&lt;/a&gt;第四步：查看文件是否下载下来了&lt;/h2&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0014.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;
+　　&lt;/p&gt;
+&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　哎呀，一不小心，本文就结束了，是不是很简单呢，只需要简单的四步就可以从SVN服务器中，获取你所需要的文件，这里很多的操作都直接在截图中有备注（比较懒–不想打字，哈哈），好了，透露一下，本教程会有连载哦，下一篇会写一下如何在本地计算机上传文件到服务器上，如果想掌握SVN的基本使用，请多多关注哈&lt;del&gt;~&lt;/del&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
+    
+    
+      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVN入门教程（一）--软件的安装</title>
+    <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/"/>
+    <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic 01/</id>
+    <published>2016-09-01T14:43:51.000Z</published>
+    <updated>2016-09-02T00:40:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  本文主要介绍SVN以及如何安装SVN软件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　博主有点懒哦，还没有开始写这篇文章，后续补上。。。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  本文主要介绍SVN以及如何安装SVN软件。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
+    
+    
+      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat开启压缩功能</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T04:07:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
+    
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
+    
+  </entry>
   
   <entry>
     <title>Nginx配置代理--搭建线上和开发环境</title>
@@ -97,37 +192,6 @@
     
     
       <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat开启压缩功能</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T04:07:49.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
-    
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
     
   </entry>
   
@@ -475,41 +539,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
   </entry>
   
   <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
-    
-  </entry>
-  
-  <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
     <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
     <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
@@ -560,6 +589,41 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
       <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
     
       <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   
@@ -728,171 +792,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
     
     
       <category term="AngularJS" scheme="http://www.jiang-yu.cn/tags/AngularJS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring中Filter和Inteceptor的区别-转载</title>
-    <link href="http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/"/>
-    <id>http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring中Filter和Inteceptor的区别-转载/</id>
-    <published>2016-04-17T04:34:10.000Z</published>
-    <updated>2016-06-02T13:34:36.000Z</updated>
-    
-    <content type="html">&lt;pre&gt;&lt;code&gt;原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
-&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;spring mvc DispatcherServlet详解之interceptor和filter的区别&lt;/p&gt;
-&lt;p&gt;首先我们看一下spring mvc Interceptor的功能及实现：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://wenku.baidu.com/link?url=Mw3GaUhCRMhUFjU8iIDhObQpDcbmmRy_IPeumazg0ppnbmwqFUtLp9kSpuPPpeysf6EnHBLYFeWrbjqMq8BlWKQz_7MSDhGQTVl32fpxCMm&quot; title=&quot;Spring MVC Interceptor Introduce&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wenku.baidu.com/link?url=Mw3GaUhCRMhUFjU8iIDhObQpDcbmmRy_IPeumazg0ppnbmwqFUtLp9kSpuPPpeysf6EnHBLYFeWrbjqMq8BlWKQz_7MSDhGQTVl32fpxCMm&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;SpringMVC 中的Interceptor 拦截器也是相当重要和相当有用的，它的主要作用是拦截用户的请求并进行相应的处理，其他的作用比如通过它来进行权限验证，或者是来判断用户是否登陆，日志记录，或者限制时间点访问。&lt;/p&gt;
-&lt;p&gt;SpringMVC 中的Interceptor 拦截请求是通过HandlerInterceptor 来实现的。在SpringMVC 中定义一个Interceptor 非常简单，主要有两种方式，第一种方式是要定义的Interceptor类要实现了Spring 的HandlerInterceptor 接口，或者是这个类继承实现了HandlerInterceptor 接口的类，比如Spring 已经提供的实现了HandlerInterceptor 接口的抽象类HandlerInterceptorAdapter ；第二种方式是实现Spring的WebRequestInterceptor接口，或者是继承实现了WebRequestInterceptor的类。&lt;/p&gt;
-&lt;p&gt;HandlerInterceptor 接口中定义了三个方法，我们就是通过这三个方法来对用户的请求进行拦截处理的。&lt;/p&gt;
-&lt;p&gt;   （1 ）preHandle (HttpServletRequest request, HttpServletResponse response, Object handle) 方法。该方法将在请求处理之前进行调用。SpringMVC 中的Interceptor 是链式的调用的，在一个应用中或者说是在一个请求中可以同时存在多个Interceptor 。每个Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是Interceptor 中的preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求的一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值Boolean 类型的，当它返回为false 时，表示请求结束，后续的Interceptor 和Controller 都不会再执行；当返回值为true 时就会继续调用下一个Interceptor 的preHandle 方法，如果已经是最后一个Interceptor 的时候就会是调用当前请求的Controller 方法。&lt;/p&gt;
-&lt;p&gt;   （2 ）postHandle (HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView) 方法，由preHandle 方法的解释我们知道这个方法包括后面要说到的afterCompletion 方法都只能是在当前所属的Interceptor 的preHandle 方法的返回值为true 时才能被调用。postHandle 方法，顾名思义就是在当前请求进行处理之后，也就是Controller 方法调用之后执行，但是它会在DispatcherServlet 进行视图返回渲染之前被调用，所以我们可以在这个方法中对Controller 处理之后的ModelAndView 对象进行操作。postHandle 方法被调用的方向跟preHandle 是相反的，也就是说先声明的Interceptor 的postHandle 方法反而会后执行，这和Struts2 里面的Interceptor 的执行过程有点类型。Struts2 里面的Interceptor 的执行过程也是链式的，只是在Struts2 里面需要手动调用ActionInvocation 的invoke 方法来触发对下一个Interceptor 或者是Action 的调用，然后每一个Interceptor 中在invoke 方法调用之前的内容都是按照声明顺序执行的，而invoke 方法之后的内容就是反向的。&lt;/p&gt;
-&lt;p&gt;   （3 ）afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex) 方法，该方法也是需要当前对应的Interceptor 的preHandle 方法的返回值为true 时才会执行。顾名思义，该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。这个方法的主要作用是用于进行资源清理工作的。 我们的系统日志的拦截在这个方法中，可以记录日志的相关的参数，检测方法的执行。&lt;/p&gt;
-&lt;p&gt;在这里，我们就有一个疑问了：拦截器和过滤器到底有什么不同呢？&lt;/p&gt;
-&lt;p&gt;首先，我们看一下官方是怎么解释的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public interface HandlerInterceptor
-Workflow interface that allows for customized handler execution chains.
-Applications can register any number of existing or custom interceptors for 
-certain groups of handlers, to add common preprocessing behavior without 
-needing to modify each handler implementation.
-A HandlerInterceptor gets called before the appropriate HandlerAdapter triggers 
-the execution of the handler itself. This mechanism can be used for a large field 
-of preprocessing aspects, e.g. for authorization checks, or common handler behavior
-like locale or theme changes. Its main purpose is to allow for factoring out repetitive 
-handler code.
-
-In an async processing scenario, the handler may be executed in a separate thread while 
-the main thread exits without rendering or invoking the postHandle and afterCompletion 
-callbacks. When concurrent handler execution completes, the request is dispatched 
-back in order to proceed with rendering the model and all methods of this contract 
-are invoked again. For further options and details 
-see org.springframework.web.servlet.AsyncHandlerInterceptor
-
-Typically an interceptor chain is defined per HandlerMapping bean, sharing its granularity. 
-To be able to apply a certain interceptor chain to a group of handlers, one needs to map 
-the desired handlers via one HandlerMapping bean. The interceptors themselves are defined 
-as beans in the application context, referenced by the mapping bean definition 
-via its &amp;quot;interceptors&amp;quot; property (in XML: a &amp;lt;list&amp;gt; of &amp;lt;ref&amp;gt;).
-
-HandlerInterceptor is basically similar to a Servlet 2.3 Filter, but in contrast to the 
-latter it just allows custom pre-processing with the option of prohibiting the execution 
-of the handler itself, and custom post-processing. Filters are more powerful, for example 
-they allow for exchanging the request and response objects that are handed down the chain. 
-Note that a filter gets configured in web.xml, a HandlerInterceptor in the application context.
-
-As a basic guideline, fine-grained handler-related preprocessing tasks are candidates for 
-HandlerInterceptor implementations, especially factored-out common handler code and authorization 
-checks. On the other hand, a Filter is well-suited for request content and view content handling, 
-like multipart forms and GZIP compression. This typically shows when one needs to map the filter 
-to certain content types (e.g. images), or to all requests.
-
-
-public interface Filter
-A filter is an object that performs filtering tasks on either the request to a resource (a servlet or static content),
- or on the response from a resource, or both. 
-
-Filters perform filtering in the doFilter method. Every Filter has access to a FilterConfig object from which it can 
-obtain its initialization parameters, a reference to the ServletContext which it can use, for example, to load resources
-needed for filtering tasks.
-
-Filters are configured in the deployment descriptor of a web application
-
-Examples that have been identified for this design are
-1) Authentication Filters 
-2) Logging and Auditing Filters 
-3) Image conversion Filters 
-4) Data compression Filters 
-5) Encryption Filters 
-6) Tokenizing Filters 
-7) Filters that trigger resource access events 
-8) XSL/T filters 
-9) Mime-type chain Filter 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;interceptor 和filter的概念相似，但主要不同点有：&lt;/p&gt;
-&lt;p&gt;web应用的过滤请求，仅使用web应用；&lt;/p&gt;
-&lt;p&gt;interceptor应用于特定组别的handler，可以web应用也可以企业应用；&lt;/p&gt;
-&lt;p&gt;从google找到的资料：&lt;a href=&quot;http://www.linkedin.com/groups/what-is-difference-between-interceptor-3983267.S.5844715100472107010&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.linkedin.com/groups/what-is-difference-between-interceptor-3983267.S.5844715100472107010&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Filter is used only in web applications whereas interceptor can be used with web as well as enterprise applications. 
-Life cycle methods of both, also differs. The Interceptor stack fires on requests in a configured package while 
-filters only apply to their mapped URL&amp;apos;s. 
-
-Example: 
-
-A Servlet Filter is used in the web layer only, you can&amp;apos;t use it outside of a 
-web context. Interceptors can be used anywhere. 
-
-The interceptor stack fires on every request. 
-Filters only apply to the urls for which they are defined. 
-
-Filters can be used when you want to modify any request or response parameters like headers. For example you would 
-like to add a response header &amp;quot;Powered By Surya&amp;quot; to each generated response. Instead of adding this header in each 
-resource method you would use a response filter to add this header. 
-
-There are filters on the server side and the client side. 
-
-In Summary: 
-
-Filters: 
-
-(1)Based on Servlet Specification 
-(2)Executes on the pattern matches on the request. 
-(3) Not configurable method calls. 
-
-
-Interceptors: 
-(1)Based on Struts2. 
-(2)Executes for all the request qualifies for a front controller( A Servlet filter ).And can be configured to 
-execute additional interceptor for a particular action execution. 
-(3)Methods in the Interceptors can be configured whether to execute or not by means of excludemethods or includeMethods
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;pre&gt;&lt;code&gt;原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Spring MVC" scheme="http://www.jiang-yu.cn/categories/Spring-MVC/"/>
-    
-    
-      <category term="Filter" scheme="http://www.jiang-yu.cn/tags/Filter/"/>
-    
-      <category term="Inteceptor" scheme="http://www.jiang-yu.cn/tags/Inteceptor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring拦截器--HandlerInterceptorAdapter</title>
-    <link href="http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/"/>
-    <id>http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring拦截器-HandlerInterceptorAdapter/</id>
-    <published>2016-04-17T03:49:35.000Z</published>
-    <updated>2016-06-05T03:17:07.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;a href=&quot;#一、认识HandlerInterceptorAdapter&quot; class=&quot;headerlink&quot; title=&quot;一、认识HandlerInterceptorAdapter&quot;&gt;&lt;/a&gt;一、认识HandlerInterceptorAdapter&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】&lt;br&gt;    &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   /*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * Copyright 2002-2012 the original author or authors.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * you may not use this file except in compliance with the License.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * You may obtain a copy of the License at&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *      http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * See the License for the specific language governing permissions and&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * limitations under the License.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;package org.springframework.web.servlet.handler;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletRequest;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletResponse;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.springframework.web.servlet.AsyncHandlerInterceptor;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.springframework.web.servlet.ModelAndView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Abstract adapter class for the HandlerInterceptor interface,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * for simplified implementation of pre-only/post-only interceptors.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author Juergen Hoeller&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @since 05.12.2003&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation always returns &amp;#123;@code true&amp;#125;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation is empty.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void postHandle(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation is empty.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void afterCompletion(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * This implementation is empty.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void afterConcurrentHandlingStarted(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			HttpServletRequest request, HttpServletResponse response, Object handler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;可以看出，这个抽象类提供的四个方法：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;preHandle  预处理–一般实现编码的控制和安全性控制&lt;/li&gt;
-&lt;li&gt;postHandle 后处理–可以修改Spring中的ModelAndView,使得跳转到不同的View&lt;/li&gt;
-&lt;li&gt;afterCompletion 返回处理–通过判断ex的值可以进行异常日志记录和处理&lt;/li&gt;
-&lt;li&gt;afterConcurrentHandlingStarted&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;二、使用Spring-MVC-的拦截器&quot;&gt;&lt;a href=&quot;#二、使用Spring-MVC-的拦截器&quot; class=&quot;headerlink&quot; title=&quot;二、使用Spring MVC 的拦截器&quot;&gt;&lt;/a&gt;二、使用Spring MVC 的拦截器&lt;/h1&gt;&lt;p&gt;例如：我们可以使用拦截器实现特定情况下可以访问某些接口，最常用的情况是，某些系统提供给外部调用的接口需要有时间的限制。&lt;br&gt;    &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;package com.jifenn.ja.web.common.interceptor;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import java.util.Calendar;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import java.util.Date;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletRequest;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.servlet.http.HttpServletResponse;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * &amp;lt;p&amp;gt;功能描述&amp;lt;/br&amp;gt; 控制给外部系统调用某些接口的时间限制 : 接口开放时间：8：00-21：00 &amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @className Intf4OutCallTimeInterceptor&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author jiangyu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @date 2016年4月17日 下午12:18:25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @version v1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class Intf4OutCallTimeInterceptor extends HandlerInterceptorAdapter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /** 允许时间段 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private int allowTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /** 禁止时间段 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private int forbidTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /** 需要拦截的路径 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private String mappingRegexURL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        throws Exception&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        String url = request.getRequestURL().toString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if (mappingRegexURL == null || url.matches(mappingRegexURL))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Calendar calendar = Calendar.getInstance();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            calendar.setTime(new Date());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            int hour = calendar.get(Calendar.HOUR_OF_DAY);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            if (hour &amp;lt; allowTimeZone || hour &amp;gt; forbidTimeZone)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                request.setAttribute(&amp;quot;msg&amp;quot;, &amp;quot;接口开放时间：8：00-21：00&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                request.getRequestDispatcher(&amp;quot;/err.jsp&amp;quot;).forward(request, response);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                return false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setAllowTimeZone(int allowTimeZone)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.allowTimeZone = allowTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setForbidTimeZone(int forbidTimeZone)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.forbidTimeZone = forbidTimeZone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setMappingRegexURL(String mappingRegexURL)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.mappingRegexURL = mappingRegexURL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;spring的xml配置文件配置如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;bean id=&amp;quot;intf4OutAccessInterceptor&amp;quot; class=&amp;quot;com.jifenn.ja.web.common.interceptor.Intf4OutCallTimeInterceptor&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;allowTimeZone&amp;quot; value=&amp;quot;8&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;forbidTimeZone&amp;quot; value=&amp;quot;21&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;mappingRegexURL&amp;quot; value=&amp;quot;.*/intf4out\.do\?name=*&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;bean&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	class=&amp;quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;property name=&amp;quot;interceptors&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;lt;ref bean=&amp;quot;intf4OutAccessInterceptor&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;/list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;/property&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;emsp;&amp;emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Spring MVC" scheme="http://www.jiang-yu.cn/categories/Spring-MVC/"/>
-    
-    
-      <category term="Interceptor" scheme="http://www.jiang-yu.cn/tags/Interceptor/"/>
     
   </entry>
   
