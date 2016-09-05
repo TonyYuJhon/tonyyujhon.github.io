@@ -118,6 +118,54 @@
   </entry>
   
   <entry>
+    <title>Nginx配置代理--搭建线上和开发环境</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T10:28:41.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　上次写过一篇博文是关于使用&lt;a href=&quot;http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/&quot;&gt;Nginx+Tomcat实现负载均衡&lt;/a&gt;,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.&lt;br&gt;　　首先，查看一下nginx是否安装好了：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/check_nginx_is_install.png&quot; alt=&quot;nginx_install_check&quot;&gt;&lt;br&gt;　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/ngnix_location.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开启压缩配置&lt;br&gt;&lt;img src=&quot;/uploads/blog/Ngnix/nginx_gzip_on.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt;如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置Server节点&lt;br&gt; 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)&lt;br&gt;&lt;strong&gt;线上环境的配置&lt;/strong&gt;：&lt;br&gt; 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;upstream myClusterServer&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              server 127.0.0.1:8081 ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8082 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8083 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        server_name  localhost;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_pass http://myClusterServer;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		proxy_connect_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_read_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_send_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                #proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; &lt;img src=&quot;/uploads/blog/Ngnix/default_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;开发环境配置：&lt;/strong&gt;&lt;br&gt; 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：&lt;br&gt; &lt;strong&gt;nginx.conf&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/dev_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;/etc/hosts&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/test_com.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server_name  test.com;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #access_log  logs/host.access.log  main;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 	index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_pass http://127.0.0.1:8082;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           Host $host;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header  X-Real-IP  $remote_addr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  	proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page   500 502 503 504  /50x.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location = /50x.html &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;配置错误页面处理&lt;br&gt; &lt;img src=&quot;/uploads/blog/Ngnix/nginx_default_error_config.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置超时时间&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;keepalive_timeout  200s;&lt;br&gt; fastcgi_connect_timeout 300s;&lt;br&gt; fastcgi_send_timeout 300s;&lt;br&gt; fastcgi_read_timeout 300s;&lt;br&gt; fastcgi_buffer_size 128k;&lt;br&gt; fastcgi_buffers 8 128k;&lt;br&gt; fastcgi_busy_buffers_size 256k;&lt;br&gt; fastcgi_temp_file_write_size 256k; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/nginx_connect_timeout.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;p&gt;　　到此，nginx的基本配置也就完成了.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java入门--IDE工具的选择（二）</title>
     <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
@@ -182,54 +230,6 @@
     
     
       <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx配置代理--搭建线上和开发环境</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T10:28:41.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　上次写过一篇博文是关于使用&lt;a href=&quot;http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/&quot;&gt;Nginx+Tomcat实现负载均衡&lt;/a&gt;,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.&lt;br&gt;　　首先，查看一下nginx是否安装好了：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/check_nginx_is_install.png&quot; alt=&quot;nginx_install_check&quot;&gt;&lt;br&gt;　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/ngnix_location.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开启压缩配置&lt;br&gt;&lt;img src=&quot;/uploads/blog/Ngnix/nginx_gzip_on.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt;如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置Server节点&lt;br&gt; 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)&lt;br&gt;&lt;strong&gt;线上环境的配置&lt;/strong&gt;：&lt;br&gt; 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;upstream myClusterServer&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              server 127.0.0.1:8081 ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8082 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8083 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        server_name  localhost;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_pass http://myClusterServer;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		proxy_connect_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_read_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_send_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                #proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt; &lt;img src=&quot;/uploads/blog/Ngnix/default_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;开发环境配置：&lt;/strong&gt;&lt;br&gt; 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：&lt;br&gt; &lt;strong&gt;nginx.conf&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/dev_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;/etc/hosts&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/test_com.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
- &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server_name  test.com;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #access_log  logs/host.access.log  main;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 	index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_pass http://127.0.0.1:8082;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           Host $host;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header  X-Real-IP  $remote_addr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  	proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page   500 502 503 504  /50x.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location = /50x.html &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;配置错误页面处理&lt;br&gt; &lt;img src=&quot;/uploads/blog/Ngnix/nginx_default_error_config.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置超时时间&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;keepalive_timeout  200s;&lt;br&gt; fastcgi_connect_timeout 300s;&lt;br&gt; fastcgi_send_timeout 300s;&lt;br&gt; fastcgi_read_timeout 300s;&lt;br&gt; fastcgi_buffer_size 128k;&lt;br&gt; fastcgi_buffers 8 128k;&lt;br&gt; fastcgi_busy_buffers_size 256k;&lt;br&gt; fastcgi_temp_file_write_size 256k; &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/nginx_connect_timeout.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
-&lt;p&gt;　　到此，nginx的基本配置也就完成了.&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://www.jiang-yu.cn/categories/Nginx/"/>
-    
-    
-      <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
     
   </entry>
   
@@ -577,6 +577,41 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
   </entry>
   
   <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
+    
+  </entry>
+  
+  <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
     <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
     <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
@@ -627,41 +662,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
       <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
     
       <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   
