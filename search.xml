@@ -71,6 +71,19 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Tomcat开启压缩功能]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
+</blockquote>
+<a id="more"></a>
+<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
+<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
       <url>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -98,19 +111,6 @@
 <p>　　<img src="/uploads/blog/Ngnix/nginx_connect_timeout.png" alt="nginx_install_dir"></p>
 <p>　　到此，nginx的基本配置也就完成了.</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Tomcat开启压缩功能]]></title>
-      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
-</blockquote>
-<a id="more"></a>
-<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
-<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -232,16 +232,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
-<blockquote>
-<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
-</blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
@@ -252,6 +242,16 @@
 <li><p>永久生效：修改 /etc/inittab  将启动模式修改为3<br>其中的数字可以设置为（0~6）<br>0 - 表示关闭系统（不要把默认设置成0）<br>1 - 单用户模式<br>2 - 多用户模式，没有NFS服务<br>3 - 多用户文本模式，是标准的运行级<br>5 - 图形模式<br>6 - 系统重新启动</p>
 </li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux关机操作命令]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
+<blockquote>
+<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
+</blockquote>
 ]]></content>
     </entry>
     
