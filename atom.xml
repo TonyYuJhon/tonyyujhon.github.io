@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-09-02T05:49:26.000Z</updated>
+  <updated>2016-11-09T01:04:17.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ActiveMQ启动报错--ISC服务惹的祸</title>
+    <link href="http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/"/>
+    <id>http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</id>
+    <published>2016-11-09T00:43:51.000Z</published>
+    <updated>2016-11-09T01:04:17.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  本文主要记录一下在windows上使用ActiveMQ过程中出现的一个错误，而且出现过两次，方便后期备忘和快速查询。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　最近做项目中遇到了要使用异步的方式去实现某些业务场景，所以就选择了ActiveMQ+Camel来实现，开始的时候可以正常使用，但是在使用一段时间后，在windows上偶尔会出现启动的时候报错，开始一直都以为是端口冲突导致的问题，但是改过很多端口号后还是不行，最后还是依赖强大的Google找到了答案，所以记录一下解决方法。&lt;/p&gt;
+&lt;h2 id=&quot;第一步：问题复现&quot;&gt;&lt;a href=&quot;#第一步：问题复现&quot; class=&quot;headerlink&quot; title=&quot;第一步：问题复现&quot;&gt;&lt;/a&gt;第一步：问题复现&lt;/h2&gt;&lt;p&gt;　　在windows上点击ActiveMQ中bin目录下：bin/win64/activemq.bat 启动MQ服务，出现如下报错：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Failed to bind to server socket:tcp://0.0.0.0:61626 due to: java.net.BindException: Address already in use: JVM_Bind&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如下图所示&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/ActiveMQ/activeMQ_error_msg.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第二步：问题排查&quot;&gt;&lt;a href=&quot;#第二步：问题排查&quot; class=&quot;headerlink&quot; title=&quot;第二步：问题排查&quot;&gt;&lt;/a&gt;第二步：问题排查&lt;/h2&gt;&lt;p&gt;　　初步判断是：端口号被占用了，所以先查看一下端口“61626” 被哪个服务给占用了，然后直接kill掉那个进程，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/ActiveMQ/error_problem_check_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　然而，结果让我们很失望，nothing,没有任何进程占用该端口号，所以我想既然61626端口被占用了，那我就再换一个端口号，但是还是不行，还是报同样的错误。
+　　&lt;/p&gt;
+&lt;h2 id=&quot;第三步：&quot;&gt;&lt;a href=&quot;#第三步：&quot; class=&quot;headerlink&quot; title=&quot;第三步：&quot;&gt;&lt;/a&gt;第三步：&lt;/h2&gt;&lt;p&gt;　　通过netstat -aon | findstr “61616” 查找端口被谁占用了，可是一直没有找到，最后只能去Google大法那里去寻求帮助了，Google说是 Internet Connection Sharing (ICS)服务占用，kill了这个服务，启动就Ok了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;微软官方服务解释：&lt;br&gt;　　BITS can force a dial-up connection for home networks that use Microsoft Internet Connection Sharing if Connection Sharing is configured to dial out when computers on the network access the Internet. To prevent a forced dial-up connection, disable the Establish a dial-up connection whenever a computer on my network attempts to access the Internet option on the Connection Sharing host computer that shares its Internet connection.&lt;br&gt;　　Computers connected to the Connection Sharing host computer assume they have a network connection, so BITS will try to transfer files. If the dial-up option is disabled on the host computer and the host computer does not have an active connection, the transfers will fail with a transient error. BITS will retry the transfers periodically.
+　　&lt;/p&gt;
+&lt;h2 id=&quot;第四步：问题解决&quot;&gt;&lt;a href=&quot;#第四步：问题解决&quot; class=&quot;headerlink&quot; title=&quot;第四步：问题解决&quot;&gt;&lt;/a&gt;第四步：问题解决&lt;/h2&gt;&lt;p&gt;　　Google后，立即打开windows的任务管理器，找到了相应的“嫌疑人”进程，直接kill掉&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/ActiveMQ/kill_ICS_Service.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　果然，kill掉ICS那个服务之后，ActiveMQ又可以正常启动了。
+　　&lt;/p&gt;
+&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　每天记录平时工作中遇到的问题，一点一点积累，加油，Fighting !!!&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  本文主要记录一下在windows上使用ActiveMQ过程中出现的一个错误，而且出现过两次，方便后期备忘和快速查询。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="ActiveMQ" scheme="http://www.jiang-yu.cn/categories/ActiveMQ/"/>
+    
+    
+      <category term="ActiveMQ" scheme="http://www.jiang-yu.cn/tags/ActiveMQ/"/>
+    
+  </entry>
   
   <entry>
     <title>SVN入门教程（三）--上传文件到SVN服务器</title>
@@ -118,54 +162,6 @@
   </entry>
   
   <entry>
-    <title>Nginx配置代理--搭建线上和开发环境</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T10:28:41.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　上次写过一篇博文是关于使用&lt;a href=&quot;http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/&quot;&gt;Nginx+Tomcat实现负载均衡&lt;/a&gt;,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.&lt;br&gt;　　首先，查看一下nginx是否安装好了：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/check_nginx_is_install.png&quot; alt=&quot;nginx_install_check&quot;&gt;&lt;br&gt;　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/ngnix_location.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开启压缩配置&lt;br&gt;&lt;img src=&quot;/uploads/blog/Ngnix/nginx_gzip_on.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt;如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置Server节点&lt;br&gt; 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)&lt;br&gt;&lt;strong&gt;线上环境的配置&lt;/strong&gt;：&lt;br&gt; 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;upstream myClusterServer&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              server 127.0.0.1:8081 ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8082 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8083 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        server_name  localhost;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_pass http://myClusterServer;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		proxy_connect_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_read_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_send_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                #proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt; &lt;img src=&quot;/uploads/blog/Ngnix/default_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;开发环境配置：&lt;/strong&gt;&lt;br&gt; 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：&lt;br&gt; &lt;strong&gt;nginx.conf&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/dev_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;/etc/hosts&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/test_com.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
- &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server_name  test.com;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #access_log  logs/host.access.log  main;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 	index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_pass http://127.0.0.1:8082;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           Host $host;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header  X-Real-IP  $remote_addr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  	proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page   500 502 503 504  /50x.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location = /50x.html &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;配置错误页面处理&lt;br&gt; &lt;img src=&quot;/uploads/blog/Ngnix/nginx_default_error_config.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置超时时间&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;keepalive_timeout  200s;&lt;br&gt; fastcgi_connect_timeout 300s;&lt;br&gt; fastcgi_send_timeout 300s;&lt;br&gt; fastcgi_read_timeout 300s;&lt;br&gt; fastcgi_buffer_size 128k;&lt;br&gt; fastcgi_buffers 8 128k;&lt;br&gt; fastcgi_busy_buffers_size 256k;&lt;br&gt; fastcgi_temp_file_write_size 256k; &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/nginx_connect_timeout.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
-&lt;p&gt;　　到此，nginx的基本配置也就完成了.&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://www.jiang-yu.cn/categories/Nginx/"/>
-    
-    
-      <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java入门--IDE工具的选择（二）</title>
     <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
@@ -230,6 +226,54 @@
     
     
       <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx配置代理--搭建线上和开发环境</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T10:28:41.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　上次写过一篇博文是关于使用&lt;a href=&quot;http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/&quot;&gt;Nginx+Tomcat实现负载均衡&lt;/a&gt;,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.&lt;br&gt;　　首先，查看一下nginx是否安装好了：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/check_nginx_is_install.png&quot; alt=&quot;nginx_install_check&quot;&gt;&lt;br&gt;　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/ngnix_location.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开启压缩配置&lt;br&gt;&lt;img src=&quot;/uploads/blog/Ngnix/nginx_gzip_on.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt;如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置Server节点&lt;br&gt; 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)&lt;br&gt;&lt;strong&gt;线上环境的配置&lt;/strong&gt;：&lt;br&gt; 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;upstream myClusterServer&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              server 127.0.0.1:8081 ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8082 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              #server 127.0.0.1:8083 weight=5;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        server_name  localhost;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_pass http://myClusterServer;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		proxy_connect_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_read_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		proxy_send_timeout 500s;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                #proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; &lt;img src=&quot;/uploads/blog/Ngnix/default_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;开发环境配置：&lt;/strong&gt;&lt;br&gt; 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：&lt;br&gt; &lt;strong&gt;nginx.conf&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/dev_80_server.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt; &lt;strong&gt;/etc/hosts&lt;/strong&gt;: &lt;img src=&quot;/uploads/blog/Ngnix/test_com.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server_name  test.com;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    charset utf-8;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #access_log  logs/host.access.log  main;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location  / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 	index  index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_pass http://127.0.0.1:8082;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           Host $host;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header  X-Real-IP  $remote_addr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  	proxy_redirect default;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;proxy_connect_timeout 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page   500 502 503 504  /50x.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location = /50x.html &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        root   html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;配置错误页面处理&lt;br&gt; &lt;img src=&quot;/uploads/blog/Ngnix/nginx_default_error_config.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置超时时间&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;keepalive_timeout  200s;&lt;br&gt; fastcgi_connect_timeout 300s;&lt;br&gt; fastcgi_send_timeout 300s;&lt;br&gt; fastcgi_read_timeout 300s;&lt;br&gt; fastcgi_buffer_size 128k;&lt;br&gt; fastcgi_buffers 8 128k;&lt;br&gt; fastcgi_busy_buffers_size 256k;&lt;br&gt; fastcgi_temp_file_write_size 256k; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/nginx_connect_timeout.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;p&gt;　　到此，nginx的基本配置也就完成了.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
     
   </entry>
   
@@ -577,41 +621,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
   </entry>
   
   <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
-    
-  </entry>
-  
-  <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
     <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
     <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
@@ -662,6 +671,41 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
       <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
     
       <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   
@@ -765,41 +809,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
     
     
       <category term="Markdown syntax" scheme="http://www.jiang-yu.cn/tags/Markdown-syntax/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下部署多个Tomcat的配置</title>
-    <link href="http://www.jiang-yu.cn/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/"/>
-    <id>http://www.jiang-yu.cn/2016/06/02/Linux/Linux下部署多个Tomcat配置/</id>
-    <published>2016-06-02T13:58:51.000Z</published>
-    <updated>2016-06-03T16:36:42.000Z</updated>
-    
-    <content type="html">&lt;p&gt;部署java项目时，经常需要配置多个Tomcat来运行多个应用，本文就简单的介绍一下如何来配置&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方式一：全局配置&quot;&gt;&lt;a href=&quot;#方式一：全局配置&quot; class=&quot;headerlink&quot; title=&quot;方式一：全局配置&quot;&gt;&lt;/a&gt;方式一：全局配置&lt;/h3&gt;&lt;p&gt;　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME CLASSPATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_BASE=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_BASE CATALINA_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_2_BASE CATALINA_2_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_HOME&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export TOMCAT_2_HOME&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方式二：临时配置方式&quot;&gt;&lt;a href=&quot;#方式二：临时配置方式&quot; class=&quot;headerlink&quot; title=&quot;方式二：临时配置方式&quot;&gt;&lt;/a&gt;方式二：临时配置方式&lt;/h3&gt;&lt;p&gt;　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;修改server.xml配置和第一个不同的启动、关闭监听端口。修改后示例如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;Server port=&amp;quot;8050&amp;quot; shutdown=&amp;quot;SHUTDOWN&amp;quot;&amp;gt;　 端口：8049-&amp;gt;8050&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- Define a non-SSL HTTP/1.1 Connector on port 8080 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;Connector port=&amp;quot;9080&amp;quot; maxHttpHeaderSize=&amp;quot;8192&amp;quot;　&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     maxThreads=&amp;quot;150&amp;quot; minSpareThreads=&amp;quot;25&amp;quot; maxSpareThreads=&amp;quot;75&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     enableLookups=&amp;quot;false&amp;quot; redirectPort=&amp;quot;8443&amp;quot; acceptCount=&amp;quot;100&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     connectionTimeout=&amp;quot;20000&amp;quot; disableUploadTimeout=&amp;quot;true&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;修改bin下的startup.sh和shutdown.sh。修改后的示例如下：（同样的修改）&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME=/usr/jdk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$PATH:$JAVA_HOME/bin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CLASSPATH=$JAVA_HOME/lib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_HOME=$CATALINA_2_HOME 利用profile中第二组设置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CATALINA_BASE=$CATALINA_2_BASE 利用profile中第二组设置&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;步骤三、重新加载一下资源文件&quot;&gt;&lt;a href=&quot;#步骤三、重新加载一下资源文件&quot; class=&quot;headerlink&quot; title=&quot;步骤三、重新加载一下资源文件&quot;&gt;&lt;/a&gt;步骤三、重新加载一下资源文件&lt;/h3&gt;&lt;p&gt;　　修改完毕后，source /etc/profile。&lt;br&gt;　　可能是因为修改了profile文件的缘故&lt;/p&gt;
-&lt;p&gt;　　注意：如果是每个用户的配置，就需要到用户的目录下：/home/用户/下 ，执行ls -a 找出.bash_profile 修改以上东西即可。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;部署java项目时，经常需要配置多个Tomcat来运行多个应用，本文就简单的介绍一下如何来配置&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux，Tomcat" scheme="http://www.jiang-yu.cn/tags/Linux%EF%BC%8CTomcat/"/>
     
   </entry>
   
