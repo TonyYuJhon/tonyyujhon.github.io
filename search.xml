@@ -78,6 +78,36 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>使用nginx配置反向代理，80端口映射不同的内网web服务器。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
+<ul>
+<li>开启压缩配置<br><img src="/uploads/blog/Ngnix/nginx_gzip_on.png" alt="nginx_install_dir"><br>如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。</li>
+<li><p>配置Server节点<br> 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)<br><strong>线上环境的配置</strong>：<br> 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">upstream myClusterServer&#123;</span><br><span class="line">              server 127.0.0.1:8081 ;</span><br><span class="line">              #server 127.0.0.1:8082 weight=5;</span><br><span class="line">              #server 127.0.0.1:8083 weight=5;</span><br><span class="line">        &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        charset utf-8;</span><br><span class="line">        location  / &#123;</span><br><span class="line">                root   html;</span><br><span class="line">                index  index.html index.htm;</span><br><span class="line">                proxy_pass http://myClusterServer;</span><br><span class="line">		proxy_connect_timeout 500s;</span><br><span class="line">  		proxy_read_timeout 500s;</span><br><span class="line">  		proxy_send_timeout 500s;</span><br><span class="line">                proxy_redirect default;</span><br><span class="line">                #proxy_connect_timeout 10;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="/uploads/blog/Ngnix/default_80_server.png" alt="nginx_install_dir"><br> <strong>开发环境配置：</strong><br> 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：<br> <strong>nginx.conf</strong>: <img src="/uploads/blog/Ngnix/dev_80_server.png" alt="nginx_install_dir"><br> <strong>/etc/hosts</strong>: <img src="/uploads/blog/Ngnix/test_com.png" alt="nginx_install_dir"></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  test.com;  </span><br><span class="line"></span><br><span class="line">    charset utf-8;</span><br><span class="line"></span><br><span class="line">    #access_log  logs/host.access.log  main;</span><br><span class="line">    location  / &#123;</span><br><span class="line">            root   html;</span><br><span class="line"> 	index  index.html index.htm;</span><br><span class="line">proxy_pass http://127.0.0.1:8082;</span><br><span class="line">proxy_set_header           Host $host;</span><br><span class="line">proxy_set_header  X-Real-IP  $remote_addr;</span><br><span class="line">proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">  	proxy_redirect default;</span><br><span class="line">proxy_connect_timeout 10;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>配置错误页面处理<br> <img src="/uploads/blog/Ngnix/nginx_default_error_config.png" alt="nginx_install_dir"></p>
+</li>
+<li><p>配置超时时间</p>
+<blockquote>
+<p>keepalive_timeout  200s;<br> fastcgi_connect_timeout 300s;<br> fastcgi_send_timeout 300s;<br> fastcgi_read_timeout 300s;<br> fastcgi_buffer_size 128k;<br> fastcgi_buffers 8 128k;<br> fastcgi_busy_buffers_size 256k;<br> fastcgi_temp_file_write_size 256k; </p>
+</blockquote>
+</li>
+</ul>
+<p>　　<img src="/uploads/blog/Ngnix/nginx_connect_timeout.png" alt="nginx_install_dir"></p>
+<p>　　到此，nginx的基本配置也就完成了.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
       <url>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -107,36 +137,6 @@
 <p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
 <pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
 </code></pre>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
-      <url>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>使用nginx配置反向代理，80端口映射不同的内网web服务器。</p>
-</blockquote>
-<a id="more"></a>
-<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
-<ul>
-<li>开启压缩配置<br><img src="/uploads/blog/Ngnix/nginx_gzip_on.png" alt="nginx_install_dir"><br>如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。</li>
-<li><p>配置Server节点<br> 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)<br><strong>线上环境的配置</strong>：<br> 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">upstream myClusterServer&#123;</span><br><span class="line">              server 127.0.0.1:8081 ;</span><br><span class="line">              #server 127.0.0.1:8082 weight=5;</span><br><span class="line">              #server 127.0.0.1:8083 weight=5;</span><br><span class="line">        &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        charset utf-8;</span><br><span class="line">        location  / &#123;</span><br><span class="line">                root   html;</span><br><span class="line">                index  index.html index.htm;</span><br><span class="line">                proxy_pass http://myClusterServer;</span><br><span class="line">		proxy_connect_timeout 500s;</span><br><span class="line">  		proxy_read_timeout 500s;</span><br><span class="line">  		proxy_send_timeout 500s;</span><br><span class="line">                proxy_redirect default;</span><br><span class="line">                #proxy_connect_timeout 10;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p> <img src="/uploads/blog/Ngnix/default_80_server.png" alt="nginx_install_dir"><br> <strong>开发环境配置：</strong><br> 由于开发环境没有分配域名，所以我们可以通过修改hosts文件来实现映射(修改/etc/hosts  127.0.0.1 test.com  然后访问的机器也将服务器的ip地址映射为test.com)，基本配置如下：<br> <strong>nginx.conf</strong>: <img src="/uploads/blog/Ngnix/dev_80_server.png" alt="nginx_install_dir"><br> <strong>/etc/hosts</strong>: <img src="/uploads/blog/Ngnix/test_com.png" alt="nginx_install_dir"></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  test.com;  </span><br><span class="line"></span><br><span class="line">    charset utf-8;</span><br><span class="line"></span><br><span class="line">    #access_log  logs/host.access.log  main;</span><br><span class="line">    location  / &#123;</span><br><span class="line">            root   html;</span><br><span class="line"> 	index  index.html index.htm;</span><br><span class="line">proxy_pass http://127.0.0.1:8082;</span><br><span class="line">proxy_set_header           Host $host;</span><br><span class="line">proxy_set_header  X-Real-IP  $remote_addr;</span><br><span class="line">proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">  	proxy_redirect default;</span><br><span class="line">proxy_connect_timeout 10;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>配置错误页面处理<br> <img src="/uploads/blog/Ngnix/nginx_default_error_config.png" alt="nginx_install_dir"></p>
-</li>
-<li><p>配置超时时间</p>
-<blockquote>
-<p>keepalive_timeout  200s;<br> fastcgi_connect_timeout 300s;<br> fastcgi_send_timeout 300s;<br> fastcgi_read_timeout 300s;<br> fastcgi_buffer_size 128k;<br> fastcgi_buffers 8 128k;<br> fastcgi_busy_buffers_size 256k;<br> fastcgi_temp_file_write_size 256k; </p>
-</blockquote>
-</li>
-</ul>
-<p>　　<img src="/uploads/blog/Ngnix/nginx_connect_timeout.png" alt="nginx_install_dir"></p>
-<p>　　到此，nginx的基本配置也就完成了.</p>
-]]></content>
     </entry>
     
     <entry>
@@ -258,6 +258,16 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Linux关机操作命令]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
+<blockquote>
+<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
@@ -268,16 +278,6 @@
 <li><p>永久生效：修改 /etc/inittab  将启动模式修改为3<br>其中的数字可以设置为（0~6）<br>0 - 表示关闭系统（不要把默认设置成0）<br>1 - 单用户模式<br>2 - 多用户模式，没有NFS服务<br>3 - 多用户文本模式，是标准的运行级<br>5 - 图形模式<br>6 - 系统重新启动</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
-<blockquote>
-<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
-</blockquote>
 ]]></content>
     </entry>
     
@@ -314,6 +314,23 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
       <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
@@ -346,23 +363,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
 <ul>
 <li>表级锁和行级锁的比较<br>&gt;<br>1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。<br>2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
 ]]></content>
     </entry>
     
