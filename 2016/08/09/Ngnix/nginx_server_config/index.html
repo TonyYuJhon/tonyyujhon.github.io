@@ -89,22 +89,22 @@
 <meta name="description" content="使用nginx配置反向代理，80端口映射不同的内网web服务器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx配置代理--搭建线上和开发环境">
-<meta property="og:url" content="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/index.html">
+<meta property="og:url" content="http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/index.html">
 <meta property="og:site_name" content="JhonRain's Blog">
 <meta property="og:description" content="使用nginx配置反向代理，80端口映射不同的内网web服务器。">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/check_nginx_is_install.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/ngnix_location.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/nginx_gzip_on.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/default_80_server.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/dev_80_server.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/test_com.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/nginx_default_error_config.png">
-<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/nginx_connect_timeout.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/check_nginx_is_install.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/ngnix_location.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/nginx_gzip_on.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/default_80_server.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/dev_80_server.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/test_com.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/nginx_default_error_config.png">
+<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/nginx_connect_timeout.png">
 <meta property="og:updated_time" content="2016-08-09T10:28:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx配置代理--搭建线上和开发环境">
 <meta name="twitter:description" content="使用nginx配置反向代理，80端口映射不同的内网web服务器。">
-<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/check_nginx_is_install.png">
+<meta name="twitter:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/check_nginx_is_install.png">
 
 
 
@@ -398,7 +398,7 @@
 <p>使用nginx配置反向代理，80端口映射不同的内网web服务器。</p>
 </blockquote>
 <a id="more"></a>
-<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
+<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/" target="_blank" rel="external">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
 <ul>
 <li>开启压缩配置<br><img src="/uploads/blog/Ngnix/nginx_gzip_on.png" alt="nginx_install_dir"><br>如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。</li>
 <li><p>配置Server节点<br> 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)<br><strong>线上环境的配置</strong>：<br> 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：</p>
@@ -448,16 +448,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/" rel="next" title="Java入门--IDE工具的选择（二）">
-                <i class="fa fa-chevron-left"></i> Java入门--IDE工具的选择（二）
+              <a href="/2016/08/09/Tomcat/Tomcat_Gzip_On/" rel="next" title="Tomcat开启压缩功能">
+                <i class="fa fa-chevron-left"></i> Tomcat开启压缩功能
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/01/SVN/SVN Learn Basic 01/" rel="prev" title="SVN入门教程（一）--软件的安装">
-                SVN入门教程（一）--软件的安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/" rel="prev" title="Java入门--IDE工具的选择（二）">
+                Java入门--IDE工具的选择（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -476,7 +476,7 @@
         <div class="ds-share flat" data-thread-key="2016/08/09/Ngnix/nginx_server_config/"
      data-title="Nginx配置代理--搭建线上和开发环境"
      data-content=""
-     data-url="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/">
+     data-url="http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -504,7 +504,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/08/09/Ngnix/nginx_server_config/"
-           data-title="Nginx配置代理--搭建线上和开发环境" data-url="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/">
+           data-title="Nginx配置代理--搭建线上和开发环境" data-url="http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/">
       </div>
     
   </div>
