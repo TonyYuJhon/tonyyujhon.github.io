@@ -78,25 +78,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
-      <url>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。</p>
-</blockquote>
-<a id="more"></a>
-<p>　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。<br>　　首先，下载Eclipse,Here <a href="http://www.eclipse.org/downloads/" title="Title" target="_blank" rel="external">Click Me To DownLoad Page</a><br>　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：<br>　　<strong>New Version Eclipse Install Interface(jdk 1.8 + )</strong>:<br>　　step01、<img src="/uploads/blog/javabasic/lesson2/new_install_interface.png" alt="JDK_CONFG_CHECK"><br>　　step02、<img src="/uploads/blog/javabasic/lesson2/install_02.png" alt="JDK_CONFG_CHECK"><br>　　<strong>Customer Version Eclipse Directroy(jdk 1.7 or lower)</strong>:<br>　　<img src="/uploads/blog/javabasic/lesson2/install_01.png" alt="JDK_CONFG_CHECK"><br>　　点击eclipse就可以开始撸代码之旅了，开始界面：<br>　　<img src="/uploads/blog/javabasic/lesson2/start_intf.png" alt="JDK_CONFG_CHECK"><br>　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：<br>　　<img src="/uploads/blog/javabasic/lesson2/switch_workspace.png" alt="JDK_CONFG_CHECK"></p>
-<blockquote>
-<p>[Tips]所谓的工作空间，就是coding之后的代码存放的位置</p>
-</blockquote>
-<p>　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作<br>　　step one: 新建一个工程<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_003.png" alt="JDK_CONFG_CHECK"><br>　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）<br>　　比如：公司——www.jiangyu.com  项目名称：enbrands<br>　　    包名：com.jiangyu.enbrands<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_004.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_002.png" alt="JDK_CONFG_CHECK"><br>　　新建完成之后，工程目录结构如下：<br>　　<img src="/uploads/blog/javabasic/lesson2/package_003.png" alt="JDK_CONFG_CHECK"><br>　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）<br>　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。<br>　　新建一个类：右键包名–New–Class<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_003.png" alt="JDK_CONFG_CHECK"><br>　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_004.png" alt="JDK_CONFG_CHECK"><br>　　编写代码，输出“Hello World”<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_005.png" alt="JDK_CONFG_CHECK"><br>　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈<br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_002.png" alt="JDK_CONFG_CHECK"><br>　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！<br>　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
-　　
-　　
-　　
-　　</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
       <url>http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -137,6 +118,25 @@
 <p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
 <pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
 </code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
+      <url>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。<br>　　首先，下载Eclipse,Here <a href="http://www.eclipse.org/downloads/" title="Title" target="_blank" rel="external">Click Me To DownLoad Page</a><br>　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：<br>　　<strong>New Version Eclipse Install Interface(jdk 1.8 + )</strong>:<br>　　step01、<img src="/uploads/blog/javabasic/lesson2/new_install_interface.png" alt="JDK_CONFG_CHECK"><br>　　step02、<img src="/uploads/blog/javabasic/lesson2/install_02.png" alt="JDK_CONFG_CHECK"><br>　　<strong>Customer Version Eclipse Directroy(jdk 1.7 or lower)</strong>:<br>　　<img src="/uploads/blog/javabasic/lesson2/install_01.png" alt="JDK_CONFG_CHECK"><br>　　点击eclipse就可以开始撸代码之旅了，开始界面：<br>　　<img src="/uploads/blog/javabasic/lesson2/start_intf.png" alt="JDK_CONFG_CHECK"><br>　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：<br>　　<img src="/uploads/blog/javabasic/lesson2/switch_workspace.png" alt="JDK_CONFG_CHECK"></p>
+<blockquote>
+<p>[Tips]所谓的工作空间，就是coding之后的代码存放的位置</p>
+</blockquote>
+<p>　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作<br>　　step one: 新建一个工程<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_003.png" alt="JDK_CONFG_CHECK"><br>　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）<br>　　比如：公司——www.jiangyu.com  项目名称：enbrands<br>　　    包名：com.jiangyu.enbrands<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_004.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_002.png" alt="JDK_CONFG_CHECK"><br>　　新建完成之后，工程目录结构如下：<br>　　<img src="/uploads/blog/javabasic/lesson2/package_003.png" alt="JDK_CONFG_CHECK"><br>　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）<br>　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。<br>　　新建一个类：右键包名–New–Class<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_003.png" alt="JDK_CONFG_CHECK"><br>　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_004.png" alt="JDK_CONFG_CHECK"><br>　　编写代码，输出“Hello World”<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_005.png" alt="JDK_CONFG_CHECK"><br>　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈<br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_002.png" alt="JDK_CONFG_CHECK"><br>　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！<br>　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
+　　
+　　
+　　
+　　</p>
+]]></content>
     </entry>
     
     <entry>
@@ -314,23 +314,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
       <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
@@ -363,6 +346,23 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
 <ul>
 <li>表级锁和行级锁的比较<br>&gt;<br>1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。<br>2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
 ]]></content>
     </entry>
     
