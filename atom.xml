@@ -216,6 +216,37 @@
   </entry>
   
   <entry>
+    <title>Tomcat开启压缩功能</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T04:07:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
+    
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java入门--IDE工具的选择（二）</title>
     <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
@@ -297,37 +328,6 @@
     
     
       <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat开启压缩功能</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T04:07:49.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
-    
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
     
   </entry>
   

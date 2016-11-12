@@ -114,6 +114,19 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Tomcat开启压缩功能]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
+</blockquote>
+<a id="more"></a>
+<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
+<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
       <url>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -160,19 +173,6 @@
 <p>　　<img src="/uploads/blog/Ngnix/nginx_connect_timeout.png" alt="nginx_install_dir"></p>
 <p>　　到此，nginx的基本配置也就完成了.</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Tomcat开启压缩功能]]></title>
-      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
-</blockquote>
-<a id="more"></a>
-<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
-<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-</code></pre>]]></content>
     </entry>
     
     <entry>
