@@ -4,6 +4,42 @@
   
     
     <entry>
+      <title><![CDATA[Java 8 Lambda表达式了解和应用]]></title>
+      <url>http://www.jiangyu.tech/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！</p>
+</blockquote>
+<a id="more"></a>
+<p>　　Java项目的升级是必然的，目前工作中的大部分项目都是在Jdk7的环境下使用，但是为了后期的发展，Jdk 8 是必然的一个选择，而且Java 8中的lambda(闭包)和虚拟扩展方法（default Method）都已经被炒得沸沸扬扬了，所以本文就来认识和介绍一下相关知识，学习函数式编程思想来开阔自己的思路。</p>
+<h1 id="Lambda表达式初识"><a href="#Lambda表达式初识" class="headerlink" title="Lambda表达式初识"></a>Lambda表达式初识</h1><p>　　首先从一个简单的例子入手，来查看一下lambda表达式的效果，下面分别是java7和java8中创建一个线程的示例代码，<br>　　java7实现方式：<br>　　<img src="/uploads/blog/Jdk/java8/java_7_runnable.png" alt="java7"><br>　　java8实现方式：<br>　　<img src="/uploads/blog/Jdk/java8/java_lambda_runnable.png" alt="java8"><br>　　从上面的实例代码中可以看出，Java8的lambda表达式确实是非常的简洁和方便，代码中使用() -&gt; {} 替代匿名类–Runnable()接口。</p>
+<h1 id="Lambda表达式语法"><a href="#Lambda表达式语法" class="headerlink" title="Lambda表达式语法"></a>Lambda表达式语法</h1><h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><p>　　Functional Interface–(函数式接口FI)，FI的定义很简单——任何接口，如果只有唯一一个抽象方法，那么这个接口就可以定义成为一个FI.例如：Runnable,Comparator接口都加上了一个@FunctionalInterface注解，编译器为了能够确保一个接口满足FI的要求，Java8提供了这个注解。<br>　　<img src="/uploads/blog/Jdk/java8/java8_functionalInterface.png" alt="java8 FI Define"><br>　　<img src="/uploads/blog/Jdk/java8/java8_functionInterface01.png" alt="java8 FI Compare"></p>
+<h2 id="Lambda语法"><a href="#Lambda语法" class="headerlink" title="Lambda语法"></a>Lambda语法</h2><p>　　如上图所示，Lambda表达式的使用方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.sort((word1, word2) -&gt; &#123;</span><br><span class="line">    return Integer.compare(word1.length(), word2.length());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>　　如果Lambda表达式的代码块只是return后面跟一个表达式，则可以简化为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.sort(</span><br><span class="line">    (word1, word2) -&gt; Integer.compare(word1.length(), word2.length())</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>　　[注意]表达式后面是没有分号,如果只有一个参数，那么包围参数的圆括号可以省略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.forEach(temp -&gt; &#123;</span><br><span class="line">    System.out.println(temp);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>　　如果表达式不需要参数但也必须有圆括号，eg：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Executors.newFixedThreadExecutor().execute(</span><br><span class="line">    // Runnable</span><br><span class="line">    () -&gt; &#123;/* do something. */&#125; </span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h2><p>　　Method References–(方法引用),有时候Lambda表达式只包含一个简单的方法调用，所以在这种情况下就可以将Lambda表达式简化为方法引用。方法引用包含四种方式：<br>　　<img src="/uploads/blog/Jdk/java8/java8_lambda_method_reference.png" alt="java8 FI Define"></p>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; ints = Arrays.asList(1, 2, 3);</span><br><span class="line">ints.sort(Integer::compare);</span><br></pre></td></tr></table></figure>
+<h3 id="某个特定对象的实例方法"><a href="#某个特定对象的实例方法" class="headerlink" title="某个特定对象的实例方法"></a>某个特定对象的实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">words.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<h3 id="某个类的实例方法"><a href="#某个类的实例方法" class="headerlink" title="某个类的实例方法"></a>某个类的实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">words.stream().map(word -&gt; word.length()); // lambda</span><br><span class="line">words.stream().map(String::length); // method reference</span><br></pre></td></tr></table></figure>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// lambda</span><br><span class="line">words.stream().map(word -&gt; &#123;</span><br><span class="line">    return new StringBuilder(word);</span><br><span class="line">&#125;);</span><br><span class="line">// constructor reference</span><br><span class="line">words.stream().map(StringBuilder::new);</span><br></pre></td></tr></table></figure>
+<h1 id="Lambda表达式使用场景"><a href="#Lambda表达式使用场景" class="headerlink" title="Lambda表达式使用场景"></a>Lambda表达式使用场景</h1><p>　　任何可以接受一个FI实例的地方，都可以用Lambda表达式。比如，虽然上面给出的例子都是把Lambda表达式当作方法参数传递，但实际上我们也可以定义变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Runnable task = () -&gt; &#123;</span><br><span class="line">    // do something</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Comparator&lt;String&gt; cmp = (s1, s2) -&gt; &#123;</span><br><span class="line">    return Integer.compare(s1.length(), s2.length());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="预定义函数式接口"><a href="#预定义函数式接口" class="headerlink" title="预定义函数式接口"></a>预定义函数式接口</h2><p>　　Java8除了给Runnable，Comparator等接口打上了@FunctionalInterface注解之外，还预定义了一大批新的FI。这些接口都在java.util.function包里：<br><img src="/uploads/blog/Jdk/java8/java8_functionInterface04.png" alt="java8 FI Define"><br>下面简单介绍其中的几个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Predicate&lt;T&gt; &#123;</span><br><span class="line">    boolean test(T t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　Predicate用来判断一个对象是否满足某种条件，比如，单词是否由六个以上字母组成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">words.stream()</span><br><span class="line">    .filter(word -&gt; word.length() &gt; 6)</span><br><span class="line">    .count();</span><br></pre></td></tr></table></figure></p>
+<p>　　Function表示接收一个参数，并产生一个结果的函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Function&lt;T, R&gt; &#123;</span><br><span class="line">    R apply(T t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　下面的例子将集合里的每一个整数都乘以2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ints.stream().map(x -&gt; x * 2);</span><br></pre></td></tr></table></figure></p>
+<p>　　Consumer表示对单个参数进行的操作，前面例子中的forEach()方法接收的参数就是这种操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Consumer&lt;T&gt; &#123;</span><br><span class="line">    void accept(T t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="默认方法-Default-Methods"><a href="#默认方法-Default-Methods" class="headerlink" title="默认方法(Default Methods)"></a>默认方法(Default Methods)</h2><p>　　Java8对很多老的类库进行了增强，给它们配备了Lambda武器。比如前面例子中用到的forEach()方法，实际上是添加到Iterable接口中的。而多次出现的stream()方法，则是添加在了Collection接口里，为了保证API的向后兼容性，Java8对接口的语法进行了较大的调整，增加了 默认方法（Default Methods）。例如forEach()方法的实现代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public interface Iterable&lt;T&gt; &#123;</span><br><span class="line">	...</span><br><span class="line">	default void forEach(Consumer&lt;? super T&gt; action) &#123;</span><br><span class="line">		Objects.requireNonNull(action);</span><br><span class="line">		for (T t : this) &#123;</span><br><span class="line">			action.accept(t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　<img src="/uploads/blog/Jdk/java8/java8_default_method_01.png" alt="java8 FI Compare"><br>　　<img src="/uploads/blog/Jdk/java8/java8_default_method_02.png" alt="java8 FI Compare"></p>
+<h3 id="接口的静态方法"><a href="#接口的静态方法" class="headerlink" title="接口的静态方法"></a>接口的静态方法</h3><p>　　除了抽象方法和默认方法，从Java8开始，接口也可以有静态（static）方法了。有了这个语法，我们就可以把和接口相关的帮助方法（Helper Methods）直接定义在接口里了。比如Function接口就定义了一个工厂方法indentity()：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public interface Function&lt;T, R&gt; &#123;</span><br><span class="line">    ...</span><br><span class="line">    /**</span><br><span class="line">     * Returns a function that always returns its input argument.</span><br><span class="line">     *</span><br><span class="line">     * @param &lt;T&gt; the type of the input and output objects to the function</span><br><span class="line">     * @return a function that always returns its input argument</span><br><span class="line">     */</span><br><span class="line">    static &lt;T&gt; Function&lt;T, T&gt; identity() &#123;</span><br><span class="line">        return t -&gt; t;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="变量捕获"><a href="#变量捕获" class="headerlink" title="变量捕获"></a>变量捕获</h3><p>　　和内部类一样，Lambda也可以访问外部（词法作用域）变量，规则基本一样 。Java8之前， 内部类只能访问final类型的变量 ，Java8放宽了这种限制，只要变量实际上不可变（effectively final）就可以。换句话说，如果你给变量加上final关键字编译器也不报错，那么去掉final关键字后，它就是effectively final的。看下面的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int tmp = 100;</span><br><span class="line">Runnable x = new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(tmp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>　　在Java8之前，a必须是final的才能被x看到。下面用Lambda表达式重写上面的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int tmp = 100;</span><br><span class="line">Runnable x = () -&gt; &#123;</span><br><span class="line">    System.out.println(tmp);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>　　Java8后出现了默认方法（Default Methods），如果你对抽象类比较熟悉的话，那么你可能会想java8的默认方法和抽象类有点像，但是这两者之间还是有些联系和区别的，请看下图：<br><img src="/uploads/blog/Jdk/java8/java8_default_method_03.png" alt="java8 FI Compare"></p>
+<p>#结束语<br>　　Java8的Lambda才真正让Java朝着函数式编程迈进了一大步。</p>
+<p>　　</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ActiveMQ启动报错--ISC服务惹的祸]]></title>
       <url>http://www.jiangyu.tech/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -78,6 +114,25 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
+      <url>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。<br>　　首先，下载Eclipse,Here <a href="http://www.eclipse.org/downloads/" title="Title" target="_blank" rel="external">Click Me To DownLoad Page</a><br>　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：<br>　　<strong>New Version Eclipse Install Interface(jdk 1.8 + )</strong>:<br>　　step01、<img src="/uploads/blog/javabasic/lesson2/new_install_interface.png" alt="JDK_CONFG_CHECK"><br>　　step02、<img src="/uploads/blog/javabasic/lesson2/install_02.png" alt="JDK_CONFG_CHECK"><br>　　<strong>Customer Version Eclipse Directroy(jdk 1.7 or lower)</strong>:<br>　　<img src="/uploads/blog/javabasic/lesson2/install_01.png" alt="JDK_CONFG_CHECK"><br>　　点击eclipse就可以开始撸代码之旅了，开始界面：<br>　　<img src="/uploads/blog/javabasic/lesson2/start_intf.png" alt="JDK_CONFG_CHECK"><br>　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：<br>　　<img src="/uploads/blog/javabasic/lesson2/switch_workspace.png" alt="JDK_CONFG_CHECK"></p>
+<blockquote>
+<p>[Tips]所谓的工作空间，就是coding之后的代码存放的位置</p>
+</blockquote>
+<p>　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作<br>　　step one: 新建一个工程<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_003.png" alt="JDK_CONFG_CHECK"><br>　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）<br>　　比如：公司——www.jiangyu.com  项目名称：enbrands<br>　　    包名：com.jiangyu.enbrands<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_004.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_002.png" alt="JDK_CONFG_CHECK"><br>　　新建完成之后，工程目录结构如下：<br>　　<img src="/uploads/blog/javabasic/lesson2/package_003.png" alt="JDK_CONFG_CHECK"><br>　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）<br>　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。<br>　　新建一个类：右键包名–New–Class<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_003.png" alt="JDK_CONFG_CHECK"><br>　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_004.png" alt="JDK_CONFG_CHECK"><br>　　编写代码，输出“Hello World”<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_005.png" alt="JDK_CONFG_CHECK"><br>　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈<br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_002.png" alt="JDK_CONFG_CHECK"><br>　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！<br>　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
+　　
+　　
+　　
+　　</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
       <url>http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -118,25 +173,6 @@
 <p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
 <pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
 </code></pre>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
-      <url>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。</p>
-</blockquote>
-<a id="more"></a>
-<p>　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。<br>　　首先，下载Eclipse,Here <a href="http://www.eclipse.org/downloads/" title="Title" target="_blank" rel="external">Click Me To DownLoad Page</a><br>　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：<br>　　<strong>New Version Eclipse Install Interface(jdk 1.8 + )</strong>:<br>　　step01、<img src="/uploads/blog/javabasic/lesson2/new_install_interface.png" alt="JDK_CONFG_CHECK"><br>　　step02、<img src="/uploads/blog/javabasic/lesson2/install_02.png" alt="JDK_CONFG_CHECK"><br>　　<strong>Customer Version Eclipse Directroy(jdk 1.7 or lower)</strong>:<br>　　<img src="/uploads/blog/javabasic/lesson2/install_01.png" alt="JDK_CONFG_CHECK"><br>　　点击eclipse就可以开始撸代码之旅了，开始界面：<br>　　<img src="/uploads/blog/javabasic/lesson2/start_intf.png" alt="JDK_CONFG_CHECK"><br>　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：<br>　　<img src="/uploads/blog/javabasic/lesson2/switch_workspace.png" alt="JDK_CONFG_CHECK"></p>
-<blockquote>
-<p>[Tips]所谓的工作空间，就是coding之后的代码存放的位置</p>
-</blockquote>
-<p>　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作<br>　　step one: 新建一个工程<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_003.png" alt="JDK_CONFG_CHECK"><br>　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）<br>　　比如：公司——www.jiangyu.com  项目名称：enbrands<br>　　    包名：com.jiangyu.enbrands<br>　　<img src="/uploads/blog/javabasic/lesson2/new_project_004.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/package_002.png" alt="JDK_CONFG_CHECK"><br>　　新建完成之后，工程目录结构如下：<br>　　<img src="/uploads/blog/javabasic/lesson2/package_003.png" alt="JDK_CONFG_CHECK"><br>　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）<br>　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。<br>　　新建一个类：右键包名–New–Class<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_002.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_003.png" alt="JDK_CONFG_CHECK"><br>　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_004.png" alt="JDK_CONFG_CHECK"><br>　　编写代码，输出“Hello World”<br>　　<img src="/uploads/blog/javabasic/lesson2/new_class_005.png" alt="JDK_CONFG_CHECK"><br>　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈<br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_001.png" alt="JDK_CONFG_CHECK"><br>　　<img src="/uploads/blog/javabasic/lesson2/debug_class_002.png" alt="JDK_CONFG_CHECK"><br>　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！<br>　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
-　　
-　　
-　　
-　　</p>
-]]></content>
     </entry>
     
     <entry>
@@ -314,6 +350,23 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
       <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
@@ -346,23 +399,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
 <ul>
 <li>表级锁和行级锁的比较<br>&gt;<br>1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。<br>2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
 ]]></content>
     </entry>
     

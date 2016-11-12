@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangyu.tech/"/>
-  <updated>2016-11-09T01:04:17.000Z</updated>
+  <updated>2016-11-12T05:40:05.000Z</updated>
   <id>http://www.jiangyu.tech/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 8 Lambda表达式了解和应用</title>
+    <link href="http://www.jiangyu.tech/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>http://www.jiangyu.tech/2016/11/12/Jdk/Java8--Lambda介绍和使用/</id>
+    <published>2016-11-12T07:20:51.000Z</published>
+    <updated>2016-11-12T05:40:05.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　Java项目的升级是必然的，目前工作中的大部分项目都是在Jdk7的环境下使用，但是为了后期的发展，Jdk 8 是必然的一个选择，而且Java 8中的lambda(闭包)和虚拟扩展方法（default Method）都已经被炒得沸沸扬扬了，所以本文就来认识和介绍一下相关知识，学习函数式编程思想来开阔自己的思路。&lt;/p&gt;
+&lt;h1 id=&quot;Lambda表达式初识&quot;&gt;&lt;a href=&quot;#Lambda表达式初识&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式初识&quot;&gt;&lt;/a&gt;Lambda表达式初识&lt;/h1&gt;&lt;p&gt;　　首先从一个简单的例子入手，来查看一下lambda表达式的效果，下面分别是java7和java8中创建一个线程的示例代码，&lt;br&gt;　　java7实现方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java_7_runnable.png&quot; alt=&quot;java7&quot;&gt;&lt;br&gt;　　java8实现方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java_lambda_runnable.png&quot; alt=&quot;java8&quot;&gt;&lt;br&gt;　　从上面的实例代码中可以看出，Java8的lambda表达式确实是非常的简洁和方便，代码中使用() -&amp;gt; {} 替代匿名类–Runnable()接口。&lt;/p&gt;
+&lt;h1 id=&quot;Lambda表达式语法&quot;&gt;&lt;a href=&quot;#Lambda表达式语法&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式语法&quot;&gt;&lt;/a&gt;Lambda表达式语法&lt;/h1&gt;&lt;h2 id=&quot;函数式接口&quot;&gt;&lt;a href=&quot;#函数式接口&quot; class=&quot;headerlink&quot; title=&quot;函数式接口&quot;&gt;&lt;/a&gt;函数式接口&lt;/h2&gt;&lt;p&gt;　　Functional Interface–(函数式接口FI)，FI的定义很简单——任何接口，如果只有唯一一个抽象方法，那么这个接口就可以定义成为一个FI.例如：Runnable,Comparator接口都加上了一个@FunctionalInterface注解，编译器为了能够确保一个接口满足FI的要求，Java8提供了这个注解。&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_functionalInterface.png&quot; alt=&quot;java8 FI Define&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_functionInterface01.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Lambda语法&quot;&gt;&lt;a href=&quot;#Lambda语法&quot; class=&quot;headerlink&quot; title=&quot;Lambda语法&quot;&gt;&lt;/a&gt;Lambda语法&lt;/h2&gt;&lt;p&gt;　　如上图所示，Lambda表达式的使用方式：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;str.sort((word1, word2) -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return Integer.compare(word1.length(), word2.length());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　如果Lambda表达式的代码块只是return后面跟一个表达式，则可以简化为：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;str.sort(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    (word1, word2) -&amp;gt; Integer.compare(word1.length(), word2.length())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　[注意]表达式后面是没有分号,如果只有一个参数，那么包围参数的圆括号可以省略：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;str.forEach(temp -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    System.out.println(temp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　如果表达式不需要参数但也必须有圆括号，eg：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Executors.newFixedThreadExecutor().execute(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // Runnable&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    () -&amp;gt; &amp;#123;/* do something. */&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;方法引用&quot;&gt;&lt;a href=&quot;#方法引用&quot; class=&quot;headerlink&quot; title=&quot;方法引用&quot;&gt;&lt;/a&gt;方法引用&lt;/h2&gt;&lt;p&gt;　　Method References–(方法引用),有时候Lambda表达式只包含一个简单的方法调用，所以在这种情况下就可以将Lambda表达式简化为方法引用。方法引用包含四种方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_lambda_method_reference.png&quot; alt=&quot;java8 FI Define&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;静态方法&quot;&gt;&lt;a href=&quot;#静态方法&quot; class=&quot;headerlink&quot; title=&quot;静态方法&quot;&gt;&lt;/a&gt;静态方法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;Integer&amp;gt; ints = Arrays.asList(1, 2, 3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ints.sort(Integer::compare);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;某个特定对象的实例方法&quot;&gt;&lt;a href=&quot;#某个特定对象的实例方法&quot; class=&quot;headerlink&quot; title=&quot;某个特定对象的实例方法&quot;&gt;&lt;/a&gt;某个特定对象的实例方法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;words.forEach(System.out::println);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;某个类的实例方法&quot;&gt;&lt;a href=&quot;#某个类的实例方法&quot; class=&quot;headerlink&quot; title=&quot;某个类的实例方法&quot;&gt;&lt;/a&gt;某个类的实例方法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(word -&amp;gt; word.length()); // lambda&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(String::length); // method reference&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;构造函数&quot;&gt;&lt;a href=&quot;#构造函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数&quot;&gt;&lt;/a&gt;构造函数&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// lambda&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(word -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return new StringBuilder(word);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// constructor reference&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(StringBuilder::new);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;Lambda表达式使用场景&quot;&gt;&lt;a href=&quot;#Lambda表达式使用场景&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式使用场景&quot;&gt;&lt;/a&gt;Lambda表达式使用场景&lt;/h1&gt;&lt;p&gt;　　任何可以接受一个FI实例的地方，都可以用Lambda表达式。比如，虽然上面给出的例子都是把Lambda表达式当作方法参数传递，但实际上我们也可以定义变量：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Runnable task = () -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // do something&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Comparator&amp;lt;String&amp;gt; cmp = (s1, s2) -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return Integer.compare(s1.length(), s2.length());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;预定义函数式接口&quot;&gt;&lt;a href=&quot;#预定义函数式接口&quot; class=&quot;headerlink&quot; title=&quot;预定义函数式接口&quot;&gt;&lt;/a&gt;预定义函数式接口&lt;/h2&gt;&lt;p&gt;　　Java8除了给Runnable，Comparator等接口打上了@FunctionalInterface注解之外，还预定义了一大批新的FI。这些接口都在java.util.function包里：&lt;br&gt;&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_functionInterface04.png&quot; alt=&quot;java8 FI Define&quot;&gt;&lt;br&gt;下面简单介绍其中的几个&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@FunctionalInterface&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Predicate&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    boolean test(T t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　Predicate用来判断一个对象是否满足某种条件，比如，单词是否由六个以上字母组成：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;words.stream()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .filter(word -&amp;gt; word.length() &amp;gt; 6)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .count();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　Function表示接收一个参数，并产生一个结果的函数：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@FunctionalInterface&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Function&amp;lt;T, R&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    R apply(T t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　下面的例子将集合里的每一个整数都乘以2：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ints.stream().map(x -&amp;gt; x * 2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　Consumer表示对单个参数进行的操作，前面例子中的forEach()方法接收的参数就是这种操作：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@FunctionalInterface&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Consumer&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    void accept(T t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;默认方法-Default-Methods&quot;&gt;&lt;a href=&quot;#默认方法-Default-Methods&quot; class=&quot;headerlink&quot; title=&quot;默认方法(Default Methods)&quot;&gt;&lt;/a&gt;默认方法(Default Methods)&lt;/h2&gt;&lt;p&gt;　　Java8对很多老的类库进行了增强，给它们配备了Lambda武器。比如前面例子中用到的forEach()方法，实际上是添加到Iterable接口中的。而多次出现的stream()方法，则是添加在了Collection接口里，为了保证API的向后兼容性，Java8对接口的语法进行了较大的调整，增加了 默认方法（Default Methods）。例如forEach()方法的实现代码如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public interface Iterable&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	default void forEach(Consumer&amp;lt;? super T&amp;gt; action) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Objects.requireNonNull(action);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for (T t : this) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			action.accept(t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_default_method_01.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_default_method_02.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;接口的静态方法&quot;&gt;&lt;a href=&quot;#接口的静态方法&quot; class=&quot;headerlink&quot; title=&quot;接口的静态方法&quot;&gt;&lt;/a&gt;接口的静态方法&lt;/h3&gt;&lt;p&gt;　　除了抽象方法和默认方法，从Java8开始，接口也可以有静态（static）方法了。有了这个语法，我们就可以把和接口相关的帮助方法（Helper Methods）直接定义在接口里了。比如Function接口就定义了一个工厂方法indentity()：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public interface Function&amp;lt;T, R&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     * Returns a function that always returns its input argument.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     * @param &amp;lt;T&amp;gt; the type of the input and output objects to the function&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     * @return a function that always returns its input argument&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static &amp;lt;T&amp;gt; Function&amp;lt;T, T&amp;gt; identity() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return t -&amp;gt; t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;变量捕获&quot;&gt;&lt;a href=&quot;#变量捕获&quot; class=&quot;headerlink&quot; title=&quot;变量捕获&quot;&gt;&lt;/a&gt;变量捕获&lt;/h3&gt;&lt;p&gt;　　和内部类一样，Lambda也可以访问外部（词法作用域）变量，规则基本一样 。Java8之前， 内部类只能访问final类型的变量 ，Java8放宽了这种限制，只要变量实际上不可变（effectively final）就可以。换句话说，如果你给变量加上final关键字编译器也不报错，那么去掉final关键字后，它就是effectively final的。看下面的例子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int tmp = 100;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Runnable x = new Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void run() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(tmp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　在Java8之前，a必须是final的才能被x看到。下面用Lambda表达式重写上面的例子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int tmp = 100;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Runnable x = () -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    System.out.println(tmp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　Java8后出现了默认方法（Default Methods），如果你对抽象类比较熟悉的话，那么你可能会想java8的默认方法和抽象类有点像，但是这两者之间还是有些联系和区别的，请看下图：&lt;br&gt;&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_default_method_03.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;/p&gt;
+&lt;p&gt;#结束语&lt;br&gt;　　Java8的Lambda才真正让Java朝着函数式编程迈进了一大步。&lt;/p&gt;
+&lt;p&gt;　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Lambda" scheme="http://www.jiangyu.tech/categories/Lambda/"/>
+    
+    
+      <category term="Lambda" scheme="http://www.jiangyu.tech/tags/Lambda/"/>
+    
+  </entry>
   
   <entry>
     <title>ActiveMQ启动报错--ISC服务惹的祸</title>
@@ -162,6 +216,43 @@
   </entry>
   
   <entry>
+    <title>Java入门--IDE工具的选择（二）</title>
+    <link href="http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
+    <id>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T01:31:47.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。&lt;br&gt;　　首先，下载Eclipse,Here &lt;a href=&quot;http://www.eclipse.org/downloads/&quot; title=&quot;Title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Click Me To DownLoad Page&lt;/a&gt;&lt;br&gt;　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：&lt;br&gt;　　&lt;strong&gt;New Version Eclipse Install Interface(jdk 1.8 + )&lt;/strong&gt;:&lt;br&gt;　　step01、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_install_interface.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step02、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_02.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;strong&gt;Customer Version Eclipse Directroy(jdk 1.7 or lower)&lt;/strong&gt;:&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　点击eclipse就可以开始撸代码之旅了，开始界面：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/start_intf.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/switch_workspace.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[Tips]所谓的工作空间，就是coding之后的代码存放的位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作&lt;br&gt;　　step one: 新建一个工程&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）&lt;br&gt;　　比如：公司——www.jiangyu.com  项目名称：enbrands&lt;br&gt;　　    包名：com.jiangyu.enbrands&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　新建完成之后，工程目录结构如下：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）&lt;br&gt;　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。&lt;br&gt;　　新建一个类：右键包名–New–Class&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　编写代码，输出“Hello World”&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_005.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！&lt;br&gt;　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
+　　
+　　
+　　
+　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://www.jiangyu.tech/categories/JAVA/"/>
+    
+    
+      <category term="Java" scheme="http://www.jiangyu.tech/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Nginx配置代理--搭建线上和开发环境</title>
     <link href="http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/"/>
     <id>http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/</id>
@@ -237,43 +328,6 @@
     
     
       <category term="Tomcat" scheme="http://www.jiangyu.tech/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java入门--IDE工具的选择（二）</title>
-    <link href="http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
-    <id>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T01:31:47.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。&lt;br&gt;　　首先，下载Eclipse,Here &lt;a href=&quot;http://www.eclipse.org/downloads/&quot; title=&quot;Title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Click Me To DownLoad Page&lt;/a&gt;&lt;br&gt;　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：&lt;br&gt;　　&lt;strong&gt;New Version Eclipse Install Interface(jdk 1.8 + )&lt;/strong&gt;:&lt;br&gt;　　step01、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_install_interface.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step02、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_02.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;strong&gt;Customer Version Eclipse Directroy(jdk 1.7 or lower)&lt;/strong&gt;:&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　点击eclipse就可以开始撸代码之旅了，开始界面：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/start_intf.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/switch_workspace.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[Tips]所谓的工作空间，就是coding之后的代码存放的位置&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作&lt;br&gt;　　step one: 新建一个工程&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）&lt;br&gt;　　比如：公司——www.jiangyu.com  项目名称：enbrands&lt;br&gt;　　    包名：com.jiangyu.enbrands&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　新建完成之后，工程目录结构如下：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）&lt;br&gt;　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。&lt;br&gt;　　新建一个类：右键包名–New–Class&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　编写代码，输出“Hello World”&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_005.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！&lt;br&gt;　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
-　　
-　　
-　　
-　　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://www.jiangyu.tech/categories/JAVA/"/>
-    
-    
-      <category term="Java" scheme="http://www.jiangyu.tech/tags/Java/"/>
     
   </entry>
   
@@ -621,6 +675,41 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
   </entry>
   
   <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiangyu.tech/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiangyu.tech/tags/LOCK/"/>
+    
+  </entry>
+  
+  <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
     <link href="http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
     <id>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
@@ -671,144 +760,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
       <category term="INNODB" scheme="http://www.jiangyu.tech/tags/INNODB/"/>
     
       <category term="DEADLOCK" scheme="http://www.jiangyu.tech/tags/DEADLOCK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiangyu.tech/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiangyu.tech/tags/LOCK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown语法整理</title>
-    <link href="http://www.jiangyu.tech/2016/06/03/Markdown/MarkDown%E8%AF%AD%E6%B3%95%E8%AE%A4%E8%AF%86/"/>
-    <id>http://www.jiangyu.tech/2016/06/03/Markdown/MarkDown语法认识/</id>
-    <published>2016-06-03T00:08:58.000Z</published>
-    <updated>2016-06-03T16:34:13.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　作为一名合格的程序猿，写文档是必需的，选择一款合适的编辑器就如同一个好的助手，Markdown就是一个好的选择，语法简洁，逼格高~~，如果你经常玩GitHub，就会知道我们用于编写说明文档，并且以“README.MD”的文件名保存在软件的目录下面就是基于Markdwon语法的。下面就来学习一下Markdown的基本语法吧！&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Markdown-语法&quot;&gt;&lt;a href=&quot;#Markdown-语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法&quot;&gt;&lt;/a&gt;Markdown 语法&lt;/h1&gt;&lt;p&gt;[TOC]&lt;br&gt;　　下面将从三个层次来展开讲解，首先是常用层次，就是我们平时用的最多的并且要牢牢记住的（就如写代码的第一步：基本语法的熟悉），然后是对于一些不常用的，但是有可能会用到的标记我们必须要有印象，用到的时候能够快速的回想起来，最后就是了解层次了，这些标记基本上很少用到，只是在特定的情况下可能用到，并且能够通过查阅资料使用即可。&lt;/p&gt;
-&lt;h3 id=&quot;一、常用层次&quot;&gt;&lt;a href=&quot;#一、常用层次&quot; class=&quot;headerlink&quot; title=&quot;一、常用层次&quot;&gt;&lt;/a&gt;一、常用层次&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;标题&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;pre&gt;&lt;code&gt;# 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
---- 次阶标题
-=== 高阶标题
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h1 id=&quot;和标题之间最好加一个空格&quot;&gt;&lt;a href=&quot;#和标题之间最好加一个空格&quot; class=&quot;headerlink&quot; title=&quot;和标题之间最好加一个空格&quot;&gt;&lt;/a&gt;和标题之间最好加一个空格&lt;/h1&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h1 id=&quot;代表标题的层级，最多为六级&quot;&gt;&lt;a href=&quot;#代表标题的层级，最多为六级&quot; class=&quot;headerlink&quot; title=&quot;代表标题的层级，最多为六级&quot;&gt;&lt;/a&gt;代表标题的层级，最多为六级&lt;/h1&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;目录&lt;/strong&gt;&lt;blockquote&gt;
-&lt;p&gt;　　在文档的标题都是按照Markdown语法来编写的，一般在一级标题下面使用 [TOC] 后会自动的生成层级目录。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;标签&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt; 标签使用如下标记：&lt;br&gt; 　　标签:Markdown&lt;br&gt; 　　Tags:Markdown&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;引用&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;使用 &amp;gt; 表示引用， &amp;gt;&amp;gt; 表示引用里面再套一层引用，依次类推&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;图片&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;语法：![Beautiful](&lt;a href=&quot;http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;amp;fm=21&amp;amp;gp=0.jpg&lt;/a&gt; “测试图片”)&lt;br&gt;实例：&lt;img src=&quot;http://img1.imgtn.bdimg.com/it/u=2948830857,1878924554&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; alt=&quot;Beautiful&quot; title=&quot;测试图片&quot;&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;代码&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;使用&lt;code&gt;code content&lt;/code&gt;,英文状态下的键盘的左上角~键即可输出”`”,连接三个中间输入代码，最后还是三个结束,如果是显示的是行内代码就用”``”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;链接&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;语法：这就是我们常用的地址：[Baidu](www.baidu.com”百度一下，你就知道” )&lt;br&gt;实例：这就是我们常用的地址：&lt;a href=&quot;www.baidu.com&amp;quot;百度一下，你就知道&amp;quot;&quot;&gt;Baidu&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;列表&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;语法：使用 1. 2. 3. 表示有序列表，使用 * 或 - 或 + 表示无序列表&lt;br&gt;实例：&lt;br&gt;1.第一&lt;br&gt;2.第二&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;字体&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;语法：使用 &lt;strong&gt; 或者 _ 表示粗体；\&lt;/strong&gt;字体&lt;strong&gt;  _字体_&lt;br&gt;实例：&lt;/strong&gt;字体**  &lt;em&gt;字体&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;转义&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;转义使用反斜杠 \&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;空格&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在输入法切换到全角模式，输入空格即可&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;二、印象层次&quot;&gt;&lt;a href=&quot;#二、印象层次&quot; class=&quot;headerlink&quot; title=&quot;二、印象层次&quot;&gt;&lt;/a&gt;二、印象层次&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;删除线&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;语法： ~~ 表示删除线; \&lt;del&gt;中划线&lt;/del&gt;&lt;br&gt;实例：&lt;del&gt;中划线&lt;/del&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;标注&lt;/strong&gt;（略）&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;三、了解层次&quot;&gt;&lt;a href=&quot;#三、了解层次&quot; class=&quot;headerlink&quot; title=&quot;三、了解层次&quot;&gt;&lt;/a&gt;三、了解层次&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;流程图&lt;/strong&gt;（略）&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　作为一名合格的程序猿，写文档是必需的，选择一款合适的编辑器就如同一个好的助手，Markdown就是一个好的选择，语法简洁，逼格高~~，如果你经常玩GitHub，就会知道我们用于编写说明文档，并且以“README.MD”的文件名保存在软件的目录下面就是基于Markdwon语法的。下面就来学习一下Markdown的基本语法吧！&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Markdown" scheme="http://www.jiangyu.tech/categories/Markdown/"/>
-    
-    
-      <category term="Markdown syntax" scheme="http://www.jiangyu.tech/tags/Markdown-syntax/"/>
     
   </entry>
   
