@@ -89,40 +89,40 @@
 <meta name="description" content="亲自动手实践和整理 Tomcat + Ngnix + Memcached 负载均衡 Session共享的实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat + Ngnix + Memcached 负载均衡 Session共享">
-<meta property="og:url" content="http://www.jiangyu.tech/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/index.html">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/index.html">
 <meta property="og:site_name" content="JhonRain's Blog">
 <meta property="og:description" content="亲自动手实践和整理 Tomcat + Ngnix + Memcached 负载均衡 Session共享的实现">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Jdk/session_share_software_list.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Jdk/config_java_temp_dir.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Jdk/check_jdk_config_success.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/upload_tomcat_software.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/tar_three_tomcat.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/error.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/Ngnix_install_code.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/Ngnix_config.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/ngnix_config_error.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/start_ngnix_check_status.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Ngnix/Ngnix_process_check.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Memcache/Memcache_check_install.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Memcache/Memcache_config_cmd_info.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Memcache/Memcache_run_check.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Memcache/Windows_client_check_status.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Tomcat_config_route_flag.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Tomcat_configroute_flag2.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/memcache_func_dependency.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Session_share_Test.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_1.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_2.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_3.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_4.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_5.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_6.png">
-<meta property="og:image" content="http://www.jiangyu.tech/uploads/blog/Tomcat/Visit_7.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Jdk/session_share_software_list.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Jdk/config_java_temp_dir.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Jdk/check_jdk_config_success.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/upload_tomcat_software.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/tar_three_tomcat.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/error.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/Ngnix_install_code.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/Ngnix_config.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/ngnix_config_error.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/start_ngnix_check_status.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Ngnix/Ngnix_process_check.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Memcache/Memcache_check_install.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Memcache/Memcache_config_cmd_info.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Memcache/Memcache_run_check.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Memcache/Windows_client_check_status.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Tomcat_config_route_flag.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Tomcat_configroute_flag2.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/memcache_func_dependency.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Session_share_Test.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_1.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_2.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_3.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_4.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_5.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_6.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Tomcat/Visit_7.png">
 <meta property="og:updated_time" content="2016-06-10T02:09:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat + Ngnix + Memcached 负载均衡 Session共享">
 <meta name="twitter:description" content="亲自动手实践和整理 Tomcat + Ngnix + Memcached 负载均衡 Session共享的实现">
-<meta name="twitter:image" content="http://www.jiangyu.tech/uploads/blog/Jdk/session_share_software_list.png">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Jdk/session_share_software_list.png">
 
 
 
@@ -547,7 +547,7 @@ sudo make install</code><br>安装完成之后，使用 ./memcached -i 查看信
         <div class="ds-share flat" data-thread-key="2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/"
      data-title="Tomcat + Ngnix + Memcached 负载均衡 Session共享"
      data-content=""
-     data-url="http://www.jiangyu.tech/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/">
+     data-url="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -575,7 +575,7 @@ sudo make install</code><br>安装完成之后，使用 ./memcached -i 查看信
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/"
-           data-title="Tomcat + Ngnix + Memcached 负载均衡 Session共享" data-url="http://www.jiangyu.tech/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/">
+           data-title="Tomcat + Ngnix + Memcached 负载均衡 Session共享" data-url="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat + Ngnix + Memcached 负载均衡 Session共享/">
       </div>
     
   </div>

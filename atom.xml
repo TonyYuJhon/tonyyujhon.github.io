@@ -4,9 +4,9 @@
   <subtitle>Victory Loves Preparation</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.jiangyu.tech/"/>
+  <link href="http://www.jiang-yu.cn/"/>
   <updated>2016-11-12T05:40:05.000Z</updated>
-  <id>http://www.jiangyu.tech/</id>
+  <id>http://www.jiang-yu.cn/</id>
   
   <author>
     <name>Jiang Yu</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Java 8 Lambda表达式了解和应用</title>
-    <link href="http://www.jiangyu.tech/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
-    <id>http://www.jiangyu.tech/2016/11/12/Jdk/Java8--Lambda介绍和使用/</id>
+    <link href="http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda介绍和使用/</id>
     <published>2016-11-12T07:20:51.000Z</published>
     <updated>2016-11-12T05:40:05.000Z</updated>
     
@@ -62,17 +62,17 @@
     
     </summary>
     
-      <category term="Lambda" scheme="http://www.jiangyu.tech/categories/Lambda/"/>
+      <category term="Lambda" scheme="http://www.jiang-yu.cn/categories/Lambda/"/>
     
     
-      <category term="Lambda" scheme="http://www.jiangyu.tech/tags/Lambda/"/>
+      <category term="Lambda" scheme="http://www.jiang-yu.cn/tags/Lambda/"/>
     
   </entry>
   
   <entry>
     <title>ActiveMQ启动报错--ISC服务惹的祸</title>
-    <link href="http://www.jiangyu.tech/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/"/>
-    <id>http://www.jiangyu.tech/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</id>
+    <link href="http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/"/>
+    <id>http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</id>
     <published>2016-11-09T00:43:51.000Z</published>
     <updated>2016-11-09T01:04:17.000Z</updated>
     
@@ -106,17 +106,17 @@
     
     </summary>
     
-      <category term="ActiveMQ" scheme="http://www.jiangyu.tech/categories/ActiveMQ/"/>
+      <category term="ActiveMQ" scheme="http://www.jiang-yu.cn/categories/ActiveMQ/"/>
     
     
-      <category term="ActiveMQ" scheme="http://www.jiangyu.tech/tags/ActiveMQ/"/>
+      <category term="ActiveMQ" scheme="http://www.jiang-yu.cn/tags/ActiveMQ/"/>
     
   </entry>
   
   <entry>
     <title>SVN入门教程（三）--上传文件到SVN服务器</title>
-    <link href="http://www.jiangyu.tech/2016/09/02/SVN/SVN%20Learn%20Basic%2003/"/>
-    <id>http://www.jiangyu.tech/2016/09/02/SVN/SVN Learn Basic 03/</id>
+    <link href="http://www.jiang-yu.cn/2016/09/02/SVN/SVN%20Learn%20Basic%2003/"/>
+    <id>http://www.jiang-yu.cn/2016/09/02/SVN/SVN Learn Basic 03/</id>
     <published>2016-09-02T04:43:51.000Z</published>
     <updated>2016-09-02T05:49:26.000Z</updated>
     
@@ -124,16 +124,16 @@
 &lt;p&gt;  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　通过前面的&lt;a href=&quot;http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SVN入门教程（二）–下载文件到本地计算机&lt;/a&gt;,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。&lt;/p&gt;
-&lt;h2 id=&quot;第一步：确定你需要上传文件到服务器中的位置&quot;&gt;&lt;a href=&quot;#第一步：确定你需要上传文件到服务器中的位置&quot; class=&quot;headerlink&quot; title=&quot;第一步：确定你需要上传文件到服务器中的位置&quot;&gt;&lt;/a&gt;第一步：确定你需要上传文件到服务器中的位置&lt;/h2&gt;&lt;p&gt;　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0020.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　理解了上面的概念之后，确定了要存放文件的目录，比如：(&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第二步：添加文件操作&quot;&gt;&lt;a href=&quot;#第二步：添加文件操作&quot; class=&quot;headerlink&quot; title=&quot;第二步：添加文件操作&quot;&gt;&lt;/a&gt;第二步：添加文件操作&lt;/h2&gt;&lt;p&gt;　　首先，有了第一步中的链接，比如：【&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/新员工天地】&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jiang-yu.cn/svn/document/新员工天地】&lt;/a&gt; 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0021.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　然后，执行SVN的添加操作，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0022.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，&lt;br&gt;　　【文件的变化】如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0023.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0024.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　通过前面的&lt;a href=&quot;http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/&quot;&gt;SVN入门教程（二）–下载文件到本地计算机&lt;/a&gt;,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。&lt;/p&gt;
+&lt;h2 id=&quot;第一步：确定你需要上传文件到服务器中的位置&quot;&gt;&lt;a href=&quot;#第一步：确定你需要上传文件到服务器中的位置&quot; class=&quot;headerlink&quot; title=&quot;第一步：确定你需要上传文件到服务器中的位置&quot;&gt;&lt;/a&gt;第一步：确定你需要上传文件到服务器中的位置&lt;/h2&gt;&lt;p&gt;　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0020.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　理解了上面的概念之后，确定了要存放文件的目录，比如：(&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。&quot;&gt;https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第二步：添加文件操作&quot;&gt;&lt;a href=&quot;#第二步：添加文件操作&quot; class=&quot;headerlink&quot; title=&quot;第二步：添加文件操作&quot;&gt;&lt;/a&gt;第二步：添加文件操作&lt;/h2&gt;&lt;p&gt;　　首先，有了第一步中的链接，比如：【&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/新员工天地】&quot;&gt;https://www.jiang-yu.cn/svn/document/新员工天地】&lt;/a&gt; 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0021.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　然后，执行SVN的添加操作，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0022.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，&lt;br&gt;　　【文件的变化】如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0023.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0024.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;第三步：提交文件菜单操作&quot;&gt;&lt;a href=&quot;#第三步：提交文件菜单操作&quot; class=&quot;headerlink&quot; title=&quot;第三步：提交文件菜单操作&quot;&gt;&lt;/a&gt;第三步：提交文件菜单操作&lt;/h2&gt;&lt;p&gt;　　上面两步正确操作之后，在文件上右键点击出现菜单中选择SVN Commit，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0025.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;第四步：填写提交备注信息&quot;&gt;&lt;a href=&quot;#第四步：填写提交备注信息&quot; class=&quot;headerlink&quot; title=&quot;第四步：填写提交备注信息&quot;&gt;&lt;/a&gt;第四步：填写提交备注信息&lt;/h2&gt;&lt;p&gt;　　最后，出现一个填写备注的弹出框，这里需要说明一下，就是每次提交文件（也就是对文件有修改操作，新增操作，删除操作的话都需要填写操作的原因和影响的文件）都要填写操作备注，养成这样的好习惯，对后面操作是有帮助的，如下图所示，可以按照给出的模板操作：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;【提 交 人】：江xx&lt;br&gt;【文件说明】：新增了新员工入职指导文件&lt;br&gt;【修改说明】：&lt;br&gt;　　1.修改了xxx文件&lt;br&gt;　　2.删除了xxx文件&lt;br&gt;【影响范围】：&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0026.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/aaa.doc&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jiang-yu.cn/svn/document/aaa.doc&lt;/a&gt; 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。&lt;/p&gt;
+&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/aaa.doc&quot;&gt;https://www.jiang-yu.cn/svn/document/aaa.doc&lt;/a&gt; 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -144,17 +144,17 @@
     
     </summary>
     
-      <category term="SVN" scheme="http://www.jiangyu.tech/categories/SVN/"/>
+      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
     
     
-      <category term="SVN" scheme="http://www.jiangyu.tech/tags/SVN/"/>
+      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
     
   </entry>
   
   <entry>
     <title>SVN入门教程（二）--下载文件到本地计算机</title>
-    <link href="http://www.jiangyu.tech/2016/09/01/SVN/SVN%20Learn%20Basic02/"/>
-    <id>http://www.jiangyu.tech/2016/09/01/SVN/SVN Learn Basic02/</id>
+    <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/"/>
+    <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic02/</id>
     <published>2016-09-01T14:47:51.000Z</published>
     <updated>2016-09-02T05:01:01.000Z</updated>
     
@@ -162,9 +162,9 @@
 &lt;p&gt;  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步&lt;a href=&quot;http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SVN入门教程（一）–软件的安装&lt;/a&gt;。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。&lt;/p&gt;
+&lt;p&gt;　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步&lt;a href=&quot;http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/&quot;&gt;SVN入门教程（一）–软件的安装&lt;/a&gt;。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。&lt;/p&gt;
 &lt;h2 id=&quot;第一步：创建文件夹&quot;&gt;&lt;a href=&quot;#第一步：创建文件夹&quot; class=&quot;headerlink&quot; title=&quot;第一步：创建文件夹&quot;&gt;&lt;/a&gt;第一步：创建文件夹&lt;/h2&gt;&lt;p&gt;　　首先，我们要在自己的电脑上创建一个文件夹（任意位置，任意名称），用来存放从SVN服务器中下载的文件，例如：我需要下载公司的人资部的一些文档资源，第一步，创建一个文件夹（HR_DOCUMENT）&lt;br&gt;下面的教程使用的是A_SVN_DEMO这个文件名，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0011.png&quot; alt=&quot;create_des_folder&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;a href=&quot;#第二步：检出资源文件，填写链接地址&quot; class=&quot;headerlink&quot; title=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;/a&gt;第二步：检出资源文件，填写链接地址&lt;/h2&gt;&lt;p&gt;　　文件夹创建好之后，在文件夹上右键–&amp;gt;SVN Checkout–&amp;gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&lt;/a&gt; 填写到URL of repository下的输入框中，然后点击ok即可&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0012.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;a href=&quot;#第二步：检出资源文件，填写链接地址&quot; class=&quot;headerlink&quot; title=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;/a&gt;第二步：检出资源文件，填写链接地址&lt;/h2&gt;&lt;p&gt;　　文件夹创建好之后，在文件夹上右键–&amp;gt;SVN Checkout–&amp;gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&quot;&gt;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&lt;/a&gt; 填写到URL of repository下的输入框中，然后点击ok即可&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0012.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;第三步：等待文件资源下载，查看下载的进度和情况&quot;&gt;&lt;a href=&quot;#第三步：等待文件资源下载，查看下载的进度和情况&quot; class=&quot;headerlink&quot; title=&quot;第三步：等待文件资源下载，查看下载的进度和情况&quot;&gt;&lt;/a&gt;第三步：等待文件资源下载，查看下载的进度和情况&lt;/h2&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0013.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;第四步：查看文件是否下载下来了&quot;&gt;&lt;a href=&quot;#第四步：查看文件是否下载下来了&quot; class=&quot;headerlink&quot; title=&quot;第四步：查看文件是否下载下来了&quot;&gt;&lt;/a&gt;第四步：查看文件是否下载下来了&lt;/h2&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0014.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;
 　　&lt;/p&gt;
@@ -179,17 +179,17 @@
     
     </summary>
     
-      <category term="SVN" scheme="http://www.jiangyu.tech/categories/SVN/"/>
+      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
     
     
-      <category term="SVN" scheme="http://www.jiangyu.tech/tags/SVN/"/>
+      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
     
   </entry>
   
   <entry>
     <title>SVN入门教程（一）--软件的安装</title>
-    <link href="http://www.jiangyu.tech/2016/09/01/SVN/SVN%20Learn%20Basic%2001/"/>
-    <id>http://www.jiangyu.tech/2016/09/01/SVN/SVN Learn Basic 01/</id>
+    <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/"/>
+    <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic 01/</id>
     <published>2016-09-01T14:43:51.000Z</published>
     <updated>2016-09-02T00:40:49.000Z</updated>
     
@@ -208,17 +208,17 @@
     
     </summary>
     
-      <category term="SVN" scheme="http://www.jiangyu.tech/categories/SVN/"/>
+      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
     
     
-      <category term="SVN" scheme="http://www.jiangyu.tech/tags/SVN/"/>
+      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
     
   </entry>
   
   <entry>
     <title>Java入门--IDE工具的选择（二）</title>
-    <link href="http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
-    <id>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
+    <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
     <published>2016-08-09T12:47:51.000Z</published>
     <updated>2016-08-09T01:31:47.000Z</updated>
     
@@ -245,17 +245,17 @@
     
     </summary>
     
-      <category term="JAVA" scheme="http://www.jiangyu.tech/categories/JAVA/"/>
+      <category term="JAVA" scheme="http://www.jiang-yu.cn/categories/JAVA/"/>
     
     
-      <category term="Java" scheme="http://www.jiangyu.tech/tags/Java/"/>
+      <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Nginx配置代理--搭建线上和开发环境</title>
-    <link href="http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/"/>
-    <id>http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/</id>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
     <published>2016-08-09T12:47:51.000Z</published>
     <updated>2016-08-09T10:28:41.000Z</updated>
     
@@ -263,7 +263,7 @@
 &lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　上次写过一篇博文是关于使用&lt;a href=&quot;http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nginx+Tomcat实现负载均衡&lt;/a&gt;,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.&lt;br&gt;　　首先，查看一下nginx是否安装好了：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/check_nginx_is_install.png&quot; alt=&quot;nginx_install_check&quot;&gt;&lt;br&gt;　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/ngnix_location.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
+&lt;p&gt;　　上次写过一篇博文是关于使用&lt;a href=&quot;http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/&quot;&gt;Nginx+Tomcat实现负载均衡&lt;/a&gt;,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.&lt;br&gt;　　首先，查看一下nginx是否安装好了：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/check_nginx_is_install.png&quot; alt=&quot;nginx_install_check&quot;&gt;&lt;br&gt;　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Ngnix/ngnix_location.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;开启压缩配置&lt;br&gt;&lt;img src=&quot;/uploads/blog/Ngnix/nginx_gzip_on.png&quot; alt=&quot;nginx_install_dir&quot;&gt;&lt;br&gt;如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;配置Server节点&lt;br&gt; 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)&lt;br&gt;&lt;strong&gt;线上环境的配置&lt;/strong&gt;：&lt;br&gt; 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：&lt;/p&gt;
@@ -293,17 +293,17 @@
     
     </summary>
     
-      <category term="Nginx" scheme="http://www.jiangyu.tech/categories/Nginx/"/>
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/categories/Nginx/"/>
     
     
-      <category term="Nginx" scheme="http://www.jiangyu.tech/tags/Nginx/"/>
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat开启压缩功能</title>
-    <link href="http://www.jiangyu.tech/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
-    <id>http://www.jiangyu.tech/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
     <published>2016-08-09T12:47:51.000Z</published>
     <updated>2016-08-09T04:07:49.000Z</updated>
     
@@ -324,17 +324,17 @@
     
     </summary>
     
-      <category term="Tomcat" scheme="http://www.jiangyu.tech/categories/Tomcat/"/>
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
     
     
-      <category term="Tomcat" scheme="http://www.jiangyu.tech/tags/Tomcat/"/>
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat内存配置以及项目发布配置</title>
-    <link href="http://www.jiangyu.tech/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/"/>
-    <id>http://www.jiangyu.tech/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</id>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</id>
     <published>2016-08-09T04:47:51.000Z</published>
     <updated>2016-08-09T03:57:38.000Z</updated>
     
@@ -358,17 +358,17 @@
     
     </summary>
     
-      <category term="Tomcat" scheme="http://www.jiangyu.tech/categories/Tomcat/"/>
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
     
     
-      <category term="Tomcat" scheme="http://www.jiangyu.tech/tags/Tomcat/"/>
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
     
   </entry>
   
   <entry>
     <title>Java入门--环境的准备（一）</title>
-    <link href="http://www.jiangyu.tech/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/"/>
-    <id>http://www.jiangyu.tech/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/</id>
+    <link href="http://www.jiang-yu.cn/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/"/>
+    <id>http://www.jiang-yu.cn/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/</id>
     <published>2016-08-08T12:47:51.000Z</published>
     <updated>2016-08-08T14:02:05.000Z</updated>
     
@@ -390,17 +390,17 @@
     
     </summary>
     
-      <category term="JAVA" scheme="http://www.jiangyu.tech/categories/JAVA/"/>
+      <category term="JAVA" scheme="http://www.jiang-yu.cn/categories/JAVA/"/>
     
     
-      <category term="Java" scheme="http://www.jiangyu.tech/tags/Java/"/>
+      <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>MySql修改默认的字符集</title>
-    <link href="http://www.jiangyu.tech/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
-    <id>http://www.jiangyu.tech/2016/06/26/MySQL/MySQL修改默认的字符编码/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL修改默认的字符编码/</id>
     <published>2016-06-26T08:28:51.000Z</published>
     <updated>2016-06-26T08:44:54.000Z</updated>
     
@@ -424,17 +424,17 @@
     
     </summary>
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
     
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/tags/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>Linux修改IP配置</title>
-    <link href="http://www.jiangyu.tech/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/"/>
-    <id>http://www.jiangyu.tech/2016/06/26/Linux/Linux修改IP地址为静态地址/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/Linux/Linux修改IP地址为静态地址/</id>
     <published>2016-06-26T06:58:51.000Z</published>
     <updated>2016-06-26T06:05:03.000Z</updated>
     
@@ -449,17 +449,17 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://www.jiangyu.tech/categories/Linux/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="http://www.jiangyu.tech/tags/Linux/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>MySql授权</title>
-    <link href="http://www.jiangyu.tech/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/"/>
-    <id>http://www.jiangyu.tech/2016/06/26/MySQL/MySQL授权简介/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL授权简介/</id>
     <published>2016-06-26T06:47:51.000Z</published>
     <updated>2016-06-26T09:14:45.000Z</updated>
     
@@ -498,17 +498,17 @@
     
     </summary>
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
     
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/tags/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>MySql连接阻塞解决办法</title>
-    <link href="http://www.jiangyu.tech/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>http://www.jiangyu.tech/2016/06/26/MySQL/MySQL连接阻塞解决办法/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL连接阻塞解决办法/</id>
     <published>2016-06-26T06:07:51.000Z</published>
     <updated>2016-06-26T09:08:24.000Z</updated>
     
@@ -545,17 +545,17 @@
     
     </summary>
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
     
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/tags/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>Linux修改系统默认启动模式</title>
-    <link href="http://www.jiangyu.tech/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://www.jiangyu.tech/2016/06/14/Linux/修改Linux系统默认启动模式/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/Linux/修改Linux系统默认启动模式/</id>
     <published>2016-06-14T06:58:51.000Z</published>
     <updated>2016-06-14T06:09:31.000Z</updated>
     
@@ -575,17 +575,17 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://www.jiangyu.tech/categories/Linux/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="http://www.jiangyu.tech/tags/Linux/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Linux关机操作命令</title>
-    <link href="http://www.jiangyu.tech/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.jiangyu.tech/2016/06/14/Linux/Linux关机命令/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
     <published>2016-06-14T06:58:51.000Z</published>
     <updated>2016-06-14T07:47:13.000Z</updated>
     
@@ -601,17 +601,17 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://www.jiangyu.tech/categories/Linux/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="http://www.jiangyu.tech/tags/Linux/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>VIM编辑器基础命令（一）</title>
-    <link href="http://www.jiangyu.tech/2016/06/14/VIM/vim_command_01%20/"/>
-    <id>http://www.jiangyu.tech/2016/06/14/VIM/vim_command_01 /</id>
+    <link href="http://www.jiang-yu.cn/2016/06/14/VIM/vim_command_01%20/"/>
+    <id>http://www.jiang-yu.cn/2016/06/14/VIM/vim_command_01 /</id>
     <published>2016-06-14T03:58:51.000Z</published>
     <updated>2016-06-14T05:37:34.000Z</updated>
     
@@ -632,17 +632,17 @@
     
     </summary>
     
-      <category term="VIM" scheme="http://www.jiangyu.tech/categories/VIM/"/>
+      <category term="VIM" scheme="http://www.jiang-yu.cn/categories/VIM/"/>
     
     
-      <category term="Linux，VIM" scheme="http://www.jiangyu.tech/tags/Linux%EF%BC%8CVIM/"/>
+      <category term="Linux，VIM" scheme="http://www.jiang-yu.cn/tags/Linux%EF%BC%8CVIM/"/>
     
   </entry>
   
   <entry>
     <title> JMeter内存溢出解决办法</title>
-    <link href="http://www.jiangyu.tech/2016/06/13/JMeter/JMeter%20OutOfMemory%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://www.jiangyu.tech/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter%20OutOfMemory%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter OutOfMemory 解决方法/</id>
     <published>2016-06-13T07:30:00.000Z</published>
     <updated>2016-06-13T08:04:12.000Z</updated>
     
@@ -665,54 +665,19 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
-      <category term="JMeter" scheme="http://www.jiangyu.tech/categories/JMeter/"/>
+      <category term="JMeter" scheme="http://www.jiang-yu.cn/categories/JMeter/"/>
     
     
-      <category term="JMeter" scheme="http://www.jiangyu.tech/tags/JMeter/"/>
+      <category term="JMeter" scheme="http://www.jiang-yu.cn/tags/JMeter/"/>
     
-      <category term="OutOfMemory" scheme="http://www.jiangyu.tech/tags/OutOfMemory/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiangyu.tech/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiangyu.tech/tags/LOCK/"/>
+      <category term="OutOfMemory" scheme="http://www.jiang-yu.cn/tags/OutOfMemory/"/>
     
   </entry>
   
   <entry>
     <title> MySql InnoDB Lock(二)--Intention Locks</title>
-    <link href="http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
-    <id>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
     <published>2016-06-04T02:00:00.000Z</published>
     <updated>2016-06-05T03:32:32.000Z</updated>
     
@@ -754,12 +719,47 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
-      <category term="MySQL" scheme="http://www.jiangyu.tech/categories/MySQL/"/>
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
     
     
-      <category term="INNODB" scheme="http://www.jiangyu.tech/tags/INNODB/"/>
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
     
-      <category term="DEADLOCK" scheme="http://www.jiangyu.tech/tags/DEADLOCK/"/>
+      <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
+    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
+    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
+    <published>2016-06-04T02:00:00.000Z</published>
+    <updated>2016-06-04T05:49:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
+&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
+    
+    
+      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
+    
+      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   

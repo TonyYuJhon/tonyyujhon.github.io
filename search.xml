@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[Java 8 Lambda表达式了解和应用]]></title>
-      <url>http://www.jiangyu.tech/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
+      <url>http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！</p>
 </blockquote>
@@ -41,7 +41,7 @@
     
     <entry>
       <title><![CDATA[ActiveMQ启动报错--ISC服务惹的祸]]></title>
-      <url>http://www.jiangyu.tech/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</url>
+      <url>http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  本文主要记录一下在windows上使用ActiveMQ过程中出现的一个错误，而且出现过两次，方便后期备忘和快速查询。</p>
 </blockquote>
@@ -67,34 +67,34 @@
     
     <entry>
       <title><![CDATA[SVN入门教程（三）--上传文件到SVN服务器]]></title>
-      <url>http://www.jiangyu.tech/2016/09/02/SVN/SVN%20Learn%20Basic%2003/</url>
+      <url>http://www.jiang-yu.cn/2016/09/02/SVN/SVN%20Learn%20Basic%2003/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　通过前面的<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/" target="_blank" rel="external">SVN入门教程（二）–下载文件到本地计算机</a>,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。</p>
-<h2 id="第一步：确定你需要上传文件到服务器中的位置"><a href="#第一步：确定你需要上传文件到服务器中的位置" class="headerlink" title="第一步：确定你需要上传文件到服务器中的位置"></a>第一步：确定你需要上传文件到服务器中的位置</h2><p>　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0020.png" alt="JDK_CONFG_CHECK"><br>　　理解了上面的概念之后，确定了要存放文件的目录，比如：(<a href="https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。" target="_blank" rel="external">https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。</a></p>
-<h2 id="第二步：添加文件操作"><a href="#第二步：添加文件操作" class="headerlink" title="第二步：添加文件操作"></a>第二步：添加文件操作</h2><p>　　首先，有了第一步中的链接，比如：【<a href="https://www.jiang-yu.cn/svn/document/新员工天地】" target="_blank" rel="external">https://www.jiang-yu.cn/svn/document/新员工天地】</a> 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0021.png" alt="JDK_CONFG_CHECK"><br>　　然后，执行SVN的添加操作，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0022.png" alt="JDK_CONFG_CHECK"><br>　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，<br>　　【文件的变化】如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0023.png" alt="JDK_CONFG_CHECK"><br>　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0024.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　通过前面的<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/">SVN入门教程（二）–下载文件到本地计算机</a>,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。</p>
+<h2 id="第一步：确定你需要上传文件到服务器中的位置"><a href="#第一步：确定你需要上传文件到服务器中的位置" class="headerlink" title="第一步：确定你需要上传文件到服务器中的位置"></a>第一步：确定你需要上传文件到服务器中的位置</h2><p>　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0020.png" alt="JDK_CONFG_CHECK"><br>　　理解了上面的概念之后，确定了要存放文件的目录，比如：(<a href="https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。">https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。</a></p>
+<h2 id="第二步：添加文件操作"><a href="#第二步：添加文件操作" class="headerlink" title="第二步：添加文件操作"></a>第二步：添加文件操作</h2><p>　　首先，有了第一步中的链接，比如：【<a href="https://www.jiang-yu.cn/svn/document/新员工天地】">https://www.jiang-yu.cn/svn/document/新员工天地】</a> 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0021.png" alt="JDK_CONFG_CHECK"><br>　　然后，执行SVN的添加操作，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0022.png" alt="JDK_CONFG_CHECK"><br>　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，<br>　　【文件的变化】如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0023.png" alt="JDK_CONFG_CHECK"><br>　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0024.png" alt="JDK_CONFG_CHECK"></p>
 <h2 id="第三步：提交文件菜单操作"><a href="#第三步：提交文件菜单操作" class="headerlink" title="第三步：提交文件菜单操作"></a>第三步：提交文件菜单操作</h2><p>　　上面两步正确操作之后，在文件上右键点击出现菜单中选择SVN Commit，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0025.png" alt="JDK_CONFG_CHECK"></p>
 <h2 id="第四步：填写提交备注信息"><a href="#第四步：填写提交备注信息" class="headerlink" title="第四步：填写提交备注信息"></a>第四步：填写提交备注信息</h2><p>　　最后，出现一个填写备注的弹出框，这里需要说明一下，就是每次提交文件（也就是对文件有修改操作，新增操作，删除操作的话都需要填写操作的原因和影响的文件）都要填写操作备注，养成这样的好习惯，对后面操作是有帮助的，如下图所示，可以按照给出的模板操作：</p>
 <blockquote>
 <p>【提 交 人】：江xx<br>【文件说明】：新增了新员工入职指导文件<br>【修改说明】：<br>　　1.修改了xxx文件<br>　　2.删除了xxx文件<br>【影响范围】：</p>
 </blockquote>
 <p>　　<img src="/uploads/blog/SVN/svn_0026.png" alt="JDK_CONFG_CHECK"></p>
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：<a href="https://www.jiang-yu.cn/svn/document/aaa.doc" target="_blank" rel="external">https://www.jiang-yu.cn/svn/document/aaa.doc</a> 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：<a href="https://www.jiang-yu.cn/svn/document/aaa.doc">https://www.jiang-yu.cn/svn/document/aaa.doc</a> 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[SVN入门教程（二）--下载文件到本地计算机]]></title>
-      <url>http://www.jiangyu.tech/2016/09/01/SVN/SVN%20Learn%20Basic02/</url>
+      <url>http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。</p>
 </blockquote>
 <a id="more"></a>
-<p>　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/" target="_blank" rel="external">SVN入门教程（一）–软件的安装</a>。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。</p>
+<p>　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/">SVN入门教程（一）–软件的安装</a>。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。</p>
 <h2 id="第一步：创建文件夹"><a href="#第一步：创建文件夹" class="headerlink" title="第一步：创建文件夹"></a>第一步：创建文件夹</h2><p>　　首先，我们要在自己的电脑上创建一个文件夹（任意位置，任意名称），用来存放从SVN服务器中下载的文件，例如：我需要下载公司的人资部的一些文档资源，第一步，创建一个文件夹（HR_DOCUMENT）<br>下面的教程使用的是A_SVN_DEMO这个文件名，如下图所示：<br>　　<img src="/uploads/blog/SVN/svn_0011.png" alt="create_des_folder"></p>
-<h2 id="第二步：检出资源文件，填写链接地址"><a href="#第二步：检出资源文件，填写链接地址" class="headerlink" title="第二步：检出资源文件，填写链接地址"></a>第二步：检出资源文件，填写链接地址</h2><p>　　文件夹创建好之后，在文件夹上右键–&gt;SVN Checkout–&gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：<a href="https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）" target="_blank" rel="external">https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）</a> 填写到URL of repository下的输入框中，然后点击ok即可<br>　　<img src="/uploads/blog/SVN/svn_0012.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="第二步：检出资源文件，填写链接地址"><a href="#第二步：检出资源文件，填写链接地址" class="headerlink" title="第二步：检出资源文件，填写链接地址"></a>第二步：检出资源文件，填写链接地址</h2><p>　　文件夹创建好之后，在文件夹上右键–&gt;SVN Checkout–&gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：<a href="https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）">https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）</a> 填写到URL of repository下的输入框中，然后点击ok即可<br>　　<img src="/uploads/blog/SVN/svn_0012.png" alt="JDK_CONFG_CHECK"></p>
 <h2 id="第三步：等待文件资源下载，查看下载的进度和情况"><a href="#第三步：等待文件资源下载，查看下载的进度和情况" class="headerlink" title="第三步：等待文件资源下载，查看下载的进度和情况"></a>第三步：等待文件资源下载，查看下载的进度和情况</h2><p>　　<img src="/uploads/blog/SVN/svn_0013.png" alt="JDK_CONFG_CHECK"></p>
 <h2 id="第四步：查看文件是否下载下来了"><a href="#第四步：查看文件是否下载下来了" class="headerlink" title="第四步：查看文件是否下载下来了"></a>第四步：查看文件是否下载下来了</h2><p>　　<img src="/uploads/blog/SVN/svn_0014.png" alt="JDK_CONFG_CHECK">
 　　</p>
@@ -104,7 +104,7 @@
     
     <entry>
       <title><![CDATA[SVN入门教程（一）--软件的安装]]></title>
-      <url>http://www.jiangyu.tech/2016/09/01/SVN/SVN%20Learn%20Basic%2001/</url>
+      <url>http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  本文主要介绍SVN以及如何安装SVN软件。</p>
 </blockquote>
@@ -115,7 +115,7 @@
     
     <entry>
       <title><![CDATA[Java入门--IDE工具的选择（二）]]></title>
-      <url>http://www.jiangyu.tech/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
+      <url>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。</p>
 </blockquote>
@@ -134,12 +134,12 @@
     
     <entry>
       <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
-      <url>http://www.jiangyu.tech/2016/08/09/Ngnix/nginx_server_config/</url>
+      <url>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>使用nginx配置反向代理，80端口映射不同的内网web服务器。</p>
 </blockquote>
 <a id="more"></a>
-<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/" target="_blank" rel="external">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
+<p>　　上次写过一篇博文是关于使用<a href="http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/">Nginx+Tomcat实现负载均衡</a>,这里面有介绍怎么用源码安装nginx，这里就不在重复了，今天我们要实现的是同一个端口号（80）映射到服务器上的不同Tomcat中，实现开发环境和线上环境的分离，当然了，如果你们公司不缺money,可以另外开一台Server.<br>　　首先，查看一下nginx是否安装好了：<br>　　<img src="/uploads/blog/Ngnix/check_nginx_is_install.png" alt="nginx_install_check"><br>　　从上面可以看出来，nginx已经安装好了，而且还有版本信息，然后我们进入到nginx的安装目录，修改nginx的配置文件：nginx.conf<br>　　<img src="/uploads/blog/Ngnix/ngnix_location.png" alt="nginx_install_dir"></p>
 <ul>
 <li>开启压缩配置<br><img src="/uploads/blog/Ngnix/nginx_gzip_on.png" alt="nginx_install_dir"><br>如果不配置压缩的资源类型，貌似对前端资源的压缩没有起到效果，所以配置的时候需要注意一下：记得配置要压缩文件的类型。</li>
 <li><p>配置Server节点<br> 在上一篇博文中，我们只配置了一个Server节点来实现负载均衡，但实际情况可能不是这样的。最近在做一个项目，因为项目中需要用到facebook的api调用，所以公司就购买了一台能够google的服务器，由于服务器是阿里的只对外开放一个80端口，所以我们要实现开发和线上环境分开的话，必须要配置代理来实现跳转——也就是使用nginx(也可以使用Apache来实现–后期来介绍Apache的使用)<br><strong>线上环境的配置</strong>：<br> 默认使用80端口号，该服务器也分配了一个线上的域名xxx.xx.com,所以线上环境的配置非常简单，直接使用默认的配置：</p>
@@ -164,7 +164,7 @@
     
     <entry>
       <title><![CDATA[Tomcat开启压缩功能]]></title>
-      <url>http://www.jiangyu.tech/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
 </blockquote>
@@ -177,7 +177,7 @@
     
     <entry>
       <title><![CDATA[Tomcat内存配置以及项目发布配置]]></title>
-      <url>http://www.jiangyu.tech/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</url>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</url>
       <content type="html"><![CDATA[<blockquote>
 <p> 作为Java程序猿，我们不得不掌握Tomcat的基本配置，本文将简单讲述一下实际项目中tomcat的一般配置。</p>
 </blockquote>
@@ -193,7 +193,7 @@
     
     <entry>
       <title><![CDATA[Java入门--环境的准备（一）]]></title>
-      <url>http://www.jiangyu.tech/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/</url>
+      <url>http://www.jiang-yu.cn/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>  温故知新：Java入门级系列之环境的搭建，找回入门时的感觉。</p>
 </blockquote>
@@ -207,7 +207,7 @@
     
     <entry>
       <title><![CDATA[MySql修改默认的字符集]]></title>
-      <url>http://www.jiangyu.tech/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</url>
+      <url>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>Linux安装完MySql后，如果没有配置字符编码的话,默认的是latin1,而开发环境一般都是使用utf-8，所有如果不修改的话会出现乱码问题.<br><a id="more"></a></p>
 </blockquote>
@@ -224,7 +224,7 @@
     
     <entry>
       <title><![CDATA[Linux修改IP配置]]></title>
-      <url>http://www.jiangyu.tech/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/</url>
+      <url>http://www.jiang-yu.cn/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/</url>
       <content type="html"><![CDATA[<p>　　每天学一点Linux命令–修改Linux系统的ip地址<br><a id="more"></a></p>
 <figure class="highlight plain"><figcaption><span>/etc/sysconfig/network-scripts/ifcfg-eth0``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;DEVICE=eth0 　　　　　网卡对应的设备别名</span><br><span class="line">TYPE=Ethernet　　　　　网络类型</span><br><span class="line">UUID=xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</span><br><span class="line">BOOTPROTO=static　　　网卡获得ip地址的方式（默认是dhcp）</span><br><span class="line">DNS1=192.168.1.1 　　　　　DNS</span><br><span class="line">IPV6INIT=no</span><br><span class="line">USERCTL=no</span><br><span class="line">IPADDR=192.168.1.132    　　　　ip地址</span><br><span class="line">NETMASK=255.255.255.0 　　　子网掩码</span><br><span class="line">GATEWAY=192.168.1.1 　　　　　　网关</span><br><span class="line">HWADDR=XX:XX:XX:XX:XX　　　　MAC地址</span><br><span class="line">ONBOOT=yes　系统启动时是否设置此网络接口，默认设置为yes</span><br><span class="line"></span><br><span class="line">修改完成之后，重启network服务</span><br><span class="line">```service network restart</span><br></pre></td></tr></table></figure>
 <p>ok，使用 <code>ifconfig eth0</code> 查看一下是否生效</p>
@@ -233,7 +233,7 @@
     
     <entry>
       <title><![CDATA[MySql授权]]></title>
-      <url>http://www.jiangyu.tech/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/</url>
+      <url>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>Linux安装完MySql后，一般root用户是不配置给远程机器访问的，所以要重新创建一个和root权限相当的用户来管理.<br><a id="more"></a></p>
 <h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3></blockquote>
@@ -265,7 +265,7 @@
     
     <entry>
       <title><![CDATA[MySql连接阻塞解决办法]]></title>
-      <url>http://www.jiangyu.tech/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      <url>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>Error Message:message from server: “Host ‘x.x.x.x’ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’”<br><a id="more"></a></p>
 </blockquote>
@@ -295,7 +295,7 @@
     
     <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
-      <url>http://www.jiangyu.tech/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
 <p>　　下面有两种方式来实现：</p>
 <ul>
@@ -309,7 +309,7 @@
     
     <entry>
       <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiangyu.tech/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
 <blockquote>
 <p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
@@ -319,7 +319,7 @@
     
     <entry>
       <title><![CDATA[VIM编辑器基础命令（一）]]></title>
-      <url>http://www.jiangyu.tech/2016/06/14/VIM/vim_command_01%20/</url>
+      <url>http://www.jiang-yu.cn/2016/06/14/VIM/vim_command_01%20/</url>
       <content type="html"><![CDATA[<p>　　在Linux下操作文件，不会VIM命令那就犹如战士上战场没带枪，所以作为一个合格的程序猿，必须要对基本的VI命令非常熟练的使用，本文开始将记录一系列VI命令的使用，方便快速查阅。<br><a id="more"></a></p>
 <ul>
 <li>vi编辑器三种常用的模式：<br>　1.命令模式：就是用<code>vi/vim 文件名</code> 进入文件后的模式<br>　2.插入模式（i）：就是在命令模式下按下ｉ或者ａ即可进入<br>　3.ex（扩展）模式：就是使用’:xxxx’ 方式<br>　在任何一种模式下按Esc键都会回到命令模式</li>
@@ -334,7 +334,7 @@
     
     <entry>
       <title><![CDATA[ JMeter内存溢出解决办法]]></title>
-      <url>http://www.jiangyu.tech/2016/06/13/JMeter/JMeter%20OutOfMemory%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      <url>http://www.jiang-yu.cn/2016/06/13/JMeter/JMeter%20OutOfMemory%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>　 最近用JMeter对Web进行压测，（JMeter也是用Java编写的一款工具）然而JMeter跑一段时间之后出现了内存溢出现象，问了下Google，虽然解决方式非常简单，但还是记录下来方便后面再次遇到就可以查找自己的知识库了！<br><a id="more"></a><br>　　为了应对618,要对我们的web应用进行压测，当然作为压测的工具首选是JMeter，因为它不大且不需要安装，配置也比较简单易懂。<br>　　在开始压测一段时间内是正常的，但是到运行到一定时间后就会出现，JMeter软件本身自己卡死，后台就一直报内存溢出的错误，如下图：<img src="/uploads/blog/JMeter/JMeter_OutOfMemory.png" alt="JMeter OutOfMemory"></p>
 <p>Google结果是：修改JMeter.bat/JMeter.sh文件中的配置即可</p>
 <ul>
@@ -350,25 +350,8 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
-      <url>http://www.jiangyu.tech/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
+      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
 <blockquote>
 <p>摘抄自：MySql Doc</p>
@@ -403,8 +386,25 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Markdown语法整理]]></title>
-      <url>http://www.jiangyu.tech/2016/06/03/Markdown/MarkDown%E8%AF%AD%E6%B3%95%E8%AE%A4%E8%AF%86/</url>
+      <url>http://www.jiang-yu.cn/2016/06/03/Markdown/MarkDown%E8%AF%AD%E6%B3%95%E8%AE%A4%E8%AF%86/</url>
       <content type="html"><![CDATA[<p>　　作为一名合格的程序猿，写文档是必需的，选择一款合适的编辑器就如同一个好的助手，Markdown就是一个好的选择，语法简洁，逼格高~~，如果你经常玩GitHub，就会知道我们用于编写说明文档，并且以“README.MD”的文件名保存在软件的目录下面就是基于Markdwon语法的。下面就来学习一下Markdown的基本语法吧！<br><a id="more"></a></p>
 <h1 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a>Markdown 语法</h1><p>[TOC]<br>　　下面将从三个层次来展开讲解，首先是常用层次，就是我们平时用的最多的并且要牢牢记住的（就如写代码的第一步：基本语法的熟悉），然后是对于一些不常用的，但是有可能会用到的标记我们必须要有印象，用到的时候能够快速的回想起来，最后就是了解层次了，这些标记基本上很少用到，只是在特定的情况下可能用到，并且能够通过查阅资料使用即可。</p>
 <h3 id="一、常用层次"><a href="#一、常用层次" class="headerlink" title="一、常用层次"></a>一、常用层次</h3><ul>
@@ -491,7 +491,7 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     
     <entry>
       <title><![CDATA[Linux下部署多个Tomcat的配置]]></title>
-      <url>http://www.jiangyu.tech/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/</url>
+      <url>http://www.jiang-yu.cn/2016/06/02/Linux/Linux%E4%B8%8B%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AATomcat%E9%85%8D%E7%BD%AE/</url>
       <content type="html"><![CDATA[<p>部署java项目时，经常需要配置多个Tomcat来运行多个应用，本文就简单的介绍一下如何来配置<br><a id="more"></a></p>
 <h3 id="方式一：全局配置"><a href="#方式一：全局配置" class="headerlink" title="方式一：全局配置"></a>方式一：全局配置</h3><p>　　如果是全局环境的安装就直接修改/etc目录下的profile文件，添加一组java环境变量，和两组CATALINA环境变量；修改后的profile文件示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JAVA_HOME/bin</span><br><span class="line">export JAVA_HOME CLASSPATH</span><br><span class="line">CATALINA_BASE=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">CATALINA_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export CATALINA_BASE CATALINA_HOME</span><br><span class="line"></span><br><span class="line">CATALINA_2_BASE=/u01/app/apache-tomcat-shanghai</span><br><span class="line">CATALINA_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export CATALINA_2_BASE CATALINA_2_HOME</span><br><span class="line">TOMCAT_HOME=/u01/app/apache-tomcat-6.0.18</span><br><span class="line">export TOMCAT_HOME</span><br><span class="line">TOMCAT_2_HOME=/u01/app/apache-tomcat-shanghai</span><br><span class="line">export TOMCAT_2_HOME</span><br></pre></td></tr></table></figure></p>
 <h3 id="方式二：临时配置方式"><a href="#方式二：临时配置方式" class="headerlink" title="方式二：临时配置方式"></a>方式二：临时配置方式</h3><p>　　第一个安装在/u01/app/apache-tomcat-6.0.18处的tomcat，保持解压后的原状不用修改。修改第二个安装在/u01/app/apache-tomcat-shanghai处的tomcat。需要修改两个地方：</p>
@@ -510,7 +510,7 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     
     <entry>
       <title><![CDATA[初识AngularJS]]></title>
-      <url>http://www.jiangyu.tech/2016/06/02/AngularJS/%E5%88%9D%E8%AF%86AngularJS/</url>
+      <url>http://www.jiang-yu.cn/2016/06/02/AngularJS/%E5%88%9D%E8%AF%86AngularJS/</url>
       <content type="html"><![CDATA[<p>　　MVC只是手段，终极目标是模块化和复用<br><a id="more"></a></p>
 <h3 id="一、AngularJS和传统JavaScript的区别："><a href="#一、AngularJS和传统JavaScript的区别：" class="headerlink" title="一、AngularJS和传统JavaScript的区别："></a>一、AngularJS和传统JavaScript的区别：</h3><ol>
 <li>传统的JavaScript要求开发者对整个DOM结构都有所了解，并强迫我们在JavaScript代码中加入复杂的控制逻辑，用以操作外部DOM，而AngularJS则通过原生的Model-View-Controller（MVC，模型-视图-控制器）功能增强了HTML;</li>
@@ -524,7 +524,7 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     
     <entry>
       <title><![CDATA[Spring中Filter和Inteceptor的区别-转载]]></title>
-      <url>http://www.jiangyu.tech/2016/04/17/SpringMVC/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/</url>
+      <url>http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring%E4%B8%ADFilter%E5%92%8CInteceptor%E7%9A%84%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%BD%BD/</url>
       <content type="html"><![CDATA[<pre><code>原文出自：http://www.cnblogs.com/davidwang456/p/4108355.html
 </code></pre><a id="more"></a>
 <p>spring mvc DispatcherServlet详解之interceptor和filter的区别</p>
@@ -636,7 +636,7 @@ execute additional interceptor for a particular action execution.
     
     <entry>
       <title><![CDATA[Spring拦截器--HandlerInterceptorAdapter]]></title>
-      <url>http://www.jiangyu.tech/2016/04/17/SpringMVC/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/</url>
+      <url>http://www.jiang-yu.cn/2016/04/17/SpringMVC/Spring%E6%8B%A6%E6%88%AA%E5%99%A8-HandlerInterceptorAdapter/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;很多时候，在使用Spring要对某些请求进行过滤时候，我们首先想到的可能是Filte–过滤器，确实过滤器能够对请求进行过滤，实现对Bean的preHandle和postHandle。但是今天我们介绍另外的一种方式–拦截器（Interceptor）.在Spring MVC中拦截器不仅能够实现Filter的所有功能，而且对于需要进行拦截的请求可以更加自由的实现自定义的注入性。</p>
 <a id="more"></a>
 <h1 id="一、认识HandlerInterceptorAdapter"><a href="#一、认识HandlerInterceptorAdapter" class="headerlink" title="一、认识HandlerInterceptorAdapter"></a>一、认识HandlerInterceptorAdapter</h1><p>&emsp;&emsp;在spring中实现拦截器，需要继承HandlerInterceptorAdapter类，从类的名称可以看出，这是一个适配器类并且是抽象类，其提供了四个方法：【下面是Spring中的源码】<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">   /*</span><br><span class="line">	 * Copyright 2002-2012 the original author or authors.</span><br><span class="line"> *</span><br><span class="line"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line"> * you may not use this file except in compliance with the License.</span><br><span class="line"> * You may obtain a copy of the License at</span><br><span class="line"> *</span><br><span class="line"> *      http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"> *</span><br><span class="line"> * Unless required by applicable law or agreed to in writing, software</span><br><span class="line"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"> * See the License for the specific language governing permissions and</span><br><span class="line"> * limitations under the License.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">package org.springframework.web.servlet.handler;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.servlet.AsyncHandlerInterceptor;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Abstract adapter class for the HandlerInterceptor interface,</span><br><span class="line"> * for simplified implementation of pre-only/post-only interceptors.</span><br><span class="line"> *</span><br><span class="line"> * @author Juergen Hoeller</span><br><span class="line"> * @since 05.12.2003</span><br><span class="line"> */</span><br><span class="line">public abstract class HandlerInterceptorAdapter implements AsyncHandlerInterceptor &#123;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation always returns &#123;@code true&#125;.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">		throws Exception &#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void postHandle(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterCompletion(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * This implementation is empty.</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterConcurrentHandlingStarted(</span><br><span class="line">			HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -654,7 +654,7 @@ execute additional interceptor for a particular action execution.
     
     <entry>
       <title><![CDATA[git push error-- [rejected--non-fast-forward] 解决]]></title>
-      <url>http://www.jiangyu.tech/2016/04/03/GitHub/git-push-rejected-non-fast-forward-Fixed/</url>
+      <url>http://www.jiang-yu.cn/2016/04/03/GitHub/git-push-rejected-non-fast-forward-Fixed/</url>
       <content type="html"><![CDATA[<p>在使用Eclipse插件egit将本地代码push到github时提示错误：<br>reject non - fast -forward<br><a id="more"></a><br>刚开始工作时，许多公司都还是喜欢用SVN来管理代码，但是作为一名“程序猿”，Git已经成为一项必备的技能，之前一直都对git有些冷落，最近由于有点想法–自己搞了点业余的项目练手，自己搭建SVN需要服务器（服务器~money,haha），所以就将代码搬到Git上。</p>
 <p>废话了这么多，回到正轨吧！首先，遇到上面的问题也是比较常见的，这里给出一种解决方法步骤（附图如下）：</p>
 <pre><code>setp 1 :fetch 远程github中的工程
@@ -669,7 +669,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[classpath,你真的理解了么？]]></title>
-      <url>http://www.jiangyu.tech/2016/04/01/SpringMVC/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/</url>
+      <url>http://www.jiang-yu.cn/2016/04/01/SpringMVC/classpath-%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E4%BA%86%E4%B9%88%EF%BC%9F/</url>
       <content type="html"><![CDATA[<p>CLASSPATH环境变量：作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPATH来寻找类的.class文件。<br><a id="more"></a></p>
 <p>###CLASSPATH是什么？<br>在Java环境中，设置classpath的目的就是在于告诉Java执行环境（JVM）在哪个地方可以找到需要执行的Java程序所需要的类或者包。</p>
 <p>配置classpath其实就类似于c/c++中的#include&lt;*.h&gt;,就是将相应的要加载类引入。</p>
@@ -688,7 +688,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[WebSocket初识]]></title>
-      <url>http://www.jiangyu.tech/2016/03/31/Socket/WebScoket%E5%92%8CHttp%E6%AF%94%E8%BE%83/</url>
+      <url>http://www.jiang-yu.cn/2016/03/31/Socket/WebScoket%E5%92%8CHttp%E6%AF%94%E8%BE%83/</url>
       <content type="html"><![CDATA[<p>  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。【摘自百度百科】<br><a id="more"></a><br>  WebSocket是为解决客户端与服务端实时通信而产生的技术。其本质是先通过HTTP/HTTPS协议进行握手后创建一个用于交换数据的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。</p>
 <p>###一、WebSocket和Http协议的认识<br>首先Http协议是不支持长连接的，早期的HTTP1.0是没有所谓的keep-alive的，也就是只是一对一的通信，直到HTTP1.1才有keep-alive,就是把多个请求合并成一个，最终也只是几个请求对应几个响应，服务端不能主动的推送消息给客户端，而WebSocket其实是对HTTP协议的一种补充。</p>
 <p>###二、WebSocket和Http协议的区别<br>A.相对于Http协议来说，WebSocket是一个<strong>持久化</strong>的协议，如果还是不是很清楚，可以看一下图片对比：<br><img src="/uploads/blog/Socket/http_protocal.png" alt=""></p>
@@ -706,7 +706,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[mvc annotation-driven配置错误]]></title>
-      <url>http://www.jiangyu.tech/2016/03/30/SpringMVC/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/</url>
+      <url>http://www.jiang-yu.cn/2016/03/30/SpringMVC/mvc%20annotation-driven%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/</url>
       <content type="html"><![CDATA[<p>代码盲目的复制不是一个好的习惯，今天这个问题就是因为盲目的复制以前的代码，希望以后注意一点。</p>
 <a id="more"></a>
 <p>   今天用Spring MVC 做业余项目的时候，发现要自己手动的注册一个转换器（String字符串的乱码问题），发现在自定义StringHttpMessageConverter的时候（如下配置）</p>
@@ -721,7 +721,7 @@ setp 3 :push
     
     <entry>
       <title><![CDATA[Tomcat + Ngnix + Memcached 负载均衡 Session共享]]></title>
-      <url>http://www.jiangyu.tech/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/</url>
+      <url>http://www.jiang-yu.cn/2016/03/06/Ngnix/Tomcat%20+%20Ngnix%20+%20Memcached%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20Session%E5%85%B1%E4%BA%AB/</url>
       <content type="html"><![CDATA[<p>　　亲自动手实践和整理 Tomcat + Ngnix + Memcached 负载均衡 Session共享的实现<br><a id="more"></a></p>
 <h2 id="目标：tomcat-ngnix-memcached-负载均衡-session共享"><a href="#目标：tomcat-ngnix-memcached-负载均衡-session共享" class="headerlink" title="目标：tomcat + ngnix + memcached 负载均衡 session共享"></a>目标：tomcat + ngnix + memcached 负载均衡 session共享</h2><h3 id="准备软件"><a href="#准备软件" class="headerlink" title="准备软件"></a>准备软件</h3><p><img src="/uploads/blog/Jdk/session_share_software_list.png" alt="准备安装软件"></p>
 <h3 id="安装jdk环境"><a href="#安装jdk环境" class="headerlink" title="安装jdk环境"></a>安装jdk环境</h3><ul>
