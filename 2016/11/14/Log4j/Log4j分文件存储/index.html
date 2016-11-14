@@ -1,0 +1,987 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Log4j," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="JhonRain's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Log4j整合模块中的日志分文件存放">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j分文件存储/index.html">
+<meta property="og:site_name" content="JhonRain's Blog">
+<meta property="og:description" content="以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/Log4j_Split_File.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/Log4j_Split_File_log_level.png">
+<meta property="og:updated_time" content="2016-11-14T12:37:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Log4j整合模块中的日志分文件存放">
+<meta name="twitter:description" content="以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/Log4j_Split_File.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Log4j整合模块中的日志分文件存放 | JhonRain's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?15f8ca26cf16eea4b1da6a38cc93e380";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">JhonRain's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Victory Loves Preparation</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-link">
+          <a href="/link" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+	  
+	  
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'RycNifZ7Q25PDua2nh2L','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Log4j整合模块中的日志分文件存放
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-14T19:20:51+08:00" content="2016-11-14">
+              2016-11-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Log4j/" itemprop="url" rel="index">
+                    <span itemprop="name">Log4j</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/14/Log4j/Log4j分文件存储/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/14/Log4j/Log4j分文件存储/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>　　以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　<br>　　日志是应用软件中不可缺少的部分，Apache的开源项目log4j是一个功能强大的日志组件,提供方便的日志记。</p>
+<h2 id="Log4j基础知识的预备"><a href="#Log4j基础知识的预备" class="headerlink" title="Log4j基础知识的预备"></a>Log4j基础知识的预备</h2><p>　　Log4j支持两种配置文件格式，一种是XML格式的文件，一种是Java特性文件（键=值）。下面我们介绍使用Java特性文件做为配置文件的方法</p>
+<h3 id="log4j的组成部分"><a href="#log4j的组成部分" class="headerlink" title="log4j的组成部分"></a>log4j的组成部分</h3><p>　　Log4j由三个重要的组件构成：日志信息的优先级，日志信息的输出目的地，日志信息的输出格式
+　　</p>
+<h4 id="１-日志信息的优先级"><a href="#１-日志信息的优先级" class="headerlink" title="１.日志信息的优先级"></a>１.日志信息的优先级</h4><p>　　日志信息的优先级从高到低有ERROR、WARN、INFO、DEBUG，分别用来指定这条日志信息的重要程度<br>　　１.１.配置根Logger，其语法为：<br>　　<figure class="highlight plain"><figcaption><span>= [ level ] , appenderName, appenderName, …```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　例如：</span><br></pre></td></tr></table></figure></p>
+<p>log4j.rootLogger=info, ServerDailyRollingFile, stdout<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　　level 是日志记录的优先级，分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级从高到低分别是ERROR、WARN、INFO、DEBUG。</span><br><span class="line">#### ２.日志信息的输出目的地</span><br><span class="line">　　日志信息的输出目的地指定了日志将打印到控制台还是文件中</span><br><span class="line">　　２.１配置日志信息输出目的地Appender，其语法为：</span><br></pre></td></tr></table></figure></p>
+<p>　　log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">　　其中，Log4j提供的appender有以下几种：</span><br><span class="line">&gt;org.apache.log4j.ConsoleAppender（控制台），  </span><br><span class="line">org.apache.log4j.FileAppender（文件），  </span><br><span class="line">org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件），  </span><br><span class="line">org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件），  </span><br><span class="line">org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）</span><br><span class="line"></span><br><span class="line">#### ３.日志信息的输出格式(布局)</span><br><span class="line">　　日志输出格式则控制了日志信息的显示内容</span><br><span class="line">&gt;org.apache.log4j.HTMLLayout（以HTML表格形式布局），  </span><br><span class="line">org.apache.log4j.PatternLayout（可以灵活地指定布局模式），  </span><br><span class="line">org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串），  </span><br><span class="line">org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</span><br><span class="line"></span><br><span class="line">　　Log4J采用类似C语言中的printf函数的打印格式格式化日志信息，打印参数如下： %m 输出代码中指定的消息：</span><br><span class="line">&gt;%p 输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL  </span><br><span class="line">%r 输出自应用启动到输出该log信息耗费的毫秒数  </span><br><span class="line">%c 输出所属的类目，通常就是所在类的全名  </span><br><span class="line">%t 输出产生该日志事件的线程名  </span><br><span class="line">%n 输出一个回车换行符，Windows平台为“rn”，Unix平台为“n”  </span><br><span class="line">%d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d&#123;yyy MMM dd HH:mm:ss,SSS&#125;，输出类似：2002年10月18日 22：10：28，921  </span><br><span class="line">%l 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java:10)</span><br><span class="line"></span><br><span class="line">## log4j分文件存储实现方案</span><br><span class="line"></span><br><span class="line">　　为了上面摘要描述的功能，我们可以自定义一个日志Appender来实现</span><br><span class="line"></span><br><span class="line">### 自定义Appender</span><br></pre></td></tr></table></figure></p>
+<p>package com.jifenn.framework.frame.log;</p>
+<p>import org.apache.log4j.DailyRollingFileAppender;<br>import org.apache.log4j.Priority;</p>
+<p>/**</p>
+<ul>
+<li><p>功能描述<br> 自定义日志Appender </p></li>
+<li></li>
+<li>@className JFDailyRollingFileAppender</li>
+<li>@author jiangyu</li>
+<li>@date 2016年11月14日 上午9:52:14</li>
+<li>@version v1.0<br>*/<br>public class JFDailyRollingFileAppender extends DailyRollingFileAppender<br>{<br> @Override<br> public boolean isAsSevereAsThreshold(Priority priority)<br> {<pre><code>/** 只判断相同的范围（层级）**/
+return this.getThreshold().equals(priority);
+</code></pre> }<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 配置log4j.properties文件</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>log4j.rootLogger=info, ServerDailyRollingFile, stdout</p>
+<p>log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c{1}(%L) [%X{ip}] - %M %m%n</p>
+<p>#配置com.jifenn.schedule该包下的appender：日志级别为：info,error,并且引用两个 appender#<br>log4j.logger.com.jifenn.schedule = info,error,coreInfo,coreError</p>
+<h2 id="core-info-日志：info-的日志输出到指定的一个目录"><a href="#core-info-日志：info-的日志输出到指定的一个目录" class="headerlink" title="core info 日志：info 的日志输出到指定的一个目录"></a>core info 日志：info 的日志输出到指定的一个目录</h2><p>#使用自定义的appender，改变Threshold的比较规则，只返回相同的。覆写原生的级别层级范围#<br>log4j.appender.coreInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender</p>
+<p>#输出文件地址#<br>log4j.appender.coreInfo.File = /web/ebsapp/logs/schedule/info/info.log</p>
+<p>#布局样式#<br>log4j.appender.coreInfo.layout = org.apache.log4j.PatternLayout</p>
+<p>#布局模版#<br>log4j.appender.coreInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n</p>
+<p>#这里一定要添加该属性，否则自定义appender中抛出空指针#<br>log4j.appender.coreInfo.Threshold = INFO<br>log4j.additivity.coreInfo=false  </p>
+<h2 id="core-error-日志：只拦截error错误信息，并且输出到指定的文件中"><a href="#core-error-日志：只拦截error错误信息，并且输出到指定的文件中" class="headerlink" title="core error 日志：只拦截error错误信息，并且输出到指定的文件中"></a>core error 日志：只拦截error错误信息，并且输出到指定的文件中</h2><p>log4j.appender.coreError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.coreError.File = /web/ebsapp/logs/schedule/error/error.log<br>log4j.appender.coreError.layout = org.apache.log4j.PatternLayout<br>log4j.appender.coreError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.coreError.Threshold = ERROR<br>log4j.additivity.coreError=false</p>
+<p>#########################################################################################################</p>
+<p>#配置com.jifenn.draw该包下的appender：日志级别为：info,error,并且引用两个 appender#<br>log4j.logger.com.jifenn.draw = info,error,webInfo,webError</p>
+<h2 id="web-info-日志"><a href="#web-info-日志" class="headerlink" title="web info 日志"></a>web info 日志</h2><p>log4j.logger.webInfo = info,webInfo<br>log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webInfo.File = /web/ebsapp/logs/draw/info/info.log<br>log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webInfo.Threshold = INFO<br>log4j.additivity.webInfo=false</p>
+<h2 id="web-error-日志"><a href="#web-error-日志" class="headerlink" title="web error 日志"></a>web error 日志</h2><p>log4j.logger.webError = error,webError<br>log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webError.File = /web/ebsapp/logs/draw/error/error.log<br>log4j.appender.webError.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webError.Threshold = ERROR<br>log4j.additivity.webError=false</p>
+<p>#########################################################################################################</p>
+<p>#配置com.jifenn.ebs.gift该包下的appender：日志级别为：info,error,并且引用两个 appender#<br>log4j.logger.com.jifenn.ebs.gift = info,error,webInfo,webError</p>
+<h2 id="web-info-日志-1"><a href="#web-info-日志-1" class="headerlink" title="web info 日志"></a>web info 日志</h2><p>log4j.logger.webInfo = info,webInfo<br>log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webInfo.File = /web/ebsapp/logs/gift/info/info.log<br>log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webInfo.Threshold = INFO<br>log4j.additivity.webInfo=false</p>
+<h2 id="web-error-日志-1"><a href="#web-error-日志-1" class="headerlink" title="web error 日志"></a>web error 日志</h2><p>log4j.logger.webError = error,webError<br>log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webError.File = /web/ebsapp/logs/gift/error/error.log<br>log4j.appender.webError.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webError.Threshold = ERROR<br>log4j.additivity.webError=false</p>
+<p>#########################################################################################################</p>
+<p>#配置com.jifenn.ebs.mall该包下的appender：日志级别为：info,error,并且引用两个 appender#<br>log4j.logger.com.jifenn.ebs.mall = info,error,webInfo,webError</p>
+<h2 id="web-info-日志-2"><a href="#web-info-日志-2" class="headerlink" title="web info 日志"></a>web info 日志</h2><p>log4j.logger.webInfo = info,webInfo<br>log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webInfo.File = /web/ebsapp/logs/mall/info/info.log<br>log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webInfo.Threshold = INFO<br>log4j.additivity.webInfo=false</p>
+<h2 id="web-error-日志-2"><a href="#web-error-日志-2" class="headerlink" title="web error 日志"></a>web error 日志</h2><p>log4j.logger.webError = error,webError<br>log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webError.File = /web/ebsapp/logs/mall/error/error.log<br>log4j.appender.webError.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webError.Threshold = ERROR<br>log4j.additivity.webError=false</p>
+<p>#########################################################################################################</p>
+<p>#配置com.jifenn.ebs.common该包下的appender：日志级别为：info,error,并且引用两个 appender#<br>log4j.logger.com.jifenn.ebs.common = info,error,webInfo,webError</p>
+<h2 id="web-info-日志-3"><a href="#web-info-日志-3" class="headerlink" title="web info 日志"></a>web info 日志</h2><p>log4j.logger.webInfo = info,webInfo<br>log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webInfo.File = /web/ebsapp/logs/common/info/info.log<br>log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webInfo.Threshold = INFO<br>log4j.additivity.webInfo=false</p>
+<h2 id="web-error-日志-3"><a href="#web-error-日志-3" class="headerlink" title="web error 日志"></a>web error 日志</h2><p>log4j.logger.webError = error,webError<br>log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender<br>log4j.appender.webError.File = /web/ebsapp/logs/common/error/error.log<br>log4j.appender.webError.layout = org.apache.log4j.PatternLayout<br>log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n<br>log4j.appender.webError.Threshold = ERROR<br>log4j.additivity.webError=false<br>```</p>
+<h3 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h3><h4 id="查看模块的日志文件夹"><a href="#查看模块的日志文件夹" class="headerlink" title="查看模块的日志文件夹"></a>查看模块的日志文件夹</h4><p>　　<img src="/uploads/blog/Log4j/Log4j_Split_File.png" alt="split_file">
+　　</p>
+<h4 id="查看模块的日志文件夹下的不同日志等级文件夹"><a href="#查看模块的日志文件夹下的不同日志等级文件夹" class="headerlink" title="查看模块的日志文件夹下的不同日志等级文件夹"></a>查看模块的日志文件夹下的不同日志等级文件夹</h4><p>　　<img src="/uploads/blog/Log4j/Log4j_Split_File_log_level.png" alt="split_level"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Log4j/" rel="tag">#Log4j</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/14/Log4j/Log4j远程打印日志信息/" rel="next" title="Spring+Log4j+ActiveMQ实现简单的日志收集">
+                <i class="fa fa-chevron-left"></i> Spring+Log4j+ActiveMQ实现简单的日志收集
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/11/14/Log4j/Log4j分文件存储/"
+     data-title="Log4j整合模块中的日志分文件存放"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j分文件存储/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/14/Log4j/Log4j分文件存储/"
+           data-title="Log4j整合模块中的日志分文件存放" data-url="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j分文件存储/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar02.png"
+               alt="Jiang Yu" />
+          <p class="site-author-name" itemprop="name">Jiang Yu</p>
+          <p class="site-description motion-element" itemprop="description">Walk step by step</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YuJhon" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5854666081" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/jhonyucoder" target="_blank" title="DouBan">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  DouBan
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/jhonyucoder" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Log4j基础知识的预备"><span class="nav-number">1.</span> <span class="nav-text">Log4j基础知识的预备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#log4j的组成部分"><span class="nav-number">1.1.</span> <span class="nav-text">log4j的组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#１-日志信息的优先级"><span class="nav-number">1.1.1.</span> <span class="nav-text">１.日志信息的优先级</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#core-info-日志：info-的日志输出到指定的一个目录"><span class="nav-number">2.</span> <span class="nav-text">core info 日志：info 的日志输出到指定的一个目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#core-error-日志：只拦截error错误信息，并且输出到指定的文件中"><span class="nav-number">3.</span> <span class="nav-text">core error 日志：只拦截error错误信息，并且输出到指定的文件中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-info-日志"><span class="nav-number">4.</span> <span class="nav-text">web info 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-error-日志"><span class="nav-number">5.</span> <span class="nav-text">web error 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-info-日志-1"><span class="nav-number">6.</span> <span class="nav-text">web info 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-error-日志-1"><span class="nav-number">7.</span> <span class="nav-text">web error 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-info-日志-2"><span class="nav-number">8.</span> <span class="nav-text">web info 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-error-日志-2"><span class="nav-number">9.</span> <span class="nav-text">web error 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-info-日志-3"><span class="nav-number">10.</span> <span class="nav-text">web info 日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-error-日志-3"><span class="nav-number">11.</span> <span class="nav-text">web error 日志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看效果"><span class="nav-number">11.1.</span> <span class="nav-text">查看效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看模块的日志文件夹"><span class="nav-number">11.1.1.</span> <span class="nav-text">查看模块的日志文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看模块的日志文件夹下的不同日志等级文件夹"><span class="nav-number">11.1.2.</span> <span class="nav-text">查看模块的日志文件夹下的不同日志等级文件夹</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+	  
+	   <div class="links-of-author motion-element">
+		  <ul>
+			<li align="left"><span><B>Email：</B>jhonyucoder@163.com</span></li>
+			<li align="left"><span><B>Tel：</B>15013618286</span></li>
+		  </ul>
+       </div>
+	   <div class="links-of-author motion-element">
+			<div style="float:left;">
+				<img class="site-author-image" itemprop="image" src="/uploads/qrcode.png" alt="Jiang Yu">
+			</div>
+			
+			  <div class="feed-link motion-element">
+				<a href="/atom.xml" rel="alternate">
+				  <i class="fa fa-rss"></i>
+				  RSS
+				</a>
+			  </div>
+			
+			
+	   </div>
+	   
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiang Yu</span>
+</div>
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+<div class="theme-info">
+	<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	&nbsp;|&nbsp;
+	<span id="busuanzi_container_site_uv">
+	本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+<div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tonyyujhon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  
+  
+
+</body>
+</html>

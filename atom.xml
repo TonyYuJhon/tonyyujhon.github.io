@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-11-12T05:40:05.000Z</updated>
+  <updated>2016-11-14T12:37:24.000Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -14,6 +14,125 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Log4j整合模块中的日志分文件存放</title>
+    <link href="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j%E5%88%86%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/"/>
+    <id>http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j分文件存储/</id>
+    <published>2016-11-14T11:20:51.000Z</published>
+    <updated>2016-11-14T12:37:24.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;　　以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　&lt;br&gt;　　日志是应用软件中不可缺少的部分，Apache的开源项目log4j是一个功能强大的日志组件,提供方便的日志记。&lt;/p&gt;
+&lt;h2 id=&quot;Log4j基础知识的预备&quot;&gt;&lt;a href=&quot;#Log4j基础知识的预备&quot; class=&quot;headerlink&quot; title=&quot;Log4j基础知识的预备&quot;&gt;&lt;/a&gt;Log4j基础知识的预备&lt;/h2&gt;&lt;p&gt;　　Log4j支持两种配置文件格式，一种是XML格式的文件，一种是Java特性文件（键=值）。下面我们介绍使用Java特性文件做为配置文件的方法&lt;/p&gt;
+&lt;h3 id=&quot;log4j的组成部分&quot;&gt;&lt;a href=&quot;#log4j的组成部分&quot; class=&quot;headerlink&quot; title=&quot;log4j的组成部分&quot;&gt;&lt;/a&gt;log4j的组成部分&lt;/h3&gt;&lt;p&gt;　　Log4j由三个重要的组件构成：日志信息的优先级，日志信息的输出目的地，日志信息的输出格式
+　　&lt;/p&gt;
+&lt;h4 id=&quot;１-日志信息的优先级&quot;&gt;&lt;a href=&quot;#１-日志信息的优先级&quot; class=&quot;headerlink&quot; title=&quot;１.日志信息的优先级&quot;&gt;&lt;/a&gt;１.日志信息的优先级&lt;/h4&gt;&lt;p&gt;　　日志信息的优先级从高到低有ERROR、WARN、INFO、DEBUG，分别用来指定这条日志信息的重要程度&lt;br&gt;　　１.１.配置根Logger，其语法为：&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;= [ level ] , appenderName, appenderName, …```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　例如：&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;log4j.rootLogger=info, ServerDailyRollingFile, stdout&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　level 是日志记录的优先级，分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级从高到低分别是ERROR、WARN、INFO、DEBUG。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#### ２.日志信息的输出目的地&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　日志信息的输出目的地指定了日志将打印到控制台还是文件中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　２.１配置日志信息输出目的地Appender，其语法为：&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　log4j.appender.stdout=org.apache.log4j.ConsoleAppender&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　其中，Log4j提供的appender有以下几种：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;org.apache.log4j.ConsoleAppender（控制台），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.FileAppender（文件），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#### ３.日志信息的输出格式(布局)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　日志输出格式则控制了日志信息的显示内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;org.apache.log4j.HTMLLayout（以HTML表格形式布局），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.PatternLayout（可以灵活地指定布局模式），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串），  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　Log4J采用类似C语言中的printf函数的打印格式格式化日志信息，打印参数如下： %m 输出代码中指定的消息：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;%p 输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%r 输出自应用启动到输出该log信息耗费的毫秒数  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%c 输出所属的类目，通常就是所在类的全名  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%t 输出产生该日志事件的线程名  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%n 输出一个回车换行符，Windows平台为“rn”，Unix平台为“n”  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d&amp;#123;yyy MMM dd HH:mm:ss,SSS&amp;#125;，输出类似：2002年10月18日 22：10：28，921  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%l 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java:10)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## log4j分文件存储实现方案&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　为了上面摘要描述的功能，我们可以自定义一个日志Appender来实现&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 自定义Appender&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;package com.jifenn.framework.frame.log;&lt;/p&gt;
+&lt;p&gt;import org.apache.log4j.DailyRollingFileAppender;&lt;br&gt;import org.apache.log4j.Priority;&lt;/p&gt;
+&lt;p&gt;/**&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;功能描述&lt;br&gt; 自定义日志Appender &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;@className JFDailyRollingFileAppender&lt;/li&gt;
+&lt;li&gt;@author jiangyu&lt;/li&gt;
+&lt;li&gt;@date 2016年11月14日 上午9:52:14&lt;/li&gt;
+&lt;li&gt;@version v1.0&lt;br&gt;*/&lt;br&gt;public class JFDailyRollingFileAppender extends DailyRollingFileAppender&lt;br&gt;{&lt;br&gt; @Override&lt;br&gt; public boolean isAsSevereAsThreshold(Priority priority)&lt;br&gt; {&lt;pre&gt;&lt;code&gt;/** 只判断相同的范围（层级）**/
+return this.getThreshold().equals(priority);
+&lt;/code&gt;&lt;/pre&gt; }&lt;br&gt;}&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 配置log4j.properties文件&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;log4j.rootLogger=info, ServerDailyRollingFile, stdout&lt;/p&gt;
+&lt;p&gt;log4j.appender.stdout=org.apache.log4j.ConsoleAppender&lt;br&gt;log4j.appender.stdout.layout=org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c{1}(%L) [%X{ip}] - %M %m%n&lt;/p&gt;
+&lt;p&gt;#配置com.jifenn.schedule该包下的appender：日志级别为：info,error,并且引用两个 appender#&lt;br&gt;log4j.logger.com.jifenn.schedule = info,error,coreInfo,coreError&lt;/p&gt;
+&lt;h2 id=&quot;core-info-日志：info-的日志输出到指定的一个目录&quot;&gt;&lt;a href=&quot;#core-info-日志：info-的日志输出到指定的一个目录&quot; class=&quot;headerlink&quot; title=&quot;core info 日志：info 的日志输出到指定的一个目录&quot;&gt;&lt;/a&gt;core info 日志：info 的日志输出到指定的一个目录&lt;/h2&gt;&lt;p&gt;#使用自定义的appender，改变Threshold的比较规则，只返回相同的。覆写原生的级别层级范围#&lt;br&gt;log4j.appender.coreInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;/p&gt;
+&lt;p&gt;#输出文件地址#&lt;br&gt;log4j.appender.coreInfo.File = /web/ebsapp/logs/schedule/info/info.log&lt;/p&gt;
+&lt;p&gt;#布局样式#&lt;br&gt;log4j.appender.coreInfo.layout = org.apache.log4j.PatternLayout&lt;/p&gt;
+&lt;p&gt;#布局模版#&lt;br&gt;log4j.appender.coreInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;/p&gt;
+&lt;p&gt;#这里一定要添加该属性，否则自定义appender中抛出空指针#&lt;br&gt;log4j.appender.coreInfo.Threshold = INFO&lt;br&gt;log4j.additivity.coreInfo=false  &lt;/p&gt;
+&lt;h2 id=&quot;core-error-日志：只拦截error错误信息，并且输出到指定的文件中&quot;&gt;&lt;a href=&quot;#core-error-日志：只拦截error错误信息，并且输出到指定的文件中&quot; class=&quot;headerlink&quot; title=&quot;core error 日志：只拦截error错误信息，并且输出到指定的文件中&quot;&gt;&lt;/a&gt;core error 日志：只拦截error错误信息，并且输出到指定的文件中&lt;/h2&gt;&lt;p&gt;log4j.appender.coreError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.coreError.File = /web/ebsapp/logs/schedule/error/error.log&lt;br&gt;log4j.appender.coreError.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.coreError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.coreError.Threshold = ERROR&lt;br&gt;log4j.additivity.coreError=false&lt;/p&gt;
+&lt;p&gt;#########################################################################################################&lt;/p&gt;
+&lt;p&gt;#配置com.jifenn.draw该包下的appender：日志级别为：info,error,并且引用两个 appender#&lt;br&gt;log4j.logger.com.jifenn.draw = info,error,webInfo,webError&lt;/p&gt;
+&lt;h2 id=&quot;web-info-日志&quot;&gt;&lt;a href=&quot;#web-info-日志&quot; class=&quot;headerlink&quot; title=&quot;web info 日志&quot;&gt;&lt;/a&gt;web info 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webInfo = info,webInfo&lt;br&gt;log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webInfo.File = /web/ebsapp/logs/draw/info/info.log&lt;br&gt;log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webInfo.Threshold = INFO&lt;br&gt;log4j.additivity.webInfo=false&lt;/p&gt;
+&lt;h2 id=&quot;web-error-日志&quot;&gt;&lt;a href=&quot;#web-error-日志&quot; class=&quot;headerlink&quot; title=&quot;web error 日志&quot;&gt;&lt;/a&gt;web error 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webError = error,webError&lt;br&gt;log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webError.File = /web/ebsapp/logs/draw/error/error.log&lt;br&gt;log4j.appender.webError.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webError.Threshold = ERROR&lt;br&gt;log4j.additivity.webError=false&lt;/p&gt;
+&lt;p&gt;#########################################################################################################&lt;/p&gt;
+&lt;p&gt;#配置com.jifenn.ebs.gift该包下的appender：日志级别为：info,error,并且引用两个 appender#&lt;br&gt;log4j.logger.com.jifenn.ebs.gift = info,error,webInfo,webError&lt;/p&gt;
+&lt;h2 id=&quot;web-info-日志-1&quot;&gt;&lt;a href=&quot;#web-info-日志-1&quot; class=&quot;headerlink&quot; title=&quot;web info 日志&quot;&gt;&lt;/a&gt;web info 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webInfo = info,webInfo&lt;br&gt;log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webInfo.File = /web/ebsapp/logs/gift/info/info.log&lt;br&gt;log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webInfo.Threshold = INFO&lt;br&gt;log4j.additivity.webInfo=false&lt;/p&gt;
+&lt;h2 id=&quot;web-error-日志-1&quot;&gt;&lt;a href=&quot;#web-error-日志-1&quot; class=&quot;headerlink&quot; title=&quot;web error 日志&quot;&gt;&lt;/a&gt;web error 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webError = error,webError&lt;br&gt;log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webError.File = /web/ebsapp/logs/gift/error/error.log&lt;br&gt;log4j.appender.webError.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webError.Threshold = ERROR&lt;br&gt;log4j.additivity.webError=false&lt;/p&gt;
+&lt;p&gt;#########################################################################################################&lt;/p&gt;
+&lt;p&gt;#配置com.jifenn.ebs.mall该包下的appender：日志级别为：info,error,并且引用两个 appender#&lt;br&gt;log4j.logger.com.jifenn.ebs.mall = info,error,webInfo,webError&lt;/p&gt;
+&lt;h2 id=&quot;web-info-日志-2&quot;&gt;&lt;a href=&quot;#web-info-日志-2&quot; class=&quot;headerlink&quot; title=&quot;web info 日志&quot;&gt;&lt;/a&gt;web info 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webInfo = info,webInfo&lt;br&gt;log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webInfo.File = /web/ebsapp/logs/mall/info/info.log&lt;br&gt;log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webInfo.Threshold = INFO&lt;br&gt;log4j.additivity.webInfo=false&lt;/p&gt;
+&lt;h2 id=&quot;web-error-日志-2&quot;&gt;&lt;a href=&quot;#web-error-日志-2&quot; class=&quot;headerlink&quot; title=&quot;web error 日志&quot;&gt;&lt;/a&gt;web error 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webError = error,webError&lt;br&gt;log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webError.File = /web/ebsapp/logs/mall/error/error.log&lt;br&gt;log4j.appender.webError.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webError.Threshold = ERROR&lt;br&gt;log4j.additivity.webError=false&lt;/p&gt;
+&lt;p&gt;#########################################################################################################&lt;/p&gt;
+&lt;p&gt;#配置com.jifenn.ebs.common该包下的appender：日志级别为：info,error,并且引用两个 appender#&lt;br&gt;log4j.logger.com.jifenn.ebs.common = info,error,webInfo,webError&lt;/p&gt;
+&lt;h2 id=&quot;web-info-日志-3&quot;&gt;&lt;a href=&quot;#web-info-日志-3&quot; class=&quot;headerlink&quot; title=&quot;web info 日志&quot;&gt;&lt;/a&gt;web info 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webInfo = info,webInfo&lt;br&gt;log4j.appender.webInfo = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webInfo.File = /web/ebsapp/logs/common/info/info.log&lt;br&gt;log4j.appender.webInfo.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webInfo.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webInfo.Threshold = INFO&lt;br&gt;log4j.additivity.webInfo=false&lt;/p&gt;
+&lt;h2 id=&quot;web-error-日志-3&quot;&gt;&lt;a href=&quot;#web-error-日志-3&quot; class=&quot;headerlink&quot; title=&quot;web error 日志&quot;&gt;&lt;/a&gt;web error 日志&lt;/h2&gt;&lt;p&gt;log4j.logger.webError = error,webError&lt;br&gt;log4j.appender.webError = com.jifenn.framework.frame.log.JFDailyRollingFileAppender&lt;br&gt;log4j.appender.webError.File = /web/ebsapp/logs/common/error/error.log&lt;br&gt;log4j.appender.webError.layout = org.apache.log4j.PatternLayout&lt;br&gt;log4j.appender.webError.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n&lt;br&gt;log4j.appender.webError.Threshold = ERROR&lt;br&gt;log4j.additivity.webError=false&lt;br&gt;```&lt;/p&gt;
+&lt;h3 id=&quot;查看效果&quot;&gt;&lt;a href=&quot;#查看效果&quot; class=&quot;headerlink&quot; title=&quot;查看效果&quot;&gt;&lt;/a&gt;查看效果&lt;/h3&gt;&lt;h4 id=&quot;查看模块的日志文件夹&quot;&gt;&lt;a href=&quot;#查看模块的日志文件夹&quot; class=&quot;headerlink&quot; title=&quot;查看模块的日志文件夹&quot;&gt;&lt;/a&gt;查看模块的日志文件夹&lt;/h4&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/Log4j_Split_File.png&quot; alt=&quot;split_file&quot;&gt;
+　　&lt;/p&gt;
+&lt;h4 id=&quot;查看模块的日志文件夹下的不同日志等级文件夹&quot;&gt;&lt;a href=&quot;#查看模块的日志文件夹下的不同日志等级文件夹&quot; class=&quot;headerlink&quot; title=&quot;查看模块的日志文件夹下的不同日志等级文件夹&quot;&gt;&lt;/a&gt;查看模块的日志文件夹下的不同日志等级文件夹&lt;/h4&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/Log4j_Split_File_log_level.png&quot; alt=&quot;split_level&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;　　以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Log4j" scheme="http://www.jiang-yu.cn/categories/Log4j/"/>
+    
+    
+      <category term="Log4j" scheme="http://www.jiang-yu.cn/tags/Log4j/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring+Log4j+ActiveMQ实现简单的日志收集</title>
+    <link href="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF/"/>
+    <id>http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j远程打印日志信息/</id>
+    <published>2016-11-14T11:20:51.000Z</published>
+    <updated>2016-11-14T16:02:34.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;　　上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　随着业务系统的发展，日志数据也必须要十分重视，日志在生产环境中系统问题的排查有着非常重要的作用。下面就来一步一步来实现一个远程日志系统。
+　　&lt;/p&gt;
+&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;　　首先要定义一个日志的监听器，业务系统生产(produce)日志信息到统一消息中间件（ActiveMQ），然后日志系统不断的从ActiveMQ中去消费(consume)信息。
+　　&lt;/p&gt;
+&lt;h2 id=&quot;日志系统搭建&quot;&gt;&lt;a href=&quot;#日志系统搭建&quot; class=&quot;headerlink&quot; title=&quot;日志系统搭建&quot;&gt;&lt;/a&gt;日志系统搭建&lt;/h2&gt;&lt;p&gt;　　日志系统的实现非常简单，就是要定义一个消息的监听器，不断的从ＭＱ中去获取生产者（业务系统）产生的日志消息，可以参考&lt;a href=&quot;http://activemq.apache.org/how-do-i-use-log4j-jms-appender-with-activemq.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MQ的官方文档&lt;/a&gt;&lt;br&gt;　　下面我们就搭建一个简单的日志系统：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/log4j_jms_project_struct.png&quot; alt=&quot;project_stuct&quot;&gt;&lt;br&gt;　　项目基于Maven+Spring MVC，就一个日志监听器类，还有一个spring的配置文件，提出核心代码和配置文件如下&lt;br&gt;　　&lt;strong&gt;LogMessageListener.java&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;package com.rain.jhon;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import java.util.Date;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.jms.Message;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.jms.MessageListener;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.apache.activemq.command.ActiveMQObjectMessage;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.apache.log4j.spi.LoggingEvent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import com.jifenn.framework.util.TimeUtil;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * &amp;lt;p&amp;gt;功能描述&amp;lt;/br&amp;gt; 日志信息的监听 &amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @className  LogMessageListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author  jiangyu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @date  2016年11月14日 下午1:41:20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @version  v1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class LogMessageListener implements MessageListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void onMessage(Message message)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            /** receive log event in your consumer **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            LoggingEvent event = (LoggingEvent)((ActiveMQObjectMessage)message).getObject();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            StringBuilder logStr = new StringBuilder();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            logStr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;Logging project:[ &amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(TimeUtil.Date2Sring(new Date(event.getTimeStamp()), TimeUtil.PATTERN_DATE_7))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot; ]--[Class]: &amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getLoggerName())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;, [ThreadName] : &amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getThreadName())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;,Log Level--[&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getLevel())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;] :&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getMessage());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            /** 打印出日志 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            System.out.println(logStr.toString());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        catch (Exception e)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Spring.xml&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    xsi:schemaLocation=&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        http://www.springframework.org/schema/beans &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;jmsTemplate&amp;quot; class=&amp;quot;org.springframework.jms.core.JmsTemplate&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;connectionFactory&amp;quot; ref=&amp;quot;connectionFactory&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;connectionFactory&amp;quot; class=&amp;quot;org.springframework.jms.connection.SingleConnectionFactory&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;targetConnectionFactory&amp;quot; ref=&amp;quot;targetConnectionFactory&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;targetConnectionFactory&amp;quot; class=&amp;quot;org.apache.activemq.ActiveMQConnectionFactory&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;brokerURL&amp;quot; value=&amp;quot;tcp://localhost:61616&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;bean id=&amp;quot;topicDestination0&amp;quot; class=&amp;quot;org.apache.activemq.command.ActiveMQTopic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;constructor-arg name=&amp;quot;name&amp;quot; value=&amp;quot;EbsLogTopic&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;jmsContainer0&amp;quot; class=&amp;quot;org.springframework.jms.listener.DefaultMessageListenerContainer&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;connectionFactory&amp;quot; ref=&amp;quot;connectionFactory&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;!-- &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;queueDestination&amp;quot; /&amp;gt;  --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;topicDestination0&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;messageListener&amp;quot; ref=&amp;quot;logMessageListener&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;topicDestination1&amp;quot; class=&amp;quot;org.apache.activemq.command.ActiveMQTopic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;constructor-arg name=&amp;quot;name&amp;quot; value=&amp;quot;logTopic&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;jmsContainer1&amp;quot; class=&amp;quot;org.springframework.jms.listener.DefaultMessageListenerContainer&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;connectionFactory&amp;quot; ref=&amp;quot;connectionFactory&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;!-- &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;queueDestination&amp;quot; /&amp;gt;  --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;topicDestination1&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;messageListener&amp;quot; ref=&amp;quot;logMessageListener&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;logMessageListener&amp;quot; class=&amp;quot;com.rain.jhon.LogMessageListener&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;web.xml&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;web-app id=&amp;quot;WebApp_ID&amp;quot; version=&amp;quot;3.0&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	xmlns=&amp;quot;http://java.sun.com/xml/ns/javaee&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	xsi:schemaLocation=&amp;quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;context-param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;param-name&amp;gt;contextConfigLocation&amp;lt;/param-name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;param-value&amp;gt;classpath:spring.xml&amp;lt;/param-value&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/context-param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;!-- Use to load spring.xml --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;listener&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;listener-class&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            org.springframework.web.context.ContextLoaderListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/listener-class&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/listener&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;welcome-file-list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;welcome-file&amp;gt;index.jsp&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/welcome-file-list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　上面三个文件就构成了一个简单的日志监听系统，但是还少了一个重要的部分，那就是activemq，由于我是在windows平台上，所以可以直接使用，到apache官网下载windows版本的ActiveMQ，这里我使用windows-64版本：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/log4j_activeMQ.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　启动activeMQ,&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/start_activeMQ.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　然后进入后台管理页面，&lt;a href=&quot;http://localhost:8161,用户名/密码:admin/admin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8161,用户名/密码:admin/admin&lt;/a&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/activeMQ_index.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　启动日志系统，查看activeMQ中的Topic,可以发现我们配置的两个Topic,如下图所示&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/spring_jms_config.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/start_log_system.png&quot; alt=&quot;activeMq&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;业务系统配置log4j&quot;&gt;&lt;a href=&quot;#业务系统配置log4j&quot; class=&quot;headerlink&quot; title=&quot;业务系统配置log4j&quot;&gt;&lt;/a&gt;业务系统配置log4j&lt;/h2&gt;&lt;p&gt;　　上面的配置都ok后，我们就来配置业务系统中的log4j到jms的连接,假设我们有业务系统Maven+spring+…&lt;/p&gt;
+&lt;h3 id=&quot;log4j-properties的配置：&quot;&gt;&lt;a href=&quot;#log4j-properties的配置：&quot; class=&quot;headerlink&quot; title=&quot;log4j.properties的配置：&quot;&gt;&lt;/a&gt;log4j.properties的配置：&lt;/h3&gt;&lt;p&gt;　　这个配置可以参考官网的配置：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/active_document_01.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;log4j.rootLogger=info,jms,stdout&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.logger.org.apache.activemq=INFO,stdout&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.stdout=org.apache.log4j.ConsoleAppender &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.stdout.layout=org.apache.log4j.PatternLayout &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c&amp;#123;1&amp;#125;(%L) [%X&amp;#123;ip&amp;#125;] - %M %m%n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;###########################################################################################&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## Configure &amp;apos;jms&amp;apos; appender. You&amp;apos;ll also need jndi.properties file in order to make it work&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms=org.apache.log4j.net.JMSAppender&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.InitialContextFactoryName=org.apache.activemq.jndi.ActiveMQInitialContextFactory&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.ProviderURL=tcp://localhost:61616&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.TopicBindingName=EbsLogTopic&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.TopicConnectionFactoryBindingName=ConnectionFactory&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.layout.ConversionPattern=%d %-5p %c&amp;#123;1&amp;#125;(%L) [%X&amp;#123;ip&amp;#125;] - %M %m%n&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;jndi-properties的配置&quot;&gt;&lt;a href=&quot;#jndi-properties的配置&quot; class=&quot;headerlink&quot; title=&quot;jndi.properties的配置&quot;&gt;&lt;/a&gt;jndi.properties的配置&lt;/h3&gt;&lt;p&gt;　　配置JNDI信息（实例工程结构和配置文件）&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/business_config_info.png&quot; alt=&quot;activeMq&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;测试效果&quot;&gt;&lt;a href=&quot;#测试效果&quot; class=&quot;headerlink&quot; title=&quot;测试效果&quot;&gt;&lt;/a&gt;测试效果&lt;/h2&gt;&lt;p&gt;　　启动日志监听系统&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/start_log_system02.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　启动业务系统，访问接口，打印测试日志信息：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/demo_result.png&quot; alt=&quot;activeMq&quot;&gt;
+　　&lt;/p&gt;
+&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　至此，就愉快的实现了远程打日志了，虽然看起来有点麻烦，但是实现了是不是有一种成就感呢？哈哈，加油。。。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;　　上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Log4j" scheme="http://www.jiang-yu.cn/categories/Log4j/"/>
+    
+    
+      <category term="Log4j" scheme="http://www.jiang-yu.cn/tags/Log4j/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 8 Lambda表达式了解和应用</title>
@@ -216,74 +335,6 @@
   </entry>
   
   <entry>
-    <title>Tomcat开启压缩功能</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T04:07:49.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
-    
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java入门--IDE工具的选择（二）</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T01:31:47.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。&lt;br&gt;　　首先，下载Eclipse,Here &lt;a href=&quot;http://www.eclipse.org/downloads/&quot; title=&quot;Title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Click Me To DownLoad Page&lt;/a&gt;&lt;br&gt;　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：&lt;br&gt;　　&lt;strong&gt;New Version Eclipse Install Interface(jdk 1.8 + )&lt;/strong&gt;:&lt;br&gt;　　step01、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_install_interface.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step02、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_02.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;strong&gt;Customer Version Eclipse Directroy(jdk 1.7 or lower)&lt;/strong&gt;:&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　点击eclipse就可以开始撸代码之旅了，开始界面：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/start_intf.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/switch_workspace.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[Tips]所谓的工作空间，就是coding之后的代码存放的位置&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作&lt;br&gt;　　step one: 新建一个工程&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）&lt;br&gt;　　比如：公司——www.jiangyu.com  项目名称：enbrands&lt;br&gt;　　    包名：com.jiangyu.enbrands&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　新建完成之后，工程目录结构如下：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）&lt;br&gt;　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。&lt;br&gt;　　新建一个类：右键包名–New–Class&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　编写代码，输出“Hello World”&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_005.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！&lt;br&gt;　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
-　　
-　　
-　　
-　　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://www.jiang-yu.cn/categories/JAVA/"/>
-    
-    
-      <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Nginx配置代理--搭建线上和开发环境</title>
     <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
@@ -328,6 +379,74 @@
     
     
       <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java入门--IDE工具的选择（二）</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T01:31:47.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　作为一个即将入门的java程序猿，你肯定听说过Eclipse吧！如果不知道也没有关系，可以理解，因为你马上就要去认识一下它了,它的魅力接触久了就自然发现了，恩恩，请不要随便就爱上了它哦。&lt;br&gt;　　首先，下载Eclipse,Here &lt;a href=&quot;http://www.eclipse.org/downloads/&quot; title=&quot;Title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Click Me To DownLoad Page&lt;/a&gt;&lt;br&gt;　　下载下来后（貌似最新的版本是提供一个exe文件来安装Eclipse,而且必须支持jdk1.8以上，所以暂时不用），Eclipse是不需要安装的（可以向任何一个Java研发狗索要一个），直接解压就可以使用，是不是现在感觉——wow,这么简单，是的，就是这么简单。解压之后目录结构如下图：&lt;br&gt;　　&lt;strong&gt;New Version Eclipse Install Interface(jdk 1.8 + )&lt;/strong&gt;:&lt;br&gt;　　step01、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_install_interface.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step02、&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_02.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;strong&gt;Customer Version Eclipse Directroy(jdk 1.7 or lower)&lt;/strong&gt;:&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/install_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　点击eclipse就可以开始撸代码之旅了，开始界面：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/start_intf.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　哈哈，是不是有点激动了呢，仔细等待一下吧，然后会出现一个提示框，要求选择一个工作空间（workspace）,如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/switch_workspace.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[Tips]所谓的工作空间，就是coding之后的代码存放的位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　好的，上面的步骤顺利完成之后，就看到了长得一般般的软件界面了，不要对他失去信心，它是个很强大的东西，下面开始慢慢介绍一下Eclipse基本的操作&lt;br&gt;　　step one: 新建一个工程&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step two:新建包名（命名规则：公司域名反着写，然后跟上项目名称）&lt;br&gt;　　比如：公司——www.jiangyu.com  项目名称：enbrands&lt;br&gt;　　    包名：com.jiangyu.enbrands&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_project_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　新建完成之后，工程目录结构如下：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/package_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　step three: 新建一个类（Java中所有的文件都是一个类或者一个文件中包含多个类）&lt;br&gt;　　[Tips]如果不知道类，是怎么一回事的话，就简单理解：类就是对一类东西的抽象。&lt;br&gt;　　新建一个类：右键包名–New–Class&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_003.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　到此，一个类已经创建完成了，下面就开始一个简单的代码，即：入门级的Hello World&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_004.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　编写代码，输出“Hello World”&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/new_class_005.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，简单的一行代码就撸完了，下面开始运行一下吧，是不是有点小鸡冻啊，哈哈&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_001.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/javabasic/lesson2/debug_class_002.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　小伙伴，是否看到了“Hello World” 呢！好的，今天的入门级别——IDE的选择就结束了，期待下一篇博客吧！&lt;br&gt;　　如果对Java是一片空白的话，建议先熟悉一下Java的基本语法和类的概念，Finghting……
+　　
+　　
+　　
+　　&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://www.jiang-yu.cn/categories/JAVA/"/>
+    
+    
+      <category term="Java" scheme="http://www.jiang-yu.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat开启压缩功能</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T04:07:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
+    
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
     
   </entry>
   
@@ -671,95 +790,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m&lt;/code&gt;&lt;/p&gt;
       <category term="JMeter" scheme="http://www.jiang-yu.cn/tags/JMeter/"/>
     
       <category term="OutOfMemory" scheme="http://www.jiang-yu.cn/tags/OutOfMemory/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> MySql InnoDB Lock(二)--Intention Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-05T03:32:32.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　在上一篇的&lt;code&gt;Shared And Exclusive Locks&lt;/code&gt;中提及到InnoDB默认实现的是&lt;code&gt;Row-Level Lock&lt;/code&gt;(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的&lt;code&gt;Intention Locks&lt;/code&gt;（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：&lt;code&gt;where keyAttr(主键)=xxx&lt;/code&gt;)上执行Row Lock，否则将会执行&lt;br&gt;Table Lock.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;摘抄自：MySql Doc&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;InnoDB supports multiple granularity locking which permits coexistence of row-level locks and locks on entire tables. To make locking at multiple granularity levels practical, additional types of locks called intention locks are used. Intention locks are table-level locks in InnoDB that indicate which type of lock (shared or exclusive) a transaction will require later for a row in that table. There are two types of intention locks used in InnoDB (assume that transaction T has requested a lock of the indicated type on table t):&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;大概意思是：InnoDB引擎允许&lt;code&gt;Row Level&lt;/code&gt; 锁和&lt;code&gt;Table Level&lt;/code&gt; 锁 支持多粒度的锁,这种锁称作：&lt;code&gt;Intention Locks&lt;/code&gt;,Intention Locks（意向锁）是属于Table Lock,它包含了两种类型：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Intention shared(&lt;em&gt;&lt;strong&gt;IS&lt;/strong&gt;&lt;/em&gt;):&lt;br&gt;示例：Set an &lt;em&gt;&lt;strong&gt;IS&lt;/strong&gt;&lt;/em&gt; Locks :&lt;code&gt;SELECT ... LOCK IN SHARE MODE&lt;/code&gt;&lt;br&gt;&lt;strong&gt;说明&lt;/strong&gt;：事务在给一个数据行加共享锁之前必须先取得该表的IS锁&lt;/li&gt;
-&lt;li&gt;Intention exclusive(&lt;em&gt;&lt;strong&gt;IX&lt;/strong&gt;&lt;/em&gt;):&lt;br&gt;示例：Set an &lt;em&gt;&lt;strong&gt;IX&lt;/strong&gt;&lt;/em&gt; Locks ：&lt;code&gt;SELECT ... FOR UPDATE&lt;/code&gt;&lt;br&gt;&lt;strong&gt;说明&lt;/strong&gt;：事务在个一个数据行加排它锁之前必须先取得该表的IX锁&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;br&gt;　　1.在一个事务获得表中一条记录的 &lt;em&gt;&lt;strong&gt;S&lt;/strong&gt;&lt;/em&gt; Lock 前必须首先获得一个&lt;em&gt;&lt;strong&gt;IS&lt;/strong&gt;&lt;/em&gt; Lock 或者更强的锁在表上；&lt;br&gt;　　2.在一个事务获得表中一条记录的 &lt;em&gt;&lt;strong&gt;X&lt;/strong&gt;&lt;/em&gt; LocK 前必须先获得一个&lt;em&gt;&lt;strong&gt;IX&lt;/strong&gt;&lt;/em&gt; Lock.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;InnoDB的锁类型相容性矩阵：&lt;br&gt; &lt;img src=&quot;/uploads/blog/MySQL/InnoDB Lock Compatible.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果一个事务请求的锁模式和当前的锁兼容，InnoDB就将请求的锁授予给后开启的事务，否则后开启的事务就必须等待当前的锁释放才能获得锁。如果一个锁和一个存在的锁冲突了的并且一段时间都没有获取到锁的话，就会出现死锁（后面再介绍）的现象。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;死锁定义&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A situation where different transactions are unable to proceed, because each holds a lock that the other needs. Because both transactions are waiting for a resource to become available, neither will ever release the locks it holds.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;死锁的例子&lt;br&gt;&amp;gt;&lt;br&gt;首先，客户A开启一个事务，然后对某一行执 IS 锁&lt;br&gt;&lt;code&gt;START TRANSACTION;&lt;/code&gt;&lt;br&gt;&lt;code&gt;select * from child where id=1 LOCK IN SHARE MODE;&lt;/code&gt;&lt;br&gt;&lt;small&gt;&lt;strong&gt;说明&lt;/strong&gt;：取得&lt;strong&gt;IS&lt;/strong&gt;锁&lt;/small&gt;&lt;br&gt;然后，客户B又过来开启了另外一个事务：&lt;br&gt;&lt;code&gt;START TRANSACTION;&lt;/code&gt;&lt;br&gt;执行一个删除操作：&lt;br&gt;&lt;code&gt;DELETE FROM child where id = 1;&lt;/code&gt;&lt;br&gt;&lt;small&gt;&lt;strong&gt;说明&lt;/strong&gt;：此时由于需要&lt;strong&gt;X&lt;/strong&gt; 锁，这个锁不兼容客户A持有的&lt;strong&gt;S&lt;/strong&gt;锁，所以没有客户B没有获得&lt;strong&gt;X&lt;/strong&gt;锁，一直等待A释放&lt;strong&gt;S&lt;/strong&gt;锁，所以客户B就被一直阻塞&lt;/small&gt;&lt;br&gt;最后，客户A也执行删除操作：&lt;br&gt;&lt;code&gt;DELETE FROM child where id = 1;&lt;/code&gt;&lt;br&gt;说明：此时客户A也需要X锁，而客户B也在等待X锁，此时InnoDB对客户A产生了一个死锁错误，并且终止其等待X锁操作。&lt;br&gt;结果客户端B抛出死锁：&lt;br&gt;&lt;code&gt;ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;表级锁和行级锁的比较&lt;br&gt;&amp;gt;&lt;br&gt;1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。&lt;br&gt;2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　在上一篇的&lt;code&gt;Shared And Exclusive Locks&lt;/code&gt;中提及到InnoDB默认实现的是&lt;code&gt;Row-Level Lock&lt;/code&gt;(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的&lt;code&gt;Intention Locks&lt;/code&gt;（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
-    
-      <category term="DEADLOCK" scheme="http://www.jiang-yu.cn/tags/DEADLOCK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> MySql InnoDB Lock(一)-- Shared and Exclusive Locks</title>
-    <link href="http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/"/>
-    <id>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</id>
-    <published>2016-06-04T02:00:00.000Z</published>
-    <updated>2016-06-04T05:49:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###S Lock（共享锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A shared (S) lock permits the transaction that holds the lock to read a row.&lt;br&gt;基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。&lt;/p&gt;
-&lt;p&gt;###X Lock（排它锁） INTRODUCTION：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.&lt;br&gt;基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="INNODB" scheme="http://www.jiang-yu.cn/tags/INNODB/"/>
-    
-      <category term="LOCK" scheme="http://www.jiang-yu.cn/tags/LOCK/"/>
     
   </entry>
   

@@ -1,0 +1,964 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Log4j," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="JhonRain's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring+Log4j+ActiveMQ实现简单的日志收集">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j远程打印日志信息/index.html">
+<meta property="og:site_name" content="JhonRain's Blog">
+<meta property="og:description" content="上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/log4j_jms_project_struct.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/log4j_activeMQ.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/start_activeMQ.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/activeMQ_index.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/spring_jms_config.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/start_log_system.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/active_document_01.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/business_config_info.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/start_log_system02.png">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/demo_result.png">
+<meta property="og:updated_time" content="2016-11-14T16:02:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring+Log4j+ActiveMQ实现简单的日志收集">
+<meta name="twitter:description" content="上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Log4j/log4j_jms_project_struct.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Spring+Log4j+ActiveMQ实现简单的日志收集 | JhonRain's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?15f8ca26cf16eea4b1da6a38cc93e380";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">JhonRain's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Victory Loves Preparation</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-link">
+          <a href="/link" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+	  
+	  
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'RycNifZ7Q25PDua2nh2L','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring+Log4j+ActiveMQ实现简单的日志收集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-14T19:20:51+08:00" content="2016-11-14">
+              2016-11-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Log4j/" itemprop="url" rel="index">
+                    <span itemprop="name">Log4j</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/14/Log4j/Log4j远程打印日志信息/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/14/Log4j/Log4j远程打印日志信息/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>　　上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。</p>
+</blockquote>
+<a id="more"></a>
+<p>　　随着业务系统的发展，日志数据也必须要十分重视，日志在生产环境中系统问题的排查有着非常重要的作用。下面就来一步一步来实现一个远程日志系统。
+　　</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>　　首先要定义一个日志的监听器，业务系统生产(produce)日志信息到统一消息中间件（ActiveMQ），然后日志系统不断的从ActiveMQ中去消费(consume)信息。
+　　</p>
+<h2 id="日志系统搭建"><a href="#日志系统搭建" class="headerlink" title="日志系统搭建"></a>日志系统搭建</h2><p>　　日志系统的实现非常简单，就是要定义一个消息的监听器，不断的从ＭＱ中去获取生产者（业务系统）产生的日志消息，可以参考<a href="http://activemq.apache.org/how-do-i-use-log4j-jms-appender-with-activemq.html" target="_blank" rel="external">MQ的官方文档</a><br>　　下面我们就搭建一个简单的日志系统：<br>　　<img src="/uploads/blog/Log4j/log4j_jms_project_struct.png" alt="project_stuct"><br>　　项目基于Maven+Spring MVC，就一个日志监听器类，还有一个spring的配置文件，提出核心代码和配置文件如下<br>　　<strong>LogMessageListener.java</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package com.rain.jhon;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">import javax.jms.Message;</span><br><span class="line">import javax.jms.MessageListener;</span><br><span class="line"></span><br><span class="line">import org.apache.activemq.command.ActiveMQObjectMessage;</span><br><span class="line">import org.apache.log4j.spi.LoggingEvent;</span><br><span class="line"></span><br><span class="line">import com.jifenn.framework.util.TimeUtil;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;功能描述&lt;/br&gt; 日志信息的监听 &lt;/p&gt;</span><br><span class="line"> * @className  LogMessageListener</span><br><span class="line"> * @author  jiangyu</span><br><span class="line"> * @date  2016年11月14日 下午1:41:20</span><br><span class="line"> * @version  v1.0</span><br><span class="line"> */</span><br><span class="line">public class LogMessageListener implements MessageListener</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void onMessage(Message message)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            /** receive log event in your consumer **/</span><br><span class="line">            LoggingEvent event = (LoggingEvent)((ActiveMQObjectMessage)message).getObject();</span><br><span class="line">            StringBuilder logStr = new StringBuilder();</span><br><span class="line">            logStr</span><br><span class="line">            .append(&quot;Logging project:[ &quot;)</span><br><span class="line">            .append(TimeUtil.Date2Sring(new Date(event.getTimeStamp()), TimeUtil.PATTERN_DATE_7))</span><br><span class="line">            .append(&quot; ]--[Class]: &quot;)</span><br><span class="line">            .append(event.getLoggerName())</span><br><span class="line">            .append(&quot;, [ThreadName] : &quot;)</span><br><span class="line">            .append(event.getThreadName())</span><br><span class="line">            .append(&quot;,Log Level--[&quot;)</span><br><span class="line">            .append(event.getLevel())</span><br><span class="line">            .append(&quot;] :&quot;)</span><br><span class="line">            .append(event.getMessage());</span><br><span class="line">            /** 打印出日志 **/</span><br><span class="line">            System.out.println(logStr.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Spring.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span><br><span class="line">    xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans </span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;bean id=&quot;jmsTemplate&quot; class=&quot;org.springframework.jms.core.JmsTemplate&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;connectionFactory&quot; ref=&quot;connectionFactory&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;connectionFactory&quot; class=&quot;org.springframework.jms.connection.SingleConnectionFactory&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;targetConnectionFactory&quot; ref=&quot;targetConnectionFactory&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;targetConnectionFactory&quot; class=&quot;org.apache.activemq.ActiveMQConnectionFactory&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;brokerURL&quot; value=&quot;tcp://localhost:61616&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;bean id=&quot;topicDestination0&quot; class=&quot;org.apache.activemq.command.ActiveMQTopic&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;name&quot; value=&quot;EbsLogTopic&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;jmsContainer0&quot; class=&quot;org.springframework.jms.listener.DefaultMessageListenerContainer&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;connectionFactory&quot; ref=&quot;connectionFactory&quot; /&gt;</span><br><span class="line">         &lt;!-- &lt;property name=&quot;destination&quot; ref=&quot;queueDestination&quot; /&gt;  --&gt;</span><br><span class="line">         &lt;property name=&quot;destination&quot; ref=&quot;topicDestination0&quot; /&gt;</span><br><span class="line">         &lt;property name=&quot;messageListener&quot; ref=&quot;logMessageListener&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    &lt;bean id=&quot;topicDestination1&quot; class=&quot;org.apache.activemq.command.ActiveMQTopic&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;name&quot; value=&quot;logTopic&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;jmsContainer1&quot; class=&quot;org.springframework.jms.listener.DefaultMessageListenerContainer&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;connectionFactory&quot; ref=&quot;connectionFactory&quot; /&gt;</span><br><span class="line">         &lt;!-- &lt;property name=&quot;destination&quot; ref=&quot;queueDestination&quot; /&gt;  --&gt;</span><br><span class="line">         &lt;property name=&quot;destination&quot; ref=&quot;topicDestination1&quot; /&gt;</span><br><span class="line">         &lt;property name=&quot;messageListener&quot; ref=&quot;logMessageListener&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;bean id=&quot;logMessageListener&quot; class=&quot;com.rain.jhon.LogMessageListener&quot;/&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<p>web.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app id=&quot;WebApp_ID&quot; version=&quot;3.0&quot;</span><br><span class="line">	xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;context-param&gt;</span><br><span class="line">        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;classpath:spring.xml&lt;/param-value&gt;</span><br><span class="line">    &lt;/context-param&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- Use to load spring.xml --&gt;</span><br><span class="line">    &lt;listener&gt;</span><br><span class="line">        &lt;listener-class&gt;</span><br><span class="line">            org.springframework.web.context.ContextLoaderListener</span><br><span class="line">        &lt;/listener-class&gt;</span><br><span class="line">    &lt;/listener&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;welcome-file-list&gt;</span><br><span class="line">        &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;</span><br><span class="line">    &lt;/welcome-file-list&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　上面三个文件就构成了一个简单的日志监听系统，但是还少了一个重要的部分，那就是activemq，由于我是在windows平台上，所以可以直接使用，到apache官网下载windows版本的ActiveMQ，这里我使用windows-64版本：<br>　　<img src="/uploads/blog/Log4j/log4j_activeMQ.png" alt="activeMq"><br>　　启动activeMQ,<br>　　<img src="/uploads/blog/Log4j/start_activeMQ.png" alt="activeMq"><br>　　然后进入后台管理页面，<a href="http://localhost:8161,用户名/密码:admin/admin" target="_blank" rel="external">http://localhost:8161,用户名/密码:admin/admin</a><br>　　<img src="/uploads/blog/Log4j/activeMQ_index.png" alt="activeMq"><br>　　启动日志系统，查看activeMQ中的Topic,可以发现我们配置的两个Topic,如下图所示<br>　　<img src="/uploads/blog/Log4j/spring_jms_config.png" alt="activeMq"><br>　　<img src="/uploads/blog/Log4j/start_log_system.png" alt="activeMq"></p>
+<h2 id="业务系统配置log4j"><a href="#业务系统配置log4j" class="headerlink" title="业务系统配置log4j"></a>业务系统配置log4j</h2><p>　　上面的配置都ok后，我们就来配置业务系统中的log4j到jms的连接,假设我们有业务系统Maven+spring+…</p>
+<h3 id="log4j-properties的配置："><a href="#log4j-properties的配置：" class="headerlink" title="log4j.properties的配置："></a>log4j.properties的配置：</h3><p>　　这个配置可以参考官网的配置：<br>　　<img src="/uploads/blog/Log4j/active_document_01.png" alt="activeMq"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger=info,jms,stdout</span><br><span class="line"></span><br><span class="line">log4j.logger.org.apache.activemq=INFO,stdout</span><br><span class="line"></span><br><span class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender </span><br><span class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout </span><br><span class="line">log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c&#123;1&#125;(%L) [%X&#123;ip&#125;] - %M %m%n</span><br><span class="line"></span><br><span class="line">###########################################################################################</span><br><span class="line">## Configure &apos;jms&apos; appender. You&apos;ll also need jndi.properties file in order to make it work</span><br><span class="line">log4j.appender.jms=org.apache.log4j.net.JMSAppender</span><br><span class="line">log4j.appender.jms.InitialContextFactoryName=org.apache.activemq.jndi.ActiveMQInitialContextFactory</span><br><span class="line">log4j.appender.jms.ProviderURL=tcp://localhost:61616</span><br><span class="line">log4j.appender.jms.TopicBindingName=EbsLogTopic</span><br><span class="line">log4j.appender.jms.TopicConnectionFactoryBindingName=ConnectionFactory</span><br><span class="line">log4j.appender.jms.layout.ConversionPattern=%d %-5p %c&#123;1&#125;(%L) [%X&#123;ip&#125;] - %M %m%n</span><br></pre></td></tr></table></figure></p>
+<h3 id="jndi-properties的配置"><a href="#jndi-properties的配置" class="headerlink" title="jndi.properties的配置"></a>jndi.properties的配置</h3><p>　　配置JNDI信息（实例工程结构和配置文件）<br>　　<img src="/uploads/blog/Log4j/business_config_info.png" alt="activeMq"></p>
+<h2 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h2><p>　　启动日志监听系统<br>　　<img src="/uploads/blog/Log4j/start_log_system02.png" alt="activeMq"><br>　　启动业务系统，访问接口，打印测试日志信息：<br>　　<img src="/uploads/blog/Log4j/demo_result.png" alt="activeMq">
+　　</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>　　至此，就愉快的实现了远程打日志了，虽然看起来有点麻烦，但是实现了是不是有一种成就感呢？哈哈，加油。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Log4j/" rel="tag">#Log4j</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/12/Jdk/Java8--Lambda介绍和使用/" rel="next" title="Java 8 Lambda表达式了解和应用">
+                <i class="fa fa-chevron-left"></i> Java 8 Lambda表达式了解和应用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/14/Log4j/Log4j分文件存储/" rel="prev" title="Log4j整合模块中的日志分文件存放">
+                Log4j整合模块中的日志分文件存放 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/11/14/Log4j/Log4j远程打印日志信息/"
+     data-title="Spring+Log4j+ActiveMQ实现简单的日志收集"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j远程打印日志信息/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/14/Log4j/Log4j远程打印日志信息/"
+           data-title="Spring+Log4j+ActiveMQ实现简单的日志收集" data-url="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j远程打印日志信息/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar02.png"
+               alt="Jiang Yu" />
+          <p class="site-author-name" itemprop="name">Jiang Yu</p>
+          <p class="site-description motion-element" itemprop="description">Walk step by step</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YuJhon" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5854666081" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/jhonyucoder" target="_blank" title="DouBan">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  DouBan
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/jhonyucoder" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志系统搭建"><span class="nav-number">2.</span> <span class="nav-text">日志系统搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务系统配置log4j"><span class="nav-number">3.</span> <span class="nav-text">业务系统配置log4j</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#log4j-properties的配置："><span class="nav-number">3.1.</span> <span class="nav-text">log4j.properties的配置：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jndi-properties的配置"><span class="nav-number">3.2.</span> <span class="nav-text">jndi.properties的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试效果"><span class="nav-number">4.</span> <span class="nav-text">测试效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">5.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+	  
+	   <div class="links-of-author motion-element">
+		  <ul>
+			<li align="left"><span><B>Email：</B>jhonyucoder@163.com</span></li>
+			<li align="left"><span><B>Tel：</B>15013618286</span></li>
+		  </ul>
+       </div>
+	   <div class="links-of-author motion-element">
+			<div style="float:left;">
+				<img class="site-author-image" itemprop="image" src="/uploads/qrcode.png" alt="Jiang Yu">
+			</div>
+			
+			  <div class="feed-link motion-element">
+				<a href="/atom.xml" rel="alternate">
+				  <i class="fa fa-rss"></i>
+				  RSS
+				</a>
+			  </div>
+			
+			
+	   </div>
+	   
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiang Yu</span>
+</div>
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+-->
+<div class="theme-info">
+	<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	&nbsp;|&nbsp;
+	<span id="busuanzi_container_site_uv">
+	本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+<div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tonyyujhon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  
+  
+
+</body>
+</html>
