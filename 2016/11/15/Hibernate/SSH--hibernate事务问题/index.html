@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Victory Loves Preparation" />
+  <meta name="keywords" content="Hibernate," />
 
 
 
@@ -86,15 +86,18 @@
 
 
 
-<meta name="description" content="Walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JhonRain's Blog">
-<meta property="og:url" content="http://www.jiang-yu.cn/categories/SVN/index.html">
+<meta name="description" content="做项目的时候，发现配置注解事务之后，数据还是不能持续化到数据库，调试了好久，网上google后，才知道原来需要有一个重要的配置没有配置，导致事务配置了数据不能持续化到数据库中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH项目--数据没有持久化到DB">
+<meta property="og:url" content="http://www.jiang-yu.cn/2016/11/15/Hibernate/SSH--hibernate事务问题/index.html">
 <meta property="og:site_name" content="JhonRain's Blog">
-<meta property="og:description" content="Walk step by step">
+<meta property="og:description" content="做项目的时候，发现配置注解事务之后，数据还是不能持续化到数据库，调试了好久，网上google后，才知道原来需要有一个重要的配置没有配置，导致事务配置了数据不能持续化到数据库中。">
+<meta property="og:image" content="http://www.jiang-yu.cn/uploads/blog/Hibernate/hibernate_autocommit.png">
+<meta property="og:updated_time" content="2016-11-15T16:29:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JhonRain's Blog">
-<meta name="twitter:description" content="Walk step by step">
+<meta name="twitter:title" content="SSH项目--数据没有持久化到DB">
+<meta name="twitter:description" content="做项目的时候，发现配置注解事务之后，数据还是不能持续化到数据库，调试了好久，网上google后，才知道原来需要有一个重要的配置没有配置，导致事务配置了数据不能持续化到数据库中。">
+<meta name="twitter:image" content="http://www.jiang-yu.cn/uploads/blog/Hibernate/hibernate_autocommit.png">
 
 
 
@@ -112,7 +115,7 @@
   };
 </script>
 
-  <title> 分类: SVN | JhonRain's Blog </title>
+  <title> SSH项目--数据没有持久化到DB | JhonRain's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +146,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,110 +296,202 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        SVN
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/02/SVN/SVN Learn Basic 03/" itemprop="url">
-              
-                <span itemprop="name">SVN入门教程（三）--上传文件到SVN服务器</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-02T12:43:51+08:00"
-              content="2016-09-02" >
-          09-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/01/SVN/SVN Learn Basic02/" itemprop="url">
-              
-                <span itemprop="name">SVN入门教程（二）--下载文件到本地计算机</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-01T22:47:51+08:00"
-              content="2016-09-01" >
-          09-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/01/SVN/SVN Learn Basic 01/" itemprop="url">
-              
-                <span itemprop="name">SVN入门教程（一）--软件的安装</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-01T22:43:51+08:00"
-              content="2016-09-01" >
-          09-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SSH项目--数据没有持久化到DB
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-15T23:56:51+08:00" content="2016-11-15">
+              2016-11-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hibernate/" itemprop="url" rel="index">
+                    <span itemprop="name">Hibernate</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/15/Hibernate/SSH--hibernate事务问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/15/Hibernate/SSH--hibernate事务问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>　　做项目的时候，发现配置注解事务之后，数据还是不能持续化到数据库，调试了好久，网上google后，才知道原来需要有一个重要的配置没有配置，导致事务配置了数据不能持续化到数据库中。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>　　SSH整合, Hibernate正确执行了save方法，但是数据没有保存到数据库,最开始以为是事务配置的问题，项目中采用的是@Transaction注解的方式主动的添加事务的，折腾了好久都没有达到预期的效果，最后只能google一下，才发现hibernate的配置出现了问题。
+　　</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>　　如果配置了@Transactional，默认org.hibernate.transaction.JDBCTransaction在事务开始时将自动提交设置为false，事务结束或者回滚后再设置为原始的状态。从上面的问题来看，应该是事务操作没有提交，最终数据没有持续化到数据库中，针对此问题可以去了解一下Hibernate中对象的几种状态来结合分析，下面给出最终解决方案。</p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>　　Srping的配置文件里的Hibernate的属性配置必须加上：<br>　　<img src="/uploads/blog/Hibernate/hibernate_autocommit.png" alt="hibernate_autocommit"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name=&quot;hibernateProperties&quot;&gt;</span><br><span class="line">	&lt;props&gt;</span><br><span class="line">		&lt;prop key=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQL5Dialect&lt;/prop&gt;</span><br><span class="line">		&lt;prop key=&quot;current_session_context_class&quot;&gt;thread&lt;/prop&gt;</span><br><span class="line">		&lt;prop key=&quot;hibernate.connection.autocommit&quot;&gt;true&lt;/prop&gt;</span><br><span class="line">	&lt;/props&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　事务的管理配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean name=&quot;transactionManager&quot; class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;&gt;</span><br><span class="line">		&lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>　　从今天遇到的这个问题处理时间和效率来看，感觉平时工作中可能只是注重实践，原理性的东西还是需要去补一补的，加油……</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/qrcode.png" alt="Jiang Yu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>博主是二坑货。。。</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hibernate/" rel="tag">#Hibernate</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/14/Log4j/Log4j远程打印日志信息/" rel="next" title="Spring+Log4j+ActiveMQ实现简单的日志收集">
+                <i class="fa fa-chevron-left"></i> Spring+Log4j+ActiveMQ实现简单的日志收集
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/11/15/Hibernate/SSH--hibernate事务问题/"
+     data-title="SSH项目--数据没有持久化到DB"
+     data-content=""
+     data-url="http://www.jiang-yu.cn/2016/11/15/Hibernate/SSH--hibernate事务问题/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/15/Hibernate/SSH--hibernate事务问题/"
+           data-title="SSH项目--数据没有持久化到DB" data-url="http://www.jiang-yu.cn/2016/11/15/Hibernate/SSH--hibernate事务问题/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -416,8 +511,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar02.png"
@@ -503,6 +607,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解决"><span class="nav-number">3.</span> <span class="nav-text">问题解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 	  
 	   <div class="links-of-author motion-element">
@@ -633,6 +748,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
