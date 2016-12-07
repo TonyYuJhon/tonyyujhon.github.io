@@ -32,6 +32,8 @@
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
+<link href="/google-code-prettify/prettify.css"type="text/css">
+
 
 
   
@@ -110,6 +112,18 @@
       author: '博主'
     }
   };
+</script>
+
+
+<script type="text/javascript" src="/google-code-prettify/prettify.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	window.prettyPrint && prettyPrint();
+});
+$(function() {
+	$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+});
 </script>
 
   <title> 分类: MySQL | JhonRain's Blog </title>
@@ -484,7 +498,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

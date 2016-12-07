@@ -32,6 +32,8 @@
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
+<link href="/google-code-prettify/prettify.css"type="text/css">
+
 
 
   
@@ -110,6 +112,18 @@
       author: '博主'
     }
   };
+</script>
+
+
+<script type="text/javascript" src="/google-code-prettify/prettify.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	window.prettyPrint && prettyPrint();
+});
+$(function() {
+	$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+});
 </script>
 
   <title> JhonRain's Blog </title>
@@ -317,8 +331,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/09/Tomcat/Tomcat_Gzip_On/" itemprop="url">
-                  Tomcat开启压缩功能
+                <a class="post-title-link" href="/2016/08/09/Ngnix/nginx_server_config/" itemprop="url">
+                  Nginx配置代理--搭建线上和开发环境
                 </a>
               
             
@@ -345,8 +359,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tomcat/" itemprop="url" rel="index">
-                    <span itemprop="name">Tomcat</span>
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
                   </a>
                 </span>
 
@@ -361,8 +375,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/09/Tomcat/Tomcat_Gzip_On/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/Tomcat/Tomcat_Gzip_On/" itemprop="commentsCount"></span>
+                <a href="/2016/08/09/Ngnix/nginx_server_config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/Ngnix/nginx_server_config/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -391,10 +405,138 @@
       
         
           <blockquote>
-<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
+<p>使用nginx配置反向代理，80端口映射不同的内网web服务器。</p>
 </blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/09/Tomcat/Tomcat_Gzip_On/#more" rel="contents">
+            <a class="btn" href="/2016/08/09/Ngnix/nginx_server_config/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/" itemprop="url">
+                  Java入门--IDE工具的选择（二）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-09T20:47:51+08:00" content="2016-08-09">
+              2016-08-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		  
+		  
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1439,132 +1581,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/14/VIM/vim_command_01 /" itemprop="url">
-                  VIM编辑器基础命令（一）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-14T11:58:51+08:00" content="2016-06-14">
-              2016-06-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/VIM/" itemprop="url" rel="index">
-                    <span itemprop="name">VIM</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/14/VIM/vim_command_01 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/VIM/vim_command_01 /" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		  
-		  
-		  
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>　　在Linux下操作文件，不会VIM命令那就犹如战士上战场没带枪，所以作为一个合格的程序猿，必须要对基本的VI命令非常熟练的使用，本文开始将记录一系列VI命令的使用，方便快速查阅。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/14/VIM/vim_command_01 /#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1610,7 +1626,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
