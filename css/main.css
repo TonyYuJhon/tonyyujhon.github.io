@@ -497,7 +497,7 @@ pre,
   margin: 20px 0;
   padding: 15px;
   font-size: 13px;
-  color: #87ea03;
+  color: #eaeaea;
   background: #000;
   line-height: 1.6;
 }
@@ -1548,7 +1548,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff21f9;
+  background: #883eff;
 }
 .links-of-blogroll {
   font-size: 13px;

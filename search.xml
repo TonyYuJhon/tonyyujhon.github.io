@@ -4,6 +4,103 @@
   
     
     <entry>
+      <title><![CDATA[【HTML知识点】HTML列表]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E5%88%97%E8%A1%A8%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTML-列表"><a href="#HTML-列表" class="headerlink" title="HTML 列表"></a>HTML 列表</h1><p><code>有序列表　　　&lt;ol&gt;</code><br><code>无序列表　　　&lt;ul&gt;</code><br><code>列表项　　　　&lt;li&gt;</code><br><code>列表　　　　　&lt;dl&gt;</code><br><code>列表项　　　　&lt;dt&gt;</code><br><code>描述　　　　　&lt;dd&gt;</code></p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ol>
+<li><p>无序列表<br>使用标签：<code>&lt;ul&gt;、&lt;li&gt;</code><br>属性：disc、circle、square</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--type取值 disc:实心圆 circle:空心圆 square：实心方块 --&gt;</span><br><span class="line">&lt;ul type=&quot;disc&quot;&gt;</span><br><span class="line">    &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">&lt;ul&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有序列表<br>使用标签：<code>&lt;ol&gt;/&lt;li&gt;</code><br>属性：A、a、l、i、start (type取值)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol type=&quot;A&quot;&gt;</span><br><span class="line">    &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套列表<br>使用标签：<code>&lt;ul&gt;/&lt;ol&gt;/&lt;li&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul type=&quot;disc&quot;&gt;</span><br><span class="line">    &lt;li&gt;动物&lt;/li&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;狗&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;猫&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;li&gt;植物&lt;/li&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;草&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;花&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">&lt;ul&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义列表<br>使用标签：<code>&lt;dl&gt;/&lt;dt&gt;/&lt;dd&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;Hello&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述一&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;World&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述二&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML表格]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="表格属性认识"><a href="#表格属性认识" class="headerlink" title="表格属性认识"></a>表格属性认识</h2><p><code>定义表格　　　　　　&lt;table&gt;</code><br><code>定义表格的标题　　　&lt;caption&gt;</code><br><code>定义表格的表头　　　&lt;th&gt;</code><br><code>定义表格的行　　　　&lt;tr&gt;</code><br><code>定义表格的单元　　　&lt;td&gt;</code><br><code>定义表格的页眉　　　&lt;thead&gt;</code><br><code>定义表格的主体　　　&lt;tbody&gt;</code><br><code>定义表格的页脚　　　&lt;tfoot&gt;</code><br><code>定义表格的列属性　　&lt;col&gt;</code><br><code>定义单元格边距　　　cellpadding=10</code><br><code>定义单元格间距　　　cellspacing=10</code></p>
+<h2 id="表格示例"><a href="#表格示例" class="headerlink" title="表格示例"></a>表格示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">    &lt;caption&gt;表格&lt;/caption&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;单元1&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;单元2&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;内容1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;内容2&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML链接的属性]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="链接数据"><a href="#链接数据" class="headerlink" title="链接数据"></a>链接数据</h2><ol>
+<li>文本链接</li>
+<li>图片链接</li>
+</ol>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><pre><code>href属性：指向另外一个文档链接
+name属性：创建文档内的链接
+</code></pre><h2 id="img标签属性"><a href="#img标签属性" class="headerlink" title="img标签属性"></a>img标签属性</h2><pre><code>alt:替换文本属性
+width:宽
+height:高
+</code></pre><h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;点击&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;xxx.png&quot; alt=&quot;图片说明&quot; width=&apos;50px&apos; height=&apos;50px&apos;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;!-- 文档内部链接--&gt;</span><br><span class="line">&lt;a name=&quot;tips&quot;&gt;Tips&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#tips&quot;&gt;跳转到Tips锚点&lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML块]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E5%9D%97%E5%85%83%E7%B4%A0%E4%BB%8B%E7%BB%8D/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<p>#HTML 块</p>
+<h2 id="HTML块元素"><a href="#HTML块元素" class="headerlink" title="HTML块元素"></a>HTML块元素</h2><pre><code>块元素在显示的时候，通常会以新行开始
+如：&lt;h1&gt;、&lt;p&gt;、&lt;ul&gt;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;Hello&lt;/p&gt;</span><br><span class="line">    &lt;h1&gt;标题一&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="HTML内联元素"><a href="#HTML内联元素" class="headerlink" title="HTML内联元素"></a>HTML内联元素</h2><pre><code>内联元素显示通常不会以新行开始
+如&lt;b&gt;、&lt;a&gt;、&lt;img&gt;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;b&gt;这是一个加粗&lt;/b&gt;</span><br><span class="line">    &lt;a&gt;这是一个超链接&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="HTML-lt-div-gt-元素"><a href="#HTML-lt-div-gt-元素" class="headerlink" title="HTML &lt;div&gt;元素"></a>HTML <code>&lt;div&gt;</code>元素</h2><pre><code>&lt;div&gt;元素也被称为块元素，其主要是组合HTML元素的容器,配合css样式使用
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    #divId p&#123;</span><br><span class="line">       color:blue; </span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;divId&quot;&gt;</span><br><span class="line">        &lt;p&gt;Hello World&lt;/p&gt;</span><br><span class="line">        &lt;a&gt;Click me&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="HTML-lt-span-gt-元素"><a href="#HTML-lt-span-gt-元素" class="headerlink" title="HTML &lt;span&gt; 元素"></a>HTML <code>&lt;span&gt;</code> 元素</h2><pre><code>&lt;span&gt;元素是内联元素，可作为文本的容器
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    span&#123;</span><br><span class="line">        color:red</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;divspan&quot;&gt;</span><br><span class="line">        &lt;p&gt;&lt;span&gt;这是一个测试&lt;span&gt;Span 测试&lt;/p&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML三种样式插入方法]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E6%A0%B7%E5%BC%8F%E7%B1%BB%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h1><ol>
+<li>外部样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;xxx.css&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h1><ol>
+<li>内部样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        background-color:red</span><br><span class="line">    &#125;</span><br><span class="line">    p &#123;</span><br><span class="line">        margin-left:20px</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="内联样式表"><a href="#内联样式表" class="headerlink" title="内联样式表"></a>内联样式表</h1><ol>
+<li>内联样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&quot;color:red&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[WebSocket实现WEB SSH 实时查看Tomcat的运行日志]]></title>
       <url>http://www.jiang-yu.cn/2016/12/07/WebSocket/Spring_WebSocket%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -219,19 +316,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Tomcat开启压缩功能]]></title>
-      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
-</blockquote>
-<a id="more"></a>
-<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
-<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-</code></pre>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Nginx配置代理--搭建线上和开发环境]]></title>
       <url>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -278,6 +362,19 @@
 　　
 　　</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Tomcat开启压缩功能]]></title>
+      <url>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！</p>
+</blockquote>
+<a id="more"></a>
+<p>　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：<br>　　　　　　<img src="/uploads/blog/Tomcat/tomcat_gzip_close.png" alt="default_tomcat_connector_config"><br>　　修改配置文件中的connector节点内容如下图：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on.png" alt="default_tomcat_connector_config"><br>　　<figure class="highlight plain"><figcaption><span>port="8082" protocol="HTTP/1.1"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　　　connectionTimeout=&quot;20000&quot;</span><br><span class="line">　　　　redirectPort=&quot;8443&quot;</span><br><span class="line">　　　　compression=&quot;on&quot;</span><br><span class="line">　　　　compressionMinSize=&quot;2048&quot;</span><br><span class="line">　　　　noCompressionUserAgents=&quot;gozilla,traviata&quot;</span><br><span class="line">　　　　compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot;</span><br><span class="line">　　/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：<br>　　<img src="/uploads/blog/Tomcat/tomcat_gzip_on_browser.png" alt="default_tomcat_connector_config"></p>
+<pre><code>小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -399,6 +496,16 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Linux关机操作命令]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
+<blockquote>
+<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
@@ -409,16 +516,6 @@
 <li><p>永久生效：修改 /etc/inittab  将启动模式修改为3<br>其中的数字可以设置为（0~6）<br>0 - 表示关闭系统（不要把默认设置成0）<br>1 - 单用户模式<br>2 - 多用户模式，没有NFS服务<br>3 - 多用户文本模式，是标准的运行级<br>5 - 图形模式<br>6 - 系统重新启动</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
-<blockquote>
-<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
-</blockquote>
 ]]></content>
     </entry>
     

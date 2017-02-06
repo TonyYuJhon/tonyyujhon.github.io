@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2016-12-07T15:01:53.000Z</updated>
+  <updated>2017-02-06T15:16:07.683Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -16,11 +16,198 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【HTML知识点】HTML列表</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E5%88%97%E8%A1%A8%E5%B1%9E%E6%80%A7/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML列表属性/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:16:07.683Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;HTML-列表&quot;&gt;&lt;a href=&quot;#HTML-列表&quot; class=&quot;headerlink&quot; title=&quot;HTML 列表&quot;&gt;&lt;/a&gt;HTML 列表&lt;/h1&gt;&lt;p&gt;&lt;code&gt;有序列表　　　&amp;lt;ol&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;无序列表　　　&amp;lt;ul&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;列表项　　　　&amp;lt;li&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;列表　　　　　&amp;lt;dl&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;列表项　　　　&amp;lt;dt&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;描述　　　　　&amp;lt;dd&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;li&amp;gt;apple&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;li&amp;gt;htc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;li&amp;gt;sc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;ol&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;li&amp;gt;apple&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;li&amp;gt;htc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;li&amp;gt;sc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/ol&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;无序列表&lt;br&gt;使用标签：&lt;code&gt;&amp;lt;ul&amp;gt;、&amp;lt;li&amp;gt;&lt;/code&gt;&lt;br&gt;属性：disc、circle、square&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!--type取值 disc:实心圆 circle:空心圆 square：实心方块 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ul type=&amp;quot;disc&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;apple&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;htc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;sc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有序列表&lt;br&gt;使用标签：&lt;code&gt;&amp;lt;ol&amp;gt;/&amp;lt;li&amp;gt;&lt;/code&gt;&lt;br&gt;属性：A、a、l、i、start (type取值)&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ol type=&amp;quot;A&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;apple&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;htc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;sc&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;嵌套列表&lt;br&gt;使用标签：&lt;code&gt;&amp;lt;ul&amp;gt;/&amp;lt;ol&amp;gt;/&amp;lt;li&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ul type=&amp;quot;disc&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;动物&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;li&amp;gt;狗&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;li&amp;gt;猫&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;li&amp;gt;植物&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;li&amp;gt;草&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;li&amp;gt;花&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;自定义列表&lt;br&gt;使用标签：&lt;code&gt;&amp;lt;dl&amp;gt;/&amp;lt;dt&amp;gt;/&amp;lt;dd&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;dl&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;dt&amp;gt;Hello&amp;lt;/dt&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;dd&amp;gt;描述一&amp;lt;/dd&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;dt&amp;gt;World&amp;lt;/dt&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;dd&amp;gt;描述二&amp;lt;/dd&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/dl&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML表格</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML表格属性/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:15:37.108Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;表格属性认识&quot;&gt;&lt;a href=&quot;#表格属性认识&quot; class=&quot;headerlink&quot; title=&quot;表格属性认识&quot;&gt;&lt;/a&gt;表格属性认识&lt;/h2&gt;&lt;p&gt;&lt;code&gt;定义表格　　　　　　&amp;lt;table&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的标题　　　&amp;lt;caption&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的表头　　　&amp;lt;th&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的行　　　　&amp;lt;tr&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的单元　　　&amp;lt;td&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的页眉　　　&amp;lt;thead&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的主体　　　&amp;lt;tbody&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的页脚　　　&amp;lt;tfoot&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的列属性　　&amp;lt;col&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义单元格边距　　　cellpadding=10&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义单元格间距　　　cellspacing=10&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;表格示例&quot;&gt;&lt;a href=&quot;#表格示例&quot; class=&quot;headerlink&quot; title=&quot;表格示例&quot;&gt;&lt;/a&gt;表格示例&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;table border=&amp;quot;1&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;caption&amp;gt;表格&amp;lt;/caption&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;thead&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;th&amp;gt;单元1&amp;lt;/th&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;th&amp;gt;单元2&amp;lt;/th&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/thead&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;tbody&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td&amp;gt;内容1&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td&amp;gt;内容2&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/tbody&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML链接的属性</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML链接属性/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:15:59.420Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;链接数据&quot;&gt;&lt;a href=&quot;#链接数据&quot; class=&quot;headerlink&quot; title=&quot;链接数据&quot;&gt;&lt;/a&gt;链接数据&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;文本链接&lt;/li&gt;
+&lt;li&gt;图片链接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;属性&quot;&gt;&lt;a href=&quot;#属性&quot; class=&quot;headerlink&quot; title=&quot;属性&quot;&gt;&lt;/a&gt;属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;href属性：指向另外一个文档链接
+name属性：创建文档内的链接
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;img标签属性&quot;&gt;&lt;a href=&quot;#img标签属性&quot; class=&quot;headerlink&quot; title=&quot;img标签属性&quot;&gt;&lt;/a&gt;img标签属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;alt:替换文本属性
+width:宽
+height:高
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;示例：&quot;&gt;&lt;a href=&quot;#示例：&quot; class=&quot;headerlink&quot; title=&quot;示例：&quot;&gt;&lt;/a&gt;示例：&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;http://www.jiang-yu.cn&amp;quot;&amp;gt;点击&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;http://www.jiang-yu.cn&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;img src=&amp;quot;xxx.png&amp;quot; alt=&amp;quot;图片说明&amp;quot; width=&amp;apos;50px&amp;apos; height=&amp;apos;50px&amp;apos;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 文档内部链接--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a name=&amp;quot;tips&amp;quot;&amp;gt;Tips&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#tips&amp;quot;&amp;gt;跳转到Tips锚点&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML块</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E5%9D%97%E5%85%83%E7%B4%A0%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML块元素介绍/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:15:49.610Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;#HTML 块&lt;/p&gt;
+&lt;h2 id=&quot;HTML块元素&quot;&gt;&lt;a href=&quot;#HTML块元素&quot; class=&quot;headerlink&quot; title=&quot;HTML块元素&quot;&gt;&lt;/a&gt;HTML块元素&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;块元素在显示的时候，通常会以新行开始
+如：&amp;lt;h1&amp;gt;、&amp;lt;p&amp;gt;、&amp;lt;ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;p&amp;gt;Hello&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;h1&amp;gt;标题一&amp;lt;/h1&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;HTML内联元素&quot;&gt;&lt;a href=&quot;#HTML内联元素&quot; class=&quot;headerlink&quot; title=&quot;HTML内联元素&quot;&gt;&lt;/a&gt;HTML内联元素&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;内联元素显示通常不会以新行开始
+如&amp;lt;b&amp;gt;、&amp;lt;a&amp;gt;、&amp;lt;img&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;b&amp;gt;这是一个加粗&amp;lt;/b&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;a&amp;gt;这是一个超链接&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;HTML-lt-div-gt-元素&quot;&gt;&lt;a href=&quot;#HTML-lt-div-gt-元素&quot; class=&quot;headerlink&quot; title=&quot;HTML &amp;lt;div&amp;gt;元素&quot;&gt;&lt;/a&gt;HTML &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;元素&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;元素也被称为块元素，其主要是组合HTML元素的容器,配合css样式使用
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #divId p&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       color:blue; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;div id=&amp;quot;divId&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;p&amp;gt;Hello World&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;a&amp;gt;Click me&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;HTML-lt-span-gt-元素&quot;&gt;&lt;a href=&quot;#HTML-lt-span-gt-元素&quot; class=&quot;headerlink&quot; title=&quot;HTML &amp;lt;span&amp;gt; 元素&quot;&gt;&lt;/a&gt;HTML &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt; 元素&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;span&amp;gt;元素是内联元素，可作为文本的容器
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    span&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        color:red&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;div id=&amp;quot;divspan&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;这是一个测试&amp;lt;span&amp;gt;Span 测试&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML三种样式插入方法</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E6%A0%B7%E5%BC%8F%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML样式类型/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:16:14.444Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;外部样式表&quot;&gt;&lt;a href=&quot;#外部样式表&quot; class=&quot;headerlink&quot; title=&quot;外部样式表&quot;&gt;&lt;/a&gt;外部样式表&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;外部样式&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;xxx.css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;内部样式表&quot;&gt;&lt;a href=&quot;#内部样式表&quot; class=&quot;headerlink&quot; title=&quot;内部样式表&quot;&gt;&lt;/a&gt;内部样式表&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;内部样式&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    body &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        background-color:red&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    p &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        margin-left:20px&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;内联样式表&quot;&gt;&lt;a href=&quot;#内联样式表&quot; class=&quot;headerlink&quot; title=&quot;内联样式表&quot;&gt;&lt;/a&gt;内联样式表&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;内联样式&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;p style=&amp;quot;color:red&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WebSocket实现WEB SSH 实时查看Tomcat的运行日志</title>
     <link href="http://www.jiang-yu.cn/2016/12/07/WebSocket/Spring_WebSocket%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0/"/>
     <id>http://www.jiang-yu.cn/2016/12/07/WebSocket/Spring_WebSocket日志打印/</id>
     <published>2016-12-07T15:56:51.000Z</published>
-    <updated>2016-12-07T15:01:53.000Z</updated>
+    <updated>2016-12-07T15:01:53.201Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;　　作为一名后端程序员，每次开发环境部署之后，需要进到后台去查看运行日志的话，都需要用XShell连接服务器，而且最令人讨厌的就是要每次都要用SSH方式输入账号和密码连接生产环境的ECS,最近也在研究这WebSocket，所以决定用WebSocket将实时查看日志的功能整合到项目中去，省得每次查看日志都需要登录到服务器上去查看。&lt;/p&gt;
@@ -56,7 +243,7 @@
     <link href="http://www.jiang-yu.cn/2016/11/15/Hibernate/SSH--hibernate%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98/"/>
     <id>http://www.jiang-yu.cn/2016/11/15/Hibernate/SSH--hibernate事务问题/</id>
     <published>2016-11-15T15:56:51.000Z</published>
-    <updated>2016-11-15T16:29:24.000Z</updated>
+    <updated>2016-11-15T16:29:24.894Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;　　做项目的时候，发现配置注解事务之后，数据还是不能持续化到数据库，调试了好久，网上google后，才知道原来需要有一个重要的配置没有配置，导致事务配置了数据不能持续化到数据库中。&lt;/p&gt;
@@ -90,7 +277,7 @@
     <link href="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF/"/>
     <id>http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j远程打印日志信息/</id>
     <published>2016-11-14T11:20:51.000Z</published>
-    <updated>2016-11-14T16:02:34.000Z</updated>
+    <updated>2016-11-14T16:02:34.352Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;　　上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。&lt;/p&gt;
@@ -132,7 +319,7 @@
     <link href="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j%E5%88%86%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/"/>
     <id>http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j分文件存储/</id>
     <published>2016-11-14T11:20:51.000Z</published>
-    <updated>2016-11-15T00:31:55.000Z</updated>
+    <updated>2016-11-15T00:31:55.353Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;　　以前做项目都是一个项目里面配置一个日志文件，但是最近公司的业务系统是通过功能模块来划分，所以不同模块之间的日志记录的分开存放还是有必要的，方便后期通过日志定位问题，所以就试着用log4j配了一下，日志分类的实现。&lt;/p&gt;
@@ -197,7 +384,7 @@
     <link href="http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
     <id>http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda介绍和使用/</id>
     <published>2016-11-12T07:20:51.000Z</published>
-    <updated>2016-11-12T05:40:05.000Z</updated>
+    <updated>2016-11-12T05:40:05.780Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！&lt;/p&gt;
@@ -251,7 +438,7 @@
     <link href="http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/"/>
     <id>http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</id>
     <published>2016-11-09T00:43:51.000Z</published>
-    <updated>2016-11-09T01:04:17.000Z</updated>
+    <updated>2016-11-09T01:04:17.197Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;  本文主要记录一下在windows上使用ActiveMQ过程中出现的一个错误，而且出现过两次，方便后期备忘和快速查询。&lt;/p&gt;
@@ -295,7 +482,7 @@
     <link href="http://www.jiang-yu.cn/2016/09/02/SVN/SVN%20Learn%20Basic%2003/"/>
     <id>http://www.jiang-yu.cn/2016/09/02/SVN/SVN Learn Basic 03/</id>
     <published>2016-09-02T04:43:51.000Z</published>
-    <updated>2016-09-02T05:49:26.000Z</updated>
+    <updated>2016-09-02T05:49:26.642Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。&lt;/p&gt;
@@ -333,7 +520,7 @@
     <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/"/>
     <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic02/</id>
     <published>2016-09-01T14:47:51.000Z</published>
-    <updated>2016-09-02T05:01:01.000Z</updated>
+    <updated>2016-09-02T05:01:01.683Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。&lt;/p&gt;
@@ -368,7 +555,7 @@
     <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/"/>
     <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic 01/</id>
     <published>2016-09-01T14:43:51.000Z</published>
-    <updated>2016-09-02T00:40:49.000Z</updated>
+    <updated>2016-09-02T00:40:49.480Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;  本文主要介绍SVN以及如何安装SVN软件。&lt;/p&gt;
@@ -393,42 +580,11 @@
   </entry>
   
   <entry>
-    <title>Tomcat开启压缩功能</title>
-    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
-    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
-    <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T04:07:49.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
-    
-    
-      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Nginx配置代理--搭建线上和开发环境</title>
     <link href="http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/Ngnix/nginx_server_config/</id>
     <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T10:28:41.000Z</updated>
+    <updated>2016-08-09T10:28:41.688Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;使用nginx配置反向代理，80端口映射不同的内网web服务器。&lt;/p&gt;
@@ -476,7 +632,7 @@
     <link href="http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/JAVA_BASIC/JAVA_BASIC_DAY02/</id>
     <published>2016-08-09T12:47:51.000Z</published>
-    <updated>2016-08-09T01:31:47.000Z</updated>
+    <updated>2016-08-09T01:31:47.565Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;  温故知新：Java入门级系列之IDE的选择，选择一个好的工具往往可以达到事半功倍效果。&lt;/p&gt;
@@ -509,11 +665,42 @@
   </entry>
   
   <entry>
+    <title>Tomcat开启压缩功能</title>
+    <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/"/>
+    <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Gzip_On/</id>
+    <published>2016-08-09T12:47:51.000Z</published>
+    <updated>2016-08-09T04:07:49.814Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　首先，找到tomcat的目录conf,打开server.xml文件，修改Connector节点，默认配置如下：&lt;br&gt;　　　　　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_close.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　修改配置文件中的connector节点内容如下图：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;br&gt;　　&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;port=&quot;8082&quot; protocol=&quot;HTTP/1.1&quot;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　　　　connectionTimeout=&amp;quot;20000&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　redirectPort=&amp;quot;8443&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compression=&amp;quot;on&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressionMinSize=&amp;quot;2048&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　noCompressionUserAgents=&amp;quot;gozilla,traviata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　compressableMimeType=&amp;quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;　　&lt;br&gt;　　然后，重启tomcat服务器，浏览器F12打开，访问一个静态文件，查看响应头：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Tomcat/tomcat_gzip_on_browser.png&quot; alt=&quot;default_tomcat_connector_config&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;小伙伴也许会感觉到奇怪，为啥这里服务器是Nginx，哈哈，这是因为我配置了代理，更多nginx配置信息请后续关注博主吧 ！
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;为了减小前端页面加载静态资源的时间，通常实际项目中都需要给Tomcat开启压缩功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/categories/Tomcat/"/>
+    
+    
+      <category term="Tomcat" scheme="http://www.jiang-yu.cn/tags/Tomcat/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Tomcat内存配置以及项目发布配置</title>
     <link href="http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/"/>
     <id>http://www.jiang-yu.cn/2016/08/09/Tomcat/Tomcat_Mem_Virt_Config/</id>
     <published>2016-08-09T04:47:51.000Z</published>
-    <updated>2016-08-09T03:57:38.000Z</updated>
+    <updated>2016-08-09T03:57:38.209Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt; 作为Java程序猿，我们不得不掌握Tomcat的基本配置，本文将简单讲述一下实际项目中tomcat的一般配置。&lt;/p&gt;
@@ -547,7 +734,7 @@
     <link href="http://www.jiang-yu.cn/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/"/>
     <id>http://www.jiang-yu.cn/2016/08/08/JAVA_BASIC/JAVA_BASIC_DAY01/</id>
     <published>2016-08-08T12:47:51.000Z</published>
-    <updated>2016-08-08T14:02:05.000Z</updated>
+    <updated>2016-08-08T14:02:05.423Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;  温故知新：Java入门级系列之环境的搭建，找回入门时的感觉。&lt;/p&gt;
@@ -579,7 +766,7 @@
     <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
     <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL修改默认的字符编码/</id>
     <published>2016-06-26T08:28:51.000Z</published>
-    <updated>2016-06-26T08:44:54.000Z</updated>
+    <updated>2016-06-26T08:44:54.672Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Linux安装完MySql后，如果没有配置字符编码的话,默认的是latin1,而开发环境一般都是使用utf-8，所有如果不修改的话会出现乱码问题.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -605,183 +792,6 @@
     
     
       <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux修改IP配置</title>
-    <link href="http://www.jiang-yu.cn/2016/06/26/Linux/Linux%E4%BF%AE%E6%94%B9IP%E5%9C%B0%E5%9D%80%E4%B8%BA%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/"/>
-    <id>http://www.jiang-yu.cn/2016/06/26/Linux/Linux修改IP地址为静态地址/</id>
-    <published>2016-06-26T06:58:51.000Z</published>
-    <updated>2016-06-26T06:05:03.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　每天学一点Linux命令–修改Linux系统的ip地址&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;/etc/sysconfig/network-scripts/ifcfg-eth0``` &lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;DEVICE=eth0 　　　　　网卡对应的设备别名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TYPE=Ethernet　　　　　网络类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UUID=xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BOOTPROTO=static　　　网卡获得ip地址的方式（默认是dhcp）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DNS1=192.168.1.1 　　　　　DNS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;IPV6INIT=no&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;USERCTL=no&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;IPADDR=192.168.1.132    　　　　ip地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NETMASK=255.255.255.0 　　　子网掩码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GATEWAY=192.168.1.1 　　　　　　网关&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;HWADDR=XX:XX:XX:XX:XX　　　　MAC地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ONBOOT=yes　系统启动时是否设置此网络接口，默认设置为yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;修改完成之后，重启network服务&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```service network restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;ok，使用 &lt;code&gt;ifconfig eth0&lt;/code&gt; 查看一下是否生效&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　每天学一点Linux命令–修改Linux系统的ip地址&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySql授权</title>
-    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E6%8E%88%E6%9D%83%E7%AE%80%E4%BB%8B/"/>
-    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL授权简介/</id>
-    <published>2016-06-26T06:47:51.000Z</published>
-    <updated>2016-06-26T09:14:45.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;Linux安装完MySql后，一般root用户是不配置给远程机器访问的，所以要重新创建一个和root权限相当的用户来管理.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;创建数据库&quot;&gt;&lt;a href=&quot;#创建数据库&quot; class=&quot;headerlink&quot; title=&quot;创建数据库&quot;&gt;&lt;/a&gt;创建数据库&lt;/h3&gt;&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;创建数据库&lt;br&gt; mysql&amp;gt;create database jhonyu01DB;&lt;br&gt; &lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_01.png&quot; alt=&quot;创建数据库&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;授权操作&quot;&gt;&lt;a href=&quot;#授权操作&quot; class=&quot;headerlink&quot; title=&quot;授权操作&quot;&gt;&lt;/a&gt;授权操作&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;创建用户（jhonyu01|jhonyuread）&lt;ul&gt;
-&lt;li&gt;用户jhonyu01授权localhost可以访问&lt;br&gt;mysql&amp;gt;grant all privileges on jhonyu01DB.* to jhonyu01@localhost identifiedby ‘jhonyu01’ WITH GRANT OPTION;&lt;br&gt;mysql&amp;gt;flush privileges;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_02.png&quot; alt=&quot;jhonyu01&quot;&gt;&lt;/li&gt;
-&lt;li&gt;用户jhonyuread没有进行任何授权&lt;br&gt;mysql&amp;gt;insert into mysql.user(Host,User,Password) values(‘localhost’,’jhonyuread’,password(‘jhonyuread’));&lt;br&gt;mysql&amp;gt;flush privileges;&lt;br&gt;mysql&amp;gt;exit&lt;br&gt;[root@localhost ~]# mysql -ujhonyuread -p&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_03.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;授权用户jhonyu01所有ip可以访问&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_04.png&quot; alt=&quot;jhonyu01&quot;&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;客户端测试&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用jhonyu01登录&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_05.png&quot; alt=&quot;jhonyu01&quot;&gt;&lt;/li&gt;
-&lt;li&gt;使用jhonyuread登录&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_06.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;jhonyuread授予权限之后&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_07.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_08.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_09.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;查看自己授权&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_10.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_11.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_12.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
-&lt;li&gt;创建topic表&lt;br&gt; （略）&lt;/li&gt;
-&lt;li&gt;查询表结构&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_13.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;/li&gt;
-&lt;li&gt;两个不同的用户操作数据库&lt;br&gt;&lt;img src=&quot;/uploads/blog/MySQL/mysql_security/security_14.png&quot; alt=&quot;jhonyuread&quot;&gt;&lt;h3 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h3&gt; MySql的用户操作权限简单的介绍了下，有写描述不清楚的地方，希望大家多多指正，文中大部分都是用图片里代替，图片操作清晰而且直接明了，fighting…&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Linux安装完MySql后，一般root用户是不配置给远程机器访问的，所以要重新创建一个和root权限相当的用户来管理.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySql连接阻塞解决办法</title>
-    <link href="http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL%E8%BF%9E%E6%8E%A5%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>http://www.jiang-yu.cn/2016/06/26/MySQL/MySQL连接阻塞解决办法/</id>
-    <published>2016-06-26T06:07:51.000Z</published>
-    <updated>2016-06-26T09:08:24.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;Error Message:message from server: “Host ‘x.x.x.x’ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’”&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;场景：&quot;&gt;&lt;a href=&quot;#场景：&quot; class=&quot;headerlink&quot; title=&quot;场景：&quot;&gt;&lt;/a&gt;场景：&lt;/h3&gt;&lt;p&gt;　　前段时间公司开发环境出现服务器上部署的项目启动的时候出现上述错误提示，从上面的错误原因可以看出–&lt;strong&gt;同一个IP在短时间产生过多（超过mysql数据库max_connection_errors的最大值）中断的数据库连接而导致的阻塞.&lt;/strong&gt;
-　　&lt;/p&gt;
-&lt;h3 id=&quot;解决方法：&quot;&gt;&lt;a href=&quot;#解决方法：&quot; class=&quot;headerlink&quot; title=&quot;解决方法：&quot;&gt;&lt;/a&gt;解决方法：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;修改Mysql配置文件的max_connection_errors数量&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;查看max_connection_errors&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;variables like &#39;%max_connection_errors%&#39;;```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- 修改max_connection_errors的数量 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```set global max_connect_errors = 500;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用mysqladmin flush-hosts命令清理一下hosts文件&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;查找出mysqladmin位置&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;mysqladmin```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- 进到相关目录下执行以下命令：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```/usr/bin/mysqladmin flush-hosts -hx.x.x.x -P3306 -uroot -prootpwd;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;直接在数据库执行下面命令：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;必须要有root权限&lt;br&gt;&lt;code&gt;flush hosts;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Error Message:message from server: “Host ‘x.x.x.x’ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’”&lt;br&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://www.jiang-yu.cn/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux修改系统默认启动模式</title>
-    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://www.jiang-yu.cn/2016/06/14/Linux/修改Linux系统默认启动模式/</id>
-    <published>2016-06-14T06:58:51.000Z</published>
-    <updated>2016-06-14T06:09:31.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;　　下面有两种方式来实现：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;临时生效：在图形化界面下可以打开Terminal终端，切换到root用户，输入init3即可切换到命令行模式，如果要再次回到图形化界面，可以使用startx就可以了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;永久生效：修改 /etc/inittab  将启动模式修改为3&lt;br&gt;其中的数字可以设置为（0~6）&lt;br&gt;0 - 表示关闭系统（不要把默认设置成0）&lt;br&gt;1 - 单用户模式&lt;br&gt;2 - 多用户模式，没有NFS服务&lt;br&gt;3 - 多用户文本模式，是标准的运行级&lt;br&gt;5 - 图形模式&lt;br&gt;6 - 系统重新启动&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux关机操作命令</title>
-    <link href="http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.jiang-yu.cn/2016/06/14/Linux/Linux关机命令/</id>
-    <published>2016-06-14T06:58:51.000Z</published>
-    <updated>2016-06-14T07:47:13.000Z</updated>
-    
-    <content type="html">&lt;p&gt;　　每天学一点Linux命令&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;halt 立刻关机&lt;br&gt;poweroff 立刻关机&lt;br&gt;shutdown -h now 立刻关机(root用户使用)&lt;br&gt;shutdown -h 10 10分钟后自动关机&lt;br&gt;如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启&lt;br&gt;推荐使用shutdown命令&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　每天学一点Linux命令&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
   </entry>
   
