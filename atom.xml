@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiang-yu.cn/"/>
-  <updated>2017-02-07T15:25:28.594Z</updated>
+  <updated>2017-02-08T15:26:07.612Z</updated>
   <id>http://www.jiang-yu.cn/</id>
   
   <author>
@@ -16,52 +16,116 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【HTML知识点】HTML之表单创建</title>
-    <link href="http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%A1%A8%E5%8D%95%E5%88%9B%E5%BB%BA/"/>
-    <id>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML表单创建/</id>
-    <published>2017-02-07T14:20:51.000Z</published>
-    <updated>2017-02-07T15:25:28.594Z</updated>
+    <title>【Linux】Linux 新增用户</title>
+    <link href="http://www.jiang-yu.cn/2017/02/08/Linux/Linux%E6%96%B0%E5%A2%9E%E7%94%A8%E6%88%B7/"/>
+    <id>http://www.jiang-yu.cn/2017/02/08/Linux/Linux新增用户/</id>
+    <published>2017-02-08T15:20:51.000Z</published>
+    <updated>2017-02-08T15:26:07.612Z</updated>
     
     <content type="html">&lt;blockquote&gt;
-&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;p&gt;Linux学习之路！&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;HTML-表单&quot;&gt;&lt;a href=&quot;#HTML-表单&quot; class=&quot;headerlink&quot; title=&quot;HTML 表单&quot;&gt;&lt;/a&gt;HTML 表单&lt;/h1&gt;&lt;h2 id=&quot;表单标签&quot;&gt;&lt;a href=&quot;#表单标签&quot; class=&quot;headerlink&quot; title=&quot;表单标签&quot;&gt;&lt;/a&gt;表单标签&lt;/h2&gt;&lt;p&gt;&lt;code&gt;表单　　　　　　　&amp;lt;form&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;输入域　　　　　　&amp;lt;input&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;文本域　　　　　　&amp;lt;textarea&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;控制标签　　　　　&amp;lt;label&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义域　　　　　　&amp;lt;fieldset&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;域的标题　　　　　&amp;lt;legend&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;选择列表　　　　　&amp;lt;select&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;选择组　　　　　　&amp;lt;optgroup&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;下拉表中的选项　　&amp;lt;option&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;按钮　　　　　　　&amp;lt;button&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html language=&amp;quot;en&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;表单创建&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;form action=&amp;quot;xxx.do&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;label&amp;gt;&amp;lt;span&amp;gt;用户名：&amp;lt;/span&amp;gt;&amp;lt;/label&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;label&amp;gt;&amp;lt;span&amp;gt;密码：&amp;lt;/span&amp;gt;&amp;lt;/label&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;提交&amp;lt;/button&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/form&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&amp;gt;&lt;br&gt;[root@localhost ~]# useradd -d /home/jhonrain -m jhonrain&lt;br&gt;[root@localhost ~]# passwd jhonrain&lt;br&gt;Changing password for user jhonrain&lt;br&gt;New password:&lt;br&gt;BAD PASSWORD: it is WAY too short&lt;br&gt;BAD PASSWORD: is too simple&lt;br&gt;Retype new password:&lt;br&gt;passwd: all authentication tokens updated successfully.&lt;br&gt;[root@localhost ~]# chown jhonrain -R /home/jhonrain&lt;br&gt;[root@localhost ~]# su jhonrain&lt;br&gt;[jhonrain@localhost root]\$ ls&lt;br&gt;ls: cannot open directory .: Permission denied&lt;br&gt;[jhonrain@localhost root]\$ cd /home/jhonrain/&lt;br&gt;[jhonrain@localhost ~]\$ ls&lt;br&gt;[jhonrain@localhost ~]\$ touch jhonrain.txt&lt;br&gt;[jhonrain@localhost ~]\$ ls&lt;br&gt;jhonrain.txt&lt;br&gt;[jhonrain@localhost ~]\$ vim jhonrain.txt&lt;br&gt;[jhonrain@localhost ~]\$&lt;br&gt;``&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Linux学习之路！&lt;br&gt;
     
     </summary>
     
-      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
     
     
-      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
-    <title>【HTML知识点】HTML 实体</title>
-    <link href="http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E5%AE%9E%E4%BD%93/"/>
-    <id>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML实体/</id>
-    <published>2017-02-07T14:20:51.000Z</published>
-    <updated>2017-02-07T15:25:54.928Z</updated>
+    <title>【Nginx】Nginx基本操作</title>
+    <link href="http://www.jiang-yu.cn/2017/02/08/Ngnix/Nginx%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>http://www.jiang-yu.cn/2017/02/08/Ngnix/Nginx的基本使用/</id>
+    <published>2017-02-08T15:20:51.000Z</published>
+    <updated>2017-02-08T15:13:38.316Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Nginx学习遇到的问题和积累！&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;基本操作命名&quot;&gt;&lt;a href=&quot;#基本操作命名&quot; class=&quot;headerlink&quot; title=&quot;基本操作命名&quot;&gt;&lt;/a&gt;基本操作命名&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;停止：./nginx -s stop&lt;/li&gt;
+&lt;li&gt;重新加载：./nginx -s reload&lt;/li&gt;
+&lt;li&gt;启动：./nginx -c /usr/local/nginx/conf/nginx.conf&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;支持websocket配置&quot;&gt;&lt;a href=&quot;#支持websocket配置&quot; class=&quot;headerlink&quot; title=&quot;支持websocket配置&quot;&gt;&lt;/a&gt;支持websocket配置&lt;/h2&gt;&lt;p&gt;例如：vim vhost/xx.jhonrain.conf&lt;/p&gt;
+&lt;p&gt;``&lt;br&gt;server{&lt;br&gt;　　listen 80;&lt;br&gt;　　server_name xx.jhonrain.com&lt;br&gt;　　charset utf-8;&lt;/p&gt;
+&lt;p&gt;　　location /{&lt;br&gt;　　　　root html;&lt;br&gt;　　　　index index.html index.htm;&lt;br&gt;　　　　proxy_pass &lt;a href=&quot;http://127.0.0.1:8864&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://127.0.0.1:8864&lt;/a&gt;;&lt;br&gt;　　　　proxy_set_header Host \$host;&lt;br&gt;　　　　proxy_set_header X-Real-IP \$remote_addr;&lt;br&gt;　　　　proxy_set_header X-Forward-For \$proxy_add_x_forwarded_for;&lt;br&gt;　　　　proxy_redirect default;&lt;br&gt;　　　　proxy_connect_timeout 10;&lt;br&gt;　　　　&lt;br&gt;　　　　proxy_http_version 1.1;&lt;br&gt;　　　　proxy_set_header Upgrade $http_upgrade;&lt;br&gt;　　　　proxy_set_header Connection “upgrade”;&lt;br&gt;　　　　&lt;br&gt;　　}&lt;br&gt;　　&lt;br&gt;　　error_page 500 502 503 504 /50x.html;&lt;br&gt;　　location = /50x.html{&lt;br&gt;　　　　　　　root html;&lt;br&gt;　　}&lt;br&gt;　　&lt;br&gt;　　access_log logs/xx.xx.com.access.log;&lt;br&gt;　　error_log logs/xx.xx.com.error.log;&lt;br&gt;}&lt;br&gt;``&lt;/p&gt;
+&lt;h2 id=&quot;配置文件隔离配置–分离多个站点的配置&quot;&gt;&lt;a href=&quot;#配置文件隔离配置–分离多个站点的配置&quot; class=&quot;headerlink&quot; title=&quot;配置文件隔离配置–分离多个站点的配置&quot;&gt;&lt;/a&gt;配置文件隔离配置–分离多个站点的配置&lt;/h2&gt;&lt;p&gt;&lt;code&gt;include vhost/*.conf;&lt;/code&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Nginx学习遇到的问题和积累！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.jiang-yu.cn/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【NodeJS】NodeJS 环境搭建</title>
+    <link href="http://www.jiang-yu.cn/2017/02/08/NodeJS/NodeJS%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://www.jiang-yu.cn/2017/02/08/NodeJS/NodeJS环境搭建/</id>
+    <published>2017-02-08T15:20:51.000Z</published>
+    <updated>2017-02-08T14:49:20.510Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;NodeJs探索之路！&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　首先从官网下载压缩包，解压到usr/local/目录下，&lt;br&gt;　　切换到root用户，修改/etc/profile文件，&lt;br&gt;　　执行修改文件命令：&lt;code&gt;vim /etc/profile&lt;/code&gt;&lt;br&gt;　　然后，添加NODE环境变量，具体配置如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;gt;&lt;br&gt;export NODE_HOME=/usr/local/node450&lt;br&gt;export PATH=\$PATH:\$NODE_HOME/bin&lt;br&gt;export NODE_PATH=$NODE_HOME/lib/node_modules&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;　　如下图所示：&lt;br&gt;　　&lt;img src=&quot;http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE_PATH.png&quot; alt=&quot;NODE_PATH&quot;&gt;&lt;br&gt;　　&lt;br&gt;　　最后，配置完成之后，记得使profile文件生效，执行 &lt;code&gt;source profile&lt;/code&gt; 命令，然后查看一下是否安装成功，查看一下node的版本号，如下图所示：&lt;br&gt;　　&lt;img src=&quot;http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE-VERSION.png&quot; alt=&quot;NODE_VERSION&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;NodeJs探索之路！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="NodeJS" scheme="http://www.jiang-yu.cn/categories/NodeJS/"/>
+    
+    
+      <category term="NodeJS" scheme="http://www.jiang-yu.cn/tags/NodeJS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【LINUX】批量kill进程</title>
+    <link href="http://www.jiang-yu.cn/2017/02/08/Linux/Linux%20%E6%89%B9%E9%87%8Fkill%E8%BF%9B%E7%A8%8B/"/>
+    <id>http://www.jiang-yu.cn/2017/02/08/Linux/Linux 批量kill进程/</id>
+    <published>2017-02-08T14:20:51.000Z</published>
+    <updated>2017-02-08T15:16:33.389Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;HTML-实体&quot;&gt;&lt;a href=&quot;#HTML-实体&quot; class=&quot;headerlink&quot; title=&quot;HTML 实体&quot;&gt;&lt;/a&gt;HTML 实体&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;实体&lt;br&gt;HTML中预留字符串必须被替换成字符实体&lt;br&gt;例如：&amp;lt;、&amp;gt;、&amp;amp;等&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;转换字符实体映射表&lt;br&gt;&lt;img src=&quot;http://learnblog.oss-cn-shanghai.aliyuncs.com/html%E5%AE%9E%E4%BD%93.png&quot; alt=&quot;html实体&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;　　管道符”|”用来隔开两个命令，管道符左边命令的输出会作为管道符右边命令的输入。&lt;br&gt;　　&lt;br&gt;　　&lt;code&gt;ps -ef|grep tomcat|grep -v grep|cat -c 9-15|xargs kill -9&lt;/code&gt;&lt;br&gt;　　&lt;br&gt;　　ps - ef”是Red Hat里查看所有进程的命令,这时检索出的进程将作为下一条命令“grep tomcat”的输入。&lt;/p&gt;
+&lt;p&gt;　　grep tomcat的输出结果是，所有含有关键字“tomcat”的进程&lt;/p&gt;
+&lt;p&gt;　　grep -v grep是在列出的进程中去除含有关键字“grep”的进程。&lt;/p&gt;
+&lt;p&gt;　　cut -c 9-15　是截取输入行的第9个字符到第15个字符，而这正好是进程号PID。&lt;/p&gt;
+&lt;p&gt;　　xargs kill -9　中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -9”命令的参数，并执行该令。   &lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -72,10 +136,49 @@
     
     </summary>
     
-      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
     
     
-      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【LINUX】文件操作</title>
+    <link href="http://www.jiang-yu.cn/2017/02/08/Linux/Linux%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"/>
+    <id>http://www.jiang-yu.cn/2017/02/08/Linux/Linux文件的基础操作/</id>
+    <published>2017-02-08T14:20:51.000Z</published>
+    <updated>2017-02-08T15:16:09.314Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Linux 学习之路！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;文件的操作&quot;&gt;&lt;a href=&quot;#文件的操作&quot; class=&quot;headerlink&quot; title=&quot;文件的操作&quot;&gt;&lt;/a&gt;文件的操作&lt;/h2&gt;&lt;h3 id=&quot;机器对拷文件&quot;&gt;&lt;a href=&quot;#机器对拷文件&quot; class=&quot;headerlink&quot; title=&quot;机器对拷文件&quot;&gt;&lt;/a&gt;机器对拷文件&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;scp -r /home/schedule/ schedule@121.199.178.127:/home/schedule/&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;移动文件&quot;&gt;&lt;a href=&quot;#移动文件&quot; class=&quot;headerlink&quot; title=&quot;移动文件&quot;&gt;&lt;/a&gt;移动文件&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;mv * /usr/local/tmp&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;修改文件的访问权限&quot;&gt;&lt;a href=&quot;#修改文件的访问权限&quot; class=&quot;headerlink&quot; title=&quot;修改文件的访问权限&quot;&gt;&lt;/a&gt;修改文件的访问权限&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;chmod u+x aa.txt
+　　　chmod 550 aa.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;修改文件所属的用户组&quot;&gt;&lt;a href=&quot;#修改文件所属的用户组&quot; class=&quot;headerlink&quot; title=&quot;修改文件所属的用户组&quot;&gt;&lt;/a&gt;修改文件所属的用户组&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;chown -R demo:demo directroydemo&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;删除文件&quot;&gt;&lt;a href=&quot;#删除文件&quot; class=&quot;headerlink&quot; title=&quot;删除文件&quot;&gt;&lt;/a&gt;删除文件&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;rm -rf aa.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;查看文件&quot;&gt;&lt;a href=&quot;#查看文件&quot; class=&quot;headerlink&quot; title=&quot;查看文件&quot;&gt;&lt;/a&gt;查看文件&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;more aa.txt
+   　　cat aa.txt
+   　　tail aa.txt
+   　　head aa.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;修改文件&quot;&gt;&lt;a href=&quot;#修改文件&quot; class=&quot;headerlink&quot; title=&quot;修改文件&quot;&gt;&lt;/a&gt;修改文件&lt;/h3&gt;&lt;p&gt;　　&lt;code&gt;vim aa.txt&lt;/code&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Linux 学习之路！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.jiang-yu.cn/tags/Linux/"/>
     
   </entry>
   
@@ -153,18 +256,19 @@
   </entry>
   
   <entry>
-    <title>【HTML知识点】HTML之TABLE布局</title>
-    <link href="http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20TABLE%E5%B8%83%E5%B1%80/"/>
-    <id>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML TABLE布局/</id>
+    <title>【HTML知识点】HTML之表单创建</title>
+    <link href="http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%A1%A8%E5%8D%95%E5%88%9B%E5%BB%BA/"/>
+    <id>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML表单创建/</id>
     <published>2017-02-07T14:20:51.000Z</published>
-    <updated>2017-02-07T14:03:45.157Z</updated>
+    <updated>2017-02-07T15:25:28.594Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;#HTML TABLE布局&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!Doctype html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;table布局&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        body&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            margin:0px;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;table  width=&amp;quot;100%&amp;quot;,height=&amp;quot;950px&amp;quot; style=&amp;quot;backgroun-color:red;&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td colspan=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;10%&amp;quot; style=&amp;quot;backgroun-color:blue;&amp;quot;&amp;gt;顶部&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td width=&amp;quot;30%&amp;quot; height=&amp;quot;80%&amp;quot; style=&amp;quot;background-color=gray;&amp;quot;&amp;gt;左菜单&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td width=&amp;quot;70%&amp;quot; height=&amp;quot;80%&amp;quot; style=&amp;quot;background-color=blue;&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td colspan=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;10%&amp;quot; style=&amp;quot;backgroun-color:black;&amp;quot;&amp;gt;底部&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/table&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+&lt;h1 id=&quot;HTML-表单&quot;&gt;&lt;a href=&quot;#HTML-表单&quot; class=&quot;headerlink&quot; title=&quot;HTML 表单&quot;&gt;&lt;/a&gt;HTML 表单&lt;/h1&gt;&lt;h2 id=&quot;表单标签&quot;&gt;&lt;a href=&quot;#表单标签&quot; class=&quot;headerlink&quot; title=&quot;表单标签&quot;&gt;&lt;/a&gt;表单标签&lt;/h2&gt;&lt;p&gt;&lt;code&gt;表单　　　　　　　&amp;lt;form&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;输入域　　　　　　&amp;lt;input&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;文本域　　　　　　&amp;lt;textarea&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;控制标签　　　　　&amp;lt;label&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义域　　　　　　&amp;lt;fieldset&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;域的标题　　　　　&amp;lt;legend&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;选择列表　　　　　&amp;lt;select&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;选择组　　　　　　&amp;lt;optgroup&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;下拉表中的选项　　&amp;lt;option&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;按钮　　　　　　　&amp;lt;button&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html language=&amp;quot;en&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;表单创建&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;form action=&amp;quot;xxx.do&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;label&amp;gt;&amp;lt;span&amp;gt;用户名：&amp;lt;/span&amp;gt;&amp;lt;/label&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;label&amp;gt;&amp;lt;span&amp;gt;密码：&amp;lt;/span&amp;gt;&amp;lt;/label&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/br&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;提交&amp;lt;/button&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/form&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
     
     <summary type="html">
     
@@ -212,6 +316,69 @@ FRAMESET（框架类型）
 &lt;li&gt;XHTML 属性必须使用小写&lt;/li&gt;
 &lt;li&gt;XHTML 属性值必须用引号包围&lt;/li&gt;
 &lt;li&gt;XHTML 属性的最小化也是静止的&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML之TABLE布局</title>
+    <link href="http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20TABLE%E5%B8%83%E5%B1%80/"/>
+    <id>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML TABLE布局/</id>
+    <published>2017-02-07T14:20:51.000Z</published>
+    <updated>2017-02-07T14:03:45.157Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;#HTML TABLE布局&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!Doctype html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;table布局&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        body&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            margin:0px;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;table  width=&amp;quot;100%&amp;quot;,height=&amp;quot;950px&amp;quot; style=&amp;quot;backgroun-color:red;&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td colspan=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;10%&amp;quot; style=&amp;quot;backgroun-color:blue;&amp;quot;&amp;gt;顶部&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td width=&amp;quot;30%&amp;quot; height=&amp;quot;80%&amp;quot; style=&amp;quot;background-color=gray;&amp;quot;&amp;gt;左菜单&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td width=&amp;quot;70%&amp;quot; height=&amp;quot;80%&amp;quot; style=&amp;quot;background-color=blue;&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td colspan=&amp;quot;2&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;10%&amp;quot; style=&amp;quot;backgroun-color:black;&amp;quot;&amp;gt;底部&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/table&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML 实体</title>
+    <link href="http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E5%AE%9E%E4%BD%93/"/>
+    <id>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML实体/</id>
+    <published>2017-02-07T14:20:51.000Z</published>
+    <updated>2017-02-07T15:25:54.928Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;HTML-实体&quot;&gt;&lt;a href=&quot;#HTML-实体&quot; class=&quot;headerlink&quot; title=&quot;HTML 实体&quot;&gt;&lt;/a&gt;HTML 实体&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;实体&lt;br&gt;HTML中预留字符串必须被替换成字符实体&lt;br&gt;例如：&amp;lt;、&amp;gt;、&amp;amp;等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;转换字符实体映射表&lt;br&gt;&lt;img src=&quot;http://learnblog.oss-cn-shanghai.aliyuncs.com/html%E5%AE%9E%E4%BD%93.png&quot; alt=&quot;html实体&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 </content>
     
@@ -298,35 +465,6 @@ FRAMESET（框架类型）
   </entry>
   
   <entry>
-    <title>【HTML知识点】HTML表格</title>
-    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/"/>
-    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML表格属性/</id>
-    <published>2017-02-06T15:20:51.000Z</published>
-    <updated>2017-02-06T15:15:37.108Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;表格属性认识&quot;&gt;&lt;a href=&quot;#表格属性认识&quot; class=&quot;headerlink&quot; title=&quot;表格属性认识&quot;&gt;&lt;/a&gt;表格属性认识&lt;/h2&gt;&lt;p&gt;&lt;code&gt;定义表格　　　　　　&amp;lt;table&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的标题　　　&amp;lt;caption&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的表头　　　&amp;lt;th&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的行　　　　&amp;lt;tr&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的单元　　　&amp;lt;td&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的页眉　　　&amp;lt;thead&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的主体　　　&amp;lt;tbody&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的页脚　　　&amp;lt;tfoot&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的列属性　　&amp;lt;col&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义单元格边距　　　cellpadding=10&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义单元格间距　　　cellspacing=10&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;表格示例&quot;&gt;&lt;a href=&quot;#表格示例&quot; class=&quot;headerlink&quot; title=&quot;表格示例&quot;&gt;&lt;/a&gt;表格示例&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;table border=&amp;quot;1&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;caption&amp;gt;表格&amp;lt;/caption&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;thead&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;th&amp;gt;单元1&amp;lt;/th&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;th&amp;gt;单元2&amp;lt;/th&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/thead&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;tbody&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td&amp;gt;内容1&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td&amp;gt;内容2&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/tbody&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
-    
-    
-      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【HTML知识点】HTML三种样式插入方法</title>
     <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E6%A0%B7%E5%BC%8F%E7%B1%BB%E5%9E%8B/"/>
     <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML样式类型/</id>
@@ -350,43 +488,6 @@ FRAMESET（框架类型）
 &lt;/li&gt;
 &lt;/ol&gt;
 </content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
-    
-    
-      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【HTML知识点】HTML链接的属性</title>
-    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/"/>
-    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML链接属性/</id>
-    <published>2017-02-06T15:20:51.000Z</published>
-    <updated>2017-02-06T15:15:59.420Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;链接数据&quot;&gt;&lt;a href=&quot;#链接数据&quot; class=&quot;headerlink&quot; title=&quot;链接数据&quot;&gt;&lt;/a&gt;链接数据&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;文本链接&lt;/li&gt;
-&lt;li&gt;图片链接&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;属性&quot;&gt;&lt;a href=&quot;#属性&quot; class=&quot;headerlink&quot; title=&quot;属性&quot;&gt;&lt;/a&gt;属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;href属性：指向另外一个文档链接
-name属性：创建文档内的链接
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;img标签属性&quot;&gt;&lt;a href=&quot;#img标签属性&quot; class=&quot;headerlink&quot; title=&quot;img标签属性&quot;&gt;&lt;/a&gt;img标签属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;alt:替换文本属性
-width:宽
-height:高
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;示例：&quot;&gt;&lt;a href=&quot;#示例：&quot; class=&quot;headerlink&quot; title=&quot;示例：&quot;&gt;&lt;/a&gt;示例：&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;http://www.jiang-yu.cn&amp;quot;&amp;gt;点击&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;http://www.jiang-yu.cn&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;img src=&amp;quot;xxx.png&amp;quot; alt=&amp;quot;图片说明&amp;quot; width=&amp;apos;50px&amp;apos; height=&amp;apos;50px&amp;apos;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 文档内部链接--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a name=&amp;quot;tips&amp;quot;&amp;gt;Tips&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#tips&amp;quot;&amp;gt;跳转到Tips锚点&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
     
     <summary type="html">
     
@@ -430,6 +531,72 @@ height:高
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;dl&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;dt&amp;gt;Hello&amp;lt;/dt&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;dd&amp;gt;描述一&amp;lt;/dd&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;dt&amp;gt;World&amp;lt;/dt&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;dd&amp;gt;描述二&amp;lt;/dd&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/dl&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML表格</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML表格属性/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:15:37.108Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;表格属性认识&quot;&gt;&lt;a href=&quot;#表格属性认识&quot; class=&quot;headerlink&quot; title=&quot;表格属性认识&quot;&gt;&lt;/a&gt;表格属性认识&lt;/h2&gt;&lt;p&gt;&lt;code&gt;定义表格　　　　　　&amp;lt;table&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的标题　　　&amp;lt;caption&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的表头　　　&amp;lt;th&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的行　　　　&amp;lt;tr&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的单元　　　&amp;lt;td&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的页眉　　　&amp;lt;thead&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的主体　　　&amp;lt;tbody&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的页脚　　　&amp;lt;tfoot&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义表格的列属性　　&amp;lt;col&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义单元格边距　　　cellpadding=10&lt;/code&gt;&lt;br&gt;&lt;code&gt;定义单元格间距　　　cellspacing=10&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;表格示例&quot;&gt;&lt;a href=&quot;#表格示例&quot; class=&quot;headerlink&quot; title=&quot;表格示例&quot;&gt;&lt;/a&gt;表格示例&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;table border=&amp;quot;1&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;caption&amp;gt;表格&amp;lt;/caption&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;thead&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;th&amp;gt;单元1&amp;lt;/th&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;th&amp;gt;单元2&amp;lt;/th&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/thead&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;tbody&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td&amp;gt;内容1&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;td&amp;gt;内容2&amp;lt;/td&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/tr&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/tbody&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/categories/HTML/"/>
+    
+    
+      <category term="HTML" scheme="http://www.jiang-yu.cn/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HTML知识点】HTML链接的属性</title>
+    <link href="http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/"/>
+    <id>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML链接属性/</id>
+    <published>2017-02-06T15:20:51.000Z</published>
+    <updated>2017-02-06T15:15:59.420Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;闲暇时间学习学习HTML相关知识！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;链接数据&quot;&gt;&lt;a href=&quot;#链接数据&quot; class=&quot;headerlink&quot; title=&quot;链接数据&quot;&gt;&lt;/a&gt;链接数据&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;文本链接&lt;/li&gt;
+&lt;li&gt;图片链接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;属性&quot;&gt;&lt;a href=&quot;#属性&quot; class=&quot;headerlink&quot; title=&quot;属性&quot;&gt;&lt;/a&gt;属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;href属性：指向另外一个文档链接
+name属性：创建文档内的链接
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;img标签属性&quot;&gt;&lt;a href=&quot;#img标签属性&quot; class=&quot;headerlink&quot; title=&quot;img标签属性&quot;&gt;&lt;/a&gt;img标签属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;alt:替换文本属性
+width:宽
+height:高
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;示例：&quot;&gt;&lt;a href=&quot;#示例：&quot; class=&quot;headerlink&quot; title=&quot;示例：&quot;&gt;&lt;/a&gt;示例：&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;http://www.jiang-yu.cn&amp;quot;&amp;gt;点击&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;http://www.jiang-yu.cn&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;img src=&amp;quot;xxx.png&amp;quot; alt=&amp;quot;图片说明&amp;quot; width=&amp;apos;50px&amp;apos; height=&amp;apos;50px&amp;apos;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 文档内部链接--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a name=&amp;quot;tips&amp;quot;&amp;gt;Tips&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#tips&amp;quot;&amp;gt;跳转到Tips锚点&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
     
     <summary type="html">
     
@@ -578,219 +745,6 @@ height:高
     
     
       <category term="Log4j" scheme="http://www.jiang-yu.cn/tags/Log4j/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring+Log4j+ActiveMQ实现简单的日志收集</title>
-    <link href="http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j%E8%BF%9C%E7%A8%8B%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF/"/>
-    <id>http://www.jiang-yu.cn/2016/11/14/Log4j/Log4j远程打印日志信息/</id>
-    <published>2016-11-14T11:20:51.000Z</published>
-    <updated>2016-11-14T16:02:34.352Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;　　上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　随着业务系统的发展，日志数据也必须要十分重视，日志在生产环境中系统问题的排查有着非常重要的作用。下面就来一步一步来实现一个远程日志系统。
-　　&lt;/p&gt;
-&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;　　首先要定义一个日志的监听器，业务系统生产(produce)日志信息到统一消息中间件（ActiveMQ），然后日志系统不断的从ActiveMQ中去消费(consume)信息。
-　　&lt;/p&gt;
-&lt;h2 id=&quot;日志系统搭建&quot;&gt;&lt;a href=&quot;#日志系统搭建&quot; class=&quot;headerlink&quot; title=&quot;日志系统搭建&quot;&gt;&lt;/a&gt;日志系统搭建&lt;/h2&gt;&lt;p&gt;　　日志系统的实现非常简单，就是要定义一个消息的监听器，不断的从ＭＱ中去获取生产者（业务系统）产生的日志消息，可以参考&lt;a href=&quot;http://activemq.apache.org/how-do-i-use-log4j-jms-appender-with-activemq.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MQ的官方文档&lt;/a&gt;&lt;br&gt;　　下面我们就搭建一个简单的日志系统：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/log4j_jms_project_struct.png&quot; alt=&quot;project_stuct&quot;&gt;&lt;br&gt;　　项目基于Maven+Spring MVC，就一个日志监听器类，还有一个spring的配置文件，提出核心代码和配置文件如下&lt;br&gt;　　&lt;strong&gt;LogMessageListener.java&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;package com.rain.jhon;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import java.util.Date;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.jms.Message;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import javax.jms.MessageListener;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.apache.activemq.command.ActiveMQObjectMessage;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import org.apache.log4j.spi.LoggingEvent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import com.jifenn.framework.util.TimeUtil;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * &amp;lt;p&amp;gt;功能描述&amp;lt;/br&amp;gt; 日志信息的监听 &amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @className  LogMessageListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author  jiangyu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @date  2016年11月14日 下午1:41:20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @version  v1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class LogMessageListener implements MessageListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void onMessage(Message message)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            /** receive log event in your consumer **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            LoggingEvent event = (LoggingEvent)((ActiveMQObjectMessage)message).getObject();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            StringBuilder logStr = new StringBuilder();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            logStr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;Logging project:[ &amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(TimeUtil.Date2Sring(new Date(event.getTimeStamp()), TimeUtil.PATTERN_DATE_7))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot; ]--[Class]: &amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getLoggerName())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;, [ThreadName] : &amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getThreadName())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;,Log Level--[&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getLevel())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(&amp;quot;] :&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .append(event.getMessage());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            /** 打印出日志 **/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            System.out.println(logStr.toString());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        catch (Exception e)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;Spring.xml&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    xsi:schemaLocation=&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        http://www.springframework.org/schema/beans &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;jmsTemplate&amp;quot; class=&amp;quot;org.springframework.jms.core.JmsTemplate&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;connectionFactory&amp;quot; ref=&amp;quot;connectionFactory&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;connectionFactory&amp;quot; class=&amp;quot;org.springframework.jms.connection.SingleConnectionFactory&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;targetConnectionFactory&amp;quot; ref=&amp;quot;targetConnectionFactory&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;targetConnectionFactory&amp;quot; class=&amp;quot;org.apache.activemq.ActiveMQConnectionFactory&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;brokerURL&amp;quot; value=&amp;quot;tcp://localhost:61616&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;bean id=&amp;quot;topicDestination0&amp;quot; class=&amp;quot;org.apache.activemq.command.ActiveMQTopic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;constructor-arg name=&amp;quot;name&amp;quot; value=&amp;quot;EbsLogTopic&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;jmsContainer0&amp;quot; class=&amp;quot;org.springframework.jms.listener.DefaultMessageListenerContainer&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;connectionFactory&amp;quot; ref=&amp;quot;connectionFactory&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;!-- &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;queueDestination&amp;quot; /&amp;gt;  --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;topicDestination0&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;messageListener&amp;quot; ref=&amp;quot;logMessageListener&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;topicDestination1&amp;quot; class=&amp;quot;org.apache.activemq.command.ActiveMQTopic&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;constructor-arg name=&amp;quot;name&amp;quot; value=&amp;quot;logTopic&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;jmsContainer1&amp;quot; class=&amp;quot;org.springframework.jms.listener.DefaultMessageListenerContainer&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;property name=&amp;quot;connectionFactory&amp;quot; ref=&amp;quot;connectionFactory&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;!-- &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;queueDestination&amp;quot; /&amp;gt;  --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;destination&amp;quot; ref=&amp;quot;topicDestination1&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &amp;lt;property name=&amp;quot;messageListener&amp;quot; ref=&amp;quot;logMessageListener&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/bean&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;bean id=&amp;quot;logMessageListener&amp;quot; class=&amp;quot;com.rain.jhon.LogMessageListener&amp;quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;web.xml&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;web-app id=&amp;quot;WebApp_ID&amp;quot; version=&amp;quot;3.0&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	xmlns=&amp;quot;http://java.sun.com/xml/ns/javaee&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	xsi:schemaLocation=&amp;quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;context-param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;param-name&amp;gt;contextConfigLocation&amp;lt;/param-name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;param-value&amp;gt;classpath:spring.xml&amp;lt;/param-value&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/context-param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;!-- Use to load spring.xml --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;listener&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;listener-class&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            org.springframework.web.context.ContextLoaderListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;/listener-class&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/listener&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;welcome-file-list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;welcome-file&amp;gt;index.jsp&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/welcome-file-list&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　上面三个文件就构成了一个简单的日志监听系统，但是还少了一个重要的部分，那就是activemq，由于我是在windows平台上，所以可以直接使用，到apache官网下载windows版本的ActiveMQ，这里我使用windows-64版本：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/log4j_activeMQ.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　启动activeMQ,&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/start_activeMQ.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　然后进入后台管理页面，&lt;a href=&quot;http://localhost:8161,用户名/密码:admin/admin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8161,用户名/密码:admin/admin&lt;/a&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/activeMQ_index.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　启动日志系统，查看activeMQ中的Topic,可以发现我们配置的两个Topic,如下图所示&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/spring_jms_config.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/start_log_system.png&quot; alt=&quot;activeMq&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;业务系统配置log4j&quot;&gt;&lt;a href=&quot;#业务系统配置log4j&quot; class=&quot;headerlink&quot; title=&quot;业务系统配置log4j&quot;&gt;&lt;/a&gt;业务系统配置log4j&lt;/h2&gt;&lt;p&gt;　　上面的配置都ok后，我们就来配置业务系统中的log4j到jms的连接,假设我们有业务系统Maven+spring+…&lt;/p&gt;
-&lt;h3 id=&quot;log4j-properties的配置：&quot;&gt;&lt;a href=&quot;#log4j-properties的配置：&quot; class=&quot;headerlink&quot; title=&quot;log4j.properties的配置：&quot;&gt;&lt;/a&gt;log4j.properties的配置：&lt;/h3&gt;&lt;p&gt;　　这个配置可以参考官网的配置：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/active_document_01.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;log4j.rootLogger=info,jms,stdout&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.logger.org.apache.activemq=INFO,stdout&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.stdout=org.apache.log4j.ConsoleAppender &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.stdout.layout=org.apache.log4j.PatternLayout &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c&amp;#123;1&amp;#125;(%L) [%X&amp;#123;ip&amp;#125;] - %M %m%n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;###########################################################################################&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## Configure &amp;apos;jms&amp;apos; appender. You&amp;apos;ll also need jndi.properties file in order to make it work&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms=org.apache.log4j.net.JMSAppender&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.InitialContextFactoryName=org.apache.activemq.jndi.ActiveMQInitialContextFactory&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.ProviderURL=tcp://localhost:61616&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.TopicBindingName=EbsLogTopic&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.TopicConnectionFactoryBindingName=ConnectionFactory&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;log4j.appender.jms.layout.ConversionPattern=%d %-5p %c&amp;#123;1&amp;#125;(%L) [%X&amp;#123;ip&amp;#125;] - %M %m%n&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;jndi-properties的配置&quot;&gt;&lt;a href=&quot;#jndi-properties的配置&quot; class=&quot;headerlink&quot; title=&quot;jndi.properties的配置&quot;&gt;&lt;/a&gt;jndi.properties的配置&lt;/h3&gt;&lt;p&gt;　　配置JNDI信息（实例工程结构和配置文件）&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/business_config_info.png&quot; alt=&quot;activeMq&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;测试效果&quot;&gt;&lt;a href=&quot;#测试效果&quot; class=&quot;headerlink&quot; title=&quot;测试效果&quot;&gt;&lt;/a&gt;测试效果&lt;/h2&gt;&lt;p&gt;　　启动日志监听系统&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/start_log_system02.png&quot; alt=&quot;activeMq&quot;&gt;&lt;br&gt;　　启动业务系统，访问接口，打印测试日志信息：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Log4j/demo_result.png&quot; alt=&quot;activeMq&quot;&gt;
-　　&lt;/p&gt;
-&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　至此，就愉快的实现了远程打日志了，虽然看起来有点麻烦，但是实现了是不是有一种成就感呢？哈哈，加油。。。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;　　上一篇中讲解过log4j的一些基础知识以及日志文件的分模块存储，但是项目在生产环境的时候，日志刷屏看起来非常不舒服，于是就想通过远程来收集别的系统日志来实现日志和业务系统分离的想法。本文中主要采用的是ActiveMQ消息中间件来实现远程日志打印。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Log4j" scheme="http://www.jiang-yu.cn/categories/Log4j/"/>
-    
-    
-      <category term="Log4j" scheme="http://www.jiang-yu.cn/tags/Log4j/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 8 Lambda表达式了解和应用</title>
-    <link href="http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
-    <id>http://www.jiang-yu.cn/2016/11/12/Jdk/Java8--Lambda介绍和使用/</id>
-    <published>2016-11-12T07:20:51.000Z</published>
-    <updated>2016-11-12T05:40:05.780Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　Java项目的升级是必然的，目前工作中的大部分项目都是在Jdk7的环境下使用，但是为了后期的发展，Jdk 8 是必然的一个选择，而且Java 8中的lambda(闭包)和虚拟扩展方法（default Method）都已经被炒得沸沸扬扬了，所以本文就来认识和介绍一下相关知识，学习函数式编程思想来开阔自己的思路。&lt;/p&gt;
-&lt;h1 id=&quot;Lambda表达式初识&quot;&gt;&lt;a href=&quot;#Lambda表达式初识&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式初识&quot;&gt;&lt;/a&gt;Lambda表达式初识&lt;/h1&gt;&lt;p&gt;　　首先从一个简单的例子入手，来查看一下lambda表达式的效果，下面分别是java7和java8中创建一个线程的示例代码，&lt;br&gt;　　java7实现方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java_7_runnable.png&quot; alt=&quot;java7&quot;&gt;&lt;br&gt;　　java8实现方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java_lambda_runnable.png&quot; alt=&quot;java8&quot;&gt;&lt;br&gt;　　从上面的实例代码中可以看出，Java8的lambda表达式确实是非常的简洁和方便，代码中使用() -&amp;gt; {} 替代匿名类–Runnable()接口。&lt;/p&gt;
-&lt;h1 id=&quot;Lambda表达式语法&quot;&gt;&lt;a href=&quot;#Lambda表达式语法&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式语法&quot;&gt;&lt;/a&gt;Lambda表达式语法&lt;/h1&gt;&lt;h2 id=&quot;函数式接口&quot;&gt;&lt;a href=&quot;#函数式接口&quot; class=&quot;headerlink&quot; title=&quot;函数式接口&quot;&gt;&lt;/a&gt;函数式接口&lt;/h2&gt;&lt;p&gt;　　Functional Interface–(函数式接口FI)，FI的定义很简单——任何接口，如果只有唯一一个抽象方法，那么这个接口就可以定义成为一个FI.例如：Runnable,Comparator接口都加上了一个@FunctionalInterface注解，编译器为了能够确保一个接口满足FI的要求，Java8提供了这个注解。&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_functionalInterface.png&quot; alt=&quot;java8 FI Define&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_functionInterface01.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Lambda语法&quot;&gt;&lt;a href=&quot;#Lambda语法&quot; class=&quot;headerlink&quot; title=&quot;Lambda语法&quot;&gt;&lt;/a&gt;Lambda语法&lt;/h2&gt;&lt;p&gt;　　如上图所示，Lambda表达式的使用方式：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;str.sort((word1, word2) -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return Integer.compare(word1.length(), word2.length());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　如果Lambda表达式的代码块只是return后面跟一个表达式，则可以简化为：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;str.sort(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    (word1, word2) -&amp;gt; Integer.compare(word1.length(), word2.length())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　[注意]表达式后面是没有分号,如果只有一个参数，那么包围参数的圆括号可以省略：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;str.forEach(temp -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    System.out.println(temp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　如果表达式不需要参数但也必须有圆括号，eg：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Executors.newFixedThreadExecutor().execute(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // Runnable&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    () -&amp;gt; &amp;#123;/* do something. */&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;方法引用&quot;&gt;&lt;a href=&quot;#方法引用&quot; class=&quot;headerlink&quot; title=&quot;方法引用&quot;&gt;&lt;/a&gt;方法引用&lt;/h2&gt;&lt;p&gt;　　Method References–(方法引用),有时候Lambda表达式只包含一个简单的方法调用，所以在这种情况下就可以将Lambda表达式简化为方法引用。方法引用包含四种方式：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_lambda_method_reference.png&quot; alt=&quot;java8 FI Define&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;静态方法&quot;&gt;&lt;a href=&quot;#静态方法&quot; class=&quot;headerlink&quot; title=&quot;静态方法&quot;&gt;&lt;/a&gt;静态方法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;Integer&amp;gt; ints = Arrays.asList(1, 2, 3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ints.sort(Integer::compare);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;某个特定对象的实例方法&quot;&gt;&lt;a href=&quot;#某个特定对象的实例方法&quot; class=&quot;headerlink&quot; title=&quot;某个特定对象的实例方法&quot;&gt;&lt;/a&gt;某个特定对象的实例方法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;words.forEach(System.out::println);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;某个类的实例方法&quot;&gt;&lt;a href=&quot;#某个类的实例方法&quot; class=&quot;headerlink&quot; title=&quot;某个类的实例方法&quot;&gt;&lt;/a&gt;某个类的实例方法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(word -&amp;gt; word.length()); // lambda&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(String::length); // method reference&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;构造函数&quot;&gt;&lt;a href=&quot;#构造函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数&quot;&gt;&lt;/a&gt;构造函数&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// lambda&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(word -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return new StringBuilder(word);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// constructor reference&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;words.stream().map(StringBuilder::new);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;Lambda表达式使用场景&quot;&gt;&lt;a href=&quot;#Lambda表达式使用场景&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式使用场景&quot;&gt;&lt;/a&gt;Lambda表达式使用场景&lt;/h1&gt;&lt;p&gt;　　任何可以接受一个FI实例的地方，都可以用Lambda表达式。比如，虽然上面给出的例子都是把Lambda表达式当作方法参数传递，但实际上我们也可以定义变量：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Runnable task = () -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // do something&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Comparator&amp;lt;String&amp;gt; cmp = (s1, s2) -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return Integer.compare(s1.length(), s2.length());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;预定义函数式接口&quot;&gt;&lt;a href=&quot;#预定义函数式接口&quot; class=&quot;headerlink&quot; title=&quot;预定义函数式接口&quot;&gt;&lt;/a&gt;预定义函数式接口&lt;/h2&gt;&lt;p&gt;　　Java8除了给Runnable，Comparator等接口打上了@FunctionalInterface注解之外，还预定义了一大批新的FI。这些接口都在java.util.function包里：&lt;br&gt;&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_functionInterface04.png&quot; alt=&quot;java8 FI Define&quot;&gt;&lt;br&gt;下面简单介绍其中的几个&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@FunctionalInterface&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Predicate&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    boolean test(T t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　Predicate用来判断一个对象是否满足某种条件，比如，单词是否由六个以上字母组成：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;words.stream()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .filter(word -&amp;gt; word.length() &amp;gt; 6)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .count();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　Function表示接收一个参数，并产生一个结果的函数：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@FunctionalInterface&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Function&amp;lt;T, R&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    R apply(T t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　下面的例子将集合里的每一个整数都乘以2：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ints.stream().map(x -&amp;gt; x * 2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　Consumer表示对单个参数进行的操作，前面例子中的forEach()方法接收的参数就是这种操作：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@FunctionalInterface&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Consumer&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    void accept(T t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;默认方法-Default-Methods&quot;&gt;&lt;a href=&quot;#默认方法-Default-Methods&quot; class=&quot;headerlink&quot; title=&quot;默认方法(Default Methods)&quot;&gt;&lt;/a&gt;默认方法(Default Methods)&lt;/h2&gt;&lt;p&gt;　　Java8对很多老的类库进行了增强，给它们配备了Lambda武器。比如前面例子中用到的forEach()方法，实际上是添加到Iterable接口中的。而多次出现的stream()方法，则是添加在了Collection接口里，为了保证API的向后兼容性，Java8对接口的语法进行了较大的调整，增加了 默认方法（Default Methods）。例如forEach()方法的实现代码如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public interface Iterable&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	default void forEach(Consumer&amp;lt;? super T&amp;gt; action) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Objects.requireNonNull(action);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for (T t : this) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			action.accept(t);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_default_method_01.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_default_method_02.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;接口的静态方法&quot;&gt;&lt;a href=&quot;#接口的静态方法&quot; class=&quot;headerlink&quot; title=&quot;接口的静态方法&quot;&gt;&lt;/a&gt;接口的静态方法&lt;/h3&gt;&lt;p&gt;　　除了抽象方法和默认方法，从Java8开始，接口也可以有静态（static）方法了。有了这个语法，我们就可以把和接口相关的帮助方法（Helper Methods）直接定义在接口里了。比如Function接口就定义了一个工厂方法indentity()：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public interface Function&amp;lt;T, R&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     * Returns a function that always returns its input argument.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     * @param &amp;lt;T&amp;gt; the type of the input and output objects to the function&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     * @return a function that always returns its input argument&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static &amp;lt;T&amp;gt; Function&amp;lt;T, T&amp;gt; identity() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return t -&amp;gt; t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;变量捕获&quot;&gt;&lt;a href=&quot;#变量捕获&quot; class=&quot;headerlink&quot; title=&quot;变量捕获&quot;&gt;&lt;/a&gt;变量捕获&lt;/h3&gt;&lt;p&gt;　　和内部类一样，Lambda也可以访问外部（词法作用域）变量，规则基本一样 。Java8之前， 内部类只能访问final类型的变量 ，Java8放宽了这种限制，只要变量实际上不可变（effectively final）就可以。换句话说，如果你给变量加上final关键字编译器也不报错，那么去掉final关键字后，它就是effectively final的。看下面的例子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int tmp = 100;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Runnable x = new Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void run() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(tmp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　在Java8之前，a必须是final的才能被x看到。下面用Lambda表达式重写上面的例子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int tmp = 100;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Runnable x = () -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    System.out.println(tmp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;　　Java8后出现了默认方法（Default Methods），如果你对抽象类比较熟悉的话，那么你可能会想java8的默认方法和抽象类有点像，但是这两者之间还是有些联系和区别的，请看下图：&lt;br&gt;&lt;img src=&quot;/uploads/blog/Jdk/java8/java8_default_method_03.png&quot; alt=&quot;java8 FI Compare&quot;&gt;&lt;/p&gt;
-&lt;p&gt;#结束语&lt;br&gt;　　Java8的Lambda才真正让Java朝着函数式编程迈进了一大步。&lt;/p&gt;
-&lt;p&gt;　　&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;作为一名Java程序员，想想Jdk 9都快要出来了，必须要马上学习一下Jdk 8中的一些新特性了，早就听说了Java8中的Lambda表达式非常强大，一直都处于懒散状态，真的需要开始充充新知识了！&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Lambda" scheme="http://www.jiang-yu.cn/categories/Lambda/"/>
-    
-    
-      <category term="Lambda" scheme="http://www.jiang-yu.cn/tags/Lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ActiveMQ启动报错--ISC服务惹的祸</title>
-    <link href="http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/"/>
-    <id>http://www.jiang-yu.cn/2016/11/09/ActiveMQ/ActiveMQ-ICS_Service/</id>
-    <published>2016-11-09T00:43:51.000Z</published>
-    <updated>2016-11-09T01:04:17.197Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;  本文主要记录一下在windows上使用ActiveMQ过程中出现的一个错误，而且出现过两次，方便后期备忘和快速查询。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　最近做项目中遇到了要使用异步的方式去实现某些业务场景，所以就选择了ActiveMQ+Camel来实现，开始的时候可以正常使用，但是在使用一段时间后，在windows上偶尔会出现启动的时候报错，开始一直都以为是端口冲突导致的问题，但是改过很多端口号后还是不行，最后还是依赖强大的Google找到了答案，所以记录一下解决方法。&lt;/p&gt;
-&lt;h2 id=&quot;第一步：问题复现&quot;&gt;&lt;a href=&quot;#第一步：问题复现&quot; class=&quot;headerlink&quot; title=&quot;第一步：问题复现&quot;&gt;&lt;/a&gt;第一步：问题复现&lt;/h2&gt;&lt;p&gt;　　在windows上点击ActiveMQ中bin目录下：bin/win64/activemq.bat 启动MQ服务，出现如下报错：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Failed to bind to server socket:tcp://0.0.0.0:61626 due to: java.net.BindException: Address already in use: JVM_Bind&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　如下图所示&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/ActiveMQ/activeMQ_error_msg.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第二步：问题排查&quot;&gt;&lt;a href=&quot;#第二步：问题排查&quot; class=&quot;headerlink&quot; title=&quot;第二步：问题排查&quot;&gt;&lt;/a&gt;第二步：问题排查&lt;/h2&gt;&lt;p&gt;　　初步判断是：端口号被占用了，所以先查看一下端口“61626” 被哪个服务给占用了，然后直接kill掉那个进程，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/ActiveMQ/error_problem_check_01.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　然而，结果让我们很失望，nothing,没有任何进程占用该端口号，所以我想既然61626端口被占用了，那我就再换一个端口号，但是还是不行，还是报同样的错误。
-　　&lt;/p&gt;
-&lt;h2 id=&quot;第三步：&quot;&gt;&lt;a href=&quot;#第三步：&quot; class=&quot;headerlink&quot; title=&quot;第三步：&quot;&gt;&lt;/a&gt;第三步：&lt;/h2&gt;&lt;p&gt;　　通过netstat -aon | findstr “61616” 查找端口被谁占用了，可是一直没有找到，最后只能去Google大法那里去寻求帮助了，Google说是 Internet Connection Sharing (ICS)服务占用，kill了这个服务，启动就Ok了。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;微软官方服务解释：&lt;br&gt;　　BITS can force a dial-up connection for home networks that use Microsoft Internet Connection Sharing if Connection Sharing is configured to dial out when computers on the network access the Internet. To prevent a forced dial-up connection, disable the Establish a dial-up connection whenever a computer on my network attempts to access the Internet option on the Connection Sharing host computer that shares its Internet connection.&lt;br&gt;　　Computers connected to the Connection Sharing host computer assume they have a network connection, so BITS will try to transfer files. If the dial-up option is disabled on the host computer and the host computer does not have an active connection, the transfers will fail with a transient error. BITS will retry the transfers periodically.
-　　&lt;/p&gt;
-&lt;h2 id=&quot;第四步：问题解决&quot;&gt;&lt;a href=&quot;#第四步：问题解决&quot; class=&quot;headerlink&quot; title=&quot;第四步：问题解决&quot;&gt;&lt;/a&gt;第四步：问题解决&lt;/h2&gt;&lt;p&gt;　　Google后，立即打开windows的任务管理器，找到了相应的“嫌疑人”进程，直接kill掉&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/ActiveMQ/kill_ICS_Service.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　果然，kill掉ICS那个服务之后，ActiveMQ又可以正常启动了。
-　　&lt;/p&gt;
-&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　每天记录平时工作中遇到的问题，一点一点积累，加油，Fighting !!!&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;  本文主要记录一下在windows上使用ActiveMQ过程中出现的一个错误，而且出现过两次，方便后期备忘和快速查询。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="ActiveMQ" scheme="http://www.jiang-yu.cn/categories/ActiveMQ/"/>
-    
-    
-      <category term="ActiveMQ" scheme="http://www.jiang-yu.cn/tags/ActiveMQ/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SVN入门教程（三）--上传文件到SVN服务器</title>
-    <link href="http://www.jiang-yu.cn/2016/09/02/SVN/SVN%20Learn%20Basic%2003/"/>
-    <id>http://www.jiang-yu.cn/2016/09/02/SVN/SVN Learn Basic 03/</id>
-    <published>2016-09-02T04:43:51.000Z</published>
-    <updated>2016-09-02T05:49:26.642Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　通过前面的&lt;a href=&quot;http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/&quot;&gt;SVN入门教程（二）–下载文件到本地计算机&lt;/a&gt;,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。&lt;/p&gt;
-&lt;h2 id=&quot;第一步：确定你需要上传文件到服务器中的位置&quot;&gt;&lt;a href=&quot;#第一步：确定你需要上传文件到服务器中的位置&quot; class=&quot;headerlink&quot; title=&quot;第一步：确定你需要上传文件到服务器中的位置&quot;&gt;&lt;/a&gt;第一步：确定你需要上传文件到服务器中的位置&lt;/h2&gt;&lt;p&gt;　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0020.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　理解了上面的概念之后，确定了要存放文件的目录，比如：(&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。&quot;&gt;https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第二步：添加文件操作&quot;&gt;&lt;a href=&quot;#第二步：添加文件操作&quot; class=&quot;headerlink&quot; title=&quot;第二步：添加文件操作&quot;&gt;&lt;/a&gt;第二步：添加文件操作&lt;/h2&gt;&lt;p&gt;　　首先，有了第一步中的链接，比如：【&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/新员工天地】&quot;&gt;https://www.jiang-yu.cn/svn/document/新员工天地】&lt;/a&gt; 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0021.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　然后，执行SVN的添加操作，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0022.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，&lt;br&gt;　　【文件的变化】如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0023.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;br&gt;　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0024.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第三步：提交文件菜单操作&quot;&gt;&lt;a href=&quot;#第三步：提交文件菜单操作&quot; class=&quot;headerlink&quot; title=&quot;第三步：提交文件菜单操作&quot;&gt;&lt;/a&gt;第三步：提交文件菜单操作&lt;/h2&gt;&lt;p&gt;　　上面两步正确操作之后，在文件上右键点击出现菜单中选择SVN Commit，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0025.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第四步：填写提交备注信息&quot;&gt;&lt;a href=&quot;#第四步：填写提交备注信息&quot; class=&quot;headerlink&quot; title=&quot;第四步：填写提交备注信息&quot;&gt;&lt;/a&gt;第四步：填写提交备注信息&lt;/h2&gt;&lt;p&gt;　　最后，出现一个填写备注的弹出框，这里需要说明一下，就是每次提交文件（也就是对文件有修改操作，新增操作，删除操作的话都需要填写操作的原因和影响的文件）都要填写操作备注，养成这样的好习惯，对后面操作是有帮助的，如下图所示，可以按照给出的模板操作：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;【提 交 人】：江xx&lt;br&gt;【文件说明】：新增了新员工入职指导文件&lt;br&gt;【修改说明】：&lt;br&gt;　　1.修改了xxx文件&lt;br&gt;　　2.删除了xxx文件&lt;br&gt;【影响范围】：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0026.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document/aaa.doc&quot;&gt;https://www.jiang-yu.cn/svn/document/aaa.doc&lt;/a&gt; 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
-    
-    
-      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SVN入门教程（二）--下载文件到本地计算机</title>
-    <link href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/"/>
-    <id>http://www.jiang-yu.cn/2016/09/01/SVN/SVN Learn Basic02/</id>
-    <published>2016-09-01T14:47:51.000Z</published>
-    <updated>2016-09-02T05:01:01.683Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;　　在看此教程之前，请先安装好SVN客户端到自己的电脑上，否则请移步&lt;a href=&quot;http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic%2001/&quot;&gt;SVN入门教程（一）–软件的安装&lt;/a&gt;。在安装好了SVN客户端后，下面我们就开始SVN的使用之旅吧！Come on…这次讲解的是如何从SVN服务器上下载我们需要的文件资源。&lt;/p&gt;
-&lt;h2 id=&quot;第一步：创建文件夹&quot;&gt;&lt;a href=&quot;#第一步：创建文件夹&quot; class=&quot;headerlink&quot; title=&quot;第一步：创建文件夹&quot;&gt;&lt;/a&gt;第一步：创建文件夹&lt;/h2&gt;&lt;p&gt;　　首先，我们要在自己的电脑上创建一个文件夹（任意位置，任意名称），用来存放从SVN服务器中下载的文件，例如：我需要下载公司的人资部的一些文档资源，第一步，创建一个文件夹（HR_DOCUMENT）&lt;br&gt;下面的教程使用的是A_SVN_DEMO这个文件名，如下图所示：&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0011.png&quot; alt=&quot;create_des_folder&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;a href=&quot;#第二步：检出资源文件，填写链接地址&quot; class=&quot;headerlink&quot; title=&quot;第二步：检出资源文件，填写链接地址&quot;&gt;&lt;/a&gt;第二步：检出资源文件，填写链接地址&lt;/h2&gt;&lt;p&gt;　　文件夹创建好之后，在文件夹上右键–&amp;gt;SVN Checkout–&amp;gt;出现如下的弹出框，这个弹出框需要填写一个链接地址(一般情况下，如果你是下载文件的话，你的领导或者同事都会给你一个链接的地址，例如：&lt;a href=&quot;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&quot;&gt;https://www.jiang-yu.cn/svn/document),如图所示，将https://www.jiang-yu.cn/svn/document（这里你需要替换成别人给你的链接地址）&lt;/a&gt; 填写到URL of repository下的输入框中，然后点击ok即可&lt;br&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0012.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第三步：等待文件资源下载，查看下载的进度和情况&quot;&gt;&lt;a href=&quot;#第三步：等待文件资源下载，查看下载的进度和情况&quot; class=&quot;headerlink&quot; title=&quot;第三步：等待文件资源下载，查看下载的进度和情况&quot;&gt;&lt;/a&gt;第三步：等待文件资源下载，查看下载的进度和情况&lt;/h2&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0013.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;第四步：查看文件是否下载下来了&quot;&gt;&lt;a href=&quot;#第四步：查看文件是否下载下来了&quot; class=&quot;headerlink&quot; title=&quot;第四步：查看文件是否下载下来了&quot;&gt;&lt;/a&gt;第四步：查看文件是否下载下来了&lt;/h2&gt;&lt;p&gt;　　&lt;img src=&quot;/uploads/blog/SVN/svn_0014.png&quot; alt=&quot;JDK_CONFG_CHECK&quot;&gt;
-　　&lt;/p&gt;
-&lt;h2 id=&quot;结束语&quot;&gt;&lt;a href=&quot;#结束语&quot; class=&quot;headerlink&quot; title=&quot;结束语&quot;&gt;&lt;/a&gt;结束语&lt;/h2&gt;&lt;p&gt;　　哎呀，一不小心，本文就结束了，是不是很简单呢，只需要简单的四步就可以从SVN服务器中，获取你所需要的文件，这里很多的操作都直接在截图中有备注（比较懒–不想打字，哈哈），好了，透露一下，本教程会有连载哦，下一篇会写一下如何在本地计算机上传文件到服务器上，如果想掌握SVN的基本使用，请多多关注哈&lt;del&gt;~&lt;/del&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;  本文主要介绍利用SVN客户端从服务器上下载文件到本地计算机。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="SVN" scheme="http://www.jiang-yu.cn/categories/SVN/"/>
-    
-    
-      <category term="SVN" scheme="http://www.jiang-yu.cn/tags/SVN/"/>
     
   </entry>
   

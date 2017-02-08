@@ -4,30 +4,82 @@
   
     
     <entry>
-      <title><![CDATA[【HTML知识点】HTML之表单创建]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%A1%A8%E5%8D%95%E5%88%9B%E5%BB%BA/</url>
+      <title><![CDATA[【Linux】Linux 新增用户]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/Linux/Linux%E6%96%B0%E5%A2%9E%E7%94%A8%E6%88%B7/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
+<p>Linux学习之路！<br><a id="more"></a></p>
 </blockquote>
-<a id="more"></a>
-<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p><code>表单　　　　　　　&lt;form&gt;</code><br><code>输入域　　　　　　&lt;input&gt;</code><br><code>文本域　　　　　　&lt;textarea&gt;</code><br><code>控制标签　　　　　&lt;label&gt;</code><br><code>定义域　　　　　　&lt;fieldset&gt;</code><br><code>域的标题　　　　　&lt;legend&gt;</code><br><code>选择列表　　　　　&lt;select&gt;</code><br><code>选择组　　　　　　&lt;optgroup&gt;</code><br><code>下拉表中的选项　　&lt;option&gt;</code><br><code>按钮　　　　　　　&lt;button&gt;</code></p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html language=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;表单创建&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;xxx.do&quot; method=&quot;post&quot;&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;用户名：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;密码：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
+<p>&gt;<br>[root@localhost ~]# useradd -d /home/jhonrain -m jhonrain<br>[root@localhost ~]# passwd jhonrain<br>Changing password for user jhonrain<br>New password:<br>BAD PASSWORD: it is WAY too short<br>BAD PASSWORD: is too simple<br>Retype new password:<br>passwd: all authentication tokens updated successfully.<br>[root@localhost ~]# chown jhonrain -R /home/jhonrain<br>[root@localhost ~]# su jhonrain<br>[jhonrain@localhost root]\$ ls<br>ls: cannot open directory .: Permission denied<br>[jhonrain@localhost root]\$ cd /home/jhonrain/<br>[jhonrain@localhost ~]\$ ls<br>[jhonrain@localhost ~]\$ touch jhonrain.txt<br>[jhonrain@localhost ~]\$ ls<br>jhonrain.txt<br>[jhonrain@localhost ~]\$ vim jhonrain.txt<br>[jhonrain@localhost ~]\$<br>``</p>
+</blockquote>
 ]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[【HTML知识点】HTML 实体]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E5%AE%9E%E4%BD%93/</url>
+      <title><![CDATA[【Nginx】Nginx基本操作]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/Ngnix/Nginx%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Nginx学习遇到的问题和积累！<br><a id="more"></a></p>
+</blockquote>
+<h2 id="基本操作命名"><a href="#基本操作命名" class="headerlink" title="基本操作命名"></a>基本操作命名</h2><ol>
+<li>停止：./nginx -s stop</li>
+<li>重新加载：./nginx -s reload</li>
+<li>启动：./nginx -c /usr/local/nginx/conf/nginx.conf</li>
+</ol>
+<h2 id="支持websocket配置"><a href="#支持websocket配置" class="headerlink" title="支持websocket配置"></a>支持websocket配置</h2><p>例如：vim vhost/xx.jhonrain.conf</p>
+<p>``<br>server{<br>　　listen 80;<br>　　server_name xx.jhonrain.com<br>　　charset utf-8;</p>
+<p>　　location /{<br>　　　　root html;<br>　　　　index index.html index.htm;<br>　　　　proxy_pass <a href="http://127.0.0.1:8864" target="_blank" rel="external">http://127.0.0.1:8864</a>;<br>　　　　proxy_set_header Host \$host;<br>　　　　proxy_set_header X-Real-IP \$remote_addr;<br>　　　　proxy_set_header X-Forward-For \$proxy_add_x_forwarded_for;<br>　　　　proxy_redirect default;<br>　　　　proxy_connect_timeout 10;<br>　　　　<br>　　　　proxy_http_version 1.1;<br>　　　　proxy_set_header Upgrade $http_upgrade;<br>　　　　proxy_set_header Connection “upgrade”;<br>　　　　<br>　　}<br>　　<br>　　error_page 500 502 503 504 /50x.html;<br>　　location = /50x.html{<br>　　　　　　　root html;<br>　　}<br>　　<br>　　access_log logs/xx.xx.com.access.log;<br>　　error_log logs/xx.xx.com.error.log;<br>}<br>``</p>
+<h2 id="配置文件隔离配置–分离多个站点的配置"><a href="#配置文件隔离配置–分离多个站点的配置" class="headerlink" title="配置文件隔离配置–分离多个站点的配置"></a>配置文件隔离配置–分离多个站点的配置</h2><p><code>include vhost/*.conf;</code></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【NodeJS】NodeJS 环境搭建]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/NodeJS/NodeJS%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>NodeJs探索之路！<br><a id="more"></a></p>
+</blockquote>
+<p>　　首先从官网下载压缩包，解压到usr/local/目录下，<br>　　切换到root用户，修改/etc/profile文件，<br>　　执行修改文件命令：<code>vim /etc/profile</code><br>　　然后，添加NODE环境变量，具体配置如下：</p>
+<blockquote>
+<p>&gt;<br>export NODE_HOME=/usr/local/node450<br>export PATH=\$PATH:\$NODE_HOME/bin<br>export NODE_PATH=$NODE_HOME/lib/node_modules</p>
+</blockquote>
+<p>　　如下图所示：<br>　　<img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE_PATH.png" alt="NODE_PATH"><br>　　<br>　　最后，配置完成之后，记得使profile文件生效，执行 <code>source profile</code> 命令，然后查看一下是否安装成功，查看一下node的版本号，如下图所示：<br>　　<img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE-VERSION.png" alt="NODE_VERSION"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【LINUX】批量kill进程]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/Linux/Linux%20%E6%89%B9%E9%87%8Fkill%E8%BF%9B%E7%A8%8B/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>闲暇时间学习学习HTML相关知识！</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="HTML-实体"><a href="#HTML-实体" class="headerlink" title="HTML 实体"></a>HTML 实体</h1><ol>
-<li><p>实体<br>HTML中预留字符串必须被替换成字符实体<br>例如：&lt;、&gt;、&amp;等</p>
-</li>
-<li><p>转换字符实体映射表<br><img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/html%E5%AE%9E%E4%BD%93.png" alt="html实体"></p>
-</li>
-</ol>
+<p>　　管道符”|”用来隔开两个命令，管道符左边命令的输出会作为管道符右边命令的输入。<br>　　<br>　　<code>ps -ef|grep tomcat|grep -v grep|cat -c 9-15|xargs kill -9</code><br>　　<br>　　ps - ef”是Red Hat里查看所有进程的命令,这时检索出的进程将作为下一条命令“grep tomcat”的输入。</p>
+<p>　　grep tomcat的输出结果是，所有含有关键字“tomcat”的进程</p>
+<p>　　grep -v grep是在列出的进程中去除含有关键字“grep”的进程。</p>
+<p>　　cut -c 9-15　是截取输入行的第9个字符到第15个字符，而这正好是进程号PID。</p>
+<p>　　xargs kill -9　中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -9”命令的参数，并执行该令。   </p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【LINUX】文件操作]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/Linux/Linux%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Linux 学习之路！</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="文件的操作"><a href="#文件的操作" class="headerlink" title="文件的操作"></a>文件的操作</h2><h3 id="机器对拷文件"><a href="#机器对拷文件" class="headerlink" title="机器对拷文件"></a>机器对拷文件</h3><p>　　<code>scp -r /home/schedule/ schedule@121.199.178.127:/home/schedule/</code></p>
+<h3 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h3><p>　　<code>mv * /usr/local/tmp</code></p>
+<h3 id="修改文件的访问权限"><a href="#修改文件的访问权限" class="headerlink" title="修改文件的访问权限"></a>修改文件的访问权限</h3><p>　　<code>chmod u+x aa.txt
+　　　chmod 550 aa.txt</code></p>
+<h3 id="修改文件所属的用户组"><a href="#修改文件所属的用户组" class="headerlink" title="修改文件所属的用户组"></a>修改文件所属的用户组</h3><p>　　<code>chown -R demo:demo directroydemo</code></p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>　　<code>rm -rf aa.txt</code></p>
+<h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><p>　　<code>more aa.txt
+   　　cat aa.txt
+   　　tail aa.txt
+   　　head aa.txt</code></p>
+<h3 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h3><p>　　<code>vim aa.txt</code></p>
 ]]></content>
     </entry>
     
@@ -69,14 +121,15 @@
     </entry>
     
     <entry>
-      <title><![CDATA[【HTML知识点】HTML之TABLE布局]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20TABLE%E5%B8%83%E5%B1%80/</url>
+      <title><![CDATA[【HTML知识点】HTML之表单创建]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%A1%A8%E5%8D%95%E5%88%9B%E5%BB%BA/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>闲暇时间学习学习HTML相关知识！</p>
 </blockquote>
 <a id="more"></a>
-<p>#HTML TABLE布局</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!Doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;table布局&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin:0px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    &lt;table  width=&quot;100%&quot;,height=&quot;950px&quot; style=&quot;backgroun-color:red;&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:blue;&quot;&gt;顶部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td width=&quot;30%&quot; height=&quot;80%&quot; style=&quot;background-color=gray;&quot;&gt;左菜单&lt;/td&gt;</span><br><span class="line">            &lt;td width=&quot;70%&quot; height=&quot;80%&quot; style=&quot;background-color=blue;&quot;&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:black;&quot;&gt;底部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p><code>表单　　　　　　　&lt;form&gt;</code><br><code>输入域　　　　　　&lt;input&gt;</code><br><code>文本域　　　　　　&lt;textarea&gt;</code><br><code>控制标签　　　　　&lt;label&gt;</code><br><code>定义域　　　　　　&lt;fieldset&gt;</code><br><code>域的标题　　　　　&lt;legend&gt;</code><br><code>选择列表　　　　　&lt;select&gt;</code><br><code>选择组　　　　　　&lt;optgroup&gt;</code><br><code>下拉表中的选项　　&lt;option&gt;</code><br><code>按钮　　　　　　　&lt;button&gt;</code></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html language=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;表单创建&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;xxx.do&quot; method=&quot;post&quot;&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;用户名：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;密码：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
     </entry>
     
     <entry>
@@ -106,6 +159,33 @@ FRAMESET（框架类型）
 <li>XHTML 属性必须使用小写</li>
 <li>XHTML 属性值必须用引号包围</li>
 <li>XHTML 属性的最小化也是静止的</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML之TABLE布局]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20TABLE%E5%B8%83%E5%B1%80/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<p>#HTML TABLE布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!Doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;table布局&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin:0px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    &lt;table  width=&quot;100%&quot;,height=&quot;950px&quot; style=&quot;backgroun-color:red;&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:blue;&quot;&gt;顶部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td width=&quot;30%&quot; height=&quot;80%&quot; style=&quot;background-color=gray;&quot;&gt;左菜单&lt;/td&gt;</span><br><span class="line">            &lt;td width=&quot;70%&quot; height=&quot;80%&quot; style=&quot;background-color=blue;&quot;&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:black;&quot;&gt;底部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML 实体]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E5%AE%9E%E4%BD%93/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTML-实体"><a href="#HTML-实体" class="headerlink" title="HTML 实体"></a>HTML 实体</h1><ol>
+<li><p>实体<br>HTML中预留字符串必须被替换成字符实体<br>例如：&lt;、&gt;、&amp;等</p>
+</li>
+<li><p>转换字符实体映射表<br><img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/html%E5%AE%9E%E4%BD%93.png" alt="html实体"></p>
+</li>
 </ol>
 ]]></content>
     </entry>
@@ -142,17 +222,6 @@ FRAMESET（框架类型）
     </entry>
     
     <entry>
-      <title><![CDATA[【HTML知识点】HTML表格]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="表格属性认识"><a href="#表格属性认识" class="headerlink" title="表格属性认识"></a>表格属性认识</h2><p><code>定义表格　　　　　　&lt;table&gt;</code><br><code>定义表格的标题　　　&lt;caption&gt;</code><br><code>定义表格的表头　　　&lt;th&gt;</code><br><code>定义表格的行　　　　&lt;tr&gt;</code><br><code>定义表格的单元　　　&lt;td&gt;</code><br><code>定义表格的页眉　　　&lt;thead&gt;</code><br><code>定义表格的主体　　　&lt;tbody&gt;</code><br><code>定义表格的页脚　　　&lt;tfoot&gt;</code><br><code>定义表格的列属性　　&lt;col&gt;</code><br><code>定义单元格边距　　　cellpadding=10</code><br><code>定义单元格间距　　　cellspacing=10</code></p>
-<h2 id="表格示例"><a href="#表格示例" class="headerlink" title="表格示例"></a>表格示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">    &lt;caption&gt;表格&lt;/caption&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;单元1&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;单元2&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;内容1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;内容2&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[【HTML知识点】HTML三种样式插入方法]]></title>
       <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E6%A0%B7%E5%BC%8F%E7%B1%BB%E5%9E%8B/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -172,25 +241,6 @@ FRAMESET（框架类型）
 </li>
 </ol>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【HTML知识点】HTML链接的属性]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="链接数据"><a href="#链接数据" class="headerlink" title="链接数据"></a>链接数据</h2><ol>
-<li>文本链接</li>
-<li>图片链接</li>
-</ol>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><pre><code>href属性：指向另外一个文档链接
-name属性：创建文档内的链接
-</code></pre><h2 id="img标签属性"><a href="#img标签属性" class="headerlink" title="img标签属性"></a>img标签属性</h2><pre><code>alt:替换文本属性
-width:宽
-height:高
-</code></pre><h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;点击&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;xxx.png&quot; alt=&quot;图片说明&quot; width=&apos;50px&apos; height=&apos;50px&apos;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;!-- 文档内部链接--&gt;</span><br><span class="line">&lt;a name=&quot;tips&quot;&gt;Tips&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#tips&quot;&gt;跳转到Tips锚点&lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
@@ -216,6 +266,36 @@ height:高
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;Hello&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述一&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;World&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述二&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML表格]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="表格属性认识"><a href="#表格属性认识" class="headerlink" title="表格属性认识"></a>表格属性认识</h2><p><code>定义表格　　　　　　&lt;table&gt;</code><br><code>定义表格的标题　　　&lt;caption&gt;</code><br><code>定义表格的表头　　　&lt;th&gt;</code><br><code>定义表格的行　　　　&lt;tr&gt;</code><br><code>定义表格的单元　　　&lt;td&gt;</code><br><code>定义表格的页眉　　　&lt;thead&gt;</code><br><code>定义表格的主体　　　&lt;tbody&gt;</code><br><code>定义表格的页脚　　　&lt;tfoot&gt;</code><br><code>定义表格的列属性　　&lt;col&gt;</code><br><code>定义单元格边距　　　cellpadding=10</code><br><code>定义单元格间距　　　cellspacing=10</code></p>
+<h2 id="表格示例"><a href="#表格示例" class="headerlink" title="表格示例"></a>表格示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">    &lt;caption&gt;表格&lt;/caption&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;单元1&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;单元2&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;内容1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;内容2&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML链接的属性]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="链接数据"><a href="#链接数据" class="headerlink" title="链接数据"></a>链接数据</h2><ol>
+<li>文本链接</li>
+<li>图片链接</li>
+</ol>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><pre><code>href属性：指向另外一个文档链接
+name属性：创建文档内的链接
+</code></pre><h2 id="img标签属性"><a href="#img标签属性" class="headerlink" title="img标签属性"></a>img标签属性</h2><pre><code>alt:替换文本属性
+width:宽
+height:高
+</code></pre><h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;点击&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;xxx.png&quot; alt=&quot;图片说明&quot; width=&apos;50px&apos; height=&apos;50px&apos;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;!-- 文档内部链接--&gt;</span><br><span class="line">&lt;a name=&quot;tips&quot;&gt;Tips&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#tips&quot;&gt;跳转到Tips锚点&lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
@@ -614,16 +694,6 @@ height:高
     </entry>
     
     <entry>
-      <title><![CDATA[Linux关机操作命令]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
-<blockquote>
-<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
-</blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux修改系统默认启动模式]]></title>
       <url>http://www.jiang-yu.cn/2016/06/14/Linux/%E4%BF%AE%E6%94%B9Linux%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>　　为了避免每次开机都是进入到图形化界面，可以修改配置文件使得Linux默认为命令行模式启动。<br><a id="more"></a></p>
@@ -634,6 +704,16 @@ height:高
 <li><p>永久生效：修改 /etc/inittab  将启动模式修改为3<br>其中的数字可以设置为（0~6）<br>0 - 表示关闭系统（不要把默认设置成0）<br>1 - 单用户模式<br>2 - 多用户模式，没有NFS服务<br>3 - 多用户文本模式，是标准的运行级<br>5 - 图形模式<br>6 - 系统重新启动</p>
 </li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux关机操作命令]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/14/Linux/Linux%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>　　每天学一点Linux命令<br><a id="more"></a></p>
+<blockquote>
+<p>halt 立刻关机<br>poweroff 立刻关机<br>shutdown -h now 立刻关机(root用户使用)<br>shutdown -h 10 10分钟后自动关机<br>如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启<br>推荐使用shutdown命令</p>
+</blockquote>
 ]]></content>
     </entry>
     
