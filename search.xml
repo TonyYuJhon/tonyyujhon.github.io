@@ -4,14 +4,107 @@
   
     
     <entry>
-      <title><![CDATA[【Linux】Linux 新增用户]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/08/Linux/Linux%E6%96%B0%E5%A2%9E%E7%94%A8%E6%88%B7/</url>
+      <title><![CDATA[【CSS基础】id选择器]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/09/CSS/CSSid%E9%80%89%E6%8B%A9%E5%99%A8/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>Linux学习之路！<br><a id="more"></a></p>
+<p>CSS基础学习之路–03 id选择器！<br><a id="more"></a></p>
 </blockquote>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
-<p>&gt;<br>[root@localhost ~]# useradd -d /home/jhonrain -m jhonrain<br>[root@localhost ~]# passwd jhonrain<br>Changing password for user jhonrain<br>New password:<br>BAD PASSWORD: it is WAY too short<br>BAD PASSWORD: is too simple<br>Retype new password:<br>passwd: all authentication tokens updated successfully.<br>[root@localhost ~]# chown jhonrain -R /home/jhonrain<br>[root@localhost ~]# su jhonrain<br>[jhonrain@localhost root]\$ ls<br>ls: cannot open directory .: Permission denied<br>[jhonrain@localhost root]\$ cd /home/jhonrain/<br>[jhonrain@localhost ~]\$ ls<br>[jhonrain@localhost ~]\$ touch jhonrain.txt<br>[jhonrain@localhost ~]\$ ls<br>jhonrain.txt<br>[jhonrain@localhost ~]\$ vim jhonrain.txt<br>[jhonrain@localhost ~]\$<br>``</p>
+<h2 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h2><p>id选择器可以为标有id的HTML元素指定特定的样式<br>id选择器以“#”来定义</p>
+<h2 id="id选择器和派生选择器"><a href="#id选择器和派生选择器" class="headerlink" title="id选择器和派生选择器"></a>id选择器和派生选择器</h2><pre><code>目前比较常用的方式是id选择器常常用于建立派生选择器
+</code></pre><h2 id="id选择器使用"><a href="#id选择器使用" class="headerlink" title="id选择器使用"></a>id选择器使用</h2><p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;link href=&quot;demo.css&quot; type=&quot;text/css&quot; ref=&quot;stylesheet&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p id=&quot;pid&quot;&gt;Hello JhonRain &lt;/p&gt;</span><br><span class="line">    &lt;div id=&quot;divId&quot;&gt;</span><br><span class="line">        这是一个Div</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p id=&quot;ppid&quot;&gt;Hell JhonRain &lt;a href=&quot;http://www.jhonrain.org&quot;&gt;Blog&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>demo.css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#pid&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#ppid a&#123;</span><br><span class="line">    color:green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#divId&#123;</span><br><span class="line">    color:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【CSS基础】属性选择器]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/09/CSS/CSS%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>CSS基础学习之路–05 属性选择器！<br><a id="more"></a></p>
 </blockquote>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>1.属性选择器<br>　　对带有指定属性的HTML元素设置样式<br>2.属性和值选择器</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        [title]&#123;</span><br><span class="line">            color:red;</span><br><span class="line">        &#125;</span><br><span class="line">        [title=tt]&#123;</span><br><span class="line">            color:green;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p title=&quot;demo&quot;&gt;属性选择器&lt;/p&gt;</span><br><span class="line">    &lt;p title=&quot;tt&quot;&gt;属性值选择器&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【CSS样式】背景]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/09/CSS/CSS%E6%A0%B7%E5%BC%8F-%E8%83%8C%E6%99%AF/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>CSS样式学习之路–01 背景！<br><a id="more"></a></p>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>　　CSS允许应用纯色作为背景，也允许使用背景图像创建相当复杂的效果<br><img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/css%20background.png" alt="background"></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;link href=&quot;demo.css&quot; type=&quot;text/css&quot; ref=&quot;stylesheet&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;</span><br><span class="line">        使用样式表</span><br><span class="line">    &lt;/h1&gt;</span><br><span class="line">    &lt;a&gt;a标签样式&lt;/a&gt;</span><br><span class="line">    &lt;h2&gt;h2样式&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;h3样式&lt;/h3&gt;</span><br><span class="line">    &lt;p&gt;Hello JhonRain &lt;/p&gt;</span><br><span class="line">    &lt;div class=&quot;divClass&quot;&gt;</span><br><span class="line">        Hello</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>demo.css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">    background-color: gray;</span><br><span class="line">&#125;</span><br><span class="line">p&#123;</span><br><span class="line">    width: 150px;</span><br><span class="line">    padding: 10px;</span><br><span class="line">    background-color: red;</span><br><span class="line">&#125;</span><br><span class="line">.divClass&#123;</span><br><span class="line">    background-image: url(../a.png);</span><br><span class="line">    #background-repeat:no-repeat/repeat/repeat-x/repeat-y/round/space/inherit;</span><br><span class="line">    background-repeat:no-repeat;</span><br><span class="line">    /** right:right和center **/</span><br><span class="line">    background-position: right top;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS3背景"><a href="#CSS3背景" class="headerlink" title="CSS3背景"></a>CSS3背景</h2><pre><code>background-size: 规定背景图片的尺寸
+background-origin: 规定背景图片的定位区域
+background-clip:规定背景的绘制区域
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【CSS基础】类选择器]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/09/CSS/CSS%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>CSS基础学习之路–04 类选择器！<br><a id="more"></a></p>
+</blockquote>
+<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>1.类选择器：<br>　　类选择器可以以一个点显示<br>2.class也可以用作派生选择器中</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;link href=&quot;demo.css&quot; type=&quot;text/css&quot; ref=&quot;stylesheet&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p class=&quot;pclass&quot;&gt;Hello JhonRain &lt;/p&gt;</span><br><span class="line">    &lt;div class=&quot;divClass&quot;&gt;</span><br><span class="line">        &lt;p&gt;Hello Div&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>demo.css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.pclass&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.divClass p&#123;</span><br><span class="line">    color:green;</span><br><span class="line">    font-size:10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【CSS基础】派生选择器]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/09/CSS/CSS%E6%B4%BE%E7%94%9F%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>CSS基础学习之路–02派生选择器！<br><a id="more"></a></p>
+</blockquote>
+<h2 id="派生选择器"><a href="#派生选择器" class="headerlink" title="派生选择器"></a>派生选择器</h2><p>　　通过依据元素在其位置的上下文关系来定义样式<br>　　<br>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;link href=&quot;demo.css&quot; type=&quot;text/css&quot; ref=&quot;stylesheet&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- blue --&gt;</span><br><span class="line">    &lt;p&gt;&lt;strong&gt;Hello JhonRain&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;!-- red --&gt;</span><br><span class="line">        &lt;li&gt;&lt;strong&gt;li标签：Hello Css&lt;/strong&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>demo.css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li strong&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">strong&#123;</span><br><span class="line">    color:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【CSS基础】CSS介绍和语法]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/09/CSS/CSS%E4%BB%8B%E7%BB%8D%E5%92%8C%E8%AF%AD%E6%B3%95/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>CSS基础学习之路–01介绍和语法！<br><a id="more"></a></p>
+</blockquote>
+<h2 id="CSS介绍"><a href="#CSS介绍" class="headerlink" title="CSS介绍"></a>CSS介绍</h2><p>　　CSS指层叠样式表<br>　　CSS样式表极大地提高了工作效率
+　　</p>
+<h2 id="CSS基础语法"><a href="#CSS基础语法" class="headerlink" title="CSS基础语法"></a>CSS基础语法</h2><p><code>selector{
+　　property:value
+}</code><br>例如：h1{color:red;font-size:14px;}</p>
+<blockquote>
+<p>注意：属性大于1个之后，属性之间用分号隔开<br>如果值大于1个单词，则需要加上引号，<br>p{font-family:”sans serif”;}</p>
+</blockquote>
+<h2 id="CSS高级语法"><a href="#CSS高级语法" class="headerlink" title="CSS高级语法"></a>CSS高级语法</h2><p>1.选择器分组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.继承</span><br></pre></td></tr></table></figure></p>
+<pre><code>body{
+    color:green;
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 示例</span><br><span class="line">index.html</span><br></pre></td></tr></table></figure>
+<p>&lt;!DOCTYPE html&gt;</p>
+<p><html lang="en"></html></p>
+<p><head><br>    <meta charset="UTF-8"><br>    <link href="demo.css" type="text/css" ref="stylesheet"><br></head></p>
+<p><body><br>    <h1><br>        使用样式表<br>    </h1><br>    <a>a标签样式</a><br>    <h2>h2样式</h2><br>    <h3>h3样式</h3><br>    <p>Hello JhonRain </p><br></body><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">demo.css</span><br></pre></td></tr></table></figure></p>
+<p>h1,a,h2{<br>    color:red;<br>    font-size:14px;<br>}</p>
+<p>body{<br>    color:green;<br>}</p>
+<p>p{<br>    color:blue;<br>}<br>```</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【NodeJS】NodeJS 环境搭建]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/NodeJS/NodeJS%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>NodeJs探索之路！<br><a id="more"></a></p>
+</blockquote>
+<p>　　首先从官网下载压缩包，解压到usr/local/目录下，<br>　　切换到root用户，修改/etc/profile文件，<br>　　执行修改文件命令：<code>vim /etc/profile</code><br>　　然后，添加NODE环境变量，具体配置如下：</p>
+<blockquote>
+<p>&gt;<br>export NODE_HOME=/usr/local/node450<br>export PATH=\$PATH:\$NODE_HOME/bin<br>export NODE_PATH=$NODE_HOME/lib/node_modules</p>
+</blockquote>
+<p>　　如下图所示：<br>　　<img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE_PATH.png" alt="NODE_PATH"><br>　　<br>　　最后，配置完成之后，记得使profile文件生效，执行 <code>source profile</code> 命令，然后查看一下是否安装成功，查看一下node的版本号，如下图所示：<br>　　<img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE-VERSION.png" alt="NODE_VERSION"></p>
 ]]></content>
     </entry>
     
@@ -34,16 +127,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[【NodeJS】NodeJS 环境搭建]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/08/NodeJS/NodeJS%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      <title><![CDATA[【Linux】Linux 新增用户]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/08/Linux/Linux%E6%96%B0%E5%A2%9E%E7%94%A8%E6%88%B7/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>NodeJs探索之路！<br><a id="more"></a></p>
+<p>Linux学习之路！<br><a id="more"></a></p>
 </blockquote>
-<p>　　首先从官网下载压缩包，解压到usr/local/目录下，<br>　　切换到root用户，修改/etc/profile文件，<br>　　执行修改文件命令：<code>vim /etc/profile</code><br>　　然后，添加NODE环境变量，具体配置如下：</p>
-<blockquote>
-<p>&gt;<br>export NODE_HOME=/usr/local/node450<br>export PATH=\$PATH:\$NODE_HOME/bin<br>export NODE_PATH=$NODE_HOME/lib/node_modules</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
+<p>&gt;<br>[root@localhost ~]# useradd -d /home/jhonrain -m jhonrain<br>[root@localhost ~]# passwd jhonrain<br>Changing password for user jhonrain<br>New password:<br>BAD PASSWORD: it is WAY too short<br>BAD PASSWORD: is too simple<br>Retype new password:<br>passwd: all authentication tokens updated successfully.<br>[root@localhost ~]# chown jhonrain -R /home/jhonrain<br>[root@localhost ~]# su jhonrain<br>[jhonrain@localhost root]\$ ls<br>ls: cannot open directory .: Permission denied<br>[jhonrain@localhost root]\$ cd /home/jhonrain/<br>[jhonrain@localhost ~]\$ ls<br>[jhonrain@localhost ~]\$ touch jhonrain.txt<br>[jhonrain@localhost ~]\$ ls<br>jhonrain.txt<br>[jhonrain@localhost ~]\$ vim jhonrain.txt<br>[jhonrain@localhost ~]\$<br>``</p>
 </blockquote>
-<p>　　如下图所示：<br>　　<img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE_PATH.png" alt="NODE_PATH"><br>　　<br>　　最后，配置完成之后，记得使profile文件生效，执行 <code>source profile</code> 命令，然后查看一下是否安装成功，查看一下node的版本号，如下图所示：<br>　　<img src="http://learnblog.oss-cn-shanghai.aliyuncs.com/NODE-VERSION.png" alt="NODE_VERSION"></p>
 ]]></content>
     </entry>
     
@@ -84,6 +175,29 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【HTML知识点】HTML之表单创建]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%A1%A8%E5%8D%95%E5%88%9B%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p><code>表单　　　　　　　&lt;form&gt;</code><br><code>输入域　　　　　　&lt;input&gt;</code><br><code>文本域　　　　　　&lt;textarea&gt;</code><br><code>控制标签　　　　　&lt;label&gt;</code><br><code>定义域　　　　　　&lt;fieldset&gt;</code><br><code>域的标题　　　　　&lt;legend&gt;</code><br><code>选择列表　　　　　&lt;select&gt;</code><br><code>选择组　　　　　　&lt;optgroup&gt;</code><br><code>下拉表中的选项　　&lt;option&gt;</code><br><code>按钮　　　　　　　&lt;button&gt;</code></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html language=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;表单创建&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;xxx.do&quot; method=&quot;post&quot;&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;用户名：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;密码：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML之TABLE布局]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20TABLE%E5%B8%83%E5%B1%80/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<p>#HTML TABLE布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!Doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;table布局&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin:0px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    &lt;table  width=&quot;100%&quot;,height=&quot;950px&quot; style=&quot;backgroun-color:red;&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:blue;&quot;&gt;顶部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td width=&quot;30%&quot; height=&quot;80%&quot; style=&quot;background-color=gray;&quot;&gt;左菜单&lt;/td&gt;</span><br><span class="line">            &lt;td width=&quot;70%&quot; height=&quot;80%&quot; style=&quot;background-color=blue;&quot;&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:black;&quot;&gt;底部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[【HTML知识点】HTML 框架]]></title>
       <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E6%A1%86%E6%9E%B6%20frame/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -102,33 +216,6 @@
 </ol>
 <h1 id="iframe-示例"><a href="#iframe-示例" class="headerlink" title="iframe 示例"></a>iframe 示例</h1><p>framea.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body bgcolor=&quot;red&quot;&gt;</span><br><span class="line">    &lt;p&gt;段落1&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;段落2&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 <p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    &lt;a href=&quot;http://www.jiang-yu.cn&quot; target=&quot;_top&quot;&gt;Click&lt;/a&gt;</span><br><span class="line">    &lt;iframe src=&quot;framea.html&quot; frameboder=&quot;0&quot; width=&quot;400px&quot; height=&quot;400px&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;/iframe&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【HTML知识点】HTML背景]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%83%8C%E6%99%AF/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="HTML-背景"><a href="#HTML-背景" class="headerlink" title="HTML 背景"></a>HTML 背景</h1><ol>
-<li>背景标签：background 设置背景图片</li>
-<li>背景颜色：bgcolor 设置背景颜色</li>
-<li>颜色：<br>颜色是由一个十六进制符号来定义，这个符号用RGB组成<br>颜色值最小值：0(#00)<br>颜色值最大值：255(#FF)<br>红色：#FF0000<br>绿色：#00FF00<br>蓝色：#0000FF</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【HTML知识点】HTML之表单创建]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%A1%A8%E5%8D%95%E5%88%9B%E5%BB%BA/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p><code>表单　　　　　　　&lt;form&gt;</code><br><code>输入域　　　　　　&lt;input&gt;</code><br><code>文本域　　　　　　&lt;textarea&gt;</code><br><code>控制标签　　　　　&lt;label&gt;</code><br><code>定义域　　　　　　&lt;fieldset&gt;</code><br><code>域的标题　　　　　&lt;legend&gt;</code><br><code>选择列表　　　　　&lt;select&gt;</code><br><code>选择组　　　　　　&lt;optgroup&gt;</code><br><code>下拉表中的选项　　&lt;option&gt;</code><br><code>按钮　　　　　　　&lt;button&gt;</code></p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html language=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;表单创建&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;xxx.do&quot; method=&quot;post&quot;&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;用户名：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;label&gt;&lt;span&gt;密码：&lt;/span&gt;&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
@@ -164,17 +251,6 @@ FRAMESET（框架类型）
     </entry>
     
     <entry>
-      <title><![CDATA[【HTML知识点】HTML之TABLE布局]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20TABLE%E5%B8%83%E5%B1%80/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<p>#HTML TABLE布局</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!Doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;table布局&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin:0px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    &lt;table  width=&quot;100%&quot;,height=&quot;950px&quot; style=&quot;backgroun-color:red;&quot;&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:blue;&quot;&gt;顶部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td width=&quot;30%&quot; height=&quot;80%&quot; style=&quot;background-color=gray;&quot;&gt;左菜单&lt;/td&gt;</span><br><span class="line">            &lt;td width=&quot;70%&quot; height=&quot;80%&quot; style=&quot;background-color=blue;&quot;&gt;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; width=&quot;100%&quot; height=&quot;10%&quot; style=&quot;backgroun-color:black;&quot;&gt;底部&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[【HTML知识点】HTML 实体]]></title>
       <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E5%AE%9E%E4%BD%93/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -191,6 +267,21 @@ FRAMESET（框架类型）
     </entry>
     
     <entry>
+      <title><![CDATA[【HTML知识点】HTML背景]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%E8%83%8C%E6%99%AF/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTML-背景"><a href="#HTML-背景" class="headerlink" title="HTML 背景"></a>HTML 背景</h1><ol>
+<li>背景标签：background 设置背景图片</li>
+<li>背景颜色：bgcolor 设置背景颜色</li>
+<li>颜色：<br>颜色是由一个十六进制符号来定义，这个符号用RGB组成<br>颜色值最小值：0(#00)<br>颜色值最大值：255(#FF)<br>红色：#FF0000<br>绿色：#00FF00<br>蓝色：#0000FF</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[【HTML知识点】HTML之DIV布局]]></title>
       <url>http://www.jiang-yu.cn/2017/02/07/HTML5/HTML%20DIV/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -199,6 +290,31 @@ FRAMESET（框架类型）
 <a id="more"></a>
 <p>#HTML DIV布局</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;!Doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;div布局&lt;/title&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin:0px;</span><br><span class="line">        &#125;</span><br><span class="line">        #container&#123;</span><br><span class="line">            width:100%;</span><br><span class="line">            height:950px;</span><br><span class="line">            background-color:gray;</span><br><span class="line">        &#125;</span><br><span class="line">        #heading&#123;</span><br><span class="line">            width:100px;</span><br><span class="line">            height:10%;</span><br><span class="line">            background-color:green;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        #content_menu&#123;</span><br><span class="line">            width:30%;</span><br><span class="line">            height:80%;</span><br><span class="line">            background-color:red;</span><br><span class="line">            float:left;</span><br><span class="line">        &#125;</span><br><span class="line">        #content_body&#123;</span><br><span class="line">            width:70%;</span><br><span class="line">            height:80%;</span><br><span class="line">            background-color:blue;</span><br><span class="line">            float:left;</span><br><span class="line">        &#125;</span><br><span class="line">        #footing&#123;</span><br><span class="line">            width:100px;</span><br><span class="line">            height:10%;</span><br><span class="line">            background-color:pink;</span><br><span class="line">            clear:float;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;heading&quot;&gt;头部&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;content_menu&quot;&gt;内容菜单&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;content_body&quot;&gt;内容主体&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;footing&quot;&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML列表]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E5%88%97%E8%A1%A8%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HTML-列表"><a href="#HTML-列表" class="headerlink" title="HTML 列表"></a>HTML 列表</h1><p><code>有序列表　　　&lt;ol&gt;</code><br><code>无序列表　　　&lt;ul&gt;</code><br><code>列表项　　　　&lt;li&gt;</code><br><code>列表　　　　　&lt;dl&gt;</code><br><code>列表项　　　　&lt;dt&gt;</code><br><code>描述　　　　　&lt;dd&gt;</code></p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ol>
+<li><p>无序列表<br>使用标签：<code>&lt;ul&gt;、&lt;li&gt;</code><br>属性：disc、circle、square</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--type取值 disc:实心圆 circle:空心圆 square：实心方块 --&gt;</span><br><span class="line">&lt;ul type=&quot;disc&quot;&gt;</span><br><span class="line">    &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">&lt;ul&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有序列表<br>使用标签：<code>&lt;ol&gt;/&lt;li&gt;</code><br>属性：A、a、l、i、start (type取值)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol type=&quot;A&quot;&gt;</span><br><span class="line">    &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套列表<br>使用标签：<code>&lt;ul&gt;/&lt;ol&gt;/&lt;li&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul type=&quot;disc&quot;&gt;</span><br><span class="line">    &lt;li&gt;动物&lt;/li&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;狗&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;猫&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;li&gt;植物&lt;/li&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;草&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;花&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">&lt;ul&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义列表<br>使用标签：<code>&lt;dl&gt;/&lt;dt&gt;/&lt;dd&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;Hello&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述一&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;World&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述二&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
     </entry>
     
     <entry>
@@ -244,42 +360,6 @@ FRAMESET（框架类型）
     </entry>
     
     <entry>
-      <title><![CDATA[【HTML知识点】HTML列表]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E5%88%97%E8%A1%A8%E5%B1%9E%E6%80%A7/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="HTML-列表"><a href="#HTML-列表" class="headerlink" title="HTML 列表"></a>HTML 列表</h1><p><code>有序列表　　　&lt;ol&gt;</code><br><code>无序列表　　　&lt;ul&gt;</code><br><code>列表项　　　　&lt;li&gt;</code><br><code>列表　　　　　&lt;dl&gt;</code><br><code>列表项　　　　&lt;dt&gt;</code><br><code>描述　　　　　&lt;dd&gt;</code></p>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ol>
-<li><p>无序列表<br>使用标签：<code>&lt;ul&gt;、&lt;li&gt;</code><br>属性：disc、circle、square</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--type取值 disc:实心圆 circle:空心圆 square：实心方块 --&gt;</span><br><span class="line">&lt;ul type=&quot;disc&quot;&gt;</span><br><span class="line">    &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">&lt;ul&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>有序列表<br>使用标签：<code>&lt;ol&gt;/&lt;li&gt;</code><br>属性：A、a、l、i、start (type取值)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol type=&quot;A&quot;&gt;</span><br><span class="line">    &lt;li&gt;apple&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;htc&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;sc&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>嵌套列表<br>使用标签：<code>&lt;ul&gt;/&lt;ol&gt;/&lt;li&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul type=&quot;disc&quot;&gt;</span><br><span class="line">    &lt;li&gt;动物&lt;/li&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;狗&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;猫&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;li&gt;植物&lt;/li&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;草&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;花&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">&lt;ul&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义列表<br>使用标签：<code>&lt;dl&gt;/&lt;dt&gt;/&lt;dd&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;Hello&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述一&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;World&lt;/dt&gt;</span><br><span class="line">        &lt;dd&gt;描述二&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【HTML知识点】HTML表格]]></title>
-      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>闲暇时间学习学习HTML相关知识！</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="表格属性认识"><a href="#表格属性认识" class="headerlink" title="表格属性认识"></a>表格属性认识</h2><p><code>定义表格　　　　　　&lt;table&gt;</code><br><code>定义表格的标题　　　&lt;caption&gt;</code><br><code>定义表格的表头　　　&lt;th&gt;</code><br><code>定义表格的行　　　　&lt;tr&gt;</code><br><code>定义表格的单元　　　&lt;td&gt;</code><br><code>定义表格的页眉　　　&lt;thead&gt;</code><br><code>定义表格的主体　　　&lt;tbody&gt;</code><br><code>定义表格的页脚　　　&lt;tfoot&gt;</code><br><code>定义表格的列属性　　&lt;col&gt;</code><br><code>定义单元格边距　　　cellpadding=10</code><br><code>定义单元格间距　　　cellspacing=10</code></p>
-<h2 id="表格示例"><a href="#表格示例" class="headerlink" title="表格示例"></a>表格示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">    &lt;caption&gt;表格&lt;/caption&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;单元1&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;单元2&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;内容1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;内容2&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[【HTML知识点】HTML链接的属性]]></title>
       <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -296,6 +376,17 @@ name属性：创建文档内的链接
 width:宽
 height:高
 </code></pre><h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;点击&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jiang-yu.cn&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;xxx.png&quot; alt=&quot;图片说明&quot; width=&apos;50px&apos; height=&apos;50px&apos;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;!-- 文档内部链接--&gt;</span><br><span class="line">&lt;a name=&quot;tips&quot;&gt;Tips&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#tips&quot;&gt;跳转到Tips锚点&lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【HTML知识点】HTML表格]]></title>
+      <url>http://www.jiang-yu.cn/2017/02/06/HTML5/HTML%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>闲暇时间学习学习HTML相关知识！</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="表格属性认识"><a href="#表格属性认识" class="headerlink" title="表格属性认识"></a>表格属性认识</h2><p><code>定义表格　　　　　　&lt;table&gt;</code><br><code>定义表格的标题　　　&lt;caption&gt;</code><br><code>定义表格的表头　　　&lt;th&gt;</code><br><code>定义表格的行　　　　&lt;tr&gt;</code><br><code>定义表格的单元　　　&lt;td&gt;</code><br><code>定义表格的页眉　　　&lt;thead&gt;</code><br><code>定义表格的主体　　　&lt;tbody&gt;</code><br><code>定义表格的页脚　　　&lt;tfoot&gt;</code><br><code>定义表格的列属性　　&lt;col&gt;</code><br><code>定义单元格边距　　　cellpadding=10</code><br><code>定义单元格间距　　　cellspacing=10</code></p>
+<h2 id="表格示例"><a href="#表格示例" class="headerlink" title="表格示例"></a>表格示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">    &lt;caption&gt;表格&lt;/caption&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;单元1&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;单元2&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;内容1&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;内容2&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
@@ -750,23 +841,6 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
     </entry>
     
     <entry>
-      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
-      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
-      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
-<p>###S Lock（共享锁） INTRODUCTION：</p>
-<blockquote>
-<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
-<p>###X Lock（排它锁） INTRODUCTION：</p>
-<blockquote>
-<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
-</blockquote>
-<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ MySql InnoDB Lock(二)--Intention Locks]]></title>
       <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_Intention_Lock/</url>
       <content type="html"><![CDATA[<p>　　在上一篇的<code>Shared And Exclusive Locks</code>中提及到InnoDB默认实现的是<code>Row-Level Lock</code>(行级锁)，同时InnoDB中也支持多种粒度类型的锁，本文介绍的<code>Intention Locks</code>（意向锁）就是一个体现，意向锁的主要目的是表明当前事务将要或者正在对表中的记录加锁。<br><a id="more"></a><br>　　在MySQL InnoDB引擎中的行级锁只有明确的指定主键的时候才会在被筛选记录(即：<code>where keyAttr(主键)=xxx</code>)上执行Row Lock，否则将会执行<br>Table Lock.</p>
@@ -799,6 +873,23 @@ set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</code></p>
 <ul>
 <li>表级锁和行级锁的比较<br>&gt;<br>1.表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。<br>2.行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ MySql InnoDB Lock(一)-- Shared and Exclusive Locks]]></title>
+      <url>http://www.jiang-yu.cn/2016/06/04/MySQL/InnoDB/InnoDB_S_And_X_Lock/</url>
+      <content type="html"><![CDATA[<p>　　InnoDB 引擎实现了两种标准的行级锁：共享锁(S锁)和排它锁(X锁),本篇就来介绍一下该类型的锁的相关信息。<br><a id="more"></a></p>
+<p>###S Lock（共享锁） INTRODUCTION：</p>
+<blockquote>
+<p>A shared (S) lock permits the transaction that holds the lock to read a row.<br>基本的意思为：在开启事务读一行数据的时候允许拥有一个共享锁，所以共享锁也称为读锁（read lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有S锁，其他独立的事务也可以同时获取S锁，也就是说S锁是共享的。</p>
+<p>###X Lock（排它锁） INTRODUCTION：</p>
+<blockquote>
+<p>An exclusive (X) lock permits the transaction that holds the lock to update or delete a row.<br>基本的意思是：在开启事务更新或者删除一行数据的时候允许有一个排它锁，所以排它锁也称为写锁（write lock）</p>
+</blockquote>
+<p>　　如果事务T1拥有X锁，其他独立的事务T2如果需要获得X锁必须要等待事务T1释放锁之后才能够得到。</p>
 ]]></content>
     </entry>
     
